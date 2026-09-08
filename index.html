@@ -55,7 +55,7 @@
 
 
     /* =====================================================
-       OTIMIZAÇÃO DE MOVIMENTO
+       OTIMIZAÇÃO
     ===================================================== */
 
     .hero-content,
@@ -86,11 +86,13 @@
           rgba(130,86,26,.055),
           transparent 36%
         ),
+
         radial-gradient(
           circle at 8% 68%,
           rgba(105,67,18,.035),
           transparent 35%
         ),
+
         linear-gradient(
           180deg,
           #050505 0%,
@@ -101,27 +103,344 @@
 
 
     /* =====================================================
-       BRILHO GLOBAL
+       IMAGEM DE BRILHO BASE
+
+       AGORA ELA NÃO PULSA MAIS.
+       FICA BEM DISCRETA COMO BASE.
     ===================================================== */
 
     .global-sparkles-layer{
       position:fixed;
+
       inset:-7%;
+
       z-index:-15;
+
       pointer-events:none;
     }
 
     .global-sparkles{
       width:114%;
       height:114%;
+
       object-fit:cover;
+
       mix-blend-mode:screen;
 
-      animation:
-        sparklePulse
-        3s
-        ease-in-out
+      opacity:.055;
+    }
+
+
+    /* =====================================================
+       SISTEMA DE BRILHOS ALEATÓRIOS
+    ===================================================== */
+
+    .twinkle-field{
+      position:absolute;
+
+      inset:0;
+
+      z-index:4;
+
+      overflow:hidden;
+
+      pointer-events:none;
+    }
+
+
+    .twinkle{
+      position:absolute;
+
+      width:var(--size);
+      height:var(--size);
+
+      border-radius:50%;
+
+      opacity:var(--soft);
+
+      background:
+        rgba(255,222,152,.98);
+
+      box-shadow:
+
+        0 0 3px
+        rgba(255,244,203,.95),
+
+        0 0 7px
+        rgba(255,210,112,.78),
+
+        0 0 15px
+        rgba(218,157,50,.42),
+
+        0 0 28px
+        rgba(180,112,25,.18);
+
+      transform:
+        scale(.55);
+
+      filter:
+        blur(var(--blur));
+
+      animation-duration:
+        var(--duration);
+
+      animation-delay:
+        var(--delay);
+
+      animation-timing-function:
+        ease-in-out;
+
+      animation-iteration-count:
         infinite;
+
+      will-change:
+        opacity,
+        transform;
+    }
+
+
+    .twinkle::before,
+    .twinkle::after{
+      content:"";
+
+      position:absolute;
+
+      left:50%;
+      top:50%;
+
+      transform:
+        translate(-50%,-50%);
+
+      border-radius:20px;
+
+      background:
+        linear-gradient(
+          to right,
+          transparent,
+          rgba(255,234,179,.9),
+          transparent
+        );
+
+      opacity:.70;
+    }
+
+
+    .twinkle::before{
+      width:
+        calc(
+          var(--size) * 5
+        );
+
+      height:1px;
+    }
+
+
+    .twinkle::after{
+      width:1px;
+
+      height:
+        calc(
+          var(--size) * 5
+        );
+
+      background:
+        linear-gradient(
+          to bottom,
+          transparent,
+          rgba(255,234,179,.9),
+          transparent
+        );
+    }
+
+
+    .twinkle.variant-a{
+      animation-name:
+        twinkleA;
+    }
+
+    .twinkle.variant-b{
+      animation-name:
+        twinkleB;
+    }
+
+    .twinkle.variant-c{
+      animation-name:
+        twinkleC;
+    }
+
+    .twinkle.variant-d{
+      animation-name:
+        twinkleD;
+    }
+
+
+    @keyframes twinkleA{
+
+      0%{
+        opacity:var(--soft);
+        transform:scale(.50);
+      }
+
+      18%{
+        opacity:var(--soft);
+        transform:scale(.58);
+      }
+
+      25%{
+        opacity:var(--peak);
+        transform:scale(1.35);
+      }
+
+      34%{
+        opacity:calc(var(--peak) * .45);
+        transform:scale(.78);
+      }
+
+      58%{
+        opacity:var(--soft);
+        transform:scale(.55);
+      }
+
+      72%{
+        opacity:calc(var(--peak) * .70);
+        transform:scale(.95);
+      }
+
+      80%{
+        opacity:var(--soft);
+        transform:scale(.55);
+      }
+
+      100%{
+        opacity:var(--soft);
+        transform:scale(.50);
+      }
+
+    }
+
+
+    @keyframes twinkleB{
+
+      0%{
+        opacity:var(--soft);
+        transform:scale(.45);
+      }
+
+      36%{
+        opacity:var(--soft);
+        transform:scale(.55);
+      }
+
+      44%{
+        opacity:calc(var(--peak) * .55);
+        transform:scale(.82);
+      }
+
+      49%{
+        opacity:var(--peak);
+        transform:scale(1.45);
+      }
+
+      55%{
+        opacity:calc(var(--peak) * .35);
+        transform:scale(.72);
+      }
+
+      100%{
+        opacity:var(--soft);
+        transform:scale(.45);
+      }
+
+    }
+
+
+    @keyframes twinkleC{
+
+      0%{
+        opacity:var(--soft);
+        transform:scale(.55);
+      }
+
+      12%{
+        opacity:calc(var(--peak) * .35);
+        transform:scale(.75);
+      }
+
+      20%{
+        opacity:var(--peak);
+        transform:scale(1.20);
+      }
+
+      27%{
+        opacity:var(--soft);
+        transform:scale(.55);
+      }
+
+      68%{
+        opacity:var(--soft);
+        transform:scale(.50);
+      }
+
+      77%{
+        opacity:calc(var(--peak) * .75);
+        transform:scale(1);
+      }
+
+      83%{
+        opacity:var(--soft);
+        transform:scale(.55);
+      }
+
+      100%{
+        opacity:var(--soft);
+        transform:scale(.55);
+      }
+
+    }
+
+
+    @keyframes twinkleD{
+
+      0%{
+        opacity:var(--soft);
+        transform:scale(.50);
+      }
+
+      55%{
+        opacity:var(--soft);
+        transform:scale(.55);
+      }
+
+      63%{
+        opacity:calc(var(--peak) * .35);
+        transform:scale(.70);
+      }
+
+      68%{
+        opacity:var(--peak);
+        transform:scale(1.60);
+      }
+
+      72%{
+        opacity:calc(var(--peak) * .50);
+        transform:scale(.85);
+      }
+
+      76%{
+        opacity:var(--peak);
+        transform:scale(1.12);
+      }
+
+      84%{
+        opacity:var(--soft);
+        transform:scale(.55);
+      }
+
+      100%{
+        opacity:var(--soft);
+        transform:scale(.50);
+      }
+
     }
 
 
@@ -176,8 +495,10 @@
         border-color .35s ease;
     }
 
+
     .menu-trigger span{
       display:block;
+
       width:25px;
       height:2px;
 
@@ -186,12 +507,14 @@
       background:#e5bd71;
 
       box-shadow:
-        0 0 8px rgba(218,171,76,.55);
+        0 0 8px
+        rgba(218,171,76,.55);
 
       transition:
         transform .35s ease,
         opacity .35s ease;
     }
+
 
     .menu-trigger.active span:nth-child(1){
       transform:
@@ -199,9 +522,11 @@
         rotate(45deg);
     }
 
+
     .menu-trigger.active span:nth-child(2){
       opacity:0;
     }
+
 
     .menu-trigger.active span:nth-child(3){
       transform:
@@ -229,6 +554,7 @@
         opacity .45s ease,
         visibility .45s ease;
     }
+
 
     .menu-overlay.active{
       opacity:1;
@@ -282,10 +608,12 @@
         cubic-bezier(.77,0,.18,1);
     }
 
+
     .side-menu.active{
       transform:
         translate3d(0,0,0);
     }
+
 
     .menu-title{
       font-family:
@@ -293,11 +621,14 @@
         serif;
 
       font-size:37px;
+
       font-weight:500;
+
       color:#e4bd72;
 
       margin-bottom:42px;
     }
+
 
     .menu-title::after{
       content:"";
@@ -317,11 +648,13 @@
         );
     }
 
+
     .menu-links{
       display:flex;
       flex-direction:column;
       gap:5px;
     }
+
 
     .menu-links a{
       display:block;
@@ -366,8 +699,10 @@
       z-index:5;
     }
 
+
     .hero-photo{
       position:absolute;
+
       inset:0;
 
       width:100%;
@@ -379,13 +714,10 @@
       z-index:0;
 
       filter:none;
+
       opacity:1;
     }
 
-
-    /* =====================================================
-       DEGRADÊ CAPA
-    ===================================================== */
 
     .hero-bottom-fade{
       position:absolute;
@@ -417,10 +749,15 @@
           rgba(5,5,5,.90) 84%,
           rgba(5,5,5,.96) 90%,
           rgba(5,5,5,.985) 95%,
+
           #050505 100%
         );
     }
 
+
+    /* =====================================================
+       BRILHO BASE CAPA
+    ===================================================== */
 
     .hero-sparkles{
       position:absolute;
@@ -438,11 +775,7 @@
 
       mix-blend-mode:screen;
 
-      animation:
-        sparklePulse
-        3s
-        ease-in-out
-        infinite;
+      opacity:.07;
     }
 
 
@@ -461,15 +794,17 @@
       right:19px;
 
       width:125px;
+
       height:auto;
 
-      z-index:6;
+      z-index:7;
 
       filter:
         drop-shadow(
           0 5px 12px
           rgba(0,0,0,.75)
         )
+
         drop-shadow(
           0 0 8px
           rgba(207,159,67,.18)
@@ -478,7 +813,7 @@
 
 
     /* =====================================================
-       CONTEÚDO CAPA
+       CONTEÚDO DA CAPA
     ===================================================== */
 
     .hero-content{
@@ -492,7 +827,7 @@
       transform:
         translate3d(-50%,-50%,0);
 
-      z-index:5;
+      z-index:7;
 
       display:flex;
       flex-direction:column;
@@ -501,10 +836,12 @@
       text-align:center;
     }
 
+
     .name-image{
       display:block;
 
       width:min(98vw,920px);
+
       max-width:100%;
 
       height:auto;
@@ -516,15 +853,18 @@
           0 7px 10px
           rgba(0,0,0,.90)
         )
+
         drop-shadow(
           0 16px 25px
           rgba(0,0,0,.72)
         )
+
         drop-shadow(
           0 0 7px
           rgba(255,255,255,.18)
         );
     }
+
 
     .nail-artistic-wrap{
       width:min(83vw,680px);
@@ -532,11 +872,14 @@
       margin-top:-17px;
 
       display:flex;
+
       justify-content:center;
     }
 
+
     .nail-artistic{
       width:100%;
+
       height:auto;
 
       object-fit:contain;
@@ -545,15 +888,18 @@
         brightness(1.8)
         saturate(.55)
         contrast(1.12)
+
         drop-shadow(
           0 3px 5px
           rgba(0,0,0,.90)
         )
+
         drop-shadow(
           0 0 6px
           rgba(255,221,150,.42)
         );
     }
+
 
     .hero-phrase{
       margin-top:1px;
@@ -585,6 +931,7 @@
         0 8px 18px rgba(0,0,0,.82);
     }
 
+
     .phrase-detail{
       width:48px;
       height:1px;
@@ -602,7 +949,7 @@
 
 
     /* =====================================================
-       DESLIZE
+       DESLIZE CAPA
     ===================================================== */
 
     .scroll-indicator{
@@ -622,16 +969,19 @@
       transform:
         translateX(-50%);
 
-      z-index:7;
+      z-index:8;
 
       display:flex;
+
       flex-direction:column;
+
       align-items:center;
 
       gap:10px;
 
       pointer-events:none;
     }
+
 
     .scroll-indicator span{
       color:
@@ -643,6 +993,7 @@
 
       padding-left:.42em;
     }
+
 
     .scroll-line{
       width:1px;
@@ -691,10 +1042,6 @@
     }
 
 
-    /* =====================================================
-       FUNDO TRABALHOS
-    ===================================================== */
-
     .works-background-photo{
       position:absolute;
 
@@ -702,27 +1049,33 @@
       left:0;
 
       width:100%;
-      height:calc(100% + 360px);
+
+      height:
+        calc(
+          100% + 360px
+        );
 
       object-fit:cover;
-      object-position:center top;
+
+      object-position:
+        center top;
 
       z-index:-5;
 
       pointer-events:none;
 
       filter:none;
+
       opacity:1;
 
-      transform:translate3d(0,0,0);
-
-      backface-visibility:hidden;
-      -webkit-backface-visibility:hidden;
+      transform:
+        translate3d(0,0,0);
     }
 
 
     .works-background-blend{
       position:absolute;
+
       inset:0;
 
       z-index:-3;
@@ -742,8 +1095,11 @@
           rgba(5,5,5,.40) 20%,
           rgba(5,5,5,.20) 27%,
           rgba(5,5,5,.07) 34%,
+
           rgba(5,5,5,0) 43%,
+
           rgba(5,5,5,0) 72%,
+
           rgba(5,5,5,.08) 79%,
           rgba(5,5,5,.25) 86%,
           rgba(5,5,5,.52) 92%,
@@ -774,7 +1130,9 @@
 
 
     /* =====================================================
-       BRILHO TRABALHOS
+       BRILHO BASE DOS TRABALHOS
+
+       TAMBÉM NÃO PULSA JUNTO.
     ===================================================== */
 
     .works-sparkles-layer{
@@ -789,7 +1147,7 @@
 
       pointer-events:none;
 
-      opacity:.85;
+      opacity:.25;
 
       -webkit-mask-image:
         linear-gradient(
@@ -816,6 +1174,7 @@
         );
     }
 
+
     .works-sparkles{
       width:114%;
       height:114%;
@@ -826,11 +1185,7 @@
 
       mix-blend-mode:screen;
 
-      animation:
-        worksSparklePulse
-        3s
-        ease-in-out
-        infinite;
+      opacity:.16;
     }
 
 
@@ -868,7 +1223,7 @@
     .works-header{
       position:relative;
 
-      z-index:5;
+      z-index:7;
 
       padding:
         0
@@ -879,12 +1234,14 @@
       margin-bottom:55px;
     }
 
+
     .works-header-float{
       position:relative;
 
       transform:
         translate3d(0,0,0);
     }
+
 
     .works-eyebrow{
       display:flex;
@@ -905,6 +1262,7 @@
       margin-bottom:18px;
     }
 
+
     .works-eyebrow::before{
       content:"";
 
@@ -920,6 +1278,7 @@
           rgba(210,163,83,.85)
         );
     }
+
 
     .works-title{
       font-family:
@@ -946,6 +1305,7 @@
         0 10px 28px rgba(0,0,0,.75),
         0 0 32px rgba(210,160,72,.06);
     }
+
 
     .works-description{
       max-width:650px;
@@ -977,24 +1337,27 @@
 
 
     /* =====================================================
-       DESLIZE TRABALHOS
+       GALERIA
     ===================================================== */
 
     .works-drag{
       position:relative;
 
-      z-index:5;
+      z-index:7;
 
       display:flex;
 
       align-items:center;
-      justify-content:space-between;
+
+      justify-content:
+        space-between;
 
       padding:
         0
         35px
         20px;
     }
+
 
     .works-drag-text{
       color:
@@ -1005,10 +1368,8 @@
       letter-spacing:.37em;
 
       text-transform:uppercase;
-
-      text-shadow:
-        0 2px 8px #000;
     }
+
 
     .works-drag-arrow{
       display:flex;
@@ -1024,6 +1385,7 @@
         infinite;
     }
 
+
     .works-drag-line{
       width:58px;
       height:1px;
@@ -1035,6 +1397,7 @@
           rgba(218,175,100,.80)
         );
     }
+
 
     .works-drag-chevron{
       width:8px;
@@ -1053,14 +1416,10 @@
     }
 
 
-    /* =====================================================
-       GALERIA
-    ===================================================== */
-
     .works-slider{
       position:relative;
 
-      z-index:5;
+      z-index:7;
 
       width:100%;
 
@@ -1069,23 +1428,28 @@
       gap:20px;
 
       overflow-x:auto;
+
       overflow-y:hidden;
 
-      scroll-snap-type:x mandatory;
+      scroll-snap-type:
+        x mandatory;
 
-      scroll-padding-left:35px;
+      scroll-padding-left:
+        35px;
 
       padding:
         16px
         35px
         42px;
 
-      -webkit-overflow-scrolling:touch;
+      -webkit-overflow-scrolling:
+        touch;
 
       scrollbar-width:none;
 
       cursor:grab;
     }
+
 
     .works-slider::-webkit-scrollbar{
       display:none;
@@ -1093,7 +1457,7 @@
 
 
     /* =====================================================
-       CARDS + NEON
+       CARDS NEON
     ===================================================== */
 
     .work-card{
@@ -1106,7 +1470,8 @@
           430px
         );
 
-      aspect-ratio:4 / 5;
+      aspect-ratio:
+        4 / 5;
 
       overflow:visible;
 
@@ -1136,6 +1501,7 @@
       isolation:isolate;
     }
 
+
     .work-card-image{
       position:absolute;
 
@@ -1149,6 +1515,7 @@
 
       background:#0b0907;
     }
+
 
     .work-card img{
       position:absolute;
@@ -1165,14 +1532,12 @@
       transform:
         translate3d(0,0,0);
 
-      backface-visibility:hidden;
-      -webkit-backface-visibility:hidden;
-
       transition:
         transform
         .75s
         cubic-bezier(.2,.75,.25,1);
     }
+
 
     .work-card-image::after{
       content:"";
@@ -1192,6 +1557,7 @@
 
       z-index:2;
     }
+
 
     .work-card::before{
       content:"";
@@ -1215,6 +1581,7 @@
         inset 0 0 14px rgba(201,139,40,.06);
     }
 
+
     .work-card::after{
       content:"";
 
@@ -1229,6 +1596,7 @@
       border-radius:8px;
 
       background:
+
         radial-gradient(
           circle at 8% 0%,
           rgba(255,245,205,.90) 0,
@@ -1260,6 +1628,7 @@
       opacity:.70;
     }
 
+
     .work-card:active img{
       transform:
         scale(1.025)
@@ -1274,7 +1643,7 @@
     .works-footer{
       position:relative;
 
-      z-index:5;
+      z-index:7;
 
       display:flex;
 
@@ -1284,6 +1653,7 @@
         0
         35px;
     }
+
 
     .works-counter{
       display:flex;
@@ -1297,10 +1667,13 @@
         serif;
     }
 
+
     .works-current{
       font-size:30px;
+
       color:#e7d8be;
     }
+
 
     .works-total{
       font-size:15px;
@@ -1308,6 +1681,7 @@
       color:
         rgba(255,255,255,.28);
     }
+
 
     .works-footer-line{
       flex:1;
@@ -1337,6 +1711,7 @@
       display:flex;
 
       align-items:center;
+
       justify-content:center;
 
       padding:
@@ -1347,6 +1722,7 @@
 
       background:transparent;
     }
+
 
     .future-light{
       position:absolute;
@@ -1373,6 +1749,7 @@
         );
     }
 
+
     .future-content{
       position:relative;
 
@@ -1382,6 +1759,7 @@
 
       text-align:center;
     }
+
 
     .future-content small{
       color:#b88b42;
@@ -1394,6 +1772,7 @@
 
       text-transform:uppercase;
     }
+
 
     .future-content h2{
       margin-top:14px;
@@ -1413,6 +1792,7 @@
 
       color:#eee9e1;
     }
+
 
     .future-content p{
       margin-top:16px;
@@ -1442,6 +1822,7 @@
       display:flex;
 
       justify-content:center;
+
       align-items:center;
 
       padding:
@@ -1453,6 +1834,7 @@
 
       background:transparent;
     }
+
 
     .address-glow{
       position:absolute;
@@ -1479,6 +1861,7 @@
       pointer-events:none;
     }
 
+
     .address-content{
       position:relative;
 
@@ -1489,6 +1872,7 @@
 
       text-align:center;
     }
+
 
     .address-eyebrow{
       color:#b88b42;
@@ -1501,6 +1885,7 @@
 
       text-transform:uppercase;
     }
+
 
     .address-title{
       margin-top:14px;
@@ -1521,6 +1906,7 @@
       color:#f1ece4;
     }
 
+
     .address-line{
       width:1px;
       height:52px;
@@ -1538,6 +1924,7 @@
         );
     }
 
+
     .building{
       font-family:
         'Cormorant Garamond',
@@ -1554,6 +1941,7 @@
 
       margin-bottom:17px;
     }
+
 
     .address-text{
       font-family:
@@ -1573,6 +1961,7 @@
         rgba(245,238,227,.72);
     }
 
+
     .address-room{
       display:block;
 
@@ -1591,10 +1980,12 @@
       letter-spacing:.04em;
     }
 
+
     .map-button{
       display:inline-flex;
 
       align-items:center;
+
       justify-content:center;
 
       min-width:190px;
@@ -1655,6 +2046,7 @@
       display:flex;
 
       align-items:center;
+
       justify-content:center;
 
       border-radius:50%;
@@ -1668,6 +2060,7 @@
         infinite;
     }
 
+
     .whatsapp-button::before,
     .whatsapp-button::after{
       content:"";
@@ -1678,6 +2071,7 @@
 
       pointer-events:none;
     }
+
 
     .whatsapp-button::before{
       inset:-7px;
@@ -1693,6 +2087,7 @@
         infinite;
     }
 
+
     .whatsapp-button::after{
       inset:-16px;
 
@@ -1706,6 +2101,7 @@
         ease-in-out
         infinite;
     }
+
 
     .whatsapp-button img{
       position:relative;
@@ -1722,6 +2118,7 @@
           0 5px 10px
           rgba(0,0,0,.85)
         )
+
         drop-shadow(
           0 0 7px
           rgba(214,167,73,.18)
@@ -1730,38 +2127,8 @@
 
 
     /* =====================================================
-       ANIMAÇÕES
+       ANIMAÇÕES RESTANTES
     ===================================================== */
-
-    @keyframes sparklePulse{
-
-      0%,
-      100%{
-        opacity:.08;
-        transform:scale(1);
-      }
-
-      50%{
-        opacity:.25;
-        transform:scale(1.018);
-      }
-
-    }
-
-    @keyframes worksSparklePulse{
-
-      0%,
-      100%{
-        opacity:.09;
-        transform:scale(1);
-      }
-
-      50%{
-        opacity:.27;
-        transform:scale(1.018);
-      }
-
-    }
 
     @keyframes whatsappPulse{
 
@@ -1775,6 +2142,7 @@
       }
 
     }
+
 
     @keyframes whatsappRing{
 
@@ -1791,6 +2159,7 @@
 
     }
 
+
     @keyframes whatsappRingOuter{
 
       0%,
@@ -1805,6 +2174,7 @@
       }
 
     }
+
 
     @keyframes scrollLine{
 
@@ -1821,6 +2191,7 @@
 
     }
 
+
     @keyframes worksArrow{
 
       0%,
@@ -1836,6 +2207,7 @@
 
     }
 
+
     @keyframes cardGoldPulse{
 
       0%,
@@ -1845,12 +2217,23 @@
           rgba(231,181,80,.68);
 
         box-shadow:
-          0 0 2px rgba(255,229,160,.76),
-          0 0 6px rgba(232,175,68,.42),
-          0 0 13px rgba(201,139,34,.20),
-          0 0 27px rgba(165,105,21,.08),
-          0 18px 45px rgba(0,0,0,.58);
+
+          0 0 2px
+          rgba(255,229,160,.76),
+
+          0 0 6px
+          rgba(232,175,68,.42),
+
+          0 0 13px
+          rgba(201,139,34,.20),
+
+          0 0 27px
+          rgba(165,105,21,.08),
+
+          0 18px 45px
+          rgba(0,0,0,.58);
       }
+
 
       50%{
 
@@ -1858,11 +2241,21 @@
           rgba(255,212,118,.95);
 
         box-shadow:
-          0 0 3px rgba(255,242,201,.98),
-          0 0 8px rgba(250,197,91,.72),
-          0 0 17px rgba(218,154,44,.36),
-          0 0 34px rgba(181,116,26,.15),
-          0 18px 45px rgba(0,0,0,.58);
+
+          0 0 3px
+          rgba(255,242,201,.98),
+
+          0 0 8px
+          rgba(250,197,91,.72),
+
+          0 0 17px
+          rgba(218,154,44,.36),
+
+          0 0 34px
+          rgba(181,116,26,.15),
+
+          0 18px 45px
+          rgba(0,0,0,.58);
       }
 
     }
@@ -1897,6 +2290,7 @@
 
       .nail-artistic-wrap{
         width:83vw;
+
         margin-top:-17px;
       }
 
@@ -1913,13 +2307,20 @@
 
       .works-section{
         margin-top:-95px;
+
         padding-top:205px;
       }
 
       .works-background-photo{
         top:-150px;
-        height:calc(100% + 300px);
-        object-position:center top;
+
+        height:
+          calc(
+            100% + 300px
+          );
+
+        object-position:
+          center top;
       }
 
       .works-header{
@@ -1932,6 +2333,7 @@
 
       .works-eyebrow{
         gap:18px;
+
         font-size:9px;
       }
 
@@ -1970,6 +2372,7 @@
 
       .works-drag-text{
         font-size:8px;
+
         letter-spacing:.36em;
       }
 
@@ -2043,6 +2446,7 @@
 
       .works-section{
         margin-top:-90px;
+
         padding-top:195px;
       }
 
@@ -2054,11 +2458,13 @@
 
       .works-drag{
         padding-left:26px;
+
         padding-right:26px;
       }
 
       .works-slider{
         padding-left:26px;
+
         padding-right:26px;
 
         scroll-padding-left:26px;
@@ -2070,11 +2476,13 @@
 
       .works-footer{
         padding-left:26px;
+
         padding-right:26px;
       }
 
       .whatsapp-button{
         width:70px;
+
         height:70px;
       }
 
@@ -2089,6 +2497,7 @@
         max-width:1250px;
 
         margin-left:auto;
+
         margin-right:auto;
       }
 
@@ -2117,9 +2526,7 @@
         scroll-behavior:auto;
       }
 
-      .global-sparkles,
-      .hero-sparkles,
-      .works-sparkles,
+      .twinkle,
       .work-card,
       .whatsapp-button,
       .whatsapp-button::before,
@@ -2138,6 +2545,8 @@
 
 <body>
 
+
+  <!-- FUNDO -->
 
   <div
     class="site-background"
@@ -2190,6 +2599,7 @@
       Menu
     </div>
 
+
     <div class="menu-links">
 
       <a href="#trabalhos">
@@ -2224,12 +2634,15 @@
   <main>
 
 
-    <!-- CAPA -->
+    <!-- ===================================================
+         CAPA
+    ==================================================== -->
 
     <section
       class="hero"
       id="inicio"
     >
+
 
       <img
         class="hero-photo"
@@ -2237,12 +2650,23 @@
         alt="Yara Nicácio e Nail Art"
       >
 
+
       <img
         class="hero-sparkles"
         src="24CD378D-F11E-4CB2-B0FC-FCAFBE91B276.png"
         alt=""
         aria-hidden="true"
       >
+
+
+      <!-- BRILHOS ALEATÓRIOS CAPA -->
+
+      <div
+        class="twinkle-field"
+        id="heroTwinkles"
+        aria-hidden="true"
+      ></div>
+
 
       <div
         class="hero-bottom-fade"
@@ -2263,11 +2687,13 @@
         id="heroContent"
       >
 
+
         <img
           class="name-image"
           src="C45E5C96-6A36-4BB4-B559-04CEAA03B6C2.png"
           alt="Yara Nicácio"
         >
+
 
         <div class="nail-artistic-wrap">
 
@@ -2279,14 +2705,17 @@
 
         </div>
 
+
         <p class="hero-phrase">
           O que você escolhe, vira arte em suas unhas
         </p>
+
 
         <div
           class="phrase-detail"
           aria-hidden="true"
         ></div>
+
 
       </div>
 
@@ -2301,10 +2730,13 @@
 
       </div>
 
+
     </section>
 
 
-    <!-- TRABALHOS -->
+    <!-- ===================================================
+         TRABALHOS
+    ==================================================== -->
 
     <section
       class="works-section"
@@ -2345,6 +2777,15 @@
         >
 
       </div>
+
+
+      <!-- BRILHOS ALEATÓRIOS TRABALHOS -->
+
+      <div
+        class="twinkle-field"
+        id="worksTwinkles"
+        aria-hidden="true"
+      ></div>
 
 
       <div
@@ -2397,6 +2838,8 @@
 
       </div>
 
+
+      <!-- GALERIA -->
 
       <div
         class="works-slider"
@@ -2756,30 +3199,45 @@
 
   <script>
 
+
     /* =====================================================
        MENU
     ===================================================== */
 
     const menuTrigger =
-      document.getElementById("menuTrigger");
+      document.getElementById(
+        "menuTrigger"
+      );
 
     const sideMenu =
-      document.getElementById("sideMenu");
+      document.getElementById(
+        "sideMenu"
+      );
 
     const menuOverlay =
-      document.getElementById("menuOverlay");
+      document.getElementById(
+        "menuOverlay"
+      );
 
     const menuLinks =
-      document.querySelectorAll(".menu-links a");
+      document.querySelectorAll(
+        ".menu-links a"
+      );
 
 
     function openMenu(){
 
-      menuTrigger.classList.add("active");
+      menuTrigger.classList.add(
+        "active"
+      );
 
-      sideMenu.classList.add("active");
+      sideMenu.classList.add(
+        "active"
+      );
 
-      menuOverlay.classList.add("active");
+      menuOverlay.classList.add(
+        "active"
+      );
 
       document.body.style.overflow =
         "hidden";
@@ -2789,11 +3247,17 @@
 
     function closeMenu(){
 
-      menuTrigger.classList.remove("active");
+      menuTrigger.classList.remove(
+        "active"
+      );
 
-      sideMenu.classList.remove("active");
+      sideMenu.classList.remove(
+        "active"
+      );
 
-      menuOverlay.classList.remove("active");
+      menuOverlay.classList.remove(
+        "active"
+      );
 
       document.body.style.overflow =
         "";
@@ -2802,7 +3266,9 @@
 
 
     menuTrigger.addEventListener(
+
       "click",
+
       function(){
 
         if(
@@ -2810,12 +3276,17 @@
             "active"
           )
         ){
+
           closeMenu();
+
         }else{
+
           openMenu();
+
         }
 
       }
+
     );
 
 
@@ -2826,6 +3297,7 @@
 
 
     menuLinks.forEach(
+
       function(link){
 
         link.addEventListener(
@@ -2834,11 +3306,289 @@
         );
 
       }
+
     );
 
 
     /* =====================================================
-       MOVIMENTO FLUIDO / LERP
+       BRILHOS ALEATÓRIOS
+    ===================================================== */
+
+    const reducedMotion =
+      window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+      ).matches;
+
+
+    const variants = [
+      "variant-a",
+      "variant-b",
+      "variant-c",
+      "variant-d"
+    ];
+
+
+    function randomBetween(
+      min,
+      max
+    ){
+
+      return (
+        Math.random() *
+        (
+          max -
+          min
+        )
+        +
+        min
+      );
+
+    }
+
+
+    function randomVariant(){
+
+      return variants[
+        Math.floor(
+          Math.random() *
+          variants.length
+        )
+      ];
+
+    }
+
+
+    function configureTwinkle(
+      twinkle,
+      firstTime = false
+    ){
+
+      const duration =
+        randomBetween(
+          2.2,
+          8.2
+        );
+
+
+      /*
+        Alguns ficam muito fortes,
+        outros quase imperceptíveis.
+      */
+
+      const peak =
+        randomBetween(
+          .26,
+          .98
+        );
+
+
+      const soft =
+        randomBetween(
+          .015,
+          .085
+        );
+
+
+      const blur =
+        Math.random() > .78
+        ?
+        randomBetween(
+          .35,
+          .75
+        )
+        :
+        randomBetween(
+          0,
+          .18
+        );
+
+
+      twinkle.style.setProperty(
+        "--duration",
+        `${duration}s`
+      );
+
+
+      twinkle.style.setProperty(
+        "--peak",
+        peak.toFixed(2)
+      );
+
+
+      twinkle.style.setProperty(
+        "--soft",
+        soft.toFixed(3)
+      );
+
+
+      twinkle.style.setProperty(
+        "--blur",
+        `${blur.toFixed(2)}px`
+      );
+
+
+      /*
+        Troca também o tipo de piscada.
+      */
+
+      variants.forEach(
+        variant => {
+          twinkle.classList.remove(
+            variant
+          );
+        }
+      );
+
+
+      twinkle.classList.add(
+        randomVariant()
+      );
+
+
+      if(firstTime){
+
+        twinkle.style.setProperty(
+          "--delay",
+          `${randomBetween(-8,0)}s`
+        );
+
+      }else{
+
+        twinkle.style.setProperty(
+          "--delay",
+          "0s"
+        );
+
+      }
+
+    }
+
+
+    function createTwinkles(
+      container,
+      amount
+    ){
+
+      if(
+        !container ||
+        reducedMotion
+      ){
+        return;
+      }
+
+
+      for(
+        let i = 0;
+        i < amount;
+        i++
+      ){
+
+        const twinkle =
+          document.createElement(
+            "span"
+          );
+
+
+        twinkle.className =
+          "twinkle";
+
+
+        /*
+          Posição completamente diferente
+          para cada brilho.
+        */
+
+        twinkle.style.left =
+          `${randomBetween(2,98)}%`;
+
+
+        twinkle.style.top =
+          `${randomBetween(3,97)}%`;
+
+
+        /*
+          Alguns pequenos,
+          alguns mais destacados.
+        */
+
+        const size =
+          Math.random() > .84
+          ?
+          randomBetween(4.2,6.2)
+          :
+          randomBetween(1.8,4);
+
+
+        twinkle.style.setProperty(
+          "--size",
+          `${size.toFixed(2)}px`
+        );
+
+
+        configureTwinkle(
+          twinkle,
+          true
+        );
+
+
+        /*
+          A CADA CICLO:
+          intensidade nova,
+          duração nova,
+          tipo de piscada novo.
+
+          Então um brilho fraco pode
+          virar forte no próximo ciclo.
+        */
+
+        twinkle.addEventListener(
+
+          "animationiteration",
+
+          function(){
+
+            configureTwinkle(
+              twinkle,
+              false
+            );
+
+          }
+
+        );
+
+
+        container.appendChild(
+          twinkle
+        );
+
+      }
+
+    }
+
+
+    /*
+      Quantidade propositalmente moderada
+      para continuar leve no iPhone.
+    */
+
+    createTwinkles(
+      document.getElementById(
+        "heroTwinkles"
+      ),
+      18
+    );
+
+
+    createTwinkles(
+      document.getElementById(
+        "worksTwinkles"
+      ),
+      22
+    );
+
+
+    /* =====================================================
+       MOVIMENTO FLUIDO DOS TEXTOS
     ===================================================== */
 
     const heroContent =
@@ -2872,15 +3622,6 @@
       );
 
 
-    /*
-      TARGET = ONDE O ELEMENTO QUER CHEGAR
-
-      CURRENT = POSIÇÃO ATUAL
-
-      A ANIMAÇÃO VAI SE APROXIMANDO DO TARGET
-      A CADA FRAME, EM VEZ DE PULAR DIRETO.
-    */
-
     let heroTarget = 0;
     let heroCurrent = 0;
 
@@ -2895,18 +3636,6 @@
 
     let worksSparkTarget = 0;
     let worksSparkCurrent = 0;
-
-
-    /*
-      Quanto menor esse valor,
-      mais "macio" fica.
-
-      0.10 ficou num ponto leve,
-      mas ainda responde bem ao dedo.
-    */
-
-    const smoothness =
-      0.10;
 
 
     function lerp(
@@ -2932,41 +3661,23 @@
         window.scrollY;
 
 
-      /* CAPA */
-
       if(
         scrollY <
         window.innerHeight * 1.30
       ){
 
         heroTarget =
-          scrollY * 0.145;
+          scrollY * .145;
 
         logoTarget =
-          scrollY * 0.065;
-
-      }else{
-
-        heroTarget =
-          window.innerHeight *
-          1.30 *
-          0.145;
-
-        logoTarget =
-          window.innerHeight *
-          1.30 *
-          0.065;
+          scrollY * .065;
 
       }
 
 
-      /* BRILHO GLOBAL */
-
       globalSparkTarget =
-        scrollY * 0.012;
+        scrollY * .012;
 
-
-      /* TRABALHOS */
 
       const worksRect =
         worksSection.getBoundingClientRect();
@@ -2993,29 +3704,17 @@
           sectionCenter;
 
 
-        /*
-          Movimento menor do que antes.
-          Mantém profundidade, mas fica mais elegante.
-        */
-
         worksHeaderTarget =
-          difference * 0.032;
+          difference * .032;
 
 
         worksSparkTarget =
-          difference * 0.012;
+          difference * .012;
 
       }
 
     }
 
-
-    /*
-      LOOP DE ANIMAÇÃO CONTÍNUO.
-
-      Não depende da quantidade de eventos
-      de scroll que o navegador dispara.
-    */
 
     function smoothAnimation(){
 
@@ -3024,7 +3723,7 @@
         lerp(
           heroCurrent,
           heroTarget,
-          smoothness
+          .10
         );
 
 
@@ -3032,7 +3731,7 @@
         lerp(
           logoCurrent,
           logoTarget,
-          smoothness
+          .10
         );
 
 
@@ -3040,7 +3739,7 @@
         lerp(
           globalSparkCurrent,
           globalSparkTarget,
-          0.075
+          .075
         );
 
 
@@ -3048,7 +3747,7 @@
         lerp(
           worksHeaderCurrent,
           worksHeaderTarget,
-          0.085
+          .085
         );
 
 
@@ -3056,11 +3755,9 @@
         lerp(
           worksSparkCurrent,
           worksSparkTarget,
-          0.065
+          .065
         );
 
-
-      /* CAPA */
 
       heroContent.style.transform =
         `translate3d(
@@ -3073,8 +3770,6 @@
         )`;
 
 
-      /* LOGO */
-
       topLogo.style.transform =
         `translate3d(
           0,
@@ -3082,8 +3777,6 @@
           0
         )`;
 
-
-      /* BRILHO GLOBAL */
 
       globalSparklesLayer.style.transform =
         `translate3d(
@@ -3093,8 +3786,6 @@
         )`;
 
 
-      /* TRABALHOS */
-
       worksHeaderFloat.style.transform =
         `translate3d(
           0,
@@ -3102,8 +3793,6 @@
           0
         )`;
 
-
-      /* BRILHO TRABALHOS */
 
       worksSparklesLayer.style.transform =
         `translate3d(
@@ -3119,11 +3808,6 @@
 
     }
 
-
-    /*
-      Scroll agora só calcula os destinos.
-      Ele não movimenta diretamente os elementos.
-    */
 
     window.addEventListener(
       "scroll",
@@ -3142,13 +3826,14 @@
 
     calculateTargets();
 
+
     requestAnimationFrame(
       smoothAnimation
     );
 
 
     /* =====================================================
-       GALERIA / CONTADOR
+       GALERIA
     ===================================================== */
 
     const worksSlider =
@@ -3156,12 +3841,14 @@
         "worksSlider"
       );
 
+
     const workCards =
       Array.from(
         document.querySelectorAll(
           ".work-card"
         )
       );
+
 
     const currentWork =
       document.getElementById(
@@ -3189,7 +3876,10 @@
 
       workCards.forEach(
 
-        function(card,index){
+        function(
+          card,
+          index
+        ){
 
           const cardRect =
             card.getBoundingClientRect();
@@ -3209,6 +3899,7 @@
 
             closestDistance =
               distance;
+
 
             closestIndex =
               index;
@@ -3241,13 +3932,16 @@
 
       function(){
 
-        if(!galleryTicking){
+        if(
+          !galleryTicking
+        ){
 
           requestAnimationFrame(
 
             function(){
 
               updateWorkCounter();
+
 
               galleryTicking =
                 false;
@@ -3275,7 +3969,7 @@
 
 
     /* =====================================================
-       ARRASTE GALERIA NO COMPUTADOR
+       ARRASTE COMPUTADOR
     ===================================================== */
 
     let isDown =
@@ -3296,6 +3990,7 @@
 
         isDown =
           true;
+
 
         worksSlider.style.cursor =
           "grabbing";
@@ -3323,6 +4018,7 @@
         isDown =
           false;
 
+
         worksSlider.style.cursor =
           "grab";
 
@@ -3340,6 +4036,7 @@
         isDown =
           false;
 
+
         worksSlider.style.cursor =
           "grab";
 
@@ -3354,7 +4051,9 @@
 
       function(event){
 
-        if(!isDown){
+        if(
+          !isDown
+        ){
           return;
         }
 
