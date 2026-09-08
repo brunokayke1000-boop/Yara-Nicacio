@@ -42,16 +42,14 @@
 
     body{
       margin:0;
-
       background:#050505;
-
       color:#ffffff;
-
       overflow-x:hidden;
+      font-family:'Montserrat',sans-serif;
+    }
 
-      font-family:
-        'Montserrat',
-        sans-serif;
+    body.menu-open{
+      overflow:hidden;
     }
 
 
@@ -61,52 +59,36 @@
 
     .hero{
       position:relative;
-
       width:100%;
-
       height:100svh;
-
       min-height:680px;
-
       overflow:hidden;
-
       background:#050505;
-
       isolation:isolate;
     }
 
 
-    /* ========================================
-       NOVA FOTO DE FUNDO
-       SEM ALTERAÇÃO DE COR
-    ======================================== */
+    /* FOTO */
 
     .hero-background{
       position:absolute;
-
       inset:0;
 
       width:100%;
       height:100%;
 
       object-fit:cover;
-
       object-position:center center;
 
       z-index:0;
 
       filter:none;
-
       opacity:1;
-
       transform:none;
     }
 
 
-    /* ========================================
-       DEGRADÊ PARA O PRETO
-       SEM CORTE RETO
-    ======================================== */
+    /* DEGRADÊ INFERIOR */
 
     .bottom-fade{
       position:absolute;
@@ -124,26 +106,19 @@
       background:
         linear-gradient(
           to bottom,
-
           rgba(5,5,5,0) 0%,
-
           rgba(5,5,5,.04) 18%,
-
           rgba(5,5,5,.13) 34%,
-
           rgba(5,5,5,.30) 52%,
-
           rgba(5,5,5,.58) 70%,
-
           rgba(5,5,5,.84) 86%,
-
           #050505 100%
         );
     }
 
 
     /* ========================================
-       BRILHOS DOURADOS
+       BRILHOS
     ======================================== */
 
     .gold-sparkles{
@@ -157,7 +132,6 @@
       z-index:2;
 
       object-fit:cover;
-
       object-position:center;
 
       pointer-events:none;
@@ -183,18 +157,334 @@
       0%,
       100%{
         opacity:.13;
-
-        transform:
-          scale(1);
+        transform:scale(1);
       }
 
       50%{
         opacity:.30;
-
-        transform:
-          scale(1.016);
+        transform:scale(1.016);
       }
 
+    }
+
+
+    /* ========================================
+       MENU - BOTÃO
+    ======================================== */
+
+    .menu-trigger{
+      position:absolute;
+
+      top:
+        max(
+          31px,
+          env(safe-area-inset-top)
+        );
+
+      left:20px;
+
+      z-index:30;
+
+      display:flex;
+      align-items:center;
+
+      gap:11px;
+
+      background:transparent;
+
+      border:0;
+
+      color:rgba(255,255,255,.78);
+
+      cursor:pointer;
+
+      padding:8px 4px;
+
+      -webkit-tap-highlight-color:transparent;
+    }
+
+
+    .menu-icon{
+      width:24px;
+      height:18px;
+
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+    }
+
+
+    .menu-icon span{
+      display:block;
+
+      width:100%;
+      height:1px;
+
+      background:#c79b56;
+
+      transition:
+        transform .35s ease,
+        opacity .35s ease;
+    }
+
+
+    .menu-trigger-text{
+      font-size:9px;
+
+      letter-spacing:3px;
+
+      text-transform:uppercase;
+
+      font-weight:400;
+    }
+
+
+    /* botão aberto */
+
+    body.menu-open .menu-icon span:nth-child(1){
+      transform:
+        translateY(8.5px)
+        rotate(45deg);
+    }
+
+    body.menu-open .menu-icon span:nth-child(2){
+      opacity:0;
+    }
+
+    body.menu-open .menu-icon span:nth-child(3){
+      transform:
+        translateY(-8.5px)
+        rotate(-45deg);
+    }
+
+
+    /* ========================================
+       MENU - FUNDO
+    ======================================== */
+
+    .menu-backdrop{
+      position:fixed;
+
+      inset:0;
+
+      z-index:19;
+
+      background:
+        rgba(0,0,0,.58);
+
+      backdrop-filter:blur(4px);
+      -webkit-backdrop-filter:blur(4px);
+
+      opacity:0;
+
+      visibility:hidden;
+
+      transition:
+        opacity .45s ease,
+        visibility .45s ease;
+    }
+
+
+    body.menu-open .menu-backdrop{
+      opacity:1;
+      visibility:visible;
+    }
+
+
+    /* ========================================
+       PAINEL LATERAL
+    ======================================== */
+
+    .side-menu{
+      position:fixed;
+
+      top:0;
+      left:0;
+
+      width:min(82vw,390px);
+      height:100svh;
+
+      z-index:20;
+
+      padding:
+        max(
+          115px,
+          calc(
+            env(safe-area-inset-top)
+            + 95px
+          )
+        )
+        30px
+        45px;
+
+      background:
+        linear-gradient(
+          145deg,
+          rgba(8,7,5,.98),
+          rgba(2,2,2,.98)
+        );
+
+      border-right:
+        1px solid
+        rgba(199,155,86,.18);
+
+      box-shadow:
+        20px 0 60px
+        rgba(0,0,0,.45);
+
+      transform:
+        translateX(-102%);
+
+      transition:
+        transform
+        .52s
+        cubic-bezier(.22,.8,.25,1);
+
+      display:flex;
+
+      flex-direction:column;
+    }
+
+
+    body.menu-open .side-menu{
+      transform:
+        translateX(0);
+    }
+
+
+    /* pequena identificação */
+
+    .menu-eyebrow{
+      color:#b58b50;
+
+      font-family:
+        'Cormorant Garamond',
+        serif;
+
+      font-size:13px;
+
+      letter-spacing:4px;
+
+      text-transform:uppercase;
+
+      margin-bottom:10px;
+    }
+
+
+    .menu-title{
+      font-family:
+        'Cormorant Garamond',
+        serif;
+
+      font-size:31px;
+
+      font-weight:400;
+
+      color:#f1ece4;
+
+      margin-bottom:36px;
+    }
+
+
+    /* ========================================
+       LINKS DO MENU
+    ======================================== */
+
+    .menu-list{
+      list-style:none;
+
+      display:flex;
+
+      flex-direction:column;
+
+      gap:0;
+    }
+
+
+    .menu-list li{
+      border-bottom:
+        1px solid
+        rgba(255,255,255,.08);
+    }
+
+
+    .menu-list a{
+      position:relative;
+
+      display:flex;
+
+      align-items:center;
+
+      justify-content:space-between;
+
+      padding:
+        17px
+        3px;
+
+      color:
+        rgba(255,255,255,.76);
+
+      text-decoration:none;
+
+      font-family:
+        'Cormorant Garamond',
+        serif;
+
+      font-size:
+        clamp(
+          21px,
+          6vw,
+          27px
+        );
+
+      font-weight:400;
+
+      transition:
+        color .3s ease,
+        padding-left .3s ease;
+    }
+
+
+    .menu-list a::after{
+      content:"";
+
+      width:24px;
+      height:1px;
+
+      background:
+        rgba(199,155,86,.45);
+
+      transition:
+        width .3s ease,
+        background .3s ease;
+    }
+
+
+    .menu-list a:hover{
+      color:#d2aa6c;
+
+      padding-left:8px;
+    }
+
+
+    .menu-list a:hover::after{
+      width:36px;
+
+      background:#c79b56;
+    }
+
+
+    .menu-footer{
+      margin-top:auto;
+
+      color:
+        rgba(255,255,255,.27);
+
+      font-size:8px;
+
+      letter-spacing:3px;
+
+      text-transform:uppercase;
     }
 
 
@@ -214,7 +504,6 @@
       right:19px;
 
       width:125px;
-
       height:auto;
 
       object-fit:contain;
@@ -268,9 +557,7 @@
     }
 
 
-    /* ========================================
-       YARA NICÁCIO
-    ======================================== */
+    /* YARA NICÁCIO */
 
     .name-image{
       display:block;
@@ -303,18 +590,10 @@
     }
 
 
-    /* ========================================
-       NAIL ARTISTIC
-       PRATICAMENTE UNIDO AO NOME
-    ======================================== */
+    /* NAIL ARTISTIC */
 
     .nail-artistic-wrap{
       width:min(82vw,680px);
-
-      /*
-        VALOR NEGATIVO PARA PUXAR
-        O NAIL ARTISTIC PARA CIMA
-      */
 
       margin-top:-15px;
 
@@ -334,7 +613,6 @@
       display:block;
 
       width:100%;
-
       height:auto;
 
       object-fit:contain;
@@ -363,9 +641,7 @@
     }
 
 
-    /* ========================================
-       FRASE
-    ======================================== */
+    /* FRASE */
 
     .hero-phrase{
       margin-top:2px;
@@ -411,7 +687,6 @@
 
     .phrase-detail{
       width:48px;
-
       height:1px;
 
       margin-top:13px;
@@ -419,11 +694,8 @@
       background:
         linear-gradient(
           90deg,
-
           transparent,
-
           rgba(218,171,76,.85),
-
           transparent
         );
 
@@ -484,15 +756,12 @@
 
     .scroll-line{
       width:1px;
-
       height:42px;
 
       background:
         linear-gradient(
           to bottom,
-
           rgba(202,154,67,.65),
-
           transparent
         );
 
@@ -547,7 +816,6 @@
         );
 
       width:76px;
-
       height:76px;
 
       z-index:100;
@@ -568,8 +836,7 @@
         ease-in-out
         infinite;
 
-      -webkit-tap-highlight-color:
-        transparent;
+      -webkit-tap-highlight-color:transparent;
     }
 
 
@@ -619,7 +886,6 @@
       position:relative;
 
       width:100%;
-
       height:100%;
 
       object-fit:contain;
@@ -643,13 +909,11 @@
 
       0%,
       100%{
-        transform:
-          scale(1);
+        transform:scale(1);
       }
 
       50%{
-        transform:
-          scale(1.075);
+        transform:scale(1.075);
       }
 
     }
@@ -661,15 +925,13 @@
       100%{
         opacity:.28;
 
-        transform:
-          scale(.94);
+        transform:scale(.94);
       }
 
       50%{
         opacity:.65;
 
-        transform:
-          scale(1.08);
+        transform:scale(1.08);
       }
 
     }
@@ -681,15 +943,13 @@
       100%{
         opacity:.10;
 
-        transform:
-          scale(.92);
+        transform:scale(.92);
       }
 
       50%{
         opacity:.35;
 
-        transform:
-          scale(1.10);
+        transform:scale(1.10);
       }
 
     }
@@ -704,16 +964,11 @@
 
       min-height:70vh;
 
-      margin-top:0;
-
       background:
         linear-gradient(
           to bottom,
-
           #050505 0%,
-
           #070604 45%,
-
           #090705 100%
         );
 
@@ -737,11 +992,6 @@
       }
 
 
-      /*
-        DEGRADÊ MAIS AMPLO NO CELULAR
-        PARA NÃO APARECER CORTE.
-      */
-
       .bottom-fade{
         height:52%;
       }
@@ -751,10 +1001,36 @@
         inset:-2%;
 
         width:104%;
-
         height:104%;
 
         opacity:.18;
+      }
+
+
+      .menu-trigger{
+        top:
+          max(
+            25px,
+            env(safe-area-inset-top)
+          );
+
+        left:16px;
+      }
+
+
+      .menu-trigger-text{
+        display:none;
+      }
+
+
+      .side-menu{
+        width:84vw;
+
+        max-width:360px;
+
+        padding-left:27px;
+
+        padding-right:27px;
       }
 
 
@@ -782,11 +1058,6 @@
         width:98vw;
       }
 
-
-      /*
-        AQUI FICA AINDA MAIS JUNTO
-        NO CELULAR.
-      */
 
       .nail-artistic-wrap{
         width:83vw;
@@ -882,6 +1153,79 @@
 <body>
 
 
+  <!-- ========================================
+       PAINEL DO MENU
+  ======================================== -->
+
+  <div
+    class="menu-backdrop"
+    id="menuBackdrop"
+  ></div>
+
+
+  <nav
+    class="side-menu"
+    id="sideMenu"
+    aria-label="Menu principal"
+  >
+
+    <div class="menu-eyebrow">
+      Yara Nicácio
+    </div>
+
+    <div class="menu-title">
+      Explore
+    </div>
+
+
+    <ul class="menu-list">
+
+      <li>
+        <a href="#" class="future-link">
+          Trabalhos
+        </a>
+      </li>
+
+      <li>
+        <a href="#" class="future-link">
+          O estúdio
+        </a>
+      </li>
+
+      <li>
+        <a href="#" class="future-link">
+          Yara Nicácio
+        </a>
+      </li>
+
+      <li>
+        <a href="#" class="future-link">
+          Tabela de preços
+        </a>
+      </li>
+
+      <li>
+        <a href="#" class="future-link">
+          Avaliações
+        </a>
+      </li>
+
+      <li>
+        <a href="#" class="future-link">
+          Endereço
+        </a>
+      </li>
+
+    </ul>
+
+
+    <div class="menu-footer">
+      Nail Artistic
+    </div>
+
+  </nav>
+
+
   <main>
 
 
@@ -891,7 +1235,31 @@
     >
 
 
-      <!-- NOVA FOTO DE FUNDO -->
+      <!-- MENU -->
+
+      <button
+        class="menu-trigger"
+        id="menuTrigger"
+        aria-label="Abrir menu"
+        aria-expanded="false"
+      >
+
+        <span class="menu-icon">
+
+          <span></span>
+          <span></span>
+          <span></span>
+
+        </span>
+
+        <span class="menu-trigger-text">
+          Menu
+        </span>
+
+      </button>
+
+
+      <!-- FOTO -->
 
       <img
         class="hero-background"
@@ -902,7 +1270,7 @@
       >
 
 
-      <!-- DEGRADÊ PARA O PRETO -->
+      <!-- DEGRADÊ -->
 
       <div
         class="bottom-fade"
@@ -936,15 +1304,13 @@
       >
 
 
-      <!-- CONTEÚDO CENTRAL -->
+      <!-- CONTEÚDO -->
 
       <div
         class="hero-content"
         id="heroContent"
       >
 
-
-        <!-- YARA NICÁCIO -->
 
         <img
           class="name-image"
@@ -954,8 +1320,6 @@
           alt="Yara Nicácio"
         >
 
-
-        <!-- NAIL ARTISTIC -->
 
         <div class="nail-artistic-wrap">
 
@@ -969,8 +1333,6 @@
 
         </div>
 
-
-        <!-- FRASE -->
 
         <p class="hero-phrase">
           O que você escolhe, vira arte em suas unhas
@@ -1002,8 +1364,6 @@
     </section>
 
 
-    <!-- PRÓXIMA SEÇÃO -->
-
     <section class="next-section"></section>
 
 
@@ -1033,12 +1393,71 @@
   </a>
 
 
-  <!-- ========================================
-       PROFUNDIDADE
-       FUNDO PERMANECE FIXO
-  ======================================== -->
-
   <script>
+
+    /* ========================================
+       MENU
+    ======================================== */
+
+    const menuTrigger =
+      document.getElementById("menuTrigger");
+
+    const menuBackdrop =
+      document.getElementById("menuBackdrop");
+
+
+    function toggleMenu(){
+
+      const opened =
+        document.body.classList.toggle(
+          "menu-open"
+        );
+
+      menuTrigger.setAttribute(
+        "aria-expanded",
+        opened
+      );
+
+    }
+
+
+    menuTrigger.addEventListener(
+      "click",
+      toggleMenu
+    );
+
+
+    menuBackdrop.addEventListener(
+      "click",
+      toggleMenu
+    );
+
+
+    /*
+      Os links ainda não levam a outra página.
+      Conforme criarmos cada página,
+      vamos conectar aqui.
+    */
+
+    document
+      .querySelectorAll(".future-link")
+      .forEach(link => {
+
+        link.addEventListener(
+          "click",
+          function(event){
+
+            event.preventDefault();
+
+          }
+        );
+
+      });
+
+
+    /* ========================================
+       PROFUNDIDADE
+    ======================================== */
 
     const heroContent =
       document.getElementById("heroContent");
@@ -1059,17 +1478,6 @@
         window.scrollY;
 
 
-      /*
-        FOTO:
-        NÃO SE MOVE.
-      */
-
-
-      /*
-        BRILHOS:
-        CAMADA INTERMEDIÁRIA.
-      */
-
       goldSparkles.style.transform =
         `translate3d(
           0,
@@ -1077,11 +1485,6 @@
           0
         )`;
 
-
-      /*
-        NOME + NAIL ARTISTIC + FRASE:
-        CAMADA FRONTAL.
-      */
 
       heroContent.style.transform =
         `translate3d(
@@ -1093,11 +1496,6 @@
           0
         )`;
 
-
-      /*
-        LOGOTIPO:
-        CAMADA FRONTAL.
-      */
 
       topLogo.style.transform =
         `translate3d(
