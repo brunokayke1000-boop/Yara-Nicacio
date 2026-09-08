@@ -1,1 +1,583 @@
-<h1>Yara Nicácio</h1>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Yara Nicácio | Nail Artistic</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#050403;
+    color:#fff;
+    font-family:'Montserrat',sans-serif;
+    overflow-x:hidden;
+}
+
+
+/* =========================
+   CAPA
+========================= */
+
+.hero{
+    position:relative;
+    width:100%;
+    height:100svh;
+    min-height:650px;
+    overflow:hidden;
+    display:flex;
+    align-items:flex-end;
+    justify-content:center;
+    background:#050403;
+}
+
+
+/* FOTO DA YARA */
+
+.hero-photo{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position:center center;
+    z-index:1;
+}
+
+
+/* ESCURECIMENTO CINEMATOGRÁFICO */
+
+.hero-dark{
+    position:absolute;
+    inset:0;
+    z-index:2;
+
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(0,0,0,.05) 0%,
+            rgba(0,0,0,.08) 35%,
+            rgba(0,0,0,.32) 62%,
+            rgba(5,4,3,.78) 82%,
+            #050403 100%
+        );
+}
+
+
+/* VINHETA */
+
+.hero-vignette{
+    position:absolute;
+    inset:0;
+    z-index:3;
+    pointer-events:none;
+
+    box-shadow:
+        inset 0 0 130px rgba(0,0,0,.55);
+}
+
+
+/* CONTEÚDO */
+
+.hero-content{
+    position:relative;
+    z-index:5;
+
+    width:100%;
+    padding:
+        0
+        25px
+        calc(32px + env(safe-area-inset-bottom));
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+
+    text-align:center;
+}
+
+
+/* =========================
+   LOGO
+========================= */
+
+.logo{
+    position:relative;
+    width:min(310px,75vw);
+    height:150px;
+
+    margin-bottom:5px;
+
+    opacity:0;
+
+    animation:
+        aparecer 1.4s ease forwards;
+}
+
+
+/*
+   O JPEG é usado como máscara.
+   Assim o fundo branco NÃO aparece.
+
+   O logotipo recebe um dourado
+   sofisticado diretamente pelo CSS.
+*/
+
+.logo::before{
+    content:"";
+
+    position:absolute;
+    inset:0;
+
+    background:
+        linear-gradient(
+            135deg,
+            #8e6731 0%,
+            #c9a96a 30%,
+            #f0d9a2 48%,
+            #b78b49 70%,
+            #755025 100%
+        );
+
+    -webkit-mask-image:
+        url("ce9340ff-8060-4ebb-a397-9cf81b54ed5d.jpeg");
+
+    mask-image:
+        url("ce9340ff-8060-4ebb-a397-9cf81b54ed5d.jpeg");
+
+    -webkit-mask-size:contain;
+    mask-size:contain;
+
+    -webkit-mask-position:center;
+    mask-position:center;
+
+    -webkit-mask-repeat:no-repeat;
+    mask-repeat:no-repeat;
+
+    /*
+      Como o JPEG possui fundo branco,
+      usamos luminância invertida.
+    */
+
+    -webkit-mask-mode:luminance;
+    mask-mode:luminance;
+
+    filter:
+        drop-shadow(
+            0 3px 12px
+            rgba(190,145,75,.15)
+        );
+}
+
+
+/* LINHA PEQUENA */
+
+.luxury-line{
+    width:38px;
+    height:1px;
+
+    background:#bd9658;
+
+    margin:5px 0 17px;
+
+    opacity:0;
+
+    animation:
+        aparecer 1.2s .25s ease forwards;
+}
+
+
+/* TEXTO */
+
+.hero-small{
+    color:#d1ad72;
+
+    font-size:10px;
+    font-weight:400;
+
+    letter-spacing:5px;
+
+    text-transform:uppercase;
+
+    margin-bottom:13px;
+
+    opacity:0;
+
+    animation:
+        subir 1.2s .35s ease forwards;
+}
+
+
+.hero-title{
+    font-family:'Cormorant Garamond',serif;
+
+    font-size:clamp(35px,9vw,54px);
+
+    line-height:1;
+
+    font-weight:400;
+
+    letter-spacing:.3px;
+
+    color:#f7f2e9;
+
+    max-width:600px;
+
+    opacity:0;
+
+    animation:
+        subir 1.2s .5s ease forwards;
+}
+
+
+.hero-text{
+    margin-top:14px;
+
+    max-width:350px;
+
+    font-size:11px;
+
+    line-height:1.8;
+
+    font-weight:300;
+
+    color:rgba(255,255,255,.68);
+
+    opacity:0;
+
+    animation:
+        subir 1.2s .65s ease forwards;
+}
+
+
+/* BOTÃO */
+
+.hero-button{
+    margin-top:22px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    min-width:205px;
+
+    padding:14px 25px;
+
+    border:1px solid rgba(199,158,94,.65);
+
+    background:
+        rgba(5,4,3,.25);
+
+    backdrop-filter:blur(5px);
+    -webkit-backdrop-filter:blur(5px);
+
+    color:#d7b77f;
+
+    text-decoration:none;
+
+    text-transform:uppercase;
+
+    font-size:9px;
+
+    letter-spacing:3px;
+
+    transition:.35s ease;
+
+    opacity:0;
+
+    animation:
+        subir 1.2s .8s ease forwards;
+}
+
+
+.hero-button:active{
+    background:#c39a59;
+    color:#090705;
+}
+
+
+/* DESLIZE */
+
+.scroll{
+    margin-top:27px;
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+
+    gap:8px;
+
+    font-size:8px;
+
+    letter-spacing:3px;
+
+    text-transform:uppercase;
+
+    color:rgba(255,255,255,.4);
+
+    opacity:0;
+
+    animation:
+        aparecer 1.2s 1s ease forwards;
+}
+
+
+.scroll-line{
+    width:1px;
+    height:30px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #c29b5e,
+            transparent
+        );
+
+    animation:
+        linha 1.8s infinite ease-in-out;
+}
+
+
+/* =========================
+   INÍCIO DA PRÓXIMA SEÇÃO
+========================= */
+
+.intro{
+    min-height:55vh;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #050403,
+            #090705
+        );
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    padding:80px 28px;
+
+    text-align:center;
+}
+
+
+.intro-small{
+    display:block;
+
+    color:#b99155;
+
+    font-size:9px;
+
+    letter-spacing:5px;
+
+    text-transform:uppercase;
+
+    margin-bottom:18px;
+}
+
+
+.intro h2{
+    font-family:'Cormorant Garamond',serif;
+
+    font-size:clamp(36px,10vw,60px);
+
+    line-height:1.05;
+
+    font-weight:400;
+
+    color:#eee7dc;
+}
+
+
+/* =========================
+   ANIMAÇÕES
+========================= */
+
+@keyframes subir{
+
+    from{
+        opacity:0;
+        transform:translateY(25px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
+
+
+@keyframes aparecer{
+
+    from{
+        opacity:0;
+    }
+
+    to{
+        opacity:1;
+    }
+
+}
+
+
+@keyframes linha{
+
+    0%,100%{
+        opacity:.3;
+        transform:scaleY(.65);
+    }
+
+    50%{
+        opacity:1;
+        transform:scaleY(1);
+    }
+
+}
+
+
+/* =========================
+   CELULAR
+========================= */
+
+@media(max-width:600px){
+
+    .hero{
+        min-height:100svh;
+    }
+
+    .hero-photo{
+        object-position:center top;
+    }
+
+    .hero-content{
+        padding-bottom:
+            calc(25px + env(safe-area-inset-bottom));
+    }
+
+    .logo{
+        width:230px;
+        height:115px;
+    }
+
+    .hero-title{
+        max-width:340px;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<section class="hero">
+
+    <!-- FOTO PRINCIPAL -->
+
+    <img
+        class="hero-photo"
+        src="15A69808-E88F-4B7E-A426-88B2FF17990B.jpeg"
+        alt="Yara Nicácio Nail Artistic"
+    >
+
+
+    <div class="hero-dark"></div>
+
+    <div class="hero-vignette"></div>
+
+
+    <div class="hero-content">
+
+
+        <!-- LOGO SEM FUNDO VISÍVEL -->
+
+        <div
+            class="logo"
+            aria-label="Yara Nicácio Nail Artistic">
+        </div>
+
+
+        <div class="luxury-line"></div>
+
+
+        <div class="hero-small">
+            Nail Artist
+        </div>
+
+
+        <h1 class="hero-title">
+            Sofisticação em<br>
+            cada detalhe
+        </h1>
+
+
+        <p class="hero-text">
+            Design exclusivo, técnica e personalidade
+            para transformar cada detalhe em uma
+            experiência única.
+        </p>
+
+
+        <a
+            class="hero-button"
+            href="#"
+        >
+            Agendar horário
+        </a>
+
+
+        <div class="scroll">
+
+            Deslize
+
+            <div class="scroll-line"></div>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<section class="intro">
+
+    <div>
+
+        <span class="intro-small">
+            Yara Nicácio
+        </span>
+
+        <h2>
+            Arte que começa<br>
+            nos detalhes.
+        </h2>
+
+    </div>
+
+</section>
+
+
+</body>
+</html>
