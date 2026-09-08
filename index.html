@@ -55,22 +55,7 @@
 
 
     /* =====================================================
-       OTIMIZAÇÃO
-    ===================================================== */
-
-    .hero-content,
-    .top-logo,
-    .global-sparkles-layer,
-    .works-header-float,
-    .works-sparkles-layer{
-      will-change:transform;
-      backface-visibility:hidden;
-      -webkit-backface-visibility:hidden;
-    }
-
-
-    /* =====================================================
-       FUNDO GERAL
+       FUNDO
     ===================================================== */
 
     .site-background{
@@ -82,13 +67,13 @@
       background:
         radial-gradient(
           circle at 88% 28%,
-          rgba(130,86,26,.060),
+          rgba(130,86,26,.055),
           transparent 36%
         ),
 
         radial-gradient(
           circle at 8% 68%,
-          rgba(105,67,18,.045),
+          rgba(105,67,18,.035),
           transparent 35%
         ),
 
@@ -102,46 +87,22 @@
 
 
     /* =====================================================
-       BRILHO BASE
-    ===================================================== */
-
-    .global-sparkles-layer{
-      position:fixed;
-      inset:-7%;
-      z-index:-15;
-      pointer-events:none;
-    }
-
-    .global-sparkles{
-      width:114%;
-      height:114%;
-      object-fit:cover;
-      mix-blend-mode:screen;
-      opacity:.095;
-    }
-
-
-    /* =====================================================
-       CAMPO DAS ESTRELAS
+       ESTRELAS
     ===================================================== */
 
     .twinkle-field{
       position:absolute;
       inset:0;
+
       overflow:hidden;
+
       pointer-events:none;
+
       z-index:4;
     }
 
 
-    /* =====================================================
-       NOVO BRILHO
-
-       SEM CÍRCULO.
-       FORMATO DE ESTRELA DE LUZ.
-    ===================================================== */
-
-    .twinkle{
+    .star-light{
       position:absolute;
 
       width:var(--star-size);
@@ -151,64 +112,12 @@
 
       transform:
         translate3d(0,0,0)
-        scale(.35)
-        rotate(var(--rotation));
+        scale(.55)
+        rotate(var(--star-rotation));
 
       transform-origin:center;
 
-      background:
-
-        linear-gradient(
-          90deg,
-          transparent 0%,
-          transparent 34%,
-          rgba(255,226,154,.10) 43%,
-          rgba(255,245,210,.96) 49.4%,
-          rgba(255,255,245,1) 50%,
-          rgba(255,245,210,.96) 50.6%,
-          rgba(255,226,154,.10) 57%,
-          transparent 66%,
-          transparent 100%
-        ),
-
-        linear-gradient(
-          0deg,
-          transparent 0%,
-          transparent 34%,
-          rgba(255,226,154,.10) 43%,
-          rgba(255,245,210,.96) 49.4%,
-          rgba(255,255,245,1) 50%,
-          rgba(255,245,210,.96) 50.6%,
-          rgba(255,226,154,.10) 57%,
-          transparent 66%,
-          transparent 100%
-        ),
-
-        linear-gradient(
-          45deg,
-          transparent 0%,
-          transparent 40%,
-          rgba(231,183,91,.05) 46%,
-          rgba(255,229,163,.42) 49.5%,
-          rgba(255,245,207,.66) 50%,
-          rgba(255,229,163,.42) 50.5%,
-          rgba(231,183,91,.05) 54%,
-          transparent 60%,
-          transparent 100%
-        ),
-
-        linear-gradient(
-          -45deg,
-          transparent 0%,
-          transparent 40%,
-          rgba(231,183,91,.05) 46%,
-          rgba(255,229,163,.42) 49.5%,
-          rgba(255,245,207,.66) 50%,
-          rgba(255,229,163,.42) 50.5%,
-          rgba(231,183,91,.05) 54%,
-          transparent 60%,
-          transparent 100%
-        );
+      animation-name:starSlowFade;
 
       animation-duration:
         var(--duration);
@@ -217,21 +126,10 @@
         var(--delay);
 
       animation-timing-function:
-        cubic-bezier(.45,0,.2,1);
+        linear;
 
       animation-iteration-count:
         infinite;
-
-      filter:
-        drop-shadow(
-          0 0 var(--glow-small)
-          rgba(255,219,135,.70)
-        )
-
-        drop-shadow(
-          0 0 var(--glow-large)
-          rgba(208,145,44,.30)
-        );
 
       will-change:
         opacity,
@@ -239,508 +137,200 @@
     }
 
 
-    /* =====================================================
-       TAMANHOS
-    ===================================================== */
+    .star-light svg{
+      display:block;
 
-    .twinkle.small{
-      --glow-small:3px;
-      --glow-large:7px;
+      width:100%;
+      height:100%;
+
+      overflow:visible;
     }
 
 
-    .twinkle.medium{
-      --glow-small:5px;
-      --glow-large:13px;
-    }
+    .star-light path{
+      fill:
+        rgba(
+          255,
+          232,
+          176,
+          .96
+        );
 
+      filter:
+        drop-shadow(
+          0 0
+          var(--glow-1)
+          rgba(255,219,137,.58)
+        )
 
-    .twinkle.large{
-      --glow-small:8px;
-      --glow-large:22px;
-    }
-
-
-    /* =====================================================
-       VARIAÇÕES ORGÂNICAS
-    ===================================================== */
-
-    .variant-a{
-      animation-name:
-        starFadeA;
-    }
-
-    .variant-b{
-      animation-name:
-        starFadeB;
-    }
-
-    .variant-c{
-      animation-name:
-        starFadeC;
-    }
-
-    .variant-d{
-      animation-name:
-        starFadeD;
-    }
-
-    .variant-large{
-      animation-name:
-        starFadeLarge;
+        drop-shadow(
+          0 0
+          var(--glow-2)
+          rgba(208,146,49,.23)
+        );
     }
 
 
     /* =====================================================
-       ESTRELA A
+       PEQUENAS
     ===================================================== */
 
-    @keyframes starFadeA{
+    .star-light.small{
+      --glow-1:2px;
+      --glow-2:5px;
+    }
+
+
+    /* =====================================================
+       MÉDIAS
+    ===================================================== */
+
+    .star-light.medium{
+      --glow-1:3px;
+      --glow-2:8px;
+    }
+
+
+    /* =====================================================
+       GRANDES
+    ===================================================== */
+
+    .star-light.large{
+      --glow-1:5px;
+      --glow-2:14px;
+    }
+
+
+    /* =====================================================
+       UMA ÚNICA RESPIRAÇÃO MUITO LENTA
+
+       SEM PULSO.
+
+       0 → invisível
+       50 → auge
+       100 → invisível
+    ===================================================== */
+
+    @keyframes starSlowFade{
 
       0%{
         opacity:0;
-        transform:
-          scale(.30)
-          rotate(var(--rotation));
-      }
-
-      18%{
-        opacity:0;
-        transform:
-          scale(.34)
-          rotate(var(--rotation));
-      }
-
-      33%{
-        opacity:
-          calc(
-            var(--peak) * .20
-          );
-
-        transform:
-          scale(.55)
-          rotate(var(--rotation));
-      }
-
-      47%{
-        opacity:
-          calc(
-            var(--peak) * .55
-          );
-
-        transform:
-          scale(.80)
-          rotate(var(--rotation));
-      }
-
-      59%{
-        opacity:
-          var(--peak);
-
-        transform:
-          scale(1)
-          rotate(var(--rotation));
-      }
-
-      70%{
-        opacity:
-          calc(
-            var(--peak) * .62
-          );
-
-        transform:
-          scale(.85)
-          rotate(var(--rotation));
-      }
-
-      84%{
-        opacity:
-          calc(
-            var(--peak) * .18
-          );
-
-        transform:
-          scale(.56)
-          rotate(var(--rotation));
-      }
-
-      100%{
-        opacity:0;
-
-        transform:
-          scale(.30)
-          rotate(var(--rotation));
-      }
-
-    }
-
-
-    /* =====================================================
-       ESTRELA B
-    ===================================================== */
-
-    @keyframes starFadeB{
-
-      0%{
-        opacity:0;
-
-        transform:
-          scale(.32)
-          rotate(var(--rotation));
-      }
-
-      27%{
-        opacity:0;
-
-        transform:
-          scale(.36)
-          rotate(var(--rotation));
-      }
-
-      41%{
-        opacity:
-          calc(
-            var(--peak) * .22
-          );
-
-        transform:
-          scale(.56)
-          rotate(var(--rotation));
-      }
-
-      55%{
-        opacity:
-          calc(
-            var(--peak) * .65
-          );
-
-        transform:
-          scale(.84)
-          rotate(var(--rotation));
-      }
-
-      66%{
-        opacity:
-          var(--peak);
-
-        transform:
-          scale(1.04)
-          rotate(var(--rotation));
-      }
-
-      77%{
-        opacity:
-          calc(
-            var(--peak) * .56
-          );
-
-        transform:
-          scale(.82)
-          rotate(var(--rotation));
-      }
-
-      90%{
-        opacity:
-          calc(
-            var(--peak) * .12
-          );
 
         transform:
           scale(.50)
-          rotate(var(--rotation));
+          rotate(var(--star-rotation));
       }
 
-      100%{
+
+      8%{
         opacity:0;
 
         transform:
-          scale(.32)
-          rotate(var(--rotation));
+          scale(.52)
+          rotate(var(--star-rotation));
       }
 
-    }
 
-
-    /* =====================================================
-       ESTRELA C
-    ===================================================== */
-
-    @keyframes starFadeC{
-
-      0%{
-        opacity:0;
-
-        transform:
-          scale(.28)
-          rotate(var(--rotation));
-      }
-
-      13%{
-        opacity:
-          calc(
-            var(--peak) * .05
-          );
-
-        transform:
-          scale(.36)
-          rotate(var(--rotation));
-      }
-
-      30%{
-        opacity:
-          calc(
-            var(--peak) * .25
-          );
-
-        transform:
-          scale(.56)
-          rotate(var(--rotation));
-      }
-
-      46%{
-        opacity:
-          calc(
-            var(--peak) * .60
-          );
-
-        transform:
-          scale(.82)
-          rotate(var(--rotation));
-      }
-
-      58%{
-        opacity:
-          var(--peak);
-
-        transform:
-          scale(1)
-          rotate(var(--rotation));
-      }
-
-      71%{
-        opacity:
-          calc(
-            var(--peak) * .58
-          );
-
-        transform:
-          scale(.81)
-          rotate(var(--rotation));
-      }
-
-      87%{
-        opacity:
-          calc(
-            var(--peak) * .14
-          );
-
-        transform:
-          scale(.50)
-          rotate(var(--rotation));
-      }
-
-      100%{
-        opacity:0;
-
-        transform:
-          scale(.28)
-          rotate(var(--rotation));
-      }
-
-    }
-
-
-    /* =====================================================
-       ESTRELA D
-    ===================================================== */
-
-    @keyframes starFadeD{
-
-      0%{
-        opacity:0;
-
-        transform:
-          scale(.32)
-          rotate(var(--rotation));
-      }
-
-      35%{
-        opacity:0;
-
-        transform:
-          scale(.38)
-          rotate(var(--rotation));
-      }
-
-      48%{
-        opacity:
-          calc(
-            var(--peak) * .23
-          );
-
-        transform:
-          scale(.57)
-          rotate(var(--rotation));
-      }
-
-      61%{
-        opacity:
-          calc(
-            var(--peak) * .64
-          );
-
-        transform:
-          scale(.84)
-          rotate(var(--rotation));
-      }
-
-      72%{
-        opacity:
-          var(--peak);
-
-        transform:
-          scale(1.02)
-          rotate(var(--rotation));
-      }
-
-      83%{
-        opacity:
-          calc(
-            var(--peak) * .50
-          );
-
-        transform:
-          scale(.76)
-          rotate(var(--rotation));
-      }
-
-      93%{
+      20%{
         opacity:
           calc(
             var(--peak) * .10
           );
 
         transform:
-          scale(.47)
-          rotate(var(--rotation));
-      }
-
-      100%{
-        opacity:0;
-
-        transform:
-          scale(.32)
-          rotate(var(--rotation));
-      }
-
-    }
-
-
-    /* =====================================================
-       ESTRELA GRANDE
-
-       ABRE MUITO DEVAGAR E SOME.
-    ===================================================== */
-
-    @keyframes starFadeLarge{
-
-      0%{
-        opacity:0;
-
-        transform:
-          scale(.20)
-          rotate(var(--rotation));
-      }
-
-      20%{
-        opacity:0;
-
-        transform:
-          scale(.25)
-          rotate(var(--rotation));
-      }
-
-      34%{
-        opacity:
-          calc(
-            var(--peak) * .12
-          );
-
-        transform:
-          scale(.42)
-          rotate(var(--rotation));
-      }
-
-      46%{
-        opacity:
-          calc(
-            var(--peak) * .32
-          );
-
-        transform:
           scale(.60)
-          rotate(var(--rotation));
+          rotate(var(--star-rotation));
       }
 
-      57%{
+
+      32%{
+        opacity:
+          calc(
+            var(--peak) * .30
+          );
+
+        transform:
+          scale(.72)
+          rotate(var(--star-rotation));
+      }
+
+
+      43%{
         opacity:
           calc(
             var(--peak) * .63
           );
 
         transform:
-          scale(.82)
-          rotate(var(--rotation));
+          scale(.87)
+          rotate(var(--star-rotation));
       }
 
-      66%{
+
+      50%{
         opacity:
           var(--peak);
 
         transform:
           scale(1)
-          rotate(var(--rotation));
+          rotate(var(--star-rotation));
       }
 
-      75%{
+
+      57%{
         opacity:
           calc(
-            var(--peak) * .68
+            var(--peak) * .72
           );
 
         transform:
-          scale(.88)
-          rotate(var(--rotation));
+          scale(.92)
+          rotate(var(--star-rotation));
       }
 
-      84%{
+
+      68%{
         opacity:
           calc(
-            var(--peak) * .36
+            var(--peak) * .42
           );
 
         transform:
-          scale(.68)
-          rotate(var(--rotation));
+          scale(.78)
+          rotate(var(--star-rotation));
       }
 
-      93%{
+
+      80%{
         opacity:
           calc(
-            var(--peak) * .10
+            var(--peak) * .16
           );
 
         transform:
-          scale(.42)
-          rotate(var(--rotation));
+          scale(.63)
+          rotate(var(--star-rotation));
       }
+
+
+      92%{
+        opacity:
+          calc(
+            var(--peak) * .03
+          );
+
+        transform:
+          scale(.54)
+          rotate(var(--star-rotation));
+      }
+
 
       100%{
         opacity:0;
 
         transform:
-          scale(.20)
-          rotate(var(--rotation));
+          scale(.50)
+          rotate(var(--star-rotation));
       }
 
     }
@@ -778,8 +368,11 @@
       -webkit-backdrop-filter:blur(12px);
 
       display:flex;
+
       flex-direction:column;
+
       align-items:center;
+
       justify-content:center;
 
       gap:5px;
@@ -834,6 +427,7 @@
 
     .menu-overlay{
       position:fixed;
+
       inset:0;
 
       z-index:190;
@@ -845,6 +439,7 @@
       -webkit-backdrop-filter:blur(4px);
 
       opacity:0;
+
       visibility:hidden;
 
       transition:
@@ -855,6 +450,7 @@
 
     .menu-overlay.active{
       opacity:1;
+
       visibility:visible;
     }
 
@@ -918,6 +514,7 @@
         serif;
 
       font-size:37px;
+
       font-weight:500;
 
       color:#e4bd72;
@@ -947,7 +544,9 @@
 
     .menu-links{
       display:flex;
+
       flex-direction:column;
+
       gap:5px;
     }
 
@@ -982,6 +581,7 @@
       position:relative;
 
       width:100%;
+
       height:100svh;
 
       min-height:650px;
@@ -998,17 +598,21 @@
 
     .hero-photo{
       position:absolute;
+
       inset:0;
 
       width:100%;
+
       height:100%;
 
       object-fit:cover;
+
       object-position:center;
 
       z-index:0;
 
       filter:none;
+
       opacity:1;
     }
 
@@ -1017,7 +621,9 @@
       position:absolute;
 
       left:0;
+
       right:0;
+
       bottom:-2px;
 
       height:62%;
@@ -1049,26 +655,6 @@
     }
 
 
-    .hero-sparkles{
-      position:absolute;
-
-      inset:-3%;
-
-      width:106%;
-      height:106%;
-
-      object-fit:cover;
-
-      z-index:1;
-
-      pointer-events:none;
-
-      mix-blend-mode:screen;
-
-      opacity:.09;
-    }
-
-
     /* =====================================================
        LOGO
     ===================================================== */
@@ -1084,9 +670,12 @@
       right:19px;
 
       width:125px;
+
       height:auto;
 
       z-index:7;
+
+      will-change:transform;
 
       filter:
         drop-shadow(
@@ -1109,6 +698,7 @@
       position:absolute;
 
       top:50%;
+
       left:50%;
 
       width:min(97%,920px);
@@ -1119,10 +709,14 @@
       z-index:7;
 
       display:flex;
+
       flex-direction:column;
+
       align-items:center;
 
       text-align:center;
+
+      will-change:transform;
     }
 
 
@@ -1130,6 +724,7 @@
       display:block;
 
       width:min(98vw,920px);
+
       max-width:100%;
 
       height:auto;
@@ -1160,12 +755,14 @@
       margin-top:-17px;
 
       display:flex;
+
       justify-content:center;
     }
 
 
     .nail-artistic{
       width:100%;
+
       height:auto;
 
       object-fit:contain;
@@ -1220,6 +817,7 @@
 
     .phrase-detail{
       width:48px;
+
       height:1px;
 
       margin-top:13px;
@@ -1258,7 +856,9 @@
       z-index:8;
 
       display:flex;
+
       flex-direction:column;
+
       align-items:center;
 
       gap:10px;
@@ -1281,6 +881,7 @@
 
     .scroll-line{
       width:1px;
+
       height:40px;
 
       background:
@@ -1330,6 +931,7 @@
       position:absolute;
 
       top:-180px;
+
       left:0;
 
       width:100%;
@@ -1412,43 +1014,15 @@
     }
 
 
-    .works-sparkles-layer{
-      position:absolute;
-
-      top:-250px;
-      left:-7%;
-      right:-7%;
-      bottom:-180px;
-
-      z-index:0;
-
-      pointer-events:none;
-
-      opacity:.28;
-    }
-
-
-    .works-sparkles{
-      width:114%;
-      height:114%;
-
-      margin-left:-7%;
-
-      object-fit:cover;
-
-      mix-blend-mode:screen;
-
-      opacity:.18;
-    }
-
-
     .works-glow{
       position:absolute;
 
       width:950px;
+
       height:900px;
 
       top:-230px;
+
       right:-600px;
 
       z-index:1;
@@ -1493,6 +1067,8 @@
 
       transform:
         translate3d(0,0,0);
+
+      will-change:transform;
     }
 
 
@@ -1520,6 +1096,7 @@
       content:"";
 
       width:58px;
+
       height:1px;
 
       flex-shrink:0;
@@ -1642,6 +1219,7 @@
 
     .works-drag-line{
       width:58px;
+
       height:1px;
 
       background:
@@ -1655,6 +1233,7 @@
 
     .works-drag-chevron{
       width:8px;
+
       height:8px;
 
       border-top:
@@ -1682,6 +1261,7 @@
       gap:20px;
 
       overflow-x:auto;
+
       overflow-y:hidden;
 
       scroll-snap-type:
@@ -1776,6 +1356,7 @@
       inset:0;
 
       width:100%;
+
       height:100%;
 
       object-fit:cover;
@@ -1907,6 +1488,7 @@
 
     .works-current{
       font-size:30px;
+
       color:#e7d8be;
     }
 
@@ -1966,9 +1548,11 @@
       position:absolute;
 
       width:850px;
+
       height:850px;
 
       left:50%;
+
       top:50%;
 
       transform:
@@ -1983,8 +1567,8 @@
       background:
         radial-gradient(
           circle,
-          rgba(139,91,24,.060) 0%,
-          rgba(94,57,14,.025) 35%,
+          rgba(139,91,24,.055) 0%,
+          rgba(94,57,14,.02) 35%,
           transparent 68%
         );
     }
@@ -2082,9 +1666,11 @@
       position:absolute;
 
       width:950px;
+
       height:950px;
 
       left:50%;
+
       top:50%;
 
       transform:
@@ -2095,8 +1681,8 @@
       background:
         radial-gradient(
           circle,
-          rgba(165,112,34,.080),
-          rgba(91,57,15,.030) 38%,
+          rgba(165,112,34,.075),
+          rgba(91,57,15,.025) 38%,
           transparent 70%
         );
 
@@ -2112,6 +1698,7 @@
       z-index:7;
 
       width:100%;
+
       max-width:600px;
 
       text-align:center;
@@ -2153,6 +1740,7 @@
 
     .address-line{
       width:1px;
+
       height:52px;
 
       margin:
@@ -2260,6 +1848,7 @@
         rgba(7,6,5,.38);
 
       backdrop-filter:blur(8px);
+
       -webkit-backdrop-filter:blur(8px);
     }
 
@@ -2283,6 +1872,7 @@
         );
 
       width:76px;
+
       height:76px;
 
       z-index:180;
@@ -2351,6 +1941,7 @@
       position:relative;
 
       width:100%;
+
       height:100%;
 
       object-fit:contain;
@@ -2393,11 +1984,13 @@
       0%,
       100%{
         opacity:.28;
+
         transform:scale(.94);
       }
 
       50%{
         opacity:.65;
+
         transform:scale(1.08);
       }
 
@@ -2409,11 +2002,13 @@
       0%,
       100%{
         opacity:.10;
+
         transform:scale(.92);
       }
 
       50%{
         opacity:.35;
+
         transform:scale(1.10);
       }
 
@@ -2425,11 +2020,13 @@
       0%,
       100%{
         opacity:.25;
+
         transform:scaleY(.7);
       }
 
       50%{
         opacity:.85;
+
         transform:scaleY(1);
       }
 
@@ -2440,12 +2037,16 @@
 
       0%,
       100%{
-        transform:translateX(0);
+        transform:
+          translateX(0);
+
         opacity:.55;
       }
 
       50%{
-        transform:translateX(8px);
+        transform:
+          translateX(8px);
+
         opacity:1;
       }
 
@@ -2492,29 +2093,37 @@
 
       .hero{
         height:100svh;
+
         min-height:650px;
       }
+
 
       .hero-bottom-fade{
         height:64%;
       }
 
+
       .top-logo{
         width:120px;
       }
+
 
       .hero-content{
         width:97%;
       }
 
+
       .name-image{
         width:98vw;
       }
 
+
       .nail-artistic-wrap{
         width:83vw;
+
         margin-top:-17px;
       }
+
 
       .hero-phrase{
         font-size:
@@ -2525,10 +2134,13 @@
           );
       }
 
+
       .works-section{
         margin-top:-95px;
+
         padding-top:205px;
       }
+
 
       .works-background-photo{
         top:-150px;
@@ -2539,9 +2151,13 @@
           );
       }
 
+
       .works-header{
-        padding:0 36px;
+        padding:
+          0
+          36px;
       }
+
 
       .works-drag{
         padding:
@@ -2550,6 +2166,7 @@
           20px;
       }
 
+
       .works-slider{
         padding:
           16px
@@ -2557,13 +2174,18 @@
           42px;
       }
 
+
       .work-card{
         flex-basis:79vw;
       }
 
+
       .works-footer{
-        padding:0 36px;
+        padding:
+          0
+          36px;
       }
+
 
       .future-section{
         min-height:90svh;
@@ -2572,6 +2194,7 @@
           115px
           25px;
       }
+
 
       .address-section{
         min-height:90svh;
@@ -2591,36 +2214,50 @@
         width:108px;
       }
 
+
       .menu-trigger{
         width:54px;
+
         height:54px;
       }
+
 
       .hero-phrase{
         font-size:16px;
       }
 
+
       .works-section{
         margin-top:-90px;
+
         padding-top:195px;
       }
 
+
       .works-header{
-        padding:0 26px;
+        padding:
+          0
+          26px;
       }
+
 
       .works-drag{
         padding-left:26px;
+
         padding-right:26px;
       }
+
 
       .works-slider{
         padding-left:26px;
+
         padding-right:26px;
       }
 
+
       .works-footer{
         padding-left:26px;
+
         padding-right:26px;
       }
 
@@ -2633,7 +2270,8 @@
         scroll-behavior:auto;
       }
 
-      .twinkle,
+
+      .star-light,
       .work-card,
       .whatsapp-button,
       .whatsapp-button::before,
@@ -2657,21 +2295,6 @@
     class="site-background"
     aria-hidden="true"
   ></div>
-
-
-  <div
-    class="global-sparkles-layer"
-    id="globalSparklesLayer"
-    aria-hidden="true"
-  >
-
-    <img
-      class="global-sparkles"
-      src="24CD378D-F11E-4CB2-B0FC-FCAFBE91B276.png"
-      alt=""
-    >
-
-  </div>
 
 
   <!-- MENU -->
@@ -2739,7 +2362,9 @@
   <main>
 
 
-    <!-- CAPA -->
+    <!-- ===================================================
+         CAPA
+    ==================================================== -->
 
     <section
       class="hero"
@@ -2753,20 +2378,17 @@
       >
 
 
-      <img
-        class="hero-sparkles"
-        src="24CD378D-F11E-4CB2-B0FC-FCAFBE91B276.png"
-        alt=""
-      >
-
-
       <div
         class="twinkle-field"
-        id="heroTwinkles"
+        id="heroStars"
+        aria-hidden="true"
       ></div>
 
 
-      <div class="hero-bottom-fade"></div>
+      <div
+        class="hero-bottom-fade"
+        aria-hidden="true"
+      ></div>
 
 
       <img
@@ -2805,7 +2427,10 @@
         </p>
 
 
-        <div class="phrase-detail"></div>
+        <div
+          class="phrase-detail"
+          aria-hidden="true"
+        ></div>
 
       </div>
 
@@ -2823,7 +2448,9 @@
     </section>
 
 
-    <!-- TRABALHOS -->
+    <!-- ===================================================
+         TRABALHOS
+    ==================================================== -->
 
     <section
       class="works-section"
@@ -2834,35 +2461,33 @@
         class="works-background-photo"
         src="22570524-7852-4D7E-99DE-6090DA3A9A55.jpeg"
         alt=""
+        aria-hidden="true"
       >
-
-
-      <div class="works-background-blend"></div>
-
-      <div class="works-background-depth"></div>
 
 
       <div
-        class="works-sparkles-layer"
-        id="worksSparklesLayer"
-      >
+        class="works-background-blend"
+        aria-hidden="true"
+      ></div>
 
-        <img
-          class="works-sparkles"
-          src="24CD378D-F11E-4CB2-B0FC-FCAFBE91B276.png"
-          alt=""
-        >
 
-      </div>
+      <div
+        class="works-background-depth"
+        aria-hidden="true"
+      ></div>
 
 
       <div
         class="twinkle-field"
-        id="worksTwinkles"
+        id="worksStars"
+        aria-hidden="true"
       ></div>
 
 
-      <div class="works-glow"></div>
+      <div
+        class="works-glow"
+        aria-hidden="true"
+      ></div>
 
 
       <div class="works-header">
@@ -2876,9 +2501,11 @@
             Nail Artistic
           </div>
 
+
           <h2 class="works-title">
             Trabalhos
           </h2>
+
 
           <p class="works-description">
             Criações desenvolvidas nos mínimos detalhes,
@@ -2895,6 +2522,7 @@
         <span class="works-drag-text">
           Deslize para explorar
         </span>
+
 
         <div class="works-drag-arrow">
 
@@ -3043,6 +2671,7 @@
 
         </div>
 
+
         <div class="works-footer-line"></div>
 
       </div>
@@ -3050,7 +2679,9 @@
     </section>
 
 
-    <!-- ESTÚDIO -->
+    <!-- ===================================================
+         ESTÚDIO
+    ==================================================== -->
 
     <section
       class="future-section"
@@ -3058,7 +2689,8 @@
     >
 
       <div
-        class="twinkle-field page-twinkles"
+        class="twinkle-field page-stars"
+        aria-hidden="true"
       ></div>
 
 
@@ -3071,9 +2703,11 @@
           Yara Nicácio
         </small>
 
+
         <h2>
           O estúdio
         </h2>
+
 
         <p>
           Uma experiência pensada em cada detalhe.
@@ -3084,7 +2718,9 @@
     </section>
 
 
-    <!-- YARA -->
+    <!-- ===================================================
+         YARA
+    ==================================================== -->
 
     <section
       class="future-section"
@@ -3092,7 +2728,8 @@
     >
 
       <div
-        class="twinkle-field page-twinkles"
+        class="twinkle-field page-stars"
+        aria-hidden="true"
       ></div>
 
 
@@ -3105,9 +2742,11 @@
           Nail Artist
         </small>
 
+
         <h2>
           Yara Nicácio
         </h2>
+
 
         <p>
           Técnica, identidade e criatividade
@@ -3119,7 +2758,9 @@
     </section>
 
 
-    <!-- PREÇOS -->
+    <!-- ===================================================
+         PREÇOS
+    ==================================================== -->
 
     <section
       class="future-section"
@@ -3127,7 +2768,8 @@
     >
 
       <div
-        class="twinkle-field page-twinkles"
+        class="twinkle-field page-stars"
+        aria-hidden="true"
       ></div>
 
 
@@ -3140,9 +2782,11 @@
           Serviços
         </small>
 
+
         <h2>
           Tabela de preços
         </h2>
+
 
         <p>
           Conheça os serviços e escolha
@@ -3154,7 +2798,9 @@
     </section>
 
 
-    <!-- AVALIAÇÕES -->
+    <!-- ===================================================
+         AVALIAÇÕES
+    ==================================================== -->
 
     <section
       class="future-section"
@@ -3162,7 +2808,8 @@
     >
 
       <div
-        class="twinkle-field page-twinkles"
+        class="twinkle-field page-stars"
+        aria-hidden="true"
       ></div>
 
 
@@ -3175,9 +2822,11 @@
           Experiências
         </small>
 
+
         <h2>
           Avaliações
         </h2>
+
 
         <p>
           A experiência de quem já escolheu
@@ -3189,7 +2838,9 @@
     </section>
 
 
-    <!-- ENDEREÇO -->
+    <!-- ===================================================
+         ENDEREÇO
+    ==================================================== -->
 
     <section
       class="address-section"
@@ -3197,7 +2848,8 @@
     >
 
       <div
-        class="twinkle-field page-twinkles"
+        class="twinkle-field page-stars"
+        aria-hidden="true"
       ></div>
 
 
@@ -3232,6 +2884,7 @@
 
           Bethaville — Barueri, SP
 
+
           <span class="address-room">
             10º andar • Sala 1007
           </span>
@@ -3256,7 +2909,9 @@
   </main>
 
 
-  <!-- WHATSAPP -->
+  <!-- =====================================================
+       WHATSAPP
+  ====================================================== -->
 
   <a
     class="whatsapp-button"
@@ -3290,15 +2945,18 @@
         "menuTrigger"
       );
 
+
     const sideMenu =
       document.getElementById(
         "sideMenu"
       );
 
+
     const menuOverlay =
       document.getElementById(
         "menuOverlay"
       );
+
 
     const menuLinks =
       document.querySelectorAll(
@@ -3312,13 +2970,16 @@
         "active"
       );
 
+
       sideMenu.classList.add(
         "active"
       );
 
+
       menuOverlay.classList.add(
         "active"
       );
+
 
       document.body.style.overflow =
         "hidden";
@@ -3332,13 +2993,16 @@
         "active"
       );
 
+
       sideMenu.classList.remove(
         "active"
       );
 
+
       menuOverlay.classList.remove(
         "active"
       );
+
 
       document.body.style.overflow =
         "";
@@ -3392,17 +3056,43 @@
 
 
     /* =====================================================
-       ESTRELAS ALEATÓRIAS
+       ESTRELA SVG DE 8 PONTAS
+
+       NÃO TEM CÍRCULO.
     ===================================================== */
 
-    const variants = [
+    const STAR_SVG = `
 
-      "variant-a",
-      "variant-b",
-      "variant-c",
-      "variant-d"
+      <svg
+        viewBox="0 0 100 100"
+        aria-hidden="true"
+      >
 
-    ];
+        <path
+          d="
+            M50 1
+            L55 37
+            L73 16
+            L63 42
+            L99 50
+            L63 58
+            L73 84
+            L55 63
+            L50 99
+            L45 63
+            L27 84
+            L37 58
+            L1 50
+            L37 42
+            L27 16
+            L45 37
+            Z
+          "
+        />
+
+      </svg>
+
+    `;
 
 
     function randomBetween(
@@ -3411,7 +3101,8 @@
     ){
 
       return (
-        Math.random() *
+        Math.random()
+        *
         (
           max -
           min
@@ -3423,54 +3114,130 @@
     }
 
 
-    function randomVariant(){
-
-      return variants[
-
-        Math.floor(
-          Math.random() *
-          variants.length
-        )
-
-      ];
-
-    }
-
-
-    /* =====================================================
-       MUDA A POSIÇÃO
-
-       ISSO ACONTECE QUANDO A ESTRELA
-       ESTÁ INVISÍVEL.
-    ===================================================== */
-
-    function randomizePosition(
-      star
+    function distance(
+      x1,
+      y1,
+      x2,
+      y2
     ){
 
-      star.style.left =
-        `${randomBetween(1,99).toFixed(2)}%`;
+      const dx =
+        x2 - x1;
 
 
-      star.style.top =
-        `${randomBetween(1,99).toFixed(2)}%`;
+      const dy =
+        y2 - y1;
 
 
-      star.style.setProperty(
-        "--rotation",
-        `${randomBetween(-18,18).toFixed(1)}deg`
+      return Math.sqrt(
+        dx * dx +
+        dy * dy
       );
 
     }
 
 
     /* =====================================================
-       CONFIGURAÇÃO DO CICLO
+       ESCOLHE UM NOVO PONTO
+
+       GRANDES PRECISAM SE AFASTAR
+       DO PONTO ANTERIOR.
+    ===================================================== */
+
+    function choosePosition(
+      star,
+      forceFar = false
+    ){
+
+      const oldX =
+        Number(
+          star.dataset.x ?? -100
+        );
+
+
+      const oldY =
+        Number(
+          star.dataset.y ?? -100
+        );
+
+
+      let newX;
+      let newY;
+
+
+      let attempts = 0;
+
+
+      do{
+
+        newX =
+          randomBetween(
+            2,
+            98
+          );
+
+
+        newY =
+          randomBetween(
+            2,
+            98
+          );
+
+
+        attempts++;
+
+      }
+      while(
+
+        forceFar
+
+        &&
+
+        distance(
+          oldX,
+          oldY,
+          newX,
+          newY
+        ) < 30
+
+        &&
+
+        attempts < 30
+
+      );
+
+
+      star.dataset.x =
+        newX;
+
+
+      star.dataset.y =
+        newY;
+
+
+      star.style.left =
+        `${newX.toFixed(2)}%`;
+
+
+      star.style.top =
+        `${newY.toFixed(2)}%`;
+
+
+      star.style.setProperty(
+        "--star-rotation",
+        `${randomBetween(-11,11).toFixed(2)}deg`
+      );
+
+    }
+
+
+    /* =====================================================
+       CONFIGURA CADA NOVO CICLO
     ===================================================== */
 
     function configureStar(
       star,
-      firstTime = false
+      first = false
     ){
 
 
@@ -3490,53 +3257,53 @@
       let peak;
 
 
-      /*
-         TODOS LENTOS.
-      */
-
       if(large){
+
+        /*
+           MUITO LENTO
+        */
 
         duration =
           randomBetween(
-            20,
-            36
+            28,
+            40
           );
 
 
         peak =
           randomBetween(
-            .50,
-            .82
+            .48,
+            .76
           );
 
       }else if(medium){
 
         duration =
           randomBetween(
-            15,
-            28
+            21,
+            34
           );
 
 
         peak =
           randomBetween(
-            .32,
-            .66
+            .30,
+            .61
           );
 
       }else{
 
         duration =
           randomBetween(
-            12,
-            22
+            17,
+            29
           );
 
 
         peak =
           randomBetween(
-            .20,
-            .50
+            .18,
+            .43
           );
 
       }
@@ -3554,35 +3321,11 @@
       );
 
 
-      star.classList.remove(
-        "variant-a",
-        "variant-b",
-        "variant-c",
-        "variant-d",
-        "variant-large"
-      );
-
-
-      if(large){
-
-        star.classList.add(
-          "variant-large"
-        );
-
-      }else{
-
-        star.classList.add(
-          randomVariant()
-        );
-
-      }
-
-
-      if(firstTime){
+      if(first){
 
         star.style.setProperty(
           "--delay",
-          `${randomBetween(-34,0).toFixed(2)}s`
+          `${randomBetween(-40,0).toFixed(2)}s`
         );
 
       }else{
@@ -3598,7 +3341,7 @@
 
 
     /* =====================================================
-       CRIAÇÃO DAS ESTRELAS
+       CRIAÇÃO
     ===================================================== */
 
     function createStars(
@@ -3606,7 +3349,9 @@
       amount
     ){
 
-      if(!container){
+      if(
+        !container
+      ){
         return;
       }
 
@@ -3624,17 +3369,13 @@
 
 
         star.classList.add(
-          "twinkle"
+          "star-light"
         );
 
 
-        /*
-           TAMANHOS:
+        star.innerHTML =
+          STAR_SVG;
 
-           16% GRANDES
-           42% MÉDIOS
-           42% PEQUENOS
-        */
 
         const chance =
           Math.random();
@@ -3643,8 +3384,15 @@
         let size;
 
 
+        /*
+           14% GRANDES
+           40% MÉDIOS
+           46% PEQUENOS
+        */
+
+
         if(
-          chance < .16
+          chance < .14
         ){
 
           star.classList.add(
@@ -3654,12 +3402,13 @@
 
           size =
             randomBetween(
-              55,
+              62,
               105
             );
 
-        }else if(
-          chance < .58
+        }
+        else if(
+          chance < .54
         ){
 
           star.classList.add(
@@ -3669,11 +3418,12 @@
 
           size =
             randomBetween(
-              27,
-              54
+              32,
+              59
             );
 
-        }else{
+        }
+        else{
 
           star.classList.add(
             "small"
@@ -3682,8 +3432,8 @@
 
           size =
             randomBetween(
-              11,
-              28
+              14,
+              31
             );
 
         }
@@ -3695,8 +3445,9 @@
         );
 
 
-        randomizePosition(
-          star
+        choosePosition(
+          star,
+          false
         );
 
 
@@ -3707,13 +3458,10 @@
 
 
         /*
-           QUANDO TERMINA:
+           QUANDO O CICLO ACABA
+           A ESTRELA JÁ ESTÁ INVISÍVEL.
 
-           - ESTÁ INVISÍVEL
-           - MUDA POSIÇÃO
-           - MUDA TEMPO
-           - MUDA INTENSIDADE
-           - MUDA TIPO DE MOVIMENTO
+           SÓ ENTÃO ELA MUDA.
         */
 
         star.addEventListener(
@@ -3722,8 +3470,20 @@
 
           function(){
 
-            randomizePosition(
-              star
+            const large =
+              star.classList.contains(
+                "large"
+              );
+
+
+            /*
+               GRANDES OBRIGATORIAMENTE
+               VÃO PARA LONGE.
+            */
+
+            choosePosition(
+              star,
+              large
             );
 
 
@@ -3747,18 +3507,13 @@
 
 
     /* =====================================================
-       VOLUME
+       QUANTIDADE
     ===================================================== */
-
-
-    /*
-       CAPA
-    */
 
     createStars(
 
       document.getElementById(
-        "heroTwinkles"
+        "heroStars"
       ),
 
       48
@@ -3766,28 +3521,20 @@
     );
 
 
-    /*
-       TRABALHOS
-    */
-
     createStars(
 
       document.getElementById(
-        "worksTwinkles"
+        "worksStars"
       ),
 
-      56
+      54
 
     );
 
 
-    /*
-       RESTANTE DO SITE
-    */
-
     document
       .querySelectorAll(
-        ".page-twinkles"
+        ".page-stars"
       )
       .forEach(
 
@@ -3795,7 +3542,7 @@
 
           createStars(
             container,
-            40
+            38
           );
 
         }
@@ -3804,7 +3551,7 @@
 
 
     /* =====================================================
-       PARALLAX
+       PARALLAX FLUIDO
     ===================================================== */
 
     const heroContent =
@@ -3812,46 +3559,42 @@
         "heroContent"
       );
 
+
     const topLogo =
       document.getElementById(
         "topLogo"
       );
 
-    const globalSparklesLayer =
-      document.getElementById(
-        "globalSparklesLayer"
-      );
 
     const worksSection =
       document.getElementById(
         "trabalhos"
       );
 
+
     const worksHeaderFloat =
       document.getElementById(
         "worksHeaderFloat"
       );
 
-    const worksSparklesLayer =
-      document.getElementById(
-        "worksSparklesLayer"
-      );
-
 
     let heroTarget = 0;
+
     let heroCurrent = 0;
 
+
     let logoTarget = 0;
+
     let logoCurrent = 0;
 
-    let globalSparkTarget = 0;
-    let globalSparkCurrent = 0;
 
     let worksHeaderTarget = 0;
+
     let worksHeaderCurrent = 0;
 
-    let worksSparkTarget = 0;
-    let worksSparkCurrent = 0;
+
+    let animationRunning =
+      false;
 
 
     function lerp(
@@ -3861,7 +3604,8 @@
     ){
 
       return (
-        start +
+        start
+        +
         (
           end -
           start
@@ -3894,10 +3638,6 @@
       }
 
 
-      globalSparkTarget =
-        scrollY * .012;
-
-
       const worksRect =
         worksSection.getBoundingClientRect();
 
@@ -3905,8 +3645,11 @@
       if(
         worksRect.top <
         window.innerHeight * 1.25
+
         &&
-        worksRect.bottom > -200
+
+        worksRect.bottom >
+        -200
       ){
 
         const viewportCenter =
@@ -3914,23 +3657,44 @@
 
 
         const sectionCenter =
-          worksRect.top +
+          worksRect.top
+          +
           worksRect.height / 2;
 
 
         const difference =
-          viewportCenter -
+          viewportCenter
+          -
           sectionCenter;
 
 
         worksHeaderTarget =
           difference * .032;
 
-
-        worksSparkTarget =
-          difference * .012;
-
       }
+
+
+      startSmoothAnimation();
+
+    }
+
+
+    function startSmoothAnimation(){
+
+      if(
+        animationRunning
+      ){
+        return;
+      }
+
+
+      animationRunning =
+        true;
+
+
+      requestAnimationFrame(
+        smoothAnimation
+      );
 
     }
 
@@ -3954,14 +3718,6 @@
         );
 
 
-      globalSparkCurrent =
-        lerp(
-          globalSparkCurrent,
-          globalSparkTarget,
-          .075
-        );
-
-
       worksHeaderCurrent =
         lerp(
           worksHeaderCurrent,
@@ -3970,19 +3726,12 @@
         );
 
 
-      worksSparkCurrent =
-        lerp(
-          worksSparkCurrent,
-          worksSparkTarget,
-          .065
-        );
-
-
       heroContent.style.transform =
         `translate3d(
           -50%,
           calc(
-            -50% +
+            -50%
+            +
             ${heroCurrent}px
           ),
           0
@@ -3997,14 +3746,6 @@
         )`;
 
 
-      globalSparklesLayer.style.transform =
-        `translate3d(
-          0,
-          ${globalSparkCurrent}px,
-          0
-        )`;
-
-
       worksHeaderFloat.style.transform =
         `translate3d(
           0,
@@ -4013,42 +3754,76 @@
         )`;
 
 
-      worksSparklesLayer.style.transform =
-        `translate3d(
-          0,
-          ${worksSparkCurrent}px,
-          0
-        )`;
+      const heroDifference =
+        Math.abs(
+          heroTarget -
+          heroCurrent
+        );
 
 
-      requestAnimationFrame(
-        smoothAnimation
-      );
+      const logoDifference =
+        Math.abs(
+          logoTarget -
+          logoCurrent
+        );
+
+
+      const worksDifference =
+        Math.abs(
+          worksHeaderTarget -
+          worksHeaderCurrent
+        );
+
+
+      if(
+        heroDifference > .05
+
+        ||
+
+        logoDifference > .05
+
+        ||
+
+        worksDifference > .05
+      ){
+
+        requestAnimationFrame(
+          smoothAnimation
+        );
+
+      }else{
+
+        animationRunning =
+          false;
+
+      }
 
     }
 
 
     window.addEventListener(
+
       "scroll",
+
       calculateTargets,
+
       {
         passive:true
       }
+
     );
 
 
     window.addEventListener(
+
       "resize",
+
       calculateTargets
+
     );
 
 
     calculateTargets();
-
-
-    requestAnimationFrame(
-      smoothAnimation
-    );
 
 
     /* =====================================================
@@ -4104,7 +3879,7 @@
             card.getBoundingClientRect();
 
 
-          const distance =
+          const cardDistance =
             Math.abs(
               cardRect.left -
               reference
@@ -4112,12 +3887,12 @@
 
 
           if(
-            distance <
+            cardDistance <
             closestDistance
           ){
 
             closestDistance =
-              distance;
+              cardDistance;
 
 
             closestIndex =
@@ -4194,8 +3969,10 @@
     let isDown =
       false;
 
+
     let startX =
       0;
+
 
     let sliderStart =
       0;
