@@ -2,6 +2,7 @@
 <html lang="pt-BR">
 
 <head>
+
   <meta charset="UTF-8">
 
   <meta
@@ -54,6 +55,22 @@
 
 
     /* =====================================================
+       OTIMIZAÇÃO
+    ===================================================== */
+
+    .hero-content,
+    .top-logo,
+    .global-sparkles-layer,
+    .works-header-float,
+    .works-sparkles-layer{
+      will-change:transform;
+      transform-style:preserve-3d;
+      backface-visibility:hidden;
+      -webkit-backface-visibility:hidden;
+    }
+
+
+    /* =====================================================
        FUNDO GERAL
     ===================================================== */
 
@@ -66,7 +83,7 @@
       background:
         radial-gradient(
           circle at 88% 28%,
-          rgba(130,86,26,.05),
+          rgba(130,86,26,.055),
           transparent 36%
         ),
 
@@ -86,13 +103,30 @@
 
 
     /* =====================================================
-       NOVO SISTEMA DE BRILHOS
-
-       IMAGEM:
-       7122BB23-9C04-4672-B385-81F2AC60DB83.png
+       BRILHO BASE
     ===================================================== */
 
-    .sparkle-field{
+    .global-sparkles-layer{
+      position:fixed;
+      inset:-7%;
+      z-index:-15;
+      pointer-events:none;
+    }
+
+    .global-sparkles{
+      width:114%;
+      height:114%;
+      object-fit:cover;
+      mix-blend-mode:screen;
+      opacity:.075;
+    }
+
+
+    /* =====================================================
+       CAMPO DE BRILHOS
+    ===================================================== */
+
+    .twinkle-field{
       position:absolute;
       inset:0;
       overflow:hidden;
@@ -100,36 +134,24 @@
       z-index:4;
     }
 
-
-    .sparkle-layer{
+    .twinkle{
       position:absolute;
 
-      top:-15%;
-      left:-15%;
+      width:var(--size);
+      height:var(--size);
 
-      width:130%;
-      height:130%;
+      border-radius:50%;
 
-      object-fit:cover;
+      opacity:var(--soft);
 
-      mix-blend-mode:screen;
-
-      opacity:0;
+      background:
+        rgba(255,225,160,.98);
 
       transform:
-        translate3d(
-          var(--x),
-          var(--y),
-          0
-        )
-        scale(var(--scale));
+        scale(.55);
 
-      transform-origin:center;
-
-      will-change:opacity, transform;
-
-      animation-name:
-        sparkleBreath;
+      filter:
+        blur(var(--blur));
 
       animation-duration:
         var(--duration);
@@ -142,95 +164,378 @@
 
       animation-iteration-count:
         infinite;
+
+      will-change:
+        opacity,
+        transform;
+    }
+
+
+    /* =====================================================
+       BRILHO PEQUENO
+    ===================================================== */
+
+    .twinkle.small{
+
+      box-shadow:
+
+        0 0 3px
+        rgba(255,246,211,.92),
+
+        0 0 8px
+        rgba(255,215,125,.68),
+
+        0 0 15px
+        rgba(220,159,53,.34);
+
+    }
+
+
+    /* =====================================================
+       BRILHO MÉDIO
+    ===================================================== */
+
+    .twinkle.medium{
+
+      box-shadow:
+
+        0 0 4px
+        rgba(255,248,218,.96),
+
+        0 0 10px
+        rgba(255,216,124,.78),
+
+        0 0 22px
+        rgba(224,160,52,.44),
+
+        0 0 38px
+        rgba(181,112,24,.16);
+
+    }
+
+
+    /* =====================================================
+       BRILHO GRANDE
+    ===================================================== */
+
+    .twinkle.large{
+
+      box-shadow:
+
+        0 0 5px
+        rgba(255,250,224,.98),
+
+        0 0 13px
+        rgba(255,222,139,.90),
+
+        0 0 28px
+        rgba(228,165,59,.55),
+
+        0 0 55px
+        rgba(190,121,29,.24),
+
+        0 0 80px
+        rgba(142,83,15,.10);
+
+    }
+
+
+    /* =====================================================
+       CRUZ DO BRILHO
+    ===================================================== */
+
+    .twinkle::before,
+    .twinkle::after{
+
+      content:"";
+
+      position:absolute;
+
+      left:50%;
+      top:50%;
+
+      transform:
+        translate(-50%,-50%);
+
+      border-radius:30px;
+
+      opacity:.58;
+
+    }
+
+
+    .twinkle::before{
+
+      width:
+        calc(
+          var(--size) * var(--ray)
+        );
+
+      height:1px;
+
+      background:
+        linear-gradient(
+          to right,
+          transparent,
+          rgba(255,239,194,.88),
+          transparent
+        );
+
+    }
+
+
+    .twinkle::after{
+
+      width:1px;
+
+      height:
+        calc(
+          var(--size) * var(--ray)
+        );
+
+      background:
+        linear-gradient(
+          to bottom,
+          transparent,
+          rgba(255,239,194,.88),
+          transparent
+        );
+
+    }
+
+
+    /* =====================================================
+       VARIAÇÕES
+    ===================================================== */
+
+    .variant-a{
+      animation-name:twinkleA;
+    }
+
+    .variant-b{
+      animation-name:twinkleB;
+    }
+
+    .variant-c{
+      animation-name:twinkleC;
+    }
+
+    .variant-d{
+      animation-name:twinkleD;
+    }
+
+    .variant-e{
+      animation-name:twinkleE;
+    }
+
+
+    /* =====================================================
+       ANIMAÇÕES MAIS LENTAS
+    ===================================================== */
+
+    @keyframes twinkleA{
+
+      0%{
+        opacity:var(--soft);
+        transform:scale(.48);
+      }
+
+      24%{
+        opacity:var(--soft);
+        transform:scale(.54);
+      }
+
+      40%{
+        opacity:calc(var(--peak) * .36);
+        transform:scale(.76);
+      }
+
+      55%{
+        opacity:var(--peak);
+        transform:scale(1.18);
+      }
+
+      70%{
+        opacity:calc(var(--peak) * .42);
+        transform:scale(.84);
+      }
+
+      86%{
+        opacity:var(--soft);
+        transform:scale(.56);
+      }
+
+      100%{
+        opacity:var(--soft);
+        transform:scale(.48);
+      }
+
+    }
+
+
+    @keyframes twinkleB{
+
+      0%{
+        opacity:var(--soft);
+        transform:scale(.50);
+      }
+
+      32%{
+        opacity:var(--soft);
+        transform:scale(.56);
+      }
+
+      48%{
+        opacity:calc(var(--peak) * .40);
+        transform:scale(.78);
+      }
+
+      64%{
+        opacity:var(--peak);
+        transform:scale(1.30);
+      }
+
+      77%{
+        opacity:calc(var(--peak) * .40);
+        transform:scale(.84);
+      }
+
+      91%{
+        opacity:var(--soft);
+        transform:scale(.56);
+      }
+
+      100%{
+        opacity:var(--soft);
+        transform:scale(.50);
+      }
+
+    }
+
+
+    @keyframes twinkleC{
+
+      0%{
+        opacity:var(--soft);
+        transform:scale(.50);
+      }
+
+      18%{
+        opacity:calc(var(--peak) * .18);
+        transform:scale(.62);
+      }
+
+      36%{
+        opacity:calc(var(--peak) * .52);
+        transform:scale(.88);
+      }
+
+      54%{
+        opacity:var(--peak);
+        transform:scale(1.16);
+      }
+
+      72%{
+        opacity:calc(var(--peak) * .36);
+        transform:scale(.79);
+      }
+
+      90%{
+        opacity:var(--soft);
+        transform:scale(.55);
+      }
+
+      100%{
+        opacity:var(--soft);
+        transform:scale(.50);
+      }
+
+    }
+
+
+    @keyframes twinkleD{
+
+      0%{
+        opacity:var(--soft);
+        transform:scale(.45);
+      }
+
+      40%{
+        opacity:var(--soft);
+        transform:scale(.52);
+      }
+
+      55%{
+        opacity:calc(var(--peak) * .35);
+        transform:scale(.80);
+      }
+
+      70%{
+        opacity:var(--peak);
+        transform:scale(1.28);
+      }
+
+      83%{
+        opacity:calc(var(--peak) * .28);
+        transform:scale(.74);
+      }
+
+      100%{
+        opacity:var(--soft);
+        transform:scale(.45);
+      }
+
     }
 
 
     /*
-       NOVA LÓGICA:
+       ESSA É A MAIS IMPORTANTE PARA OS GRANDES.
 
-       - começa invisível
-       - aparece devagar
-       - passa suavemente pelo pico
-       - começa a desaparecer
-       - some por completo
-
-       NÃO EXISTE PARTE "PARADA"
-       COM O BRILHO LIGADO.
+       ELE ABRE DEVAGAR,
+       FICA MAIS FORTE,
+       E SOME DEVAGAR.
     */
 
-    @keyframes sparkleBreath{
+    @keyframes twinkleE{
 
       0%{
-        opacity:0;
-      }
-
-      10%{
-        opacity:0;
+        opacity:.01;
+        transform:scale(.30);
       }
 
       20%{
-        opacity:
-          calc(
-            var(--peak) * .12
-          );
+        opacity:.02;
+        transform:scale(.38);
       }
 
-      30%{
-        opacity:
-          calc(
-            var(--peak) * .30
-          );
+      38%{
+        opacity:calc(var(--peak) * .24);
+        transform:scale(.65);
       }
 
-      40%{
-        opacity:
-          calc(
-            var(--peak) * .56
-          );
+      52%{
+        opacity:calc(var(--peak) * .60);
+        transform:scale(.96);
       }
 
-      50%{
-        opacity:
-          calc(
-            var(--peak) * .80
-          );
+      62%{
+        opacity:var(--peak);
+        transform:scale(1.40);
       }
 
-      58%{
-        opacity:
-          var(--peak);
+      74%{
+        opacity:calc(var(--peak) * .62);
+        transform:scale(1.04);
       }
 
-      66%{
-        opacity:
-          calc(
-            var(--peak) * .82
-          );
-      }
-
-      75%{
-        opacity:
-          calc(
-            var(--peak) * .55
-          );
-      }
-
-      84%{
-        opacity:
-          calc(
-            var(--peak) * .28
-          );
-      }
-
-      92%{
-        opacity:
-          calc(
-            var(--peak) * .09
-          );
+      86%{
+        opacity:calc(var(--peak) * .22);
+        transform:scale(.70);
       }
 
       100%{
-        opacity:0;
+        opacity:.01;
+        transform:scale(.32);
       }
 
     }
@@ -535,6 +840,26 @@
     }
 
 
+    .hero-sparkles{
+      position:absolute;
+
+      inset:-3%;
+
+      width:106%;
+      height:106%;
+
+      object-fit:cover;
+
+      z-index:1;
+
+      pointer-events:none;
+
+      mix-blend-mode:screen;
+
+      opacity:.09;
+    }
+
+
     /* =====================================================
        LOGO
     ===================================================== */
@@ -567,7 +892,7 @@
 
 
     /* =====================================================
-       CONTEÚDO DA CAPA
+       CONTEÚDO CAPA
     ===================================================== */
 
     .hero-content{
@@ -588,8 +913,6 @@
       align-items:center;
 
       text-align:center;
-
-      will-change:transform;
     }
 
 
@@ -698,7 +1021,7 @@
 
 
     /* =====================================================
-       INDICADOR
+       DESLIZE
     ===================================================== */
 
     .scroll-indicator{
@@ -807,6 +1130,9 @@
 
       filter:none;
       opacity:1;
+
+      transform:
+        translate3d(0,0,0);
     }
 
 
@@ -865,6 +1191,36 @@
     }
 
 
+    .works-sparkles-layer{
+      position:absolute;
+
+      top:-250px;
+      left:-7%;
+      right:-7%;
+      bottom:-180px;
+
+      z-index:0;
+
+      pointer-events:none;
+
+      opacity:.32;
+    }
+
+
+    .works-sparkles{
+      width:114%;
+      height:114%;
+
+      margin-left:-7%;
+
+      object-fit:cover;
+
+      mix-blend-mode:screen;
+
+      opacity:.20;
+    }
+
+
     .works-glow{
       position:absolute;
 
@@ -901,7 +1257,9 @@
 
       z-index:7;
 
-      padding:0 35px;
+      padding:
+        0
+        35px;
 
       max-width:800px;
 
@@ -914,13 +1272,12 @@
 
       transform:
         translate3d(0,0,0);
-
-      will-change:transform;
     }
 
 
     .works-eyebrow{
       display:flex;
+
       align-items:center;
 
       gap:20px;
@@ -1007,8 +1364,7 @@
         rgba(238,229,216,.78);
 
       text-shadow:
-        0 3px 12px
-        rgba(0,0,0,.88);
+        0 3px 12px rgba(0,0,0,.88);
     }
 
 
@@ -1022,6 +1378,7 @@
       z-index:7;
 
       display:flex;
+
       align-items:center;
 
       justify-content:space-between;
@@ -1047,6 +1404,7 @@
 
     .works-drag-arrow{
       display:flex;
+
       align-items:center;
 
       gap:7px;
@@ -1172,6 +1530,7 @@
 
     .work-card-image{
       position:absolute;
+
       inset:0;
 
       overflow:hidden;
@@ -1186,6 +1545,7 @@
 
     .work-card img{
       position:absolute;
+
       inset:0;
 
       width:100%;
@@ -1194,6 +1554,11 @@
       object-fit:cover;
 
       display:block;
+
+      transition:
+        transform
+        .75s
+        cubic-bezier(.2,.75,.25,1);
     }
 
 
@@ -1296,14 +1661,18 @@
       z-index:7;
 
       display:flex;
+
       align-items:center;
 
-      padding:0 35px;
+      padding:
+        0
+        35px;
     }
 
 
     .works-counter{
       display:flex;
+
       align-items:baseline;
 
       gap:7px;
@@ -1316,7 +1685,6 @@
 
     .works-current{
       font-size:30px;
-
       color:#e7d8be;
     }
 
@@ -1355,7 +1723,9 @@
       min-height:100svh;
 
       display:flex;
+
       align-items:center;
+
       justify-content:center;
 
       padding:
@@ -1468,7 +1838,9 @@
       min-height:100svh;
 
       display:flex;
+
       justify-content:center;
+
       align-items:center;
 
       padding:
@@ -1635,6 +2007,7 @@
       display:inline-flex;
 
       align-items:center;
+
       justify-content:center;
 
       min-width:190px;
@@ -1693,7 +2066,9 @@
       z-index:180;
 
       display:flex;
+
       align-items:center;
+
       justify-content:center;
 
       border-radius:50%;
@@ -2031,7 +2406,7 @@
         scroll-behavior:auto;
       }
 
-      .sparkle-layer,
+      .twinkle,
       .work-card,
       .whatsapp-button,
       .whatsapp-button::before,
@@ -2055,6 +2430,21 @@
     class="site-background"
     aria-hidden="true"
   ></div>
+
+
+  <div
+    class="global-sparkles-layer"
+    id="globalSparklesLayer"
+    aria-hidden="true"
+  >
+
+    <img
+      class="global-sparkles"
+      src="24CD378D-F11E-4CB2-B0FC-FCAFBE91B276.png"
+      alt=""
+    >
+
+  </div>
 
 
   <!-- MENU -->
@@ -2087,32 +2477,19 @@
       Menu
     </div>
 
-
     <div class="menu-links">
 
-      <a href="#trabalhos">
-        Trabalhos
-      </a>
+      <a href="#trabalhos">Trabalhos</a>
 
-      <a href="#estudio">
-        O estúdio
-      </a>
+      <a href="#estudio">O estúdio</a>
 
-      <a href="#yara">
-        Yara Nicácio
-      </a>
+      <a href="#yara">Yara Nicácio</a>
 
-      <a href="#precos">
-        Tabela de preços
-      </a>
+      <a href="#precos">Tabela de preços</a>
 
-      <a href="#avaliacoes">
-        Avaliações
-      </a>
+      <a href="#avaliacoes">Avaliações</a>
 
-      <a href="#endereco">
-        Endereço
-      </a>
+      <a href="#endereco">Endereço</a>
 
     </div>
 
@@ -2135,18 +2512,18 @@
         alt="Yara Nicácio e Nail Art"
       >
 
+      <img
+        class="hero-sparkles"
+        src="24CD378D-F11E-4CB2-B0FC-FCAFBE91B276.png"
+        alt=""
+      >
 
       <div
-        class="sparkle-field"
-        data-sparkles="hero"
-        aria-hidden="true"
+        class="twinkle-field"
+        id="heroTwinkles"
       ></div>
 
-
-      <div
-        class="hero-bottom-fade"
-        aria-hidden="true"
-      ></div>
+      <div class="hero-bottom-fade"></div>
 
 
       <img
@@ -2168,7 +2545,6 @@
           alt="Yara Nicácio"
         >
 
-
         <div class="nail-artistic-wrap">
 
           <img
@@ -2179,16 +2555,11 @@
 
         </div>
 
-
         <p class="hero-phrase">
           O que você escolhe, vira arte em suas unhas
         </p>
 
-
-        <div
-          class="phrase-detail"
-          aria-hidden="true"
-        ></div>
+        <div class="phrase-detail"></div>
 
       </div>
 
@@ -2217,33 +2588,34 @@
         class="works-background-photo"
         src="22570524-7852-4D7E-99DE-6090DA3A9A55.jpeg"
         alt=""
-        aria-hidden="true"
       >
 
+      <div class="works-background-blend"></div>
 
-      <div
-        class="works-background-blend"
-        aria-hidden="true"
-      ></div>
+      <div class="works-background-depth"></div>
 
 
       <div
-        class="works-background-depth"
-        aria-hidden="true"
-      ></div>
+        class="works-sparkles-layer"
+        id="worksSparklesLayer"
+      >
+
+        <img
+          class="works-sparkles"
+          src="24CD378D-F11E-4CB2-B0FC-FCAFBE91B276.png"
+          alt=""
+        >
+
+      </div>
 
 
       <div
-        class="sparkle-field"
-        data-sparkles="works"
-        aria-hidden="true"
+        class="twinkle-field"
+        id="worksTwinkles"
       ></div>
 
 
-      <div
-        class="works-glow"
-        aria-hidden="true"
-      ></div>
+      <div class="works-glow"></div>
 
 
       <div class="works-header">
@@ -2257,11 +2629,9 @@
             Nail Artistic
           </div>
 
-
           <h2 class="works-title">
             Trabalhos
           </h2>
-
 
           <p class="works-description">
             Criações desenvolvidas nos mínimos detalhes,
@@ -2278,7 +2648,6 @@
         <span class="works-drag-text">
           Deslize para explorar
         </span>
-
 
         <div class="works-drag-arrow">
 
@@ -2299,110 +2668,70 @@
 
         <article class="work-card">
           <div class="work-card-image">
-            <img
-              src="e3ad0ae1-c488-46af-9158-a3deb5face01.jpeg"
-              alt="Nail Art Yara Nicácio"
-              loading="lazy"
-            >
+            <img src="e3ad0ae1-c488-46af-9158-a3deb5face01.jpeg" alt="Nail Art Yara Nicácio">
           </div>
         </article>
 
 
         <article class="work-card">
           <div class="work-card-image">
-            <img
-              src="bc419ed5-ed49-4355-9452-30b7eb869860.jpeg"
-              alt="Nail Art Yara Nicácio"
-              loading="lazy"
-            >
+            <img src="bc419ed5-ed49-4355-9452-30b7eb869860.jpeg" alt="Nail Art Yara Nicácio">
           </div>
         </article>
 
 
         <article class="work-card">
           <div class="work-card-image">
-            <img
-              src="5527e37e-3148-4c0c-8bbf-0f6710ba04a6.jpeg"
-              alt="Nail Art Yara Nicácio"
-              loading="lazy"
-            >
+            <img src="5527e37e-3148-4c0c-8bbf-0f6710ba04a6.jpeg" alt="Nail Art Yara Nicácio">
           </div>
         </article>
 
 
         <article class="work-card">
           <div class="work-card-image">
-            <img
-              src="15b54e6d-a6bb-42b6-84e1-fcdf0c0d6169.jpeg"
-              alt="Nail Art Yara Nicácio"
-              loading="lazy"
-            >
+            <img src="15b54e6d-a6bb-42b6-84e1-fcdf0c0d6169.jpeg" alt="Nail Art Yara Nicácio">
           </div>
         </article>
 
 
         <article class="work-card">
           <div class="work-card-image">
-            <img
-              src="debe1e33-9d29-4f2b-9bd4-f5fa6a37f009.jpeg"
-              alt="Nail Art Yara Nicácio"
-              loading="lazy"
-            >
+            <img src="debe1e33-9d29-4f2b-9bd4-f5fa6a37f009.jpeg" alt="Nail Art Yara Nicácio">
           </div>
         </article>
 
 
         <article class="work-card">
           <div class="work-card-image">
-            <img
-              src="0c71fd76-948f-4522-b7a3-06e1555c9dda.jpeg"
-              alt="Nail Art Yara Nicácio"
-              loading="lazy"
-            >
+            <img src="0c71fd76-948f-4522-b7a3-06e1555c9dda.jpeg" alt="Nail Art Yara Nicácio">
           </div>
         </article>
 
 
         <article class="work-card">
           <div class="work-card-image">
-            <img
-              src="244f17b4-d1d6-4516-b3a8-629694c8f941.jpeg"
-              alt="Nail Art Yara Nicácio"
-              loading="lazy"
-            >
+            <img src="244f17b4-d1d6-4516-b3a8-629694c8f941.jpeg" alt="Nail Art Yara Nicácio">
           </div>
         </article>
 
 
         <article class="work-card">
           <div class="work-card-image">
-            <img
-              src="d242cc6d-d5b6-4f96-b9fb-2ff206de1ae5.jpeg"
-              alt="Nail Art Yara Nicácio"
-              loading="lazy"
-            >
+            <img src="d242cc6d-d5b6-4f96-b9fb-2ff206de1ae5.jpeg" alt="Nail Art Yara Nicácio">
           </div>
         </article>
 
 
         <article class="work-card">
           <div class="work-card-image">
-            <img
-              src="25c27bb6-e5b5-4ca5-aa81-eac0b57ff341.jpeg"
-              alt="Nail Art Yara Nicácio"
-              loading="lazy"
-            >
+            <img src="25c27bb6-e5b5-4ca5-aa81-eac0b57ff341.jpeg" alt="Nail Art Yara Nicácio">
           </div>
         </article>
 
 
         <article class="work-card">
           <div class="work-card-image">
-            <img
-              src="0874cfbe-f9fd-4974-ac18-385dba047b94.jpeg"
-              alt="Nail Art Yara Nicácio"
-              loading="lazy"
-            >
+            <img src="0874cfbe-f9fd-4974-ac18-385dba047b94.jpeg" alt="Nail Art Yara Nicácio">
           </div>
         </article>
 
@@ -2427,7 +2756,6 @@
 
         </div>
 
-
         <div class="works-footer-line"></div>
 
       </div>
@@ -2443,14 +2771,10 @@
     >
 
       <div
-        class="sparkle-field"
-        data-sparkles="page"
-        aria-hidden="true"
+        class="twinkle-field page-twinkles"
       ></div>
 
-
       <div class="future-light"></div>
-
 
       <div class="future-content">
 
@@ -2458,11 +2782,9 @@
           Yara Nicácio
         </small>
 
-
         <h2>
           O estúdio
         </h2>
-
 
         <p>
           Uma experiência pensada em cada detalhe.
@@ -2481,14 +2803,10 @@
     >
 
       <div
-        class="sparkle-field"
-        data-sparkles="page"
-        aria-hidden="true"
+        class="twinkle-field page-twinkles"
       ></div>
 
-
       <div class="future-light"></div>
-
 
       <div class="future-content">
 
@@ -2496,11 +2814,9 @@
           Nail Artist
         </small>
 
-
         <h2>
           Yara Nicácio
         </h2>
-
 
         <p>
           Técnica, identidade e criatividade
@@ -2520,14 +2836,10 @@
     >
 
       <div
-        class="sparkle-field"
-        data-sparkles="page"
-        aria-hidden="true"
+        class="twinkle-field page-twinkles"
       ></div>
 
-
       <div class="future-light"></div>
-
 
       <div class="future-content">
 
@@ -2535,11 +2847,9 @@
           Serviços
         </small>
 
-
         <h2>
           Tabela de preços
         </h2>
-
 
         <p>
           Conheça os serviços e escolha
@@ -2559,14 +2869,10 @@
     >
 
       <div
-        class="sparkle-field"
-        data-sparkles="page"
-        aria-hidden="true"
+        class="twinkle-field page-twinkles"
       ></div>
 
-
       <div class="future-light"></div>
-
 
       <div class="future-content">
 
@@ -2574,11 +2880,9 @@
           Experiências
         </small>
 
-
         <h2>
           Avaliações
         </h2>
-
 
         <p>
           A experiência de quem já escolheu
@@ -2598,11 +2902,8 @@
     >
 
       <div
-        class="sparkle-field"
-        data-sparkles="page"
-        aria-hidden="true"
+        class="twinkle-field page-twinkles"
       ></div>
-
 
       <div class="address-glow"></div>
 
@@ -2613,19 +2914,15 @@
           Localização
         </div>
 
-
         <h2 class="address-title">
           Endereço
         </h2>
 
-
         <div class="address-line"></div>
-
 
         <div class="building">
           Edifício NBC
         </div>
-
 
         <div class="address-text">
 
@@ -2634,7 +2931,6 @@
           <br>
 
           Bethaville — Barueri, SP
-
 
           <span class="address-room">
             10º andar • Sala 1007
@@ -2647,7 +2943,6 @@
           class="map-button"
           href="https://www.google.com/maps/search/?api=1&query=Avenida+Anapolis+105+Bethaville+Barueri+SP"
           target="_blank"
-          rel="noopener noreferrer"
         >
           Ver no mapa
         </a>
@@ -2668,10 +2963,6 @@
     href="https://wa.me/5511932942455?text=Ol%C3%A1%2C%20gostaria%20de%20fazer%20as%20unhas%20com%20a%20Yara%20Nic%C3%A1cio%21%21%20%F0%9F%98%8A%F0%9F%92%85"
 
     target="_blank"
-
-    rel="noopener noreferrer"
-
-    aria-label="Falar com Yara Nicácio pelo WhatsApp"
   >
 
     <img
@@ -2796,11 +3087,15 @@
 
 
     /* =====================================================
-       NOVO SISTEMA DE BRILHO
+       BRILHOS ALEATÓRIOS
     ===================================================== */
 
-    const SPARKLE_IMAGE =
-      "7122BB23-9C04-4672-B385-81F2AC60DB83.png";
+    const variants = [
+      "variant-a",
+      "variant-b",
+      "variant-c",
+      "variant-d"
+    ];
 
 
     function randomBetween(
@@ -2809,8 +3104,7 @@
     ){
 
       return (
-        Math.random()
-        *
+        Math.random() *
         (
           max -
           min
@@ -2822,178 +3116,184 @@
     }
 
 
-    /* =====================================================
-       CONFIGURAÇÃO
+    function randomVariant(){
 
-       AGORA O PICO É BEM MAIS BAIXO.
-    ===================================================== */
+      return variants[
+        Math.floor(
+          Math.random() *
+          variants.length
+        )
+      ];
 
-    function configureSparkle(
-      layer,
-      index,
-      total,
+    }
+
+
+    function configureTwinkle(
+      twinkle,
       firstTime = false
     ){
 
 
-      /*
-         TEMPOS MAIS NATURAIS.
-
-         NÃO EXAGERADAMENTE LONGOS,
-         MAS TAMBÉM NADA RÁPIDO.
-      */
-
-      const duration =
-        randomBetween(
-          22,
-          34
+      const isLarge =
+        twinkle.classList.contains(
+          "large"
         );
 
 
-      /*
-         INTENSIDADE BAIXA.
+      const isMedium =
+        twinkle.classList.contains(
+          "medium"
+        );
 
-         O BRILHO DEVE FICAR
-         NO FUNDO, NÃO NA FRENTE.
-      */
 
-      const intensityChance =
-        Math.random();
+      let duration;
+
+
+      if(isLarge){
+
+        /*
+           GRANDES SÃO BEM LENTOS
+        */
+
+        duration =
+          randomBetween(
+            8.5,
+            16
+          );
+
+      }else if(isMedium){
+
+        duration =
+          randomBetween(
+            6.5,
+            13
+          );
+
+      }else{
+
+        duration =
+          randomBetween(
+            5.5,
+            11.5
+          );
+
+      }
 
 
       let peak;
 
 
-      if(
-        intensityChance < .15
-      ){
+      if(isLarge){
 
         peak =
           randomBetween(
-            .18,
-            .24
+            .62,
+            .96
           );
 
-      }
-      else if(
-        intensityChance < .60
-      ){
+      }else if(isMedium){
 
         peak =
           randomBetween(
-            .11,
-            .18
+            .38,
+            .78
           );
 
-      }
-      else{
+      }else{
 
         peak =
           randomBetween(
-            .055,
-            .12
+            .22,
+            .58
           );
 
       }
 
 
-      /*
-         MOVIMENTO / POSIÇÃO.
-
-         MUDA SÓ QUANDO A CAMADA
-         JÁ SUMIU.
-      */
-
-      const x =
+      const soft =
         randomBetween(
-          -10,
-          10
+          .01,
+          .065
         );
 
 
-      const y =
+      const blur =
+        isLarge
+        ?
         randomBetween(
-          -11,
-          11
+          .10,
+          .55
+        )
+        :
+        randomBetween(
+          0,
+          .24
         );
 
 
-      const scale =
-        randomBetween(
-          1.03,
-          1.20
-        );
-
-
-      layer.style.setProperty(
+      twinkle.style.setProperty(
         "--duration",
         `${duration.toFixed(2)}s`
       );
 
 
-      layer.style.setProperty(
+      twinkle.style.setProperty(
         "--peak",
-        peak.toFixed(3)
+        peak.toFixed(2)
       );
 
 
-      layer.style.setProperty(
-        "--x",
-        `${x.toFixed(2)}%`
+      twinkle.style.setProperty(
+        "--soft",
+        soft.toFixed(3)
       );
 
 
-      layer.style.setProperty(
-        "--y",
-        `${y.toFixed(2)}%`
+      twinkle.style.setProperty(
+        "--blur",
+        `${blur.toFixed(2)}px`
       );
 
 
-      layer.style.setProperty(
-        "--scale",
-        scale.toFixed(3)
+      twinkle.classList.remove(
+        "variant-a",
+        "variant-b",
+        "variant-c",
+        "variant-d",
+        "variant-e"
       );
 
 
       /*
-         ESSA PARTE É IMPORTANTE.
-
-         AS CAMADAS SÃO DISTRIBUÍDAS
-         PELO CICLO.
-
-         ENQUANTO UMA DESAPARECE,
-         A OUTRA JÁ ESTÁ NASCENDO.
+         GRANDES USAM MAIS O EFEITO
+         DE ABRIR E SUMIR.
       */
 
-      if(firstTime){
+      if(isLarge){
 
-        const stagger =
-          duration / total;
-
-
-        const calculatedDelay =
-          -(index * stagger);
-
-
-        const smallRandomOffset =
-          randomBetween(
-            -2.5,
-            2.5
-          );
-
-
-        layer.style.setProperty(
-          "--delay",
-          `${(
-            calculatedDelay
-            +
-            smallRandomOffset
-          ).toFixed(2)}s`
+        twinkle.classList.add(
+          "variant-e"
         );
 
       }else{
 
-        layer.style.setProperty(
+        twinkle.classList.add(
+          randomVariant()
+        );
+
+      }
+
+
+      if(firstTime){
+
+        twinkle.style.setProperty(
+          "--delay",
+          `${randomBetween(-16,0).toFixed(2)}s`
+        );
+
+      }else{
+
+        twinkle.style.setProperty(
           "--delay",
           "0s"
         );
@@ -3003,18 +3303,12 @@
     }
 
 
-    /* =====================================================
-       CRIA AS CAMADAS
-    ===================================================== */
-
-    function createSparkles(
+    function createTwinkles(
       container,
       amount
     ){
 
-      if(
-        !container
-      ){
+      if(!container){
         return;
       }
 
@@ -3025,59 +3319,123 @@
         i++
       ){
 
-        const layer =
+        const twinkle =
           document.createElement(
-            "img"
+            "span"
           );
 
 
-        layer.className =
-          "sparkle-layer";
+        twinkle.classList.add(
+          "twinkle"
+        );
 
 
-        layer.src =
-          SPARKLE_IMAGE;
+        twinkle.style.left =
+          `${randomBetween(2,98).toFixed(2)}%`;
 
 
-        layer.alt =
-          "";
+        twinkle.style.top =
+          `${randomBetween(2,98).toFixed(2)}%`;
 
 
-        layer.draggable =
-          false;
+        /*
+           DISTRIBUIÇÃO DE TAMANHOS
+
+           17% GRANDES
+           37% MÉDIOS
+           RESTANTE PEQUENOS
+        */
+
+        const chance =
+          Math.random();
 
 
-        configureSparkle(
-          layer,
-          i,
-          amount,
+        let size;
+
+
+        if(chance < .17){
+
+          twinkle.classList.add(
+            "large"
+          );
+
+          size =
+            randomBetween(
+              7,
+              11.5
+            );
+
+          twinkle.style.setProperty(
+            "--ray",
+            randomBetween(
+              6.5,
+              9
+            )
+          );
+
+        }else if(chance < .54){
+
+          twinkle.classList.add(
+            "medium"
+          );
+
+          size =
+            randomBetween(
+              4,
+              6.8
+            );
+
+          twinkle.style.setProperty(
+            "--ray",
+            randomBetween(
+              5.5,
+              7
+            )
+          );
+
+        }else{
+
+          twinkle.classList.add(
+            "small"
+          );
+
+          size =
+            randomBetween(
+              1.8,
+              4
+            );
+
+          twinkle.style.setProperty(
+            "--ray",
+            randomBetween(
+              4.5,
+              6
+            )
+          );
+
+        }
+
+
+        twinkle.style.setProperty(
+          "--size",
+          `${size.toFixed(2)}px`
+        );
+
+
+        configureTwinkle(
+          twinkle,
           true
         );
 
 
-        /*
-           QUANDO A CAMADA SOME:
-
-           ELA TROCA:
-           - POSIÇÃO
-           - ESCALA
-           - INTENSIDADE
-           - TEMPO
-
-           SÓ DEPOIS COMEÇA
-           A NASCER DE NOVO.
-        */
-
-        layer.addEventListener(
+        twinkle.addEventListener(
 
           "animationiteration",
 
           function(){
 
-            configureSparkle(
-              layer,
-              i,
-              amount,
+            configureTwinkle(
+              twinkle,
               false
             );
 
@@ -3087,7 +3445,7 @@
 
 
         container.appendChild(
-          layer
+          twinkle
         );
 
       }
@@ -3095,61 +3453,50 @@
     }
 
 
-    /* =====================================================
-       QUANTIDADE DE CAMADAS
+    /*
+       CAPA
 
-       MAIS CAMADAS,
-       MAS TODAS MAIS FRACAS.
-    ===================================================== */
+       MAIS VOLUME
+    */
 
+    createTwinkles(
+      document.getElementById(
+        "heroTwinkles"
+      ),
+      38
+    );
+
+
+    /*
+       TRABALHOS
+
+       AINDA MAIS VOLUME
+       POR SER UMA ÁREA GRANDE
+    */
+
+    createTwinkles(
+      document.getElementById(
+        "worksTwinkles"
+      ),
+      44
+    );
+
+
+    /*
+       TODAS AS DEMAIS SEÇÕES
+    */
 
     document
       .querySelectorAll(
-        '[data-sparkles="hero"]'
+        ".page-twinkles"
       )
       .forEach(
 
         function(container){
 
-          createSparkles(
+          createTwinkles(
             container,
-            7
-          );
-
-        }
-
-      );
-
-
-    document
-      .querySelectorAll(
-        '[data-sparkles="works"]'
-      )
-      .forEach(
-
-        function(container){
-
-          createSparkles(
-            container,
-            8
-          );
-
-        }
-
-      );
-
-
-    document
-      .querySelectorAll(
-        '[data-sparkles="page"]'
-      )
-      .forEach(
-
-        function(container){
-
-          createSparkles(
-            container,
-            6
+            30
           );
 
         }
@@ -3166,22 +3513,29 @@
         "heroContent"
       );
 
-
     const topLogo =
       document.getElementById(
         "topLogo"
       );
 
+    const globalSparklesLayer =
+      document.getElementById(
+        "globalSparklesLayer"
+      );
 
     const worksSection =
       document.getElementById(
         "trabalhos"
       );
 
-
     const worksHeaderFloat =
       document.getElementById(
         "worksHeaderFloat"
+      );
+
+    const worksSparklesLayer =
+      document.getElementById(
+        "worksSparklesLayer"
       );
 
 
@@ -3191,11 +3545,14 @@
     let logoTarget = 0;
     let logoCurrent = 0;
 
+    let globalSparkTarget = 0;
+    let globalSparkCurrent = 0;
+
     let worksHeaderTarget = 0;
     let worksHeaderCurrent = 0;
 
-    let animationRunning =
-      false;
+    let worksSparkTarget = 0;
+    let worksSparkCurrent = 0;
 
 
     function lerp(
@@ -3204,16 +3561,13 @@
       amount
     ){
 
-      return (
-        start
-        +
+      return start +
         (
           end -
           start
         )
         *
-        amount
-      );
+        amount;
 
     }
 
@@ -3232,11 +3586,14 @@
         heroTarget =
           scrollY * .145;
 
-
         logoTarget =
           scrollY * .065;
 
       }
+
+
+      globalSparkTarget =
+        scrollY * .012;
 
 
       const worksRect =
@@ -3255,44 +3612,23 @@
 
 
         const sectionCenter =
-          worksRect.top
-          +
+          worksRect.top +
           worksRect.height / 2;
 
 
         const difference =
-          viewportCenter
-          -
+          viewportCenter -
           sectionCenter;
 
 
         worksHeaderTarget =
           difference * .032;
 
+
+        worksSparkTarget =
+          difference * .012;
+
       }
-
-
-      startSmoothAnimation();
-
-    }
-
-
-    function startSmoothAnimation(){
-
-      if(
-        animationRunning
-      ){
-        return;
-      }
-
-
-      animationRunning =
-        true;
-
-
-      requestAnimationFrame(
-        smoothAnimation
-      );
 
     }
 
@@ -3316,6 +3652,14 @@
         );
 
 
+      globalSparkCurrent =
+        lerp(
+          globalSparkCurrent,
+          globalSparkTarget,
+          .075
+        );
+
+
       worksHeaderCurrent =
         lerp(
           worksHeaderCurrent,
@@ -3324,12 +3668,19 @@
         );
 
 
+      worksSparkCurrent =
+        lerp(
+          worksSparkCurrent,
+          worksSparkTarget,
+          .065
+        );
+
+
       heroContent.style.transform =
         `translate3d(
           -50%,
           calc(
-            -50%
-            +
+            -50% +
             ${heroCurrent}px
           ),
           0
@@ -3344,6 +3695,14 @@
         )`;
 
 
+      globalSparklesLayer.style.transform =
+        `translate3d(
+          0,
+          ${globalSparkCurrent}px,
+          0
+        )`;
+
+
       worksHeaderFloat.style.transform =
         `translate3d(
           0,
@@ -3352,59 +3711,27 @@
         )`;
 
 
-      const heroDifference =
-        Math.abs(
-          heroTarget -
-          heroCurrent
-        );
+      worksSparklesLayer.style.transform =
+        `translate3d(
+          0,
+          ${worksSparkCurrent}px,
+          0
+        )`;
 
 
-      const logoDifference =
-        Math.abs(
-          logoTarget -
-          logoCurrent
-        );
-
-
-      const worksDifference =
-        Math.abs(
-          worksHeaderTarget -
-          worksHeaderCurrent
-        );
-
-
-      if(
-        heroDifference > .05
-        ||
-        logoDifference > .05
-        ||
-        worksDifference > .05
-      ){
-
-        requestAnimationFrame(
-          smoothAnimation
-        );
-
-      }else{
-
-        animationRunning =
-          false;
-
-      }
+      requestAnimationFrame(
+        smoothAnimation
+      );
 
     }
 
 
     window.addEventListener(
-
       "scroll",
-
       calculateTargets,
-
       {
         passive:true
       }
-
     );
 
 
@@ -3415,6 +3742,11 @@
 
 
     calculateTargets();
+
+
+    requestAnimationFrame(
+      smoothAnimation
+    );
 
 
     /* =====================================================
@@ -3470,7 +3802,7 @@
             card.getBoundingClientRect();
 
 
-          const cardDistance =
+          const distance =
             Math.abs(
               cardRect.left -
               reference
@@ -3478,13 +3810,12 @@
 
 
           if(
-            cardDistance <
+            distance <
             closestDistance
           ){
 
             closestDistance =
-              cardDistance;
-
+              distance;
 
             closestIndex =
               index;
@@ -3526,7 +3857,6 @@
             function(){
 
               updateWorkCounter();
-
 
               galleryTicking =
                 false;
