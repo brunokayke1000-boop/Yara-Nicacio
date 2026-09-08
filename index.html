@@ -103,36 +103,50 @@
 
 
     /* =====================================================
-       BRILHO BASE
+       IMAGEM DE BRILHO BASE
+
+       AGORA ELA NÃO PULSA MAIS.
+       FICA BEM DISCRETA COMO BASE.
     ===================================================== */
 
     .global-sparkles-layer{
       position:fixed;
+
       inset:-7%;
+
       z-index:-15;
+
       pointer-events:none;
     }
 
     .global-sparkles{
       width:114%;
       height:114%;
+
       object-fit:cover;
+
       mix-blend-mode:screen;
-      opacity:.075;
+
+      opacity:.055;
     }
 
 
     /* =====================================================
-       CAMPO DE BRILHOS
+       SISTEMA DE BRILHOS ALEATÓRIOS
     ===================================================== */
 
     .twinkle-field{
       position:absolute;
+
       inset:0;
-      overflow:hidden;
-      pointer-events:none;
+
       z-index:4;
+
+      overflow:hidden;
+
+      pointer-events:none;
     }
+
 
     .twinkle{
       position:absolute;
@@ -145,7 +159,21 @@
       opacity:var(--soft);
 
       background:
-        rgba(255,225,160,.98);
+        rgba(255,222,152,.98);
+
+      box-shadow:
+
+        0 0 3px
+        rgba(255,244,203,.95),
+
+        0 0 7px
+        rgba(255,210,112,.78),
+
+        0 0 15px
+        rgba(218,157,50,.42),
+
+        0 0 28px
+        rgba(180,112,25,.18);
 
       transform:
         scale(.55);
@@ -171,82 +199,8 @@
     }
 
 
-    /* =====================================================
-       BRILHO PEQUENO
-    ===================================================== */
-
-    .twinkle.small{
-
-      box-shadow:
-
-        0 0 3px
-        rgba(255,246,211,.92),
-
-        0 0 8px
-        rgba(255,215,125,.68),
-
-        0 0 15px
-        rgba(220,159,53,.34);
-
-    }
-
-
-    /* =====================================================
-       BRILHO MÉDIO
-    ===================================================== */
-
-    .twinkle.medium{
-
-      box-shadow:
-
-        0 0 4px
-        rgba(255,248,218,.96),
-
-        0 0 10px
-        rgba(255,216,124,.78),
-
-        0 0 22px
-        rgba(224,160,52,.44),
-
-        0 0 38px
-        rgba(181,112,24,.16);
-
-    }
-
-
-    /* =====================================================
-       BRILHO GRANDE
-    ===================================================== */
-
-    .twinkle.large{
-
-      box-shadow:
-
-        0 0 5px
-        rgba(255,250,224,.98),
-
-        0 0 13px
-        rgba(255,222,139,.90),
-
-        0 0 28px
-        rgba(228,165,59,.55),
-
-        0 0 55px
-        rgba(190,121,29,.24),
-
-        0 0 80px
-        rgba(142,83,15,.10);
-
-    }
-
-
-    /* =====================================================
-       CRUZ DO BRILHO
-    ===================================================== */
-
     .twinkle::before,
     .twinkle::after{
-
       content:"";
 
       position:absolute;
@@ -257,163 +211,70 @@
       transform:
         translate(-50%,-50%);
 
-      border-radius:30px;
-
-      opacity:.58;
-
-    }
-
-
-    .twinkle::before{
-
-      width:
-        calc(
-          var(--size) * var(--ray)
-        );
-
-      height:1px;
+      border-radius:20px;
 
       background:
         linear-gradient(
           to right,
           transparent,
-          rgba(255,239,194,.88),
+          rgba(255,234,179,.9),
           transparent
         );
 
+      opacity:.70;
+    }
+
+
+    .twinkle::before{
+      width:
+        calc(
+          var(--size) * 5
+        );
+
+      height:1px;
     }
 
 
     .twinkle::after{
-
       width:1px;
 
       height:
         calc(
-          var(--size) * var(--ray)
+          var(--size) * 5
         );
 
       background:
         linear-gradient(
           to bottom,
           transparent,
-          rgba(255,239,194,.88),
+          rgba(255,234,179,.9),
           transparent
         );
-
     }
 
 
-    /* =====================================================
-       VARIAÇÕES
-    ===================================================== */
-
-    .variant-a{
-      animation-name:twinkleA;
+    .twinkle.variant-a{
+      animation-name:
+        twinkleA;
     }
 
-    .variant-b{
-      animation-name:twinkleB;
+    .twinkle.variant-b{
+      animation-name:
+        twinkleB;
     }
 
-    .variant-c{
-      animation-name:twinkleC;
+    .twinkle.variant-c{
+      animation-name:
+        twinkleC;
     }
 
-    .variant-d{
-      animation-name:twinkleD;
+    .twinkle.variant-d{
+      animation-name:
+        twinkleD;
     }
 
-    .variant-e{
-      animation-name:twinkleE;
-    }
-
-
-    /* =====================================================
-       ANIMAÇÕES MAIS LENTAS
-    ===================================================== */
 
     @keyframes twinkleA{
-
-      0%{
-        opacity:var(--soft);
-        transform:scale(.48);
-      }
-
-      24%{
-        opacity:var(--soft);
-        transform:scale(.54);
-      }
-
-      40%{
-        opacity:calc(var(--peak) * .36);
-        transform:scale(.76);
-      }
-
-      55%{
-        opacity:var(--peak);
-        transform:scale(1.18);
-      }
-
-      70%{
-        opacity:calc(var(--peak) * .42);
-        transform:scale(.84);
-      }
-
-      86%{
-        opacity:var(--soft);
-        transform:scale(.56);
-      }
-
-      100%{
-        opacity:var(--soft);
-        transform:scale(.48);
-      }
-
-    }
-
-
-    @keyframes twinkleB{
-
-      0%{
-        opacity:var(--soft);
-        transform:scale(.50);
-      }
-
-      32%{
-        opacity:var(--soft);
-        transform:scale(.56);
-      }
-
-      48%{
-        opacity:calc(var(--peak) * .40);
-        transform:scale(.78);
-      }
-
-      64%{
-        opacity:var(--peak);
-        transform:scale(1.30);
-      }
-
-      77%{
-        opacity:calc(var(--peak) * .40);
-        transform:scale(.84);
-      }
-
-      91%{
-        opacity:var(--soft);
-        transform:scale(.56);
-      }
-
-      100%{
-        opacity:var(--soft);
-        transform:scale(.50);
-      }
-
-    }
-
-
-    @keyframes twinkleC{
 
       0%{
         opacity:var(--soft);
@@ -421,26 +282,31 @@
       }
 
       18%{
-        opacity:calc(var(--peak) * .18);
-        transform:scale(.62);
+        opacity:var(--soft);
+        transform:scale(.58);
       }
 
-      36%{
-        opacity:calc(var(--peak) * .52);
-        transform:scale(.88);
-      }
-
-      54%{
+      25%{
         opacity:var(--peak);
-        transform:scale(1.16);
+        transform:scale(1.35);
+      }
+
+      34%{
+        opacity:calc(var(--peak) * .45);
+        transform:scale(.78);
+      }
+
+      58%{
+        opacity:var(--soft);
+        transform:scale(.55);
       }
 
       72%{
-        opacity:calc(var(--peak) * .36);
-        transform:scale(.79);
+        opacity:calc(var(--peak) * .70);
+        transform:scale(.95);
       }
 
-      90%{
+      80%{
         opacity:var(--soft);
         transform:scale(.55);
       }
@@ -453,31 +319,31 @@
     }
 
 
-    @keyframes twinkleD{
+    @keyframes twinkleB{
 
       0%{
         opacity:var(--soft);
         transform:scale(.45);
       }
 
-      40%{
+      36%{
         opacity:var(--soft);
-        transform:scale(.52);
+        transform:scale(.55);
+      }
+
+      44%{
+        opacity:calc(var(--peak) * .55);
+        transform:scale(.82);
+      }
+
+      49%{
+        opacity:var(--peak);
+        transform:scale(1.45);
       }
 
       55%{
         opacity:calc(var(--peak) * .35);
-        transform:scale(.80);
-      }
-
-      70%{
-        opacity:var(--peak);
-        transform:scale(1.28);
-      }
-
-      83%{
-        opacity:calc(var(--peak) * .28);
-        transform:scale(.74);
+        transform:scale(.72);
       }
 
       100%{
@@ -488,54 +354,91 @@
     }
 
 
-    /*
-       ESSA É A MAIS IMPORTANTE PARA OS GRANDES.
-
-       ELE ABRE DEVAGAR,
-       FICA MAIS FORTE,
-       E SOME DEVAGAR.
-    */
-
-    @keyframes twinkleE{
+    @keyframes twinkleC{
 
       0%{
-        opacity:.01;
-        transform:scale(.30);
+        opacity:var(--soft);
+        transform:scale(.55);
+      }
+
+      12%{
+        opacity:calc(var(--peak) * .35);
+        transform:scale(.75);
       }
 
       20%{
-        opacity:.02;
-        transform:scale(.38);
-      }
-
-      38%{
-        opacity:calc(var(--peak) * .24);
-        transform:scale(.65);
-      }
-
-      52%{
-        opacity:calc(var(--peak) * .60);
-        transform:scale(.96);
-      }
-
-      62%{
         opacity:var(--peak);
-        transform:scale(1.40);
+        transform:scale(1.20);
       }
 
-      74%{
-        opacity:calc(var(--peak) * .62);
-        transform:scale(1.04);
+      27%{
+        opacity:var(--soft);
+        transform:scale(.55);
       }
 
-      86%{
-        opacity:calc(var(--peak) * .22);
-        transform:scale(.70);
+      68%{
+        opacity:var(--soft);
+        transform:scale(.50);
+      }
+
+      77%{
+        opacity:calc(var(--peak) * .75);
+        transform:scale(1);
+      }
+
+      83%{
+        opacity:var(--soft);
+        transform:scale(.55);
       }
 
       100%{
-        opacity:.01;
-        transform:scale(.32);
+        opacity:var(--soft);
+        transform:scale(.55);
+      }
+
+    }
+
+
+    @keyframes twinkleD{
+
+      0%{
+        opacity:var(--soft);
+        transform:scale(.50);
+      }
+
+      55%{
+        opacity:var(--soft);
+        transform:scale(.55);
+      }
+
+      63%{
+        opacity:calc(var(--peak) * .35);
+        transform:scale(.70);
+      }
+
+      68%{
+        opacity:var(--peak);
+        transform:scale(1.60);
+      }
+
+      72%{
+        opacity:calc(var(--peak) * .50);
+        transform:scale(.85);
+      }
+
+      76%{
+        opacity:var(--peak);
+        transform:scale(1.12);
+      }
+
+      84%{
+        opacity:var(--soft);
+        transform:scale(.55);
+      }
+
+      100%{
+        opacity:var(--soft);
+        transform:scale(.50);
       }
 
     }
@@ -585,6 +488,11 @@
         0 0 0 5px rgba(214,167,73,.05),
         0 7px 25px rgba(0,0,0,.72),
         0 0 18px rgba(214,167,73,.17);
+
+      transition:
+        transform .35s ease,
+        background .35s ease,
+        border-color .35s ease;
     }
 
 
@@ -599,7 +507,8 @@
       background:#e5bd71;
 
       box-shadow:
-        0 0 8px rgba(218,171,76,.55);
+        0 0 8px
+        rgba(218,171,76,.55);
 
       transition:
         transform .35s ease,
@@ -613,9 +522,11 @@
         rotate(45deg);
     }
 
+
     .menu-trigger.active span:nth-child(2){
       opacity:0;
     }
+
 
     .menu-trigger.active span:nth-child(3){
       transform:
@@ -685,7 +596,8 @@
         rgba(218,171,76,.18);
 
       box-shadow:
-        25px 0 60px rgba(0,0,0,.75);
+        25px 0 60px
+        rgba(0,0,0,.75);
 
       transform:
         translate3d(-105%,0,0);
@@ -709,6 +621,7 @@
         serif;
 
       font-size:37px;
+
       font-weight:500;
 
       color:#e4bd72;
@@ -789,6 +702,7 @@
 
     .hero-photo{
       position:absolute;
+
       inset:0;
 
       width:100%;
@@ -800,6 +714,7 @@
       z-index:0;
 
       filter:none;
+
       opacity:1;
     }
 
@@ -840,6 +755,10 @@
     }
 
 
+    /* =====================================================
+       BRILHO BASE CAPA
+    ===================================================== */
+
     .hero-sparkles{
       position:absolute;
 
@@ -856,7 +775,7 @@
 
       mix-blend-mode:screen;
 
-      opacity:.09;
+      opacity:.07;
     }
 
 
@@ -875,6 +794,7 @@
       right:19px;
 
       width:125px;
+
       height:auto;
 
       z-index:7;
@@ -884,6 +804,7 @@
           0 5px 12px
           rgba(0,0,0,.75)
         )
+
         drop-shadow(
           0 0 8px
           rgba(207,159,67,.18)
@@ -892,7 +813,7 @@
 
 
     /* =====================================================
-       CONTEÚDO CAPA
+       CONTEÚDO DA CAPA
     ===================================================== */
 
     .hero-content{
@@ -920,6 +841,7 @@
       display:block;
 
       width:min(98vw,920px);
+
       max-width:100%;
 
       height:auto;
@@ -931,10 +853,12 @@
           0 7px 10px
           rgba(0,0,0,.90)
         )
+
         drop-shadow(
           0 16px 25px
           rgba(0,0,0,.72)
         )
+
         drop-shadow(
           0 0 7px
           rgba(255,255,255,.18)
@@ -948,12 +872,14 @@
       margin-top:-17px;
 
       display:flex;
+
       justify-content:center;
     }
 
 
     .nail-artistic{
       width:100%;
+
       height:auto;
 
       object-fit:contain;
@@ -962,10 +888,12 @@
         brightness(1.8)
         saturate(.55)
         contrast(1.12)
+
         drop-shadow(
           0 3px 5px
           rgba(0,0,0,.90)
         )
+
         drop-shadow(
           0 0 6px
           rgba(255,221,150,.42)
@@ -1021,7 +949,7 @@
 
 
     /* =====================================================
-       DESLIZE
+       DESLIZE CAPA
     ===================================================== */
 
     .scroll-indicator{
@@ -1044,7 +972,9 @@
       z-index:8;
 
       display:flex;
+
       flex-direction:column;
+
       align-items:center;
 
       gap:10px;
@@ -1119,16 +1049,23 @@
       left:0;
 
       width:100%;
-      height:calc(100% + 360px);
+
+      height:
+        calc(
+          100% + 360px
+        );
 
       object-fit:cover;
-      object-position:center top;
+
+      object-position:
+        center top;
 
       z-index:-5;
 
       pointer-events:none;
 
       filter:none;
+
       opacity:1;
 
       transform:
@@ -1175,6 +1112,7 @@
 
     .works-background-depth{
       position:absolute;
+
       inset:0;
 
       z-index:-2;
@@ -1191,6 +1129,12 @@
     }
 
 
+    /* =====================================================
+       BRILHO BASE DOS TRABALHOS
+
+       TAMBÉM NÃO PULSA JUNTO.
+    ===================================================== */
+
     .works-sparkles-layer{
       position:absolute;
 
@@ -1203,7 +1147,31 @@
 
       pointer-events:none;
 
-      opacity:.32;
+      opacity:.25;
+
+      -webkit-mask-image:
+        linear-gradient(
+          to bottom,
+          transparent 0%,
+          rgba(0,0,0,.15) 15%,
+          rgba(0,0,0,.65) 30%,
+          #000 45%,
+          #000 75%,
+          rgba(0,0,0,.55) 88%,
+          transparent 100%
+        );
+
+      mask-image:
+        linear-gradient(
+          to bottom,
+          transparent 0%,
+          rgba(0,0,0,.15) 15%,
+          rgba(0,0,0,.65) 30%,
+          #000 45%,
+          #000 75%,
+          rgba(0,0,0,.55) 88%,
+          transparent 100%
+        );
     }
 
 
@@ -1217,7 +1185,7 @@
 
       mix-blend-mode:screen;
 
-      opacity:.20;
+      opacity:.16;
     }
 
 
@@ -1381,7 +1349,8 @@
 
       align-items:center;
 
-      justify-content:space-between;
+      justify-content:
+        space-between;
 
       padding:
         0
@@ -1459,18 +1428,22 @@
       gap:20px;
 
       overflow-x:auto;
+
       overflow-y:hidden;
 
-      scroll-snap-type:x mandatory;
+      scroll-snap-type:
+        x mandatory;
 
-      scroll-padding-left:35px;
+      scroll-padding-left:
+        35px;
 
       padding:
         16px
         35px
         42px;
 
-      -webkit-overflow-scrolling:touch;
+      -webkit-overflow-scrolling:
+        touch;
 
       scrollbar-width:none;
 
@@ -1484,7 +1457,7 @@
 
 
     /* =====================================================
-       CARDS
+       CARDS NEON
     ===================================================== */
 
     .work-card{
@@ -1497,7 +1470,8 @@
           430px
         );
 
-      aspect-ratio:4 / 5;
+      aspect-ratio:
+        4 / 5;
 
       overflow:visible;
 
@@ -1554,6 +1528,9 @@
       object-fit:cover;
 
       display:block;
+
+      transform:
+        translate3d(0,0,0);
 
       transition:
         transform
@@ -1619,6 +1596,7 @@
       border-radius:8px;
 
       background:
+
         radial-gradient(
           circle at 8% 0%,
           rgba(255,245,205,.90) 0,
@@ -1648,6 +1626,13 @@
         );
 
       opacity:.70;
+    }
+
+
+    .work-card:active img{
+      transform:
+        scale(1.025)
+        translate3d(0,0,0);
     }
 
 
@@ -1685,6 +1670,7 @@
 
     .works-current{
       font-size:30px;
+
       color:#e7d8be;
     }
 
@@ -1714,7 +1700,7 @@
 
 
     /* =====================================================
-       DEMAIS SEÇÕES
+       OUTRAS SEÇÕES
     ===================================================== */
 
     .future-section{
@@ -1735,8 +1721,6 @@
       overflow:hidden;
 
       background:transparent;
-
-      isolation:isolate;
     }
 
 
@@ -1756,8 +1740,6 @@
 
       pointer-events:none;
 
-      z-index:0;
-
       background:
         radial-gradient(
           circle,
@@ -1771,7 +1753,7 @@
     .future-content{
       position:relative;
 
-      z-index:7;
+      z-index:3;
 
       max-width:620px;
 
@@ -1851,8 +1833,6 @@
       overflow:hidden;
 
       background:transparent;
-
-      isolation:isolate;
     }
 
 
@@ -1879,15 +1859,13 @@
         );
 
       pointer-events:none;
-
-      z-index:0;
     }
 
 
     .address-content{
       position:relative;
 
-      z-index:7;
+      z-index:3;
 
       width:100%;
       max-width:600px;
@@ -2140,6 +2118,7 @@
           0 5px 10px
           rgba(0,0,0,.85)
         )
+
         drop-shadow(
           0 0 7px
           rgba(214,167,73,.18)
@@ -2238,12 +2217,23 @@
           rgba(231,181,80,.68);
 
         box-shadow:
-          0 0 2px rgba(255,229,160,.76),
-          0 0 6px rgba(232,175,68,.42),
-          0 0 13px rgba(201,139,34,.20),
-          0 0 27px rgba(165,105,21,.08),
-          0 18px 45px rgba(0,0,0,.58);
+
+          0 0 2px
+          rgba(255,229,160,.76),
+
+          0 0 6px
+          rgba(232,175,68,.42),
+
+          0 0 13px
+          rgba(201,139,34,.20),
+
+          0 0 27px
+          rgba(165,105,21,.08),
+
+          0 18px 45px
+          rgba(0,0,0,.58);
       }
+
 
       50%{
 
@@ -2251,11 +2241,21 @@
           rgba(255,212,118,.95);
 
         box-shadow:
-          0 0 3px rgba(255,242,201,.98),
-          0 0 8px rgba(250,197,91,.72),
-          0 0 17px rgba(218,154,44,.36),
-          0 0 34px rgba(181,116,26,.15),
-          0 18px 45px rgba(0,0,0,.58);
+
+          0 0 3px
+          rgba(255,242,201,.98),
+
+          0 0 8px
+          rgba(250,197,91,.72),
+
+          0 0 17px
+          rgba(218,154,44,.36),
+
+          0 0 34px
+          rgba(181,116,26,.15),
+
+          0 18px 45px
+          rgba(0,0,0,.58);
       }
 
     }
@@ -2290,6 +2290,7 @@
 
       .nail-artistic-wrap{
         width:83vw;
+
         margin-top:-17px;
       }
 
@@ -2300,20 +2301,66 @@
             4.4vw,
             22px
           );
+
+        letter-spacing:0;
       }
 
       .works-section{
         margin-top:-95px;
+
         padding-top:205px;
       }
 
       .works-background-photo{
         top:-150px;
-        height:calc(100% + 300px);
+
+        height:
+          calc(
+            100% + 300px
+          );
+
+        object-position:
+          center top;
       }
 
       .works-header{
-        padding:0 36px;
+        padding:
+          0
+          36px;
+
+        margin-bottom:55px;
+      }
+
+      .works-eyebrow{
+        gap:18px;
+
+        font-size:9px;
+      }
+
+      .works-eyebrow::before{
+        width:58px;
+      }
+
+      .works-title{
+        font-size:
+          clamp(
+            62px,
+            16vw,
+            82px
+          );
+      }
+
+      .works-description{
+        margin-top:27px;
+
+        font-size:
+          clamp(
+            21px,
+            5.3vw,
+            26px
+          );
+
+        line-height:1.45;
       }
 
       .works-drag{
@@ -2323,11 +2370,24 @@
           20px;
       }
 
+      .works-drag-text{
+        font-size:8px;
+
+        letter-spacing:.36em;
+      }
+
+      .works-drag-line{
+        width:45px;
+      }
+
       .works-slider{
         padding:
           16px
           36px
           42px;
+
+        scroll-padding-left:
+          36px;
       }
 
       .work-card{
@@ -2335,7 +2395,9 @@
       }
 
       .works-footer{
-        padding:0 36px;
+        padding:
+          0
+          36px;
       }
 
       .future-section{
@@ -2355,6 +2417,11 @@
           150px;
       }
 
+      .whatsapp-button{
+        width:76px;
+        height:76px;
+      }
+
     }
 
 
@@ -2369,32 +2436,85 @@
         height:54px;
       }
 
+      .hero-content{
+        width:98%;
+      }
+
       .hero-phrase{
         font-size:16px;
       }
 
       .works-section{
         margin-top:-90px;
+
         padding-top:195px;
       }
 
       .works-header{
-        padding:0 26px;
+        padding:
+          0
+          26px;
       }
 
       .works-drag{
         padding-left:26px;
+
         padding-right:26px;
       }
 
       .works-slider{
         padding-left:26px;
+
         padding-right:26px;
+
+        scroll-padding-left:26px;
+      }
+
+      .work-card{
+        flex-basis:80vw;
       }
 
       .works-footer{
         padding-left:26px;
+
         padding-right:26px;
+      }
+
+      .whatsapp-button{
+        width:70px;
+
+        height:70px;
+      }
+
+    }
+
+
+    @media(min-width:800px){
+
+      .works-header,
+      .works-drag,
+      .works-footer{
+        max-width:1250px;
+
+        margin-left:auto;
+
+        margin-right:auto;
+      }
+
+      .works-slider{
+        padding-left:
+          max(
+            35px,
+            calc(
+              (100vw - 1250px) / 2
+            )
+          );
+
+        padding-right:35px;
+      }
+
+      .work-card{
+        flex-basis:390px;
       }
 
     }
@@ -2425,6 +2545,8 @@
 
 <body>
 
+
+  <!-- FUNDO -->
 
   <div
     class="site-background"
@@ -2477,19 +2599,32 @@
       Menu
     </div>
 
+
     <div class="menu-links">
 
-      <a href="#trabalhos">Trabalhos</a>
+      <a href="#trabalhos">
+        Trabalhos
+      </a>
 
-      <a href="#estudio">O estúdio</a>
+      <a href="#estudio">
+        O estúdio
+      </a>
 
-      <a href="#yara">Yara Nicácio</a>
+      <a href="#yara">
+        Yara Nicácio
+      </a>
 
-      <a href="#precos">Tabela de preços</a>
+      <a href="#precos">
+        Tabela de preços
+      </a>
 
-      <a href="#avaliacoes">Avaliações</a>
+      <a href="#avaliacoes">
+        Avaliações
+      </a>
 
-      <a href="#endereco">Endereço</a>
+      <a href="#endereco">
+        Endereço
+      </a>
 
     </div>
 
@@ -2499,12 +2634,15 @@
   <main>
 
 
-    <!-- CAPA -->
+    <!-- ===================================================
+         CAPA
+    ==================================================== -->
 
     <section
       class="hero"
       id="inicio"
     >
+
 
       <img
         class="hero-photo"
@@ -2512,18 +2650,28 @@
         alt="Yara Nicácio e Nail Art"
       >
 
+
       <img
         class="hero-sparkles"
         src="24CD378D-F11E-4CB2-B0FC-FCAFBE91B276.png"
         alt=""
+        aria-hidden="true"
       >
+
+
+      <!-- BRILHOS ALEATÓRIOS CAPA -->
 
       <div
         class="twinkle-field"
         id="heroTwinkles"
+        aria-hidden="true"
       ></div>
 
-      <div class="hero-bottom-fade"></div>
+
+      <div
+        class="hero-bottom-fade"
+        aria-hidden="true"
+      ></div>
 
 
       <img
@@ -2539,11 +2687,13 @@
         id="heroContent"
       >
 
+
         <img
           class="name-image"
           src="C45E5C96-6A36-4BB4-B559-04CEAA03B6C2.png"
           alt="Yara Nicácio"
         >
+
 
         <div class="nail-artistic-wrap">
 
@@ -2555,11 +2705,17 @@
 
         </div>
 
+
         <p class="hero-phrase">
           O que você escolhe, vira arte em suas unhas
         </p>
 
-        <div class="phrase-detail"></div>
+
+        <div
+          class="phrase-detail"
+          aria-hidden="true"
+        ></div>
+
 
       </div>
 
@@ -2574,30 +2730,44 @@
 
       </div>
 
+
     </section>
 
 
-    <!-- TRABALHOS -->
+    <!-- ===================================================
+         TRABALHOS
+    ==================================================== -->
 
     <section
       class="works-section"
       id="trabalhos"
     >
 
+
       <img
         class="works-background-photo"
         src="22570524-7852-4D7E-99DE-6090DA3A9A55.jpeg"
         alt=""
+        aria-hidden="true"
       >
 
-      <div class="works-background-blend"></div>
 
-      <div class="works-background-depth"></div>
+      <div
+        class="works-background-blend"
+        aria-hidden="true"
+      ></div>
+
+
+      <div
+        class="works-background-depth"
+        aria-hidden="true"
+      ></div>
 
 
       <div
         class="works-sparkles-layer"
         id="worksSparklesLayer"
+        aria-hidden="true"
       >
 
         <img
@@ -2609,13 +2779,19 @@
       </div>
 
 
+      <!-- BRILHOS ALEATÓRIOS TRABALHOS -->
+
       <div
         class="twinkle-field"
         id="worksTwinkles"
+        aria-hidden="true"
       ></div>
 
 
-      <div class="works-glow"></div>
+      <div
+        class="works-glow"
+        aria-hidden="true"
+      ></div>
 
 
       <div class="works-header">
@@ -2649,7 +2825,10 @@
           Deslize para explorar
         </span>
 
-        <div class="works-drag-arrow">
+        <div
+          class="works-drag-arrow"
+          aria-hidden="true"
+        >
 
           <div class="works-drag-line"></div>
 
@@ -2660,6 +2839,8 @@
       </div>
 
 
+      <!-- GALERIA -->
+
       <div
         class="works-slider"
         id="worksSlider"
@@ -2668,70 +2849,110 @@
 
         <article class="work-card">
           <div class="work-card-image">
-            <img src="e3ad0ae1-c488-46af-9158-a3deb5face01.jpeg" alt="Nail Art Yara Nicácio">
+            <img
+              src="e3ad0ae1-c488-46af-9158-a3deb5face01.jpeg"
+              alt="Nail Art Yara Nicácio"
+              loading="lazy"
+            >
           </div>
         </article>
 
 
         <article class="work-card">
           <div class="work-card-image">
-            <img src="bc419ed5-ed49-4355-9452-30b7eb869860.jpeg" alt="Nail Art Yara Nicácio">
+            <img
+              src="bc419ed5-ed49-4355-9452-30b7eb869860.jpeg"
+              alt="Nail Art Yara Nicácio"
+              loading="lazy"
+            >
           </div>
         </article>
 
 
         <article class="work-card">
           <div class="work-card-image">
-            <img src="5527e37e-3148-4c0c-8bbf-0f6710ba04a6.jpeg" alt="Nail Art Yara Nicácio">
+            <img
+              src="5527e37e-3148-4c0c-8bbf-0f6710ba04a6.jpeg"
+              alt="Nail Art Yara Nicácio"
+              loading="lazy"
+            >
           </div>
         </article>
 
 
         <article class="work-card">
           <div class="work-card-image">
-            <img src="15b54e6d-a6bb-42b6-84e1-fcdf0c0d6169.jpeg" alt="Nail Art Yara Nicácio">
+            <img
+              src="15b54e6d-a6bb-42b6-84e1-fcdf0c0d6169.jpeg"
+              alt="Nail Art Yara Nicácio"
+              loading="lazy"
+            >
           </div>
         </article>
 
 
         <article class="work-card">
           <div class="work-card-image">
-            <img src="debe1e33-9d29-4f2b-9bd4-f5fa6a37f009.jpeg" alt="Nail Art Yara Nicácio">
+            <img
+              src="debe1e33-9d29-4f2b-9bd4-f5fa6a37f009.jpeg"
+              alt="Nail Art Yara Nicácio"
+              loading="lazy"
+            >
           </div>
         </article>
 
 
         <article class="work-card">
           <div class="work-card-image">
-            <img src="0c71fd76-948f-4522-b7a3-06e1555c9dda.jpeg" alt="Nail Art Yara Nicácio">
+            <img
+              src="0c71fd76-948f-4522-b7a3-06e1555c9dda.jpeg"
+              alt="Nail Art Yara Nicácio"
+              loading="lazy"
+            >
           </div>
         </article>
 
 
         <article class="work-card">
           <div class="work-card-image">
-            <img src="244f17b4-d1d6-4516-b3a8-629694c8f941.jpeg" alt="Nail Art Yara Nicácio">
+            <img
+              src="244f17b4-d1d6-4516-b3a8-629694c8f941.jpeg"
+              alt="Nail Art Yara Nicácio"
+              loading="lazy"
+            >
           </div>
         </article>
 
 
         <article class="work-card">
           <div class="work-card-image">
-            <img src="d242cc6d-d5b6-4f96-b9fb-2ff206de1ae5.jpeg" alt="Nail Art Yara Nicácio">
+            <img
+              src="d242cc6d-d5b6-4f96-b9fb-2ff206de1ae5.jpeg"
+              alt="Nail Art Yara Nicácio"
+              loading="lazy"
+            >
           </div>
         </article>
 
 
         <article class="work-card">
           <div class="work-card-image">
-            <img src="25c27bb6-e5b5-4ca5-aa81-eac0b57ff341.jpeg" alt="Nail Art Yara Nicácio">
+            <img
+              src="25c27bb6-e5b5-4ca5-aa81-eac0b57ff341.jpeg"
+              alt="Nail Art Yara Nicácio"
+              loading="lazy"
+            >
           </div>
         </article>
 
 
         <article class="work-card">
           <div class="work-card-image">
-            <img src="0874cfbe-f9fd-4974-ac18-385dba047b94.jpeg" alt="Nail Art Yara Nicácio">
+            <img
+              src="0874cfbe-f9fd-4974-ac18-385dba047b94.jpeg"
+              alt="Nail Art Yara Nicácio"
+              loading="lazy"
+            >
           </div>
         </article>
 
@@ -2760,6 +2981,7 @@
 
       </div>
 
+
     </section>
 
 
@@ -2771,10 +2993,9 @@
     >
 
       <div
-        class="twinkle-field page-twinkles"
+        class="future-light"
+        aria-hidden="true"
       ></div>
-
-      <div class="future-light"></div>
 
       <div class="future-content">
 
@@ -2803,10 +3024,9 @@
     >
 
       <div
-        class="twinkle-field page-twinkles"
+        class="future-light"
+        aria-hidden="true"
       ></div>
-
-      <div class="future-light"></div>
 
       <div class="future-content">
 
@@ -2836,10 +3056,9 @@
     >
 
       <div
-        class="twinkle-field page-twinkles"
+        class="future-light"
+        aria-hidden="true"
       ></div>
-
-      <div class="future-light"></div>
 
       <div class="future-content">
 
@@ -2869,10 +3088,9 @@
     >
 
       <div
-        class="twinkle-field page-twinkles"
+        class="future-light"
+        aria-hidden="true"
       ></div>
-
-      <div class="future-light"></div>
 
       <div class="future-content">
 
@@ -2902,10 +3120,9 @@
     >
 
       <div
-        class="twinkle-field page-twinkles"
+        class="address-glow"
+        aria-hidden="true"
       ></div>
-
-      <div class="address-glow"></div>
 
 
       <div class="address-content">
@@ -2918,7 +3135,10 @@
           Endereço
         </h2>
 
-        <div class="address-line"></div>
+        <div
+          class="address-line"
+          aria-hidden="true"
+        ></div>
 
         <div class="building">
           Edifício NBC
@@ -2927,7 +3147,6 @@
         <div class="address-text">
 
           Avenida Anápolis, 105
-
           <br>
 
           Bethaville — Barueri, SP
@@ -2943,6 +3162,7 @@
           class="map-button"
           href="https://www.google.com/maps/search/?api=1&query=Avenida+Anapolis+105+Bethaville+Barueri+SP"
           target="_blank"
+          rel="noopener noreferrer"
         >
           Ver no mapa
         </a>
@@ -2963,6 +3183,10 @@
     href="https://wa.me/5511932942455?text=Ol%C3%A1%2C%20gostaria%20de%20fazer%20as%20unhas%20com%20a%20Yara%20Nic%C3%A1cio%21%21%20%F0%9F%98%8A%F0%9F%92%85"
 
     target="_blank"
+
+    rel="noopener noreferrer"
+
+    aria-label="Falar com Yara Nicácio pelo WhatsApp"
   >
 
     <img
@@ -3090,6 +3314,12 @@
        BRILHOS ALEATÓRIOS
     ===================================================== */
 
+    const reducedMotion =
+      window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+      ).matches;
+
+
     const variants = [
       "variant-a",
       "variant-b",
@@ -3133,107 +3363,49 @@
       firstTime = false
     ){
 
-
-      const isLarge =
-        twinkle.classList.contains(
-          "large"
+      const duration =
+        randomBetween(
+          2.2,
+          8.2
         );
 
 
-      const isMedium =
-        twinkle.classList.contains(
-          "medium"
+      /*
+        Alguns ficam muito fortes,
+        outros quase imperceptíveis.
+      */
+
+      const peak =
+        randomBetween(
+          .26,
+          .98
         );
-
-
-      let duration;
-
-
-      if(isLarge){
-
-        /*
-           GRANDES SÃO BEM LENTOS
-        */
-
-        duration =
-          randomBetween(
-            8.5,
-            16
-          );
-
-      }else if(isMedium){
-
-        duration =
-          randomBetween(
-            6.5,
-            13
-          );
-
-      }else{
-
-        duration =
-          randomBetween(
-            5.5,
-            11.5
-          );
-
-      }
-
-
-      let peak;
-
-
-      if(isLarge){
-
-        peak =
-          randomBetween(
-            .62,
-            .96
-          );
-
-      }else if(isMedium){
-
-        peak =
-          randomBetween(
-            .38,
-            .78
-          );
-
-      }else{
-
-        peak =
-          randomBetween(
-            .22,
-            .58
-          );
-
-      }
 
 
       const soft =
         randomBetween(
-          .01,
-          .065
+          .015,
+          .085
         );
 
 
       const blur =
-        isLarge
+        Math.random() > .78
         ?
         randomBetween(
-          .10,
-          .55
+          .35,
+          .75
         )
         :
         randomBetween(
           0,
-          .24
+          .18
         );
 
 
       twinkle.style.setProperty(
         "--duration",
-        `${duration.toFixed(2)}s`
+        `${duration}s`
       );
 
 
@@ -3255,40 +3427,29 @@
       );
 
 
-      twinkle.classList.remove(
-        "variant-a",
-        "variant-b",
-        "variant-c",
-        "variant-d",
-        "variant-e"
+      /*
+        Troca também o tipo de piscada.
+      */
+
+      variants.forEach(
+        variant => {
+          twinkle.classList.remove(
+            variant
+          );
+        }
       );
 
 
-      /*
-         GRANDES USAM MAIS O EFEITO
-         DE ABRIR E SUMIR.
-      */
-
-      if(isLarge){
-
-        twinkle.classList.add(
-          "variant-e"
-        );
-
-      }else{
-
-        twinkle.classList.add(
-          randomVariant()
-        );
-
-      }
+      twinkle.classList.add(
+        randomVariant()
+      );
 
 
       if(firstTime){
 
         twinkle.style.setProperty(
           "--delay",
-          `${randomBetween(-16,0).toFixed(2)}s`
+          `${randomBetween(-8,0)}s`
         );
 
       }else{
@@ -3308,7 +3469,10 @@
       amount
     ){
 
-      if(!container){
+      if(
+        !container ||
+        reducedMotion
+      ){
         return;
       }
 
@@ -3325,95 +3489,34 @@
           );
 
 
-        twinkle.classList.add(
-          "twinkle"
-        );
-
-
-        twinkle.style.left =
-          `${randomBetween(2,98).toFixed(2)}%`;
-
-
-        twinkle.style.top =
-          `${randomBetween(2,98).toFixed(2)}%`;
+        twinkle.className =
+          "twinkle";
 
 
         /*
-           DISTRIBUIÇÃO DE TAMANHOS
-
-           17% GRANDES
-           37% MÉDIOS
-           RESTANTE PEQUENOS
+          Posição completamente diferente
+          para cada brilho.
         */
 
-        const chance =
-          Math.random();
+        twinkle.style.left =
+          `${randomBetween(2,98)}%`;
 
 
-        let size;
+        twinkle.style.top =
+          `${randomBetween(3,97)}%`;
 
 
-        if(chance < .17){
+        /*
+          Alguns pequenos,
+          alguns mais destacados.
+        */
 
-          twinkle.classList.add(
-            "large"
-          );
-
-          size =
-            randomBetween(
-              7,
-              11.5
-            );
-
-          twinkle.style.setProperty(
-            "--ray",
-            randomBetween(
-              6.5,
-              9
-            )
-          );
-
-        }else if(chance < .54){
-
-          twinkle.classList.add(
-            "medium"
-          );
-
-          size =
-            randomBetween(
-              4,
-              6.8
-            );
-
-          twinkle.style.setProperty(
-            "--ray",
-            randomBetween(
-              5.5,
-              7
-            )
-          );
-
-        }else{
-
-          twinkle.classList.add(
-            "small"
-          );
-
-          size =
-            randomBetween(
-              1.8,
-              4
-            );
-
-          twinkle.style.setProperty(
-            "--ray",
-            randomBetween(
-              4.5,
-              6
-            )
-          );
-
-        }
+        const size =
+          Math.random() > .84
+          ?
+          randomBetween(4.2,6.2)
+          :
+          randomBetween(1.8,4);
 
 
         twinkle.style.setProperty(
@@ -3427,6 +3530,16 @@
           true
         );
 
+
+        /*
+          A CADA CICLO:
+          intensidade nova,
+          duração nova,
+          tipo de piscada novo.
+
+          Então um brilho fraco pode
+          virar forte no próximo ciclo.
+        */
 
         twinkle.addEventListener(
 
@@ -3454,58 +3567,28 @@
 
 
     /*
-       CAPA
-
-       MAIS VOLUME
+      Quantidade propositalmente moderada
+      para continuar leve no iPhone.
     */
 
     createTwinkles(
       document.getElementById(
         "heroTwinkles"
       ),
-      38
+      18
     );
 
-
-    /*
-       TRABALHOS
-
-       AINDA MAIS VOLUME
-       POR SER UMA ÁREA GRANDE
-    */
 
     createTwinkles(
       document.getElementById(
         "worksTwinkles"
       ),
-      44
+      22
     );
 
 
-    /*
-       TODAS AS DEMAIS SEÇÕES
-    */
-
-    document
-      .querySelectorAll(
-        ".page-twinkles"
-      )
-      .forEach(
-
-        function(container){
-
-          createTwinkles(
-            container,
-            30
-          );
-
-        }
-
-      );
-
-
     /* =====================================================
-       PARALLAX FLUIDO
+       MOVIMENTO FLUIDO DOS TEXTOS
     ===================================================== */
 
     const heroContent =
@@ -3817,6 +3900,7 @@
             closestDistance =
               distance;
 
+
             closestIndex =
               index;
 
@@ -3858,6 +3942,7 @@
 
               updateWorkCounter();
 
+
               galleryTicking =
                 false;
 
@@ -3884,7 +3969,7 @@
 
 
     /* =====================================================
-       ARRASTE DESKTOP
+       ARRASTE COMPUTADOR
     ===================================================== */
 
     let isDown =
