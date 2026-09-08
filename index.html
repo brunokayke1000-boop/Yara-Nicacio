@@ -27,12 +27,7 @@
     rel="stylesheet"
   >
 
-
   <style>
-
-    /* =========================================
-       RESET
-    ========================================= */
 
     *{
       margin:0;
@@ -41,195 +36,53 @@
     }
 
     html{
-      scroll-behavior:smooth;
       background:#050505;
+      scroll-behavior:smooth;
     }
 
     body{
       margin:0;
-
       overflow-x:hidden;
-
-      color:#ffffff;
-
-      font-family:
-        'Montserrat',
-        sans-serif;
-
-      background:
-        #050505;
+      background:#050505;
+      color:#fff;
+      font-family:'Montserrat',sans-serif;
     }
 
     button,
     a{
-      -webkit-tap-highlight-color:
-        transparent;
+      -webkit-tap-highlight-color:transparent;
     }
 
 
     /* =========================================
-       CAPA
+       FUNDO ÚNICO DO SITE
     ========================================= */
 
-    .hero{
-      position:relative;
-
-      width:100%;
-      height:100svh;
-
-      min-height:680px;
-
-      overflow:hidden;
-
-      background:#050505;
-
-      isolation:isolate;
-    }
-
-
-    .hero-background{
-      position:absolute;
-
+    .site-background{
+      position:fixed;
       inset:0;
-
-      width:100%;
-      height:100%;
-
-      object-fit:cover;
-      object-position:center;
-
-      z-index:0;
-
-      filter:none;
-      opacity:1;
-    }
-
-
-    /* =========================================
-       DEGRADÊ INFERIOR DA CAPA
-    ========================================= */
-
-    .hero-fade{
-      position:absolute;
-
-      left:0;
-      right:0;
-      bottom:-2px;
-
-      height:62%;
-
-      z-index:1;
-
+      z-index:-10;
       pointer-events:none;
 
       background:
+        radial-gradient(
+          circle at 85% 32%,
+          rgba(124,81,23,.05),
+          transparent 32%
+        ),
+
+        radial-gradient(
+          circle at 10% 65%,
+          rgba(106,68,19,.035),
+          transparent 32%
+        ),
+
         linear-gradient(
           to bottom,
-
-          rgba(5,5,5,0) 0%,
-
-          rgba(5,5,5,.03) 12%,
-
-          rgba(5,5,5,.08) 23%,
-
-          rgba(5,5,5,.17) 34%,
-
-          rgba(5,5,5,.31) 46%,
-
-          rgba(5,5,5,.48) 58%,
-
-          rgba(5,5,5,.67) 70%,
-
-          rgba(5,5,5,.82) 81%,
-
-          rgba(5,5,5,.94) 91%,
-
+          #050505 0%,
+          #070604 45%,
           #050505 100%
         );
-    }
-
-
-    /* =========================================
-       BRILHO CAPA
-    ========================================= */
-
-    .sparkles-layer{
-      position:absolute;
-
-      inset:-3%;
-
-      z-index:2;
-
-      pointer-events:none;
-
-      will-change:transform;
-    }
-
-
-    .gold-sparkles{
-      width:106%;
-      height:106%;
-
-      object-fit:cover;
-
-      mix-blend-mode:screen;
-
-      animation:
-        sparklePulse
-        3s
-        ease-in-out
-        infinite;
-    }
-
-
-    @keyframes sparklePulse{
-
-      0%,
-      100%{
-        opacity:.13;
-        transform:scale(1);
-      }
-
-      50%{
-        opacity:.30;
-        transform:scale(1.018);
-      }
-
-    }
-
-
-    /* =========================================
-       LOGO SUPERIOR
-    ========================================= */
-
-    .top-logo{
-      position:absolute;
-
-      top:
-        max(
-          27px,
-          env(safe-area-inset-top)
-        );
-
-      right:19px;
-
-      width:125px;
-      height:auto;
-
-      z-index:6;
-
-      filter:
-        drop-shadow(
-          0 5px 12px
-          rgba(0,0,0,.75)
-        )
-
-        drop-shadow(
-          0 0 8px
-          rgba(207,159,67,.18)
-        );
-
-      will-change:transform;
     }
 
 
@@ -240,11 +93,10 @@
     .menu-trigger{
       position:fixed;
 
-      top:
-        max(
-          30px,
-          env(safe-area-inset-top)
-        );
+      top:max(
+        30px,
+        env(safe-area-inset-top)
+      );
 
       left:18px;
 
@@ -262,16 +114,11 @@
       background:
         rgba(5,5,5,.72);
 
-      backdrop-filter:
-        blur(12px);
-
-      -webkit-backdrop-filter:
-        blur(12px);
+      backdrop-filter:blur(12px);
+      -webkit-backdrop-filter:blur(12px);
 
       display:flex;
-
       flex-direction:column;
-
       align-items:center;
       justify-content:center;
 
@@ -289,7 +136,6 @@
         border-color .35s ease,
         background .35s ease;
     }
-
 
     .menu-trigger span{
       display:block;
@@ -310,18 +156,15 @@
         opacity .35s ease;
     }
 
-
     .menu-trigger.active span:nth-child(1){
       transform:
         translateY(7px)
         rotate(45deg);
     }
 
-
     .menu-trigger.active span:nth-child(2){
       opacity:0;
     }
-
 
     .menu-trigger.active span:nth-child(3){
       transform:
@@ -330,13 +173,8 @@
     }
 
 
-    /* =========================================
-       OVERLAY MENU
-    ========================================= */
-
     .menu-overlay{
       position:fixed;
-
       inset:0;
 
       z-index:190;
@@ -344,14 +182,10 @@
       background:
         rgba(0,0,0,.62);
 
-      backdrop-filter:
-        blur(3px);
-
-      -webkit-backdrop-filter:
-        blur(3px);
+      backdrop-filter:blur(3px);
+      -webkit-backdrop-filter:blur(3px);
 
       opacity:0;
-
       visibility:hidden;
 
       transition:
@@ -359,16 +193,11 @@
         visibility .45s ease;
     }
 
-
     .menu-overlay.active{
       opacity:1;
       visibility:visible;
     }
 
-
-    /* =========================================
-       MENU LATERAL
-    ========================================= */
 
     .side-menu{
       position:fixed;
@@ -395,8 +224,8 @@
       background:
         linear-gradient(
           145deg,
-          rgba(7,7,7,.98),
-          rgba(13,10,6,.98)
+          rgba(7,7,7,.985),
+          rgba(13,10,6,.985)
         );
 
       border-right:
@@ -416,12 +245,9 @@
         cubic-bezier(.77,0,.18,1);
     }
 
-
     .side-menu.active{
-      transform:
-        translateX(0);
+      transform:translateX(0);
     }
-
 
     .menu-title{
       font-family:
@@ -432,13 +258,10 @@
 
       font-weight:500;
 
-      letter-spacing:.04em;
-
       color:#e4bd72;
 
       margin-bottom:42px;
     }
-
 
     .menu-title::after{
       content:"";
@@ -458,23 +281,18 @@
         );
     }
 
-
     .menu-links{
       display:flex;
-
       flex-direction:column;
-
       gap:5px;
     }
-
 
     .menu-links a{
       position:relative;
 
       display:block;
 
-      padding:
-        16px 0;
+      padding:16px 0;
 
       color:
         rgba(255,255,255,.88);
@@ -487,10 +305,6 @@
 
       font-size:25px;
 
-      font-weight:400;
-
-      letter-spacing:.02em;
-
       border-bottom:
         1px solid
         rgba(255,255,255,.06);
@@ -500,12 +314,10 @@
         padding-left .3s ease;
     }
 
-
     .menu-links a::before{
       content:"";
 
       position:absolute;
-
       left:0;
       top:50%;
 
@@ -518,12 +330,10 @@
         width .3s ease;
     }
 
-
     .menu-links a:hover{
       color:#e6bf75;
       padding-left:25px;
     }
-
 
     .menu-links a:hover::before{
       width:15px;
@@ -531,7 +341,167 @@
 
 
     /* =========================================
-       CONTEÚDO CAPA
+       CAPA
+    ========================================= */
+
+    .hero{
+      position:relative;
+
+      width:100%;
+      height:100svh;
+
+      min-height:680px;
+
+      overflow:hidden;
+
+      background:transparent;
+
+      isolation:isolate;
+    }
+
+
+    .hero-background{
+      position:absolute;
+
+      inset:0;
+
+      width:100%;
+      height:100%;
+
+      object-fit:cover;
+      object-position:center;
+
+      z-index:0;
+
+      filter:none;
+
+      opacity:1;
+    }
+
+
+    /* =========================================
+       DEGRADÊ CONTÍNUO DA FOTO
+
+       Aqui é onde a foto literalmente
+       desaparece dentro do fundo do site.
+    ========================================= */
+
+    .hero-photo-fade{
+      position:absolute;
+
+      left:0;
+      right:0;
+      bottom:-2px;
+
+      height:66%;
+
+      z-index:1;
+
+      pointer-events:none;
+
+      background:
+        linear-gradient(
+          to bottom,
+
+          rgba(5,5,5,0) 0%,
+
+          rgba(5,5,5,.025) 8%,
+
+          rgba(5,5,5,.06) 16%,
+
+          rgba(5,5,5,.12) 25%,
+
+          rgba(5,5,5,.20) 34%,
+
+          rgba(5,5,5,.31) 43%,
+
+          rgba(5,5,5,.43) 52%,
+
+          rgba(5,5,5,.56) 61%,
+
+          rgba(5,5,5,.69) 70%,
+
+          rgba(5,5,5,.80) 78%,
+
+          rgba(5,5,5,.89) 85%,
+
+          rgba(5,5,5,.95) 91%,
+
+          rgba(5,5,5,.985) 96%,
+
+          #050505 100%
+        );
+    }
+
+
+    /* =========================================
+       BRILHOS DA CAPA
+    ========================================= */
+
+    .hero-sparkles-layer{
+      position:absolute;
+
+      inset:-3%;
+
+      z-index:2;
+
+      pointer-events:none;
+
+      will-change:transform;
+    }
+
+    .hero-sparkles{
+      width:106%;
+      height:106%;
+
+      object-fit:cover;
+
+      mix-blend-mode:screen;
+
+      animation:
+        sparklePulse
+        3s
+        ease-in-out
+        infinite;
+    }
+
+
+    /* =========================================
+       LOGO
+    ========================================= */
+
+    .top-logo{
+      position:absolute;
+
+      top:max(
+        27px,
+        env(safe-area-inset-top)
+      );
+
+      right:19px;
+
+      width:125px;
+      height:auto;
+
+      z-index:6;
+
+      filter:
+        drop-shadow(
+          0 5px 12px
+          rgba(0,0,0,.75)
+        )
+
+        drop-shadow(
+          0 0 8px
+          rgba(207,159,67,.18)
+        );
+
+      will-change:transform;
+    }
+
+
+    /* =========================================
+       CONTEÚDO DA CAPA
     ========================================= */
 
     .hero-content{
@@ -548,9 +518,7 @@
       z-index:4;
 
       display:flex;
-
       flex-direction:column;
-
       align-items:center;
 
       text-align:center;
@@ -563,7 +531,6 @@
       display:block;
 
       width:min(98vw,920px);
-
       max-width:100%;
 
       height:auto;
@@ -594,14 +561,11 @@
       margin-top:-17px;
 
       display:flex;
-
       justify-content:center;
     }
 
-
     .nail-artistic{
       width:100%;
-
       height:auto;
 
       object-fit:contain;
@@ -649,11 +613,8 @@
       white-space:nowrap;
 
       text-shadow:
-        0 3px 7px
-        rgba(0,0,0,.95),
-
-        0 8px 18px
-        rgba(0,0,0,.82);
+        0 3px 7px rgba(0,0,0,.95),
+        0 8px 18px rgba(0,0,0,.82);
     }
 
 
@@ -705,7 +666,6 @@
       gap:11px;
     }
 
-
     .scroll-indicator span{
       color:
         rgba(255,255,255,.34);
@@ -716,7 +676,6 @@
 
       padding-left:.42em;
     }
-
 
     .scroll-line{
       width:1px;
@@ -737,64 +696,41 @@
     }
 
 
-    @keyframes scrollLine{
-
-      0%,
-      100%{
-        opacity:.25;
-        transform:scaleY(.7);
-      }
-
-      50%{
-        opacity:.85;
-        transform:scaleY(1);
-      }
-
-    }
-
-
     /* =========================================
-       CONEXÃO CAPA > TRABALHOS
+       ZONA DE FUSÃO
 
-       Essa faixa fica sobre as duas seções
-       e elimina o recorte visual.
+       Não tem fundo diferente.
+       É continuação do mesmo preto.
     ========================================= */
 
-    .hero-to-works-blend{
+    .continuity-zone{
       position:relative;
 
-      z-index:8;
+      height:150px;
 
-      height:230px;
+      margin-top:-2px;
 
-      margin-top:-170px;
-      margin-bottom:-60px;
-
-      pointer-events:none;
+      z-index:5;
 
       background:
         linear-gradient(
           to bottom,
-
-          rgba(5,5,5,0) 0%,
-
-          rgba(5,5,5,.18) 18%,
-
-          rgba(5,5,5,.48) 38%,
-
-          rgba(5,5,5,.78) 58%,
-
-          rgba(5,5,5,.95) 76%,
-
-          #050505 88%,
-
-          #050505 100%
+          #050505 0%,
+          #050505 22%,
+          rgba(5,5,5,.995) 50%,
+          rgba(5,5,5,.98) 100%
         );
+
+      pointer-events:none;
     }
 
 
     /* =========================================
        TRABALHOS
+
+       IMPORTANTE:
+       Não existe background próprio.
+       Ele usa o mesmo fundo geral.
     ========================================= */
 
     .works-section{
@@ -805,92 +741,99 @@
       min-height:100svh;
 
       padding:
-        125px
+        25px
         0
-        120px;
+        140px;
 
       overflow:hidden;
 
+      background:transparent;
+
       isolation:isolate;
-
-      background:
-        linear-gradient(
-          to bottom,
-
-          #050505 0%,
-
-          #060504 15%,
-
-          #080604 34%,
-
-          #090705 52%,
-
-          #070604 72%,
-
-          #050505 100%
-        );
     }
 
 
     /* =========================================
-       LUZ AMBIENTE DOS TRABALHOS
+       BRILHO DOS TRABALHOS
+
+       Começa invisível e aparece aos poucos.
+       Assim não existe borda retangular.
     ========================================= */
 
-    .works-ambient{
+    .works-sparkles-layer{
       position:absolute;
 
-      inset:0;
+      top:-240px;
+      left:-8%;
+      right:-8%;
+      bottom:-250px;
 
       z-index:0;
 
       pointer-events:none;
 
-      background:
-        radial-gradient(
-          circle at 85% 12%,
-          rgba(181,126,38,.12),
-          transparent 32%
-        ),
+      overflow:hidden;
 
-        radial-gradient(
-          circle at 6% 65%,
-          rgba(127,83,27,.07),
-          transparent 30%
+      will-change:transform;
+
+      -webkit-mask-image:
+        linear-gradient(
+          to bottom,
+
+          transparent 0%,
+
+          rgba(0,0,0,.05) 8%,
+
+          rgba(0,0,0,.25) 16%,
+
+          rgba(0,0,0,.60) 28%,
+
+          #000 40%,
+
+          #000 72%,
+
+          rgba(0,0,0,.62) 84%,
+
+          rgba(0,0,0,.20) 93%,
+
+          transparent 100%
+        );
+
+      mask-image:
+        linear-gradient(
+          to bottom,
+
+          transparent 0%,
+
+          rgba(0,0,0,.05) 8%,
+
+          rgba(0,0,0,.25) 16%,
+
+          rgba(0,0,0,.60) 28%,
+
+          #000 40%,
+
+          #000 72%,
+
+          rgba(0,0,0,.62) 84%,
+
+          rgba(0,0,0,.20) 93%,
+
+          transparent 100%
         );
     }
 
 
-    /* =========================================
-       BRILHO DUPLICADO NOS TRABALHOS
-    ========================================= */
-
-    .works-sparkles-wrap{
-      position:absolute;
-
-      inset:-6%;
-
-      z-index:1;
-
-      pointer-events:none;
-
-      will-change:transform;
-    }
-
-
     .works-sparkles{
-      width:112%;
-      height:112%;
+      width:116%;
+      height:116%;
+
+      margin-left:-8%;
 
       object-fit:cover;
       object-position:center;
 
       mix-blend-mode:screen;
-
-      filter:
-        drop-shadow(
-          0 0 8px
-          rgba(205,153,65,.08)
-        );
 
       animation:
         worksSparklePulse
@@ -900,52 +843,31 @@
     }
 
 
-    @keyframes worksSparklePulse{
-
-      0%,
-      100%{
-        opacity:.10;
-        transform:scale(1);
-      }
-
-      50%{
-        opacity:.27;
-        transform:scale(1.018);
-      }
-
-    }
-
-
     /* =========================================
-       DEGRADÊ SOBRE O BRILHO
+       LUZ DOURADA SUAVE
+
+       Também sem borda.
     ========================================= */
 
-    .works-depth-overlay{
+    .works-light{
       position:absolute;
 
-      inset:0;
+      top:-280px;
+      left:-25%;
+      right:-25%;
 
-      z-index:2;
+      height:850px;
+
+      z-index:1;
 
       pointer-events:none;
 
       background:
-        linear-gradient(
-          to bottom,
-
-          rgba(5,5,5,.86) 0%,
-
-          rgba(5,5,5,.45) 14%,
-
-          rgba(5,5,5,.14) 32%,
-
-          rgba(5,5,5,.08) 48%,
-
-          rgba(5,5,5,.28) 70%,
-
-          rgba(5,5,5,.72) 88%,
-
-          #050505 100%
+        radial-gradient(
+          ellipse at 82% 47%,
+          rgba(150,101,27,.13) 0%,
+          rgba(118,76,18,.06) 28%,
+          rgba(5,5,5,0) 67%
         );
     }
 
@@ -969,6 +891,13 @@
     }
 
 
+    .works-header-float{
+      position:relative;
+
+      will-change:transform;
+    }
+
+
     .works-eyebrow{
       display:flex;
 
@@ -988,7 +917,6 @@
       margin-bottom:18px;
     }
 
-
     .works-eyebrow::before{
       content:"";
 
@@ -1002,24 +930,6 @@
           90deg,
           rgba(210,163,83,.15),
           rgba(210,163,83,.85)
-        );
-    }
-
-
-    /* =========================================
-       TÍTULO FLUTUANTE
-    ========================================= */
-
-    .works-title-float{
-      position:relative;
-
-      will-change:transform;
-
-      transform:
-        translate3d(
-          0,
-          0,
-          0
         );
     }
 
@@ -1046,11 +956,11 @@
       color:#f3eee7;
 
       text-shadow:
-        0 9px 25px
-        rgba(0,0,0,.50),
+        0 10px 28px
+        rgba(0,0,0,.54),
 
-        0 0 30px
-        rgba(213,168,87,.035);
+        0 0 35px
+        rgba(210,160,72,.035);
     }
 
 
@@ -1099,7 +1009,6 @@
         35px
         20px;
     }
-
 
     .works-drag-text{
       color:
@@ -1158,26 +1067,6 @@
     }
 
 
-    @keyframes worksArrow{
-
-      0%,
-      100%{
-        transform:
-          translateX(0);
-
-        opacity:.55;
-      }
-
-      50%{
-        transform:
-          translateX(8px);
-
-        opacity:1;
-      }
-
-    }
-
-
     /* =========================================
        GALERIA
     ========================================= */
@@ -1199,8 +1088,7 @@
       scroll-snap-type:
         x mandatory;
 
-      scroll-padding-left:
-        35px;
+      scroll-padding-left:35px;
 
       padding:
         5px
@@ -1248,16 +1136,12 @@
 
       box-shadow:
         0 20px 45px
-        rgba(0,0,0,.48),
-
-        0 0 24px
-        rgba(196,143,51,.025);
+        rgba(0,0,0,.48);
     }
 
 
     .work-card img{
       position:absolute;
-
       inset:0;
 
       width:100%;
@@ -1272,26 +1156,6 @@
     }
 
 
-    .work-card::before{
-      content:"";
-
-      position:absolute;
-
-      inset:0;
-
-      z-index:2;
-
-      pointer-events:none;
-
-      background:
-        linear-gradient(
-          to top,
-          rgba(0,0,0,.42),
-          transparent 40%
-        );
-    }
-
-
     .work-card::after{
       content:"";
 
@@ -1299,21 +1163,19 @@
 
       inset:0;
 
-      z-index:3;
-
       pointer-events:none;
 
-      border:
-        1px solid
-        rgba(255,255,255,.02);
-
-      border-radius:5px;
+      background:
+        linear-gradient(
+          to top,
+          rgba(0,0,0,.38),
+          transparent 40%
+        );
     }
 
 
     .work-card:active img{
-      transform:
-        scale(1.025);
+      transform:scale(1.025);
     }
 
 
@@ -1327,7 +1189,6 @@
       z-index:5;
 
       display:flex;
-
       align-items:center;
 
       padding:
@@ -1352,7 +1213,6 @@
 
     .works-current{
       font-size:30px;
-
       color:#e7d8be;
     }
 
@@ -1376,42 +1236,42 @@
         linear-gradient(
           90deg,
           rgba(201,154,78,.45),
-          rgba(201,154,78,0)
+          transparent
         );
     }
 
 
     /* =========================================
-       DEGRADÊ FINAL DOS TRABALHOS
+       TRANSIÇÕES PARA TODAS AS PRÓXIMAS ÁREAS
     ========================================= */
 
-    .works-bottom-fade{
-      position:absolute;
+    .section-transition{
+      position:relative;
 
-      left:0;
-      right:0;
-      bottom:0;
+      height:220px;
 
-      height:260px;
+      margin-top:-80px;
+      margin-bottom:-80px;
 
-      z-index:3;
+      z-index:2;
 
       pointer-events:none;
 
       background:
         linear-gradient(
           to bottom,
-          rgba(5,5,5,0),
-          rgba(5,5,5,.20),
-          rgba(5,5,5,.58),
-          rgba(5,5,5,.88),
-          #050505
+          rgba(5,5,5,0) 0%,
+          rgba(5,5,5,.22) 20%,
+          rgba(5,5,5,.55) 44%,
+          rgba(5,5,5,.82) 68%,
+          rgba(5,5,5,.96) 86%,
+          #050505 100%
         );
     }
 
 
     /* =========================================
-       SEÇÕES SEGUINTES
+       PRÓXIMAS SEÇÕES
     ========================================= */
 
     .future-section{
@@ -1430,68 +1290,31 @@
 
       overflow:hidden;
 
+      background:transparent;
+    }
+
+
+    .future-section-light{
+      position:absolute;
+
+      width:700px;
+      height:700px;
+
+      border-radius:50%;
+
+      top:50%;
+      left:50%;
+
+      transform:
+        translate(-50%,-50%);
+
+      pointer-events:none;
+
       background:
         radial-gradient(
-          circle at 50% 5%,
-          rgba(158,108,37,.07),
-          transparent 37%
-        ),
-
-        linear-gradient(
-          to bottom,
-          #050505 0%,
-          #070604 24%,
-          #080705 48%,
-          #070604 74%,
-          #050505 100%
-        );
-    }
-
-
-    .future-section::before{
-      content:"";
-
-      position:absolute;
-
-      top:-150px;
-      left:0;
-      right:0;
-
-      height:260px;
-
-      pointer-events:none;
-
-      background:
-        linear-gradient(
-          to bottom,
-          rgba(5,5,5,0),
-          rgba(5,5,5,.38),
-          rgba(5,5,5,.82),
-          #050505
-        );
-    }
-
-
-    .future-section::after{
-      content:"";
-
-      position:absolute;
-
-      left:0;
-      right:0;
-      bottom:-1px;
-
-      height:220px;
-
-      pointer-events:none;
-
-      background:
-        linear-gradient(
-          to bottom,
-          transparent,
-          rgba(5,5,5,.28),
-          rgba(5,5,5,.76),
-          #050505
+          circle,
+          rgba(133,88,24,.055),
+          transparent 66%
         );
     }
 
@@ -1661,6 +1484,42 @@
     }
 
 
+    /* =========================================
+       ANIMAÇÕES
+    ========================================= */
+
+    @keyframes sparklePulse{
+
+      0%,
+      100%{
+        opacity:.13;
+        transform:scale(1);
+      }
+
+      50%{
+        opacity:.30;
+        transform:scale(1.018);
+      }
+
+    }
+
+
+    @keyframes worksSparklePulse{
+
+      0%,
+      100%{
+        opacity:.08;
+        transform:scale(1);
+      }
+
+      50%{
+        opacity:.25;
+        transform:scale(1.018);
+      }
+
+    }
+
+
     @keyframes whatsappPulse{
 
       0%,
@@ -1707,6 +1566,38 @@
     }
 
 
+    @keyframes scrollLine{
+
+      0%,
+      100%{
+        opacity:.25;
+        transform:scaleY(.7);
+      }
+
+      50%{
+        opacity:.85;
+        transform:scaleY(1);
+      }
+
+    }
+
+
+    @keyframes worksArrow{
+
+      0%,
+      100%{
+        transform:translateX(0);
+        opacity:.55;
+      }
+
+      50%{
+        transform:translateX(8px);
+        opacity:1;
+      }
+
+    }
+
+
     /* =========================================
        MOBILE
     ========================================= */
@@ -1718,8 +1609,8 @@
       }
 
 
-      .hero-fade{
-        height:63%;
+      .hero-photo-fade{
+        height:69%;
       }
 
 
@@ -1740,7 +1631,6 @@
 
       .nail-artistic-wrap{
         width:83vw;
-
         margin-top:-17px;
       }
 
@@ -1757,21 +1647,13 @@
       }
 
 
-      .hero-to-works-blend{
-        height:250px;
-
-        margin-top:-185px;
-
-        margin-bottom:-65px;
+      .continuity-zone{
+        height:175px;
       }
 
 
-      /* =====================================
-         TRABALHOS MOBILE
-      ===================================== */
-
       .works-section{
-        padding-top:135px;
+        padding-top:15px;
       }
 
 
@@ -1786,10 +1668,7 @@
 
       .works-eyebrow{
         gap:18px;
-
         font-size:9px;
-
-        margin-bottom:18px;
       }
 
 
@@ -1974,8 +1853,7 @@
         scroll-behavior:auto;
       }
 
-
-      .gold-sparkles,
+      .hero-sparkles,
       .works-sparkles,
       .whatsapp-button,
       .whatsapp-button::before,
@@ -1993,6 +1871,14 @@
 
 
 <body>
+
+
+  <!-- FUNDO ÚNICO -->
+
+  <div
+    class="site-background"
+    aria-hidden="true"
+  ></div>
 
 
   <!-- =========================================
@@ -2080,18 +1966,18 @@
 
 
       <div
-        class="hero-fade"
+        class="hero-photo-fade"
         aria-hidden="true"
       ></div>
 
 
       <div
-        class="sparkles-layer"
-        id="sparklesLayer"
+        class="hero-sparkles-layer"
+        id="heroSparklesLayer"
       >
 
         <img
-          class="gold-sparkles"
+          class="hero-sparkles"
           src="24CD378D-F11E-4CB2-B0FC-FCAFBE91B276.png"
           alt=""
           aria-hidden="true"
@@ -2160,12 +2046,10 @@
     </section>
 
 
-    <!-- =========================================
-         GRANDE DEGRADÊ ENTRE CAPA E TRABALHOS
-    ========================================= -->
+    <!-- ÁREA CONTÍNUA ENTRE AS DUAS PARTES -->
 
     <div
-      class="hero-to-works-blend"
+      class="continuity-zone"
       aria-hidden="true"
     ></div>
 
@@ -2180,18 +2064,10 @@
     >
 
 
-      <!-- LUZ AMBIENTE -->
+      <!-- BRILHO NASCENDO DO FUNDO -->
 
       <div
-        class="works-ambient"
-        aria-hidden="true"
-      ></div>
-
-
-      <!-- MESMO BRILHO DA CAPA -->
-
-      <div
-        class="works-sparkles-wrap"
+        class="works-sparkles-layer"
         id="worksSparklesLayer"
         aria-hidden="true"
       >
@@ -2205,44 +2081,39 @@
       </div>
 
 
-      <!-- CAMADA DE PROFUNDIDADE -->
-
       <div
-        class="works-depth-overlay"
+        class="works-light"
         aria-hidden="true"
       ></div>
 
 
-      <!-- CABEÇALHO -->
+      <!-- TÍTULO + FRASE FLUTUANDO -->
 
       <div
         class="works-header"
-        id="worksHeader"
       >
 
-
-        <div class="works-eyebrow">
-          Nail Artistic
-        </div>
-
-
         <div
-          class="works-title-float"
-          id="worksTitleFloat"
+          class="works-header-float"
+          id="worksHeaderFloat"
         >
+
+          <div class="works-eyebrow">
+            Nail Artistic
+          </div>
+
 
           <h2 class="works-title">
             Trabalhos
           </h2>
 
+
+          <p class="works-description">
+            Criações desenvolvidas nos mínimos detalhes,
+            transformando cada unha em uma composição única.
+          </p>
+
         </div>
-
-
-        <p class="works-description">
-          Criações desenvolvidas nos mínimos detalhes,
-          transformando cada unha em uma composição única.
-        </p>
-
 
       </div>
 
@@ -2270,7 +2141,7 @@
       </div>
 
 
-      <!-- GALERIA -->
+      <!-- FOTOS -->
 
       <div
         class="works-slider"
@@ -2279,122 +2150,99 @@
 
 
         <article class="work-card">
-
           <img
             src="e3ad0ae1-c488-46af-9158-a3deb5face01.jpeg"
-            alt="Trabalho de Nail Art por Yara Nicácio"
+            alt="Nail Art Yara Nicácio"
             loading="lazy"
           >
-
         </article>
 
 
         <article class="work-card">
-
           <img
             src="bc419ed5-ed49-4355-9452-30b7eb869860.jpeg"
-            alt="Trabalho de Nail Art por Yara Nicácio"
+            alt="Nail Art Yara Nicácio"
             loading="lazy"
           >
-
         </article>
 
 
         <article class="work-card">
-
           <img
             src="5527e37e-3148-4c0c-8bbf-0f6710ba04a6.jpeg"
-            alt="Trabalho de Nail Art por Yara Nicácio"
+            alt="Nail Art Yara Nicácio"
             loading="lazy"
           >
-
         </article>
 
 
         <article class="work-card">
-
           <img
             src="15b54e6d-a6bb-42b6-84e1-fcdf0c0d6169.jpeg"
-            alt="Trabalho de Nail Art por Yara Nicácio"
+            alt="Nail Art Yara Nicácio"
             loading="lazy"
           >
-
         </article>
 
 
         <article class="work-card">
-
           <img
             src="debe1e33-9d29-4f2b-9bd4-f5fa6a37f009.jpeg"
-            alt="Trabalho de Nail Art por Yara Nicácio"
+            alt="Nail Art Yara Nicácio"
             loading="lazy"
           >
-
         </article>
 
 
         <article class="work-card">
-
           <img
             src="0c71fd76-948f-4522-b7a3-06e1555c9dda.jpeg"
-            alt="Trabalho de Nail Art por Yara Nicácio"
+            alt="Nail Art Yara Nicácio"
             loading="lazy"
           >
-
         </article>
 
 
         <article class="work-card">
-
           <img
             src="244f17b4-d1d6-4516-b3a8-629694c8f941.jpeg"
-            alt="Trabalho de Nail Art por Yara Nicácio"
+            alt="Nail Art Yara Nicácio"
             loading="lazy"
           >
-
         </article>
 
 
         <article class="work-card">
-
           <img
             src="d242cc6d-d5b6-4f96-b9fb-2ff206de1ae5.jpeg"
-            alt="Trabalho de Nail Art por Yara Nicácio"
+            alt="Nail Art Yara Nicácio"
             loading="lazy"
           >
-
         </article>
 
 
         <article class="work-card">
-
           <img
             src="25c27bb6-e5b5-4ca5-aa81-eac0b57ff341.jpeg"
-            alt="Trabalho de Nail Art por Yara Nicácio"
+            alt="Nail Art Yara Nicácio"
             loading="lazy"
           >
-
         </article>
 
 
         <article class="work-card">
-
           <img
             src="0874cfbe-f9fd-4974-ac18-385dba047b94.jpeg"
-            alt="Trabalho de Nail Art por Yara Nicácio"
+            alt="Nail Art Yara Nicácio"
             loading="lazy"
           >
-
         </article>
 
 
       </div>
 
 
-      <!-- CONTADOR -->
-
       <div class="works-footer">
-
 
         <div class="works-counter">
 
@@ -2405,37 +2253,43 @@
             01
           </span>
 
-
           <span class="works-total">
             / 10
           </span>
 
         </div>
 
-
         <div class="works-footer-line"></div>
 
-
       </div>
-
-
-      <div
-        class="works-bottom-fade"
-        aria-hidden="true"
-      ></div>
 
 
     </section>
 
 
     <!-- =========================================
-         O ESTÚDIO
+         TRANSIÇÃO
+    ========================================= -->
+
+    <div
+      class="section-transition"
+      aria-hidden="true"
+    ></div>
+
+
+    <!-- =========================================
+         ESTÚDIO
     ========================================= -->
 
     <section
       class="future-section"
       id="estudio"
     >
+
+      <div
+        class="future-section-light"
+        aria-hidden="true"
+      ></div>
 
       <div class="future-content">
 
@@ -2456,14 +2310,25 @@
     </section>
 
 
+    <div
+      class="section-transition"
+      aria-hidden="true"
+    ></div>
+
+
     <!-- =========================================
-         YARA NICÁCIO
+         YARA
     ========================================= -->
 
     <section
       class="future-section"
       id="yara"
     >
+
+      <div
+        class="future-section-light"
+        aria-hidden="true"
+      ></div>
 
       <div class="future-content">
 
@@ -2485,6 +2350,12 @@
     </section>
 
 
+    <div
+      class="section-transition"
+      aria-hidden="true"
+    ></div>
+
+
     <!-- =========================================
          PREÇOS
     ========================================= -->
@@ -2493,6 +2364,11 @@
       class="future-section"
       id="precos"
     >
+
+      <div
+        class="future-section-light"
+        aria-hidden="true"
+      ></div>
 
       <div class="future-content">
 
@@ -2514,6 +2390,12 @@
     </section>
 
 
+    <div
+      class="section-transition"
+      aria-hidden="true"
+    ></div>
+
+
     <!-- =========================================
          AVALIAÇÕES
     ========================================= -->
@@ -2522,6 +2404,11 @@
       class="future-section"
       id="avaliacoes"
     >
+
+      <div
+        class="future-section-light"
+        aria-hidden="true"
+      ></div>
 
       <div class="future-content">
 
@@ -2543,6 +2430,12 @@
     </section>
 
 
+    <div
+      class="section-transition"
+      aria-hidden="true"
+    ></div>
+
+
     <!-- =========================================
          ENDEREÇO
     ========================================= -->
@@ -2551,6 +2444,11 @@
       class="future-section"
       id="endereco"
     >
+
+      <div
+        class="future-section-light"
+        aria-hidden="true"
+      ></div>
 
       <div class="future-content">
 
@@ -2599,10 +2497,6 @@
   </a>
 
 
-  <!-- =========================================
-       JAVASCRIPT
-  ========================================= -->
-
   <script>
 
 
@@ -2615,18 +2509,15 @@
         "menuTrigger"
       );
 
-
     const sideMenu =
       document.getElementById(
         "sideMenu"
       );
 
-
     const menuOverlay =
       document.getElementById(
         "menuOverlay"
       );
-
 
     const menuLinks =
       document.querySelectorAll(
@@ -2720,7 +2611,7 @@
 
 
     /* =========================================
-       ELEMENTOS DE PROFUNDIDADE
+       PROFUNDIDADE
     ========================================= */
 
     const heroContent =
@@ -2728,30 +2619,25 @@
         "heroContent"
       );
 
-
-    const sparklesLayer =
+    const heroSparklesLayer =
       document.getElementById(
-        "sparklesLayer"
+        "heroSparklesLayer"
       );
-
 
     const topLogo =
       document.getElementById(
         "topLogo"
       );
 
-
     const worksSection =
       document.getElementById(
         "trabalhos"
       );
 
-
-    const worksTitleFloat =
+    const worksHeaderFloat =
       document.getElementById(
-        "worksTitleFloat"
+        "worksHeaderFloat"
       );
-
 
     const worksSparklesLayer =
       document.getElementById(
@@ -2769,19 +2655,17 @@
         window.scrollY;
 
 
-      /* =====================================
-         CAPA
-      ===================================== */
+      /* CAPA */
 
       if(
         scrollY <
-        window.innerHeight * 1.2
+        window.innerHeight * 1.25
       ){
 
-        sparklesLayer.style.transform =
+        heroSparklesLayer.style.transform =
           `translate3d(
             0,
-            ${scrollY * 0.10}px,
+            ${scrollY * 0.09}px,
             0
           )`;
 
@@ -2791,7 +2675,7 @@
             -50%,
             calc(
               -50% +
-              ${scrollY * 0.18}px
+              ${scrollY * 0.17}px
             ),
             0
           )`;
@@ -2800,62 +2684,49 @@
         topLogo.style.transform =
           `translate3d(
             0,
-            ${scrollY * 0.10}px,
+            ${scrollY * 0.09}px,
             0
           )`;
 
       }
 
 
-      /* =====================================
-         TRABALHOS
+      /* TRABALHOS */
 
-         O título se desloca um pouco mais
-         rápido que o fundo, criando profundidade.
-      ===================================== */
-
-      const worksRect =
+      const rect =
         worksSection.getBoundingClientRect();
 
 
-      const worksVisible =
-        worksRect.top <
-          window.innerHeight
+      if(
+        rect.top <
+        window.innerHeight
         &&
-        worksRect.bottom > 0;
+        rect.bottom > 0
+      ){
+
+        const center =
+          window.innerHeight / 2;
 
 
-      if(worksVisible){
+        const sectionCenter =
+          rect.top +
+          rect.height / 2;
 
-        const progress =
-          (
-            window.innerHeight -
-            worksRect.top
-          )
-          /
-          (
-            window.innerHeight +
-            worksRect.height
-          );
+
+        const difference =
+          center -
+          sectionCenter;
 
 
         const titleMovement =
-          (
-            progress -
-            0.32
-          )
-          * 80;
+          difference * .055;
 
 
         const sparkleMovement =
-          (
-            progress -
-            0.32
-          )
-          * 32;
+          difference * .025;
 
 
-        worksTitleFloat.style.transform =
+        worksHeaderFloat.style.transform =
           `translate3d(
             0,
             ${titleMovement}px,
@@ -2891,7 +2762,6 @@
             updateDepth
           );
 
-
           depthTicking =
             true;
 
@@ -2916,7 +2786,7 @@
 
 
     /* =========================================
-       GALERIA
+       CONTADOR GALERIA
     ========================================= */
 
     const worksSlider =
@@ -2941,12 +2811,12 @@
 
     function updateWorkCounter(){
 
-      const trackRect =
+      const sliderRect =
         worksSlider.getBoundingClientRect();
 
 
       const reference =
-        trackRect.left + 35;
+        sliderRect.left + 35;
 
 
       let closestIndex =
@@ -2961,13 +2831,13 @@
 
         function(card,index){
 
-          const rect =
+          const cardRect =
             card.getBoundingClientRect();
 
 
           const distance =
             Math.abs(
-              rect.left -
+              cardRect.left -
               reference
             );
 
@@ -3041,12 +2911,6 @@
     );
 
 
-    window.addEventListener(
-      "resize",
-      updateWorkCounter
-    );
-
-
     updateWorkCounter();
 
 
@@ -3057,10 +2921,8 @@
     let isDown =
       false;
 
-
     let startX =
       0;
-
 
     let sliderStart =
       0;
@@ -3075,15 +2937,12 @@
         isDown =
           true;
 
-
         worksSlider.style.cursor =
           "grabbing";
-
 
         startX =
           event.pageX -
           worksSlider.offsetLeft;
-
 
         sliderStart =
           worksSlider.scrollLeft;
@@ -3102,7 +2961,6 @@
         isDown =
           false;
 
-
         worksSlider.style.cursor =
           "grab";
 
@@ -3119,7 +2977,6 @@
 
         isDown =
           false;
-
 
         worksSlider.style.cursor =
           "grab";
@@ -3166,7 +3023,6 @@
 
 
   </script>
-
 
 </body>
 
