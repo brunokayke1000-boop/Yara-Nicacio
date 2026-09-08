@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
-
   <meta charset="UTF-8">
 
   <meta
@@ -10,1195 +8,770 @@
     content="width=device-width, initial-scale=1.0, viewport-fit=cover"
   >
 
+  <meta name="theme-color" content="#050505">
+
   <title>Yara Nicácio | Nail Artistic</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-
-  <link
-    rel="preconnect"
-    href="https://fonts.gstatic.com"
-    crossorigin
-  >
-
-  <link
-    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@300;400;500&display=swap"
-    rel="stylesheet"
-  >
-
   <style>
-
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
 
-    html{
-      scroll-behavior:smooth;
+    html {
+      scroll-behavior: smooth;
+      background: #050505;
     }
 
-    body{
-      margin:0;
-      background:#050403;
-      color:#fff;
-      font-family:'Montserrat',sans-serif;
-      overflow-x:hidden;
+    body {
+      margin: 0;
+      background: #050505;
+      color: #ffffff;
+      overflow-x: hidden;
+      font-family: Georgia, "Times New Roman", serif;
     }
 
-
-    /* =========================
+    /* ========================================
        CAPA
-    ========================= */
+    ======================================== */
 
-    .hero{
-      position:relative;
-      width:100%;
-      height:100svh;
-      min-height:650px;
-      overflow:hidden;
-      background:#050403;
-      isolation:isolate;
+    .hero {
+      position: relative;
+      width: 100%;
+      height: 100svh;
+      min-height: 680px;
+      overflow: hidden;
+      background: #050505;
+      isolation: isolate;
     }
 
+    /* FOTO PRINCIPAL
+       Sem brightness, sem filtro e sem
+       camada escura sobre a fotografia.
+    */
+    .hero-background {
+      position: absolute;
+      inset: 0;
 
-    /* =========================
-       FUNDO FIXO
-    ========================= */
+      background-image:
+        url("7D66BA8E-BFEA-40F3-968E-C63FEB764C0A.jpeg");
 
-    .hero-bg{
-      position:absolute;
-      inset:0;
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      object-position:center center;
-      z-index:1;
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-size: cover;
 
-      filter:
-        brightness(.78)
-        contrast(1.03)
-        saturate(.90);
+      z-index: 0;
 
-      transform:none;
+      transform: scale(1.01);
+      will-change: transform;
     }
 
-
-    /* =========================
-       ESCURECIMENTO
-    ========================= */
-
-    .hero-overlay{
-      position:absolute;
-      inset:0;
-      z-index:2;
-      pointer-events:none;
-
-      background:
-        linear-gradient(
-          to bottom,
-          rgba(0,0,0,.22) 0%,
-          rgba(0,0,0,.28) 30%,
-          rgba(0,0,0,.42) 62%,
-          rgba(0,0,0,.68) 83%,
-          #050403 100%
-        );
-    }
-
-
-    /* =========================
-       VINHETA
-    ========================= */
-
-    .hero-vignette{
-      position:absolute;
-      inset:0;
-      z-index:3;
-      pointer-events:none;
+    /*
+      Vinheta extremamente leve.
+      Não altera o tom geral da fotografia.
+      Serve somente para acabamento nas bordas.
+    */
+    .hero-vignette {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
 
       background:
         radial-gradient(
           ellipse at center,
-          transparent 14%,
-          rgba(0,0,0,.06) 45%,
-          rgba(0,0,0,.48) 100%
+          rgba(0, 0, 0, 0) 45%,
+          rgba(0, 0, 0, 0.05) 72%,
+          rgba(0, 0, 0, 0.13) 100%
         );
     }
 
-
-    /* =========================
+    /* ========================================
        BRILHOS DOURADOS
-    ========================= */
+    ======================================== */
 
-    .gold-sparkles{
-      position:absolute;
-      inset:-8%;
-      z-index:4;
-      pointer-events:none;
-      will-change:transform;
+    .gold-sparkles {
+      position: absolute;
+      inset: -3%;
+      z-index: 2;
 
-      mix-blend-mode:screen;
+      width: 106%;
+      height: 106%;
 
-      transform:
-        translate3d(0,0,0)
-        scale(1.10);
+      object-fit: cover;
+      object-position: center;
+
+      pointer-events: none;
+
+      /* Bem mais suave para não ofuscar */
+      opacity: 0.18;
+
+      mix-blend-mode: screen;
+
+      animation: sparklePulse 3s ease-in-out infinite;
+
+      will-change: opacity, transform;
     }
 
-    .gold-sparkles img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      object-position:center;
-      display:block;
+    @keyframes sparklePulse {
+      0%,
+      100% {
+        opacity: 0.11;
+        transform: scale(1);
+      }
 
-      opacity:.88;
-
-      filter:
-        brightness(1.55)
-        saturate(1.25);
-
-      animation:
-        sparklePulse
-        1.7s
-        infinite
-        ease-in-out;
+      50% {
+        opacity: 0.24;
+        transform: scale(1.012);
+      }
     }
 
-
-    /* =========================
-       LUZ CENTRAL
-    ========================= */
-
-    .center-light{
-      position:absolute;
-      left:50%;
-      top:40%;
-
-      transform:
-        translate(-50%,-50%);
-
-      width:100vw;
-      max-width:950px;
-      height:36vh;
-
-      z-index:5;
-      pointer-events:none;
-
-      background:
-        radial-gradient(
-          ellipse at center,
-          rgba(206,150,62,.14),
-          rgba(166,110,35,.035) 45%,
-          transparent 72%
-        );
-
-      filter:blur(28px);
-    }
-
-
-    /* =========================
+    /* ========================================
        LOGOTIPO SUPERIOR
-    ========================= */
+    ======================================== */
 
-    .top-logo{
-      position:absolute;
+    .top-logo {
+      position: absolute;
+      top: max(28px, env(safe-area-inset-top));
+      right: 24px;
 
-      top:
-        calc(
-          14px +
-          env(safe-area-inset-top)
-        );
+      width: clamp(105px, 24vw, 155px);
+      height: auto;
 
-      right:10px;
+      object-fit: contain;
 
-      z-index:9;
-
-      width:118px;
-      height:118px;
-
-      display:flex;
-      align-items:center;
-      justify-content:center;
-
-      opacity:.98;
+      z-index: 5;
 
       filter:
-        drop-shadow(
-          0 8px 20px
-          rgba(0,0,0,.78)
-        );
+        drop-shadow(0 5px 12px rgba(0, 0, 0, 0.7))
+        drop-shadow(0 0 8px rgba(207, 159, 67, 0.12));
 
-      will-change:transform;
-
-      animation:
-        logoEntrance
-        1.4s
-        ease
-        forwards;
+      will-change: transform;
     }
 
-    .top-logo img{
-      width:100%;
-      height:100%;
-      object-fit:contain;
-      display:block;
+    /* ========================================
+       CONTEÚDO CENTRAL
+    ======================================== */
+
+    .hero-content {
+      position: absolute;
+
+      top: 43%;
+      left: 50%;
+
+      width: min(94%, 900px);
+
+      transform: translate(-50%, -50%);
+
+      z-index: 4;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      text-align: center;
+
+      will-change: transform;
     }
 
+    /* YARA NICÁCIO */
 
-    /* =========================
-       BLOCO CENTRAL
-    ========================= */
+    .name-image {
+      display: block;
 
-    .hero-center{
-      position:absolute;
+      width: min(96vw, 880px);
+      max-width: 100%;
+      height: auto;
 
-      left:50%;
-      top:39%;
-
-      transform:
-        translate3d(-50%,-50%,0);
-
-      z-index:8;
-
-      width:100%;
-
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      justify-content:center;
-
-      text-align:center;
-
-      padding:0 4px;
-
-      will-change:transform;
-    }
-
-
-    /* =========================
-       YARA NICÁCIO
-    ========================= */
-
-    .hero-name{
-      width:min(98vw,980px);
-
-      opacity:0;
+      object-fit: contain;
 
       filter:
-        brightness(1.10)
+        drop-shadow(0 7px 10px rgba(0, 0, 0, 0.9))
+        drop-shadow(0 16px 25px rgba(0, 0, 0, 0.7))
+        drop-shadow(0 0 7px rgba(255, 255, 255, 0.16));
 
-        drop-shadow(
-          0 5px 12px
-          rgba(0,0,0,.92)
-        )
+      transform: translateZ(0);
 
-        drop-shadow(
-          0 20px 38px
-          rgba(0,0,0,.78)
-        )
-
-        drop-shadow(
-          0 0 20px
-          rgba(255,255,255,.10)
-        );
-
-      animation:
-        nameEntrance
-        1.5s
-        .12s
-        ease
-        forwards;
+      margin: 0 auto;
     }
 
-    .hero-name img{
-      width:100%;
-      height:auto;
-      display:block;
-    }
-
-
-    /* =========================
+    /* ========================================
        NAIL ARTISTIC
-    ========================= */
+    ======================================== */
 
-    .hero-role{
-      width:min(80vw,650px);
+    .nail-artistic-wrap {
+      position: relative;
 
-      margin-top:5px;
+      width: min(79vw, 650px);
 
-      opacity:0;
+      margin-top: 17px;
 
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .nail-artistic {
+      display: block;
+
+      width: 100%;
+      height: auto;
+
+      object-fit: contain;
+
+      /*
+        Aumenta bastante a luminosidade do PNG
+        e reduz o aspecto alaranjado.
+      */
       filter:
-        drop-shadow(
-          0 5px 14px
-          rgba(0,0,0,.88)
-        );
+        brightness(1.65)
+        saturate(0.68)
+        contrast(1.12)
+        drop-shadow(0 3px 5px rgba(0, 0, 0, 0.9))
+        drop-shadow(0 0 5px rgba(255, 214, 125, 0.35))
+        drop-shadow(0 0 11px rgba(218, 171, 76, 0.20));
 
-      animation:
-        roleEntrance
-        1.4s
-        .45s
-        ease
-        forwards;
+      opacity: 1;
     }
 
-    .hero-role img{
-      width:100%;
-      height:auto;
-      display:block;
-    }
-
-
-    /* =========================
+    /* ========================================
        FRASE
-    ========================= */
+    ======================================== */
 
-    .hero-phrase{
-      margin-top:9px;
+    .hero-phrase {
+      position: relative;
 
-      width:96%;
-      max-width:850px;
+      margin-top: 18px;
 
-      white-space:nowrap;
+      width: 100%;
 
-      font-family:
-        'Cormorant Garamond',
-        serif;
+      font-family: Georgia, "Times New Roman", serif;
 
-      font-size:
-        clamp(
-          20px,
-          4.2vw,
-          28px
-        );
+      font-size: clamp(18px, 4.1vw, 29px);
+      font-weight: 400;
 
-      font-weight:400;
-      line-height:1;
+      line-height: 1.3;
 
-      letter-spacing:.4px;
+      letter-spacing: 0.035em;
 
-      color:
-        rgba(218,201,177,.64);
+      color: rgba(244, 231, 207, 0.91);
+
+      white-space: nowrap;
+
+      text-align: center;
 
       text-shadow:
-        0 3px 13px
-        rgba(0,0,0,.92);
-
-      opacity:0;
-
-      animation:
-        phraseEntrance
-        1.4s
-        .68s
-        ease
-        forwards;
+        0 3px 7px rgba(0, 0, 0, 0.95),
+        0 8px 18px rgba(0, 0, 0, 0.8),
+        0 0 8px rgba(209, 166, 87, 0.12);
     }
 
+    /* Pequeno detalhe dourado abaixo */
 
-    /* =========================
-       LINHA DOURADA
-    ========================= */
+    .phrase-detail {
+      width: 48px;
+      height: 1px;
 
-    .phrase-line{
-      width:38px;
-      height:1px;
+      margin-top: 17px;
 
-      margin-top:14px;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(218, 171, 76, 0.85),
+        transparent
+      );
 
-      background:
-        linear-gradient(
-          to right,
-          transparent,
-          rgba(217,166,80,.78),
-          transparent
-        );
-
-      opacity:0;
-
-      animation:
-        fadeIn
-        1.3s
-        1s
-        ease
-        forwards;
+      box-shadow: 0 0 7px rgba(218, 171, 76, 0.25);
     }
 
-
-    /* =========================
+    /* ========================================
        DESLIZE
-    ========================= */
+    ======================================== */
 
-    .scroll-indicator{
-      position:absolute;
+    .scroll-indicator {
+      position: absolute;
 
-      left:50%;
+      bottom: max(42px, calc(env(safe-area-inset-bottom) + 25px));
+      left: 50%;
 
-      bottom:
-        calc(
-          26px +
-          env(safe-area-inset-bottom)
-        );
+      transform: translateX(-50%);
 
-      transform:translateX(-50%);
+      z-index: 5;
 
-      z-index:10;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
 
-      display:flex;
-      flex-direction:column;
-      align-items:center;
+      gap: 11px;
 
-      gap:8px;
-
-      color:
-        rgba(255,255,255,.28);
-
-      font-size:8px;
-      letter-spacing:3px;
-      text-transform:uppercase;
+      pointer-events: none;
     }
 
-    .scroll-line{
-      width:1px;
-      height:32px;
+    .scroll-indicator span {
+      font-family: Arial, Helvetica, sans-serif;
 
-      background:
-        linear-gradient(
-          to bottom,
-          rgba(202,155,79,.80),
-          transparent
-        );
+      color: rgba(255, 255, 255, 0.34);
 
-      transform-origin:top;
+      font-size: 10px;
+      font-weight: 400;
 
-      animation:
-        scrollLine
-        1.7s
-        infinite
-        ease-in-out;
+      letter-spacing: 0.42em;
+
+      padding-left: 0.42em;
     }
 
+    .scroll-line {
+      width: 1px;
+      height: 42px;
 
-    /* =========================
+      background: linear-gradient(
+        to bottom,
+        rgba(202, 154, 67, 0.65),
+        transparent
+      );
+
+      animation: scrollLine 2.2s ease-in-out infinite;
+    }
+
+    @keyframes scrollLine {
+      0%,
+      100% {
+        opacity: 0.25;
+        transform: scaleY(0.7);
+        transform-origin: top;
+      }
+
+      50% {
+        opacity: 0.85;
+        transform: scaleY(1);
+        transform-origin: top;
+      }
+    }
+
+    /* ========================================
        WHATSAPP
-    ========================= */
+    ======================================== */
 
-    .whatsapp{
-      position:fixed;
+    .whatsapp-button {
+      position: fixed;
 
-      right:16px;
+      right: 20px;
+      bottom: max(22px, calc(env(safe-area-inset-bottom) + 16px));
 
-      bottom:
-        calc(
-          20px +
-          env(safe-area-inset-bottom)
-        );
+      width: 82px;
+      height: 82px;
 
-      z-index:9999;
+      z-index: 100;
 
-      width:62px;
-      height:62px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
 
-      display:flex;
-      align-items:center;
-      justify-content:center;
+      border-radius: 50%;
 
-      border-radius:50%;
+      text-decoration: none;
 
-      text-decoration:none;
+      animation: whatsappPulse 3s ease-in-out infinite;
 
-      transform-origin:center;
+      -webkit-tap-highlight-color: transparent;
+    }
 
-      animation:
-        whatsappPulse
-        1.7s
-        infinite
-        ease-in-out;
+    .whatsapp-button::before,
+    .whatsapp-button::after {
+      content: "";
+
+      position: absolute;
+
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .whatsapp-button::before {
+      inset: -7px;
+
+      border: 1px solid rgba(214, 167, 73, 0.30);
+
+      animation: whatsappRing 3s ease-in-out infinite;
+    }
+
+    .whatsapp-button::after {
+      inset: -16px;
+
+      border: 1px solid rgba(214, 167, 73, 0.12);
+
+      animation: whatsappRingOuter 3s ease-in-out infinite;
+    }
+
+    .whatsapp-button img {
+      position: relative;
+
+      width: 100%;
+      height: 100%;
+
+      object-fit: contain;
+
+      z-index: 2;
 
       filter:
-        drop-shadow(
-          0 9px 22px
-          rgba(0,0,0,.72)
-        );
+        drop-shadow(0 5px 10px rgba(0, 0, 0, 0.85))
+        drop-shadow(0 0 7px rgba(214, 167, 73, 0.18));
     }
 
-    .whatsapp img{
-      width:100%;
-      height:100%;
-      object-fit:contain;
-      display:block;
-      pointer-events:none;
+    @keyframes whatsappPulse {
+      0%,
+      100% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.075);
+      }
     }
 
-    .whatsapp::before{
-      content:"";
+    @keyframes whatsappRing {
+      0%,
+      100% {
+        opacity: 0.28;
+        transform: scale(0.94);
+      }
 
-      position:absolute;
-      inset:-5px;
-
-      border-radius:50%;
-
-      border:
-        1px solid
-        rgba(211,158,61,.60);
-
-      animation:
-        whatsappRing
-        1.7s
-        infinite
-        ease-out;
-
-      pointer-events:none;
+      50% {
+        opacity: 0.65;
+        transform: scale(1.08);
+      }
     }
 
-    .whatsapp::after{
-      content:"";
+    @keyframes whatsappRingOuter {
+      0%,
+      100% {
+        opacity: 0.10;
+        transform: scale(0.92);
+      }
 
-      position:absolute;
-      inset:-3px;
-
-      border-radius:50%;
-
-      border:
-        1px solid
-        rgba(211,158,61,.28);
-
-      animation:
-        whatsappRingTwo
-        1.7s
-        .35s
-        infinite
-        ease-out;
-
-      pointer-events:none;
+      50% {
+        opacity: 0.35;
+        transform: scale(1.10);
+      }
     }
 
+    /* ========================================
+       ÁREA APÓS A CAPA
+       temporária para permitir o efeito
+       de profundidade ao rolar.
+    ======================================== */
 
-    /* =========================
-       SEGUNDA SEÇÃO
-    ========================= */
+    .next-section {
+      position: relative;
 
-    .intro{
-      min-height:70vh;
-
-      display:flex;
-      align-items:center;
-      justify-content:center;
-
-      padding:100px 25px;
-
-      text-align:center;
+      min-height: 70vh;
 
       background:
-        linear-gradient(
-          to bottom,
-          #050403 0%,
-          #080604 50%,
-          #0a0805 100%
-        );
+        radial-gradient(
+          circle at 50% 0%,
+          rgba(111, 76, 27, 0.10),
+          transparent 38%
+        ),
+        #050505;
+
+      z-index: 10;
     }
 
-    .intro-content{
-      max-width:600px;
+    /* ========================================
+       MOBILE
+    ======================================== */
+
+    @media (max-width: 600px) {
+
+      .hero {
+        min-height: 100svh;
+      }
+
+      .hero-background {
+        background-position: center center;
+      }
+
+      .gold-sparkles {
+        inset: -2%;
+
+        width: 104%;
+        height: 104%;
+
+        opacity: 0.17;
+      }
+
+      .top-logo {
+        top: max(27px, env(safe-area-inset-top));
+        right: 19px;
+
+        width: 125px;
+      }
+
+      .hero-content {
+        top: 43%;
+
+        width: 95%;
+      }
+
+      .name-image {
+        width: 96vw;
+      }
+
+      .nail-artistic-wrap {
+        width: 78vw;
+        margin-top: 15px;
+      }
+
+      .hero-phrase {
+        margin-top: 17px;
+
+        font-size: clamp(17px, 4.15vw, 21px);
+
+        letter-spacing: 0.015em;
+
+        white-space: nowrap;
+      }
+
+      .phrase-detail {
+        margin-top: 15px;
+      }
+
+      .whatsapp-button {
+        width: 76px;
+        height: 76px;
+
+        right: 18px;
+      }
     }
 
-    .intro-small{
-      display:block;
+    /* Celulares muito estreitos */
 
-      margin-bottom:18px;
+    @media (max-width: 390px) {
 
-      color:#b78a4b;
+      .hero-content {
+        width: 97%;
+      }
 
-      font-size:9px;
-      letter-spacing:5px;
-      text-transform:uppercase;
+      .name-image {
+        width: 97vw;
+      }
+
+      .nail-artistic-wrap {
+        width: 80vw;
+      }
+
+      .hero-phrase {
+        font-size: 15.5px;
+        letter-spacing: 0;
+      }
+
+      .top-logo {
+        width: 112px;
+      }
+
+      .whatsapp-button {
+        width: 70px;
+        height: 70px;
+      }
     }
 
-    .intro h2{
-      font-family:
-        'Cormorant Garamond',
-        serif;
+    /* Respeita acessibilidade */
 
-      font-size:
-        clamp(
-          36px,
-          9vw,
-          62px
-        );
+    @media (prefers-reduced-motion: reduce) {
 
-      line-height:1.05;
-      font-weight:400;
-
-      color:#eee7dc;
-    }
-
-
-    /* =========================
-       ANIMAÇÕES
-    ========================= */
-
-    @keyframes sparklePulse{
-
-      0%,
-      100%{
-        opacity:.18;
-
-        transform:
-          scale(.985);
+      .gold-sparkles,
+      .whatsapp-button,
+      .whatsapp-button::before,
+      .whatsapp-button::after,
+      .scroll-line {
+        animation: none;
       }
-
-      50%{
-        opacity:1;
-
-        transform:
-          scale(1.03);
-      }
-
-    }
-
-    @keyframes logoEntrance{
-
-      from{
-        opacity:0;
-
-        transform:
-          translateY(-14px)
-          scale(.94);
-      }
-
-      to{
-        opacity:.98;
-
-        transform:
-          translateY(0)
-          scale(1);
-      }
-
-    }
-
-    @keyframes nameEntrance{
-
-      from{
-        opacity:0;
-
-        transform:
-          translateY(28px)
-          scale(.96);
-      }
-
-      to{
-        opacity:1;
-
-        transform:
-          translateY(0)
-          scale(1);
-      }
-
-    }
-
-    @keyframes roleEntrance{
-
-      from{
-        opacity:0;
-
-        transform:
-          translateY(15px)
-          scale(.97);
-      }
-
-      to{
-        opacity:1;
-
-        transform:
-          translateY(0)
-          scale(1);
-      }
-
-    }
-
-    @keyframes phraseEntrance{
-
-      from{
-        opacity:0;
-
-        transform:
-          translateY(12px);
-      }
-
-      to{
-        opacity:1;
-
-        transform:
-          translateY(0);
-      }
-
-    }
-
-    @keyframes fadeIn{
-
-      from{
-        opacity:0;
-      }
-
-      to{
-        opacity:1;
-      }
-
-    }
-
-    @keyframes scrollLine{
-
-      0%,
-      100%{
-        opacity:.25;
-
-        transform:
-          scaleY(.65);
-      }
-
-      50%{
-        opacity:1;
-
-        transform:
-          scaleY(1);
-      }
-
-    }
-
-    @keyframes whatsappPulse{
-
-      0%,
-      100%{
-        transform:
-          scale(1);
-      }
-
-      50%{
-        transform:
-          scale(1.13);
-      }
-
-    }
-
-    @keyframes whatsappRing{
-
-      0%{
-        opacity:.75;
-
-        transform:
-          scale(.85);
-      }
-
-      75%{
-        opacity:0;
-
-        transform:
-          scale(1.42);
-      }
-
-      100%{
-        opacity:0;
-
-        transform:
-          scale(1.42);
-      }
-
-    }
-
-    @keyframes whatsappRingTwo{
-
-      0%{
-        opacity:.50;
-
-        transform:
-          scale(.90);
-      }
-
-      75%{
-        opacity:0;
-
-        transform:
-          scale(1.30);
-      }
-
-      100%{
-        opacity:0;
-
-        transform:
-          scale(1.30);
-      }
-
-    }
-
-
-    /* =========================
-       CELULAR
-    ========================= */
-
-    @media(max-width:600px){
-
-      .hero{
-        height:100svh;
-        min-height:620px;
-      }
-
-      .hero-bg{
-        object-position:center top;
-      }
-
-      .gold-sparkles{
-        inset:-6% -12%;
-      }
-
-      .top-logo{
-        width:96px;
-        height:96px;
-
-        right:7px;
-
-        top:
-          calc(
-            10px +
-            env(safe-area-inset-top)
-          );
-      }
-
-      .hero-center{
-        top:39%;
-        padding:0 2px;
-      }
-
-      .hero-name{
-        width:98vw;
-      }
-
-      .hero-role{
-        width:82vw;
-        margin-top:4px;
-      }
-
-      .hero-phrase{
-        width:98%;
-        max-width:none;
-
-        margin-top:8px;
-
-        font-size:
-          clamp(
-            17px,
-            4.35vw,
-            21px
-          );
-
-        letter-spacing:.12px;
-      }
-
-      .whatsapp{
-        width:59px;
-        height:59px;
-        right:15px;
-      }
-
-    }
-
-
-    @media(max-width:360px){
-
-      .hero-name{
-        width:97vw;
-      }
-
-      .hero-role{
-        width:84vw;
-      }
-
-      .hero-phrase{
-        font-size:15px;
-      }
-
-    }
-
-
-    @media(prefers-reduced-motion:reduce){
-
-      *{
-        animation-duration:.01ms !important;
-        animation-iteration-count:1 !important;
-        scroll-behavior:auto !important;
-      }
-
     }
 
   </style>
-
 </head>
-
 
 <body>
 
+  <main>
 
-  <section
-    class="hero"
-    id="hero"
-  >
+    <section class="hero" id="inicio">
 
+      <!-- FOTO DE FUNDO -->
+      <div
+        class="hero-background"
+        id="heroBackground"
+        aria-hidden="true"
+      ></div>
 
-    <!-- FUNDO FIXO -->
+      <!-- VINHETA MUITO LEVE -->
+      <div
+        class="hero-vignette"
+        aria-hidden="true"
+      ></div>
 
-    <img
-      class="hero-bg"
-
-      src="7D66BA8E-BFEA-40F3-968E-C63FEB764C0A.jpeg"
-
-      alt="Yara Nicácio Nail Artistic"
-    >
-
-
-    <div class="hero-overlay"></div>
-
-    <div class="hero-vignette"></div>
-
-
-    <!-- BRILHOS -->
-
-    <div
-      class="gold-sparkles"
-      id="goldSparkles"
-    >
-
+      <!-- BRILHOS -->
       <img
+        class="gold-sparkles"
+        id="goldSparkles"
         src="24CD378D-F11E-4CB2-B0FC-FCAFBE91B276.png"
         alt=""
+        aria-hidden="true"
       >
 
-    </div>
-
-
-    <div class="center-light"></div>
-
-
-    <!-- LOGOTIPO -->
-
-    <div
-      class="top-logo"
-      id="topLogo"
-    >
-
+      <!-- LOGOTIPO -->
       <img
+        class="top-logo"
+        id="topLogo"
         src="B246332E-6D6E-47D0-B3DD-02096818D8AD.png"
-
-        alt="Logo Yara Nicácio"
+        alt="Yara Nicácio"
       >
 
-    </div>
+      <!-- CONTEÚDO CENTRAL -->
+      <div
+        class="hero-content"
+        id="heroContent"
+      >
 
-
-    <!-- NOME + NAIL ARTISTIC + FRASE -->
-
-    <div
-      class="hero-center"
-      id="heroCenter"
-    >
-
-
-      <div class="hero-name">
-
+        <!-- NOME -->
         <img
+          class="name-image"
           src="C45E5C96-6A36-4BB4-B559-04CEAA03B6C2.png"
-
           alt="Yara Nicácio"
         >
 
+        <!-- NAIL ARTISTIC -->
+        <div class="nail-artistic-wrap">
+
+          <img
+            class="nail-artistic"
+            src="AABE6DC3-4C34-4FDB-9157-B08BFC6D263D.png"
+            alt="Nail Artistic"
+          >
+
+        </div>
+
+        <!-- FRASE -->
+        <p class="hero-phrase">
+          O que você escolhe, vira arte em suas unhas
+        </p>
+
+        <div
+          class="phrase-detail"
+          aria-hidden="true"
+        ></div>
+
       </div>
 
+      <!-- DESLIZE -->
+      <div class="scroll-indicator">
 
-      <div class="hero-role">
+        <span>DESLIZE</span>
 
-        <img
-          src="AABE6DC3-4C34-4FDB-9157-B08BFC6D263D.png"
-
-          alt="Nail Artistic"
-        >
+        <div class="scroll-line"></div>
 
       </div>
 
+    </section>
 
-      <p class="hero-phrase">
-        O que você escolhe, vira arte em suas unhas
-      </p>
+    <!--
+      Espaço para construirmos as próximas
+      partes do site posteriormente.
+    -->
+    <section class="next-section"></section>
 
-
-      <div class="phrase-line"></div>
-
-
-    </div>
-
-
-    <div class="scroll-indicator">
-
-      Deslize
-
-      <div class="scroll-line"></div>
-
-    </div>
-
-
-  </section>
-
-
-  <section class="intro">
-
-    <div class="intro-content">
-
-      <span class="intro-small">
-        Yara Nicácio
-      </span>
-
-      <h2>
-        Sofisticação presente<br>
-        em cada detalhe.
-      </h2>
-
-    </div>
-
-  </section>
-
+  </main>
 
   <!-- WHATSAPP -->
-
   <a
-    class="whatsapp"
-
+    class="whatsapp-button"
     href="https://wa.me/5511932942455?text=Ol%C3%A1%2C%20gostaria%20de%20fazer%20as%20unhas%20com%20a%20Yara%20Nic%C3%A1cio%21%21%20%F0%9F%98%8A%F0%9F%92%85"
-
     target="_blank"
-
     rel="noopener noreferrer"
-
-    aria-label="Agendar horário com Yara Nicácio pelo WhatsApp"
+    aria-label="Falar com Yara Nicácio pelo WhatsApp"
   >
 
     <img
       src="0F16142F-FE3F-4FF5-B505-D1D0285A19CA.png"
-
       alt="WhatsApp"
     >
 
   </a>
 
-
-  <!-- PROFUNDIDADE -->
-
   <script>
 
-    const hero =
-      document.getElementById('hero');
+    /*
+      PROFUNDIDADE / PARALLAX
 
-    const goldSparkles =
-      document.getElementById('goldSparkles');
+      O fundo se movimenta menos.
+      Os brilhos se movimentam em outra velocidade.
+      O nome e os elementos da frente se movimentam
+      um pouco mais, criando separação visual.
+    */
 
-    const heroCenter =
-      document.getElementById('heroCenter');
-
-    const topLogo =
-      document.getElementById('topLogo');
-
+    const heroBackground = document.getElementById("heroBackground");
+    const heroContent = document.getElementById("heroContent");
+    const goldSparkles = document.getElementById("goldSparkles");
+    const topLogo = document.getElementById("topLogo");
 
     let ticking = false;
 
+    function updateParallax() {
 
-    function updateDepth(){
+      const scrollY = window.scrollY;
 
-      const scrollY =
-        window.scrollY;
+      /*
+        Fundo quase fixo:
+        deslocamento muito pequeno.
+      */
+      const backgroundMove = scrollY * 0.06;
 
-      const heroHeight =
-        hero.offsetHeight;
+      /*
+        Brilhos ficam entre o fundo
+        e o conteúdo principal.
+      */
+      const sparkleMove = scrollY * 0.12;
 
+      /*
+        Conteúdo frontal ganha mais profundidade.
+      */
+      const contentMove = scrollY * 0.19;
 
-      if(scrollY <= heroHeight){
+      const logoMove = scrollY * 0.10;
 
+      heroBackground.style.transform =
+        `translate3d(0, ${backgroundMove}px, 0) scale(1.01)`;
 
-        /*
-          FUNDO NÃO SE MOVE
-        */
+      goldSparkles.style.transform =
+        `translate3d(0, ${sparkleMove}px, 0)`;
 
+      heroContent.style.transform =
+        `translate3d(-50%, calc(-50% + ${contentMove}px), 0)`;
 
-        /*
-          BRILHOS:
-          CAMADA INTERMEDIÁRIA
-        */
-
-        goldSparkles.style.transform =
-          `translate3d(
-            0,
-            ${scrollY * 0.16}px,
-            0
-          )
-          scale(1.10)`;
-
-
-        /*
-          NOME + NAIL ARTISTIC + FRASE:
-          CAMADA MAIS À FRENTE
-        */
-
-        heroCenter.style.transform =
-          `translate3d(
-            -50%,
-            calc(
-              -50% +
-              ${scrollY * 0.30}px
-            ),
-            0
-          )`;
-
-
-        /*
-          LOGOTIPO:
-          CAMADA FRONTAL
-        */
-
-        topLogo.style.transform =
-          `translate3d(
-            0,
-            ${scrollY * 0.22}px,
-            0
-          )`;
-
-      }
-
+      topLogo.style.transform =
+        `translate3d(0, ${logoMove}px, 0)`;
 
       ticking = false;
-
     }
 
-
     window.addEventListener(
+      "scroll",
+      function () {
 
-      'scroll',
+        if (!ticking) {
 
-      () => {
-
-        if(!ticking){
-
-          window.requestAnimationFrame(
-            updateDepth
-          );
+          window.requestAnimationFrame(updateParallax);
 
           ticking = true;
-
         }
 
       },
-
-      {
-        passive:true
-      }
-
+      { passive: true }
     );
 
   </script>
 
-
 </body>
-
 </html>
