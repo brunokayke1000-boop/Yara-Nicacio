@@ -87,9 +87,7 @@
 
 
     /* =====================================================
-       NOVO SISTEMA DE BRILHOS
-
-       USA A IMAGEM NOVA.
+       BRILHOS
     ===================================================== */
 
     .sparkle-field{
@@ -139,7 +137,7 @@
         var(--delay);
 
       animation-timing-function:
-        ease-in-out;
+        linear;
 
       animation-iteration-count:
         infinite;
@@ -150,14 +148,15 @@
     }
 
 
-    /*
-       SEM PULSO.
+    /* =====================================================
+       NOVO PISCAR
 
-       APARECE DEVAGAR,
-       CHEGA NO AUGE,
-       FICA UM POUCO,
+       MUITO MAIS LENTO.
+
+       ELE SURGE DEVAGAR,
+       CHEGA NO PONTO FORTE
        E SOME DEVAGAR.
-    */
+    ===================================================== */
 
     @keyframes sparkleSlowFade{
 
@@ -165,63 +164,113 @@
         opacity:0;
       }
 
-      12%{
+
+      8%{
         opacity:0;
       }
 
-      25%{
+
+      16%{
         opacity:
           calc(
-            var(--peak) * .10
+            var(--peak) * .025
           );
       }
 
-      38%{
+
+      24%{
+        opacity:
+          calc(
+            var(--peak) * .08
+          );
+      }
+
+
+      32%{
+        opacity:
+          calc(
+            var(--peak) * .18
+          );
+      }
+
+
+      40%{
         opacity:
           calc(
             var(--peak) * .34
           );
       }
 
+
       48%{
         opacity:
           calc(
-            var(--peak) * .70
+            var(--peak) * .55
           );
       }
 
+
       56%{
+        opacity:
+          calc(
+            var(--peak) * .78
+          );
+      }
+
+
+      63%{
         opacity:
           var(--peak);
       }
 
-      64%{
+
+      69%{
         opacity:
           calc(
-            var(--peak) * .88
+            var(--peak) * .94
           );
       }
 
-      74%{
+
+      76%{
         opacity:
           calc(
-            var(--peak) * .54
+            var(--peak) * .76
           );
       }
 
-      85%{
+
+      83%{
         opacity:
           calc(
-            var(--peak) * .20
+            var(--peak) * .52
           );
       }
+
+
+      89%{
+        opacity:
+          calc(
+            var(--peak) * .30
+          );
+      }
+
 
       94%{
         opacity:
           calc(
-            var(--peak) * .04
+            var(--peak) * .13
           );
       }
+
+
+      97%{
+        opacity:
+          calc(
+            var(--peak) * .045
+          );
+      }
+
 
       100%{
         opacity:0;
@@ -1779,7 +1828,7 @@
 
 
     /* =====================================================
-       ANIMAÇÕES
+       OUTRAS ANIMAÇÕES
     ===================================================== */
 
     @keyframes whatsappPulse{
@@ -2132,9 +2181,7 @@
   <main>
 
 
-    <!-- ===================================================
-         CAPA
-    ==================================================== -->
+    <!-- CAPA -->
 
     <section
       class="hero"
@@ -2197,10 +2244,7 @@
         </p>
 
 
-        <div
-          class="phrase-detail"
-          aria-hidden="true"
-        ></div>
+        <div class="phrase-detail"></div>
 
       </div>
 
@@ -2218,9 +2262,7 @@
     </section>
 
 
-    <!-- ===================================================
-         TRABALHOS
-    ==================================================== -->
+    <!-- TRABALHOS -->
 
     <section
       class="works-section"
@@ -2231,20 +2273,12 @@
         class="works-background-photo"
         src="22570524-7852-4D7E-99DE-6090DA3A9A55.jpeg"
         alt=""
-        aria-hidden="true"
       >
 
 
-      <div
-        class="works-background-blend"
-        aria-hidden="true"
-      ></div>
+      <div class="works-background-blend"></div>
 
-
-      <div
-        class="works-background-depth"
-        aria-hidden="true"
-      ></div>
+      <div class="works-background-depth"></div>
 
 
       <div
@@ -2254,10 +2288,7 @@
       ></div>
 
 
-      <div
-        class="works-glow"
-        aria-hidden="true"
-      ></div>
+      <div class="works-glow"></div>
 
 
       <div class="works-header">
@@ -2449,9 +2480,7 @@
     </section>
 
 
-    <!-- ===================================================
-         ESTÚDIO
-    ==================================================== -->
+    <!-- ESTÚDIO -->
 
     <section
       class="future-section"
@@ -2474,11 +2503,9 @@
           Yara Nicácio
         </small>
 
-
         <h2>
           O estúdio
         </h2>
-
 
         <p>
           Uma experiência pensada em cada detalhe.
@@ -2489,9 +2516,7 @@
     </section>
 
 
-    <!-- ===================================================
-         YARA
-    ==================================================== -->
+    <!-- YARA -->
 
     <section
       class="future-section"
@@ -2514,11 +2539,9 @@
           Nail Artist
         </small>
 
-
         <h2>
           Yara Nicácio
         </h2>
-
 
         <p>
           Técnica, identidade e criatividade
@@ -2530,9 +2553,7 @@
     </section>
 
 
-    <!-- ===================================================
-         PREÇOS
-    ==================================================== -->
+    <!-- PREÇOS -->
 
     <section
       class="future-section"
@@ -2555,11 +2576,9 @@
           Serviços
         </small>
 
-
         <h2>
           Tabela de preços
         </h2>
-
 
         <p>
           Conheça os serviços e escolha
@@ -2571,9 +2590,7 @@
     </section>
 
 
-    <!-- ===================================================
-         AVALIAÇÕES
-    ==================================================== -->
+    <!-- AVALIAÇÕES -->
 
     <section
       class="future-section"
@@ -2596,11 +2613,9 @@
           Experiências
         </small>
 
-
         <h2>
           Avaliações
         </h2>
-
 
         <p>
           A experiência de quem já escolheu
@@ -2612,9 +2627,7 @@
     </section>
 
 
-    <!-- ===================================================
-         ENDEREÇO
-    ==================================================== -->
+    <!-- ENDEREÇO -->
 
     <section
       class="address-section"
@@ -2637,19 +2650,15 @@
           Localização
         </div>
 
-
         <h2 class="address-title">
           Endereço
         </h2>
 
-
         <div class="address-line"></div>
-
 
         <div class="building">
           Edifício NBC
         </div>
-
 
         <div class="address-text">
 
@@ -2658,7 +2667,6 @@
           <br>
 
           Bethaville — Barueri, SP
-
 
           <span class="address-room">
             10º andar • Sala 1007
@@ -2850,7 +2858,7 @@
 
 
     /* =====================================================
-       CONFIGURA UMA CAMADA
+       CONFIGURA CADA CAMADA
     ===================================================== */
 
     function configureSparkleLayer(
@@ -2860,22 +2868,8 @@
 
 
       /*
-         TEMPO BEM LENTO.
-      */
-
-      const duration =
-        randomBetween(
-          24,
-          42
-        );
-
-
-      /*
-         CADA CAMADA TEM UMA
-         INTENSIDADE DIFERENTE.
-
-         ALGUMAS QUASE IMPERCEPTÍVEIS,
-         OUTRAS MAIS FORTES.
+         PRIMEIRO DECIDIMOS
+         A INTENSIDADE.
       */
 
       const chance =
@@ -2883,7 +2877,14 @@
 
 
       let peak;
+      let duration;
 
+
+      /*
+         MAIS FORTE
+
+         TAMBÉM É O MAIS LENTO.
+      */
 
       if(
         chance < .20
@@ -2895,7 +2896,20 @@
             .42
           );
 
+
+        duration =
+          randomBetween(
+            56,
+            70
+          );
+
       }
+
+
+      /*
+         MÉDIO
+      */
+
       else if(
         chance < .68
       ){
@@ -2906,7 +2920,23 @@
             .28
           );
 
+
+        duration =
+          randomBetween(
+            48,
+            64
+          );
+
       }
+
+
+      /*
+         MAIS FRACO
+
+         AINDA ASSIM CONTINUA
+         BEM LENTO.
+      */
+
       else{
 
         peak =
@@ -2915,16 +2945,20 @@
             .16
           );
 
+
+        duration =
+          randomBetween(
+            42,
+            58
+          );
+
       }
 
 
       /*
-         A CAMADA MUDA DE PONTO.
-
-         COMO A TEXTURA É MAIOR QUE
-         A TELA, MOVER E ESCALAR A
-         IMAGEM FAZ OS BRILHOS FORTES
-         APARECEREM EM OUTRO LOCAL.
+         A POSIÇÃO CONTINUA
+         EXATAMENTE COM A MESMA
+         LÓGICA DA VERSÃO ANTERIOR.
       */
 
       const moveX =
@@ -2978,11 +3012,20 @@
       );
 
 
+      /*
+         CADA CAMADA COMEÇA
+         NUM PONTO DIFERENTE
+         DO CICLO.
+
+         ASSIM ELAS NÃO PISCAM
+         TODAS JUNTAS.
+      */
+
       if(firstTime){
 
         layer.style.setProperty(
           "--delay",
-          `${randomBetween(-42,0).toFixed(2)}s`
+          `${randomBetween(-68,0).toFixed(2)}s`
         );
 
       }else{
@@ -3048,18 +3091,15 @@
 
 
         /*
-           AO TERMINAR:
+           QUANDO SOME COMPLETAMENTE:
 
-           A CAMADA ESTÁ INVISÍVEL.
+           - MUDA POSIÇÃO
+           - MUDA INTENSIDADE
+           - MUDA ESCALA
+           - MUDA TEMPO
 
-           AÍ MUDAMOS:
-           - POSIÇÃO
-           - ESCALA
-           - INTENSIDADE
-           - DURAÇÃO
-
-           DEPOIS ELA SURGE DE NOVO
-           EM OUTRO PONTO.
+           E ENTÃO COMEÇA A APARECER
+           DEVAGAR DE NOVO.
         */
 
         layer.addEventListener(
@@ -3088,12 +3128,9 @@
 
 
     /* =====================================================
-       VOLUME
-
-       USAMOS POUCAS CAMADAS,
-       MAS CADA UMA COBRE A TELA TODA.
+       MESMA QUANTIDADE DA VERSÃO
+       ANTERIOR
     ===================================================== */
-
 
     document
       .querySelectorAll(
@@ -3238,11 +3275,8 @@
       if(
         worksRect.top <
         window.innerHeight * 1.25
-
         &&
-
-        worksRect.bottom >
-        -200
+        worksRect.bottom > -200
       ){
 
         const viewportCenter =
