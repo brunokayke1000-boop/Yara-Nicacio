@@ -12,10 +12,7 @@
 
   <title>Yara Nicácio | Nail Artistic</title>
 
-  <link
-    rel="preconnect"
-    href="https://fonts.googleapis.com"
-  >
+  <link rel="preconnect" href="https://fonts.googleapis.com">
 
   <link
     rel="preconnect"
@@ -47,7 +44,9 @@
 
     body{
       margin:0;
+
       background:#050403;
+
       color:#ffffff;
 
       font-family:
@@ -59,24 +58,28 @@
 
 
     /* ========================================
-       CAPA PRINCIPAL
+       CAPA
     ======================================== */
 
     .hero{
       position:relative;
 
       width:100%;
+
       height:100svh;
+
       min-height:650px;
 
       overflow:hidden;
 
       background:#050403;
+
+      isolation:isolate;
     }
 
 
     /* ========================================
-       FOTO DE FUNDO
+       NOVA FOTO DE FUNDO
     ======================================== */
 
     .hero-bg{
@@ -85,28 +88,30 @@
       inset:-5% 0 0 0;
 
       width:100%;
-      height:110%;
+
+      height:112%;
 
       object-fit:cover;
+
       object-position:center center;
 
       z-index:1;
 
       transform:
         translate3d(0,0,0)
-        scale(1.04);
+        scale(1.045);
 
       will-change:transform;
 
       filter:
-        brightness(.64)
-        contrast(.96)
-        saturate(.78);
+        brightness(.69)
+        contrast(1.02)
+        saturate(.92);
     }
 
 
     /* ========================================
-       ESCURECIMENTO DA FOTO
+       ESCURECIMENTO CINEMATOGRÁFICO
     ======================================== */
 
     .hero-overlay{
@@ -116,17 +121,19 @@
 
       z-index:2;
 
+      pointer-events:none;
+
       background:
         linear-gradient(
           to bottom,
 
-          rgba(0,0,0,.48) 0%,
+          rgba(0,0,0,.26) 0%,
 
-          rgba(0,0,0,.44) 34%,
+          rgba(0,0,0,.32) 28%,
 
-          rgba(0,0,0,.52) 64%,
+          rgba(0,0,0,.44) 60%,
 
-          rgba(3,3,3,.78) 82%,
+          rgba(0,0,0,.68) 82%,
 
           #050403 100%
         );
@@ -150,34 +157,90 @@
         radial-gradient(
           ellipse at center,
 
-          rgba(0,0,0,0) 12%,
+          transparent 18%,
 
-          rgba(0,0,0,.10) 44%,
+          rgba(0,0,0,.08) 46%,
 
-          rgba(0,0,0,.55) 100%
+          rgba(0,0,0,.48) 100%
         );
     }
 
 
     /* ========================================
-       LUZ SUAVE ATRÁS DO NOME
+       BRILHOS DOURADOS
+
+       Ficam:
+       - na frente da foto
+       - atrás do nome
+       - atrás da frase
+       - atrás do logotipo
+    ======================================== */
+
+    .gold-sparkles{
+      position:absolute;
+
+      inset:-7%;
+
+      z-index:4;
+
+      pointer-events:none;
+
+      will-change:transform;
+
+      opacity:.64;
+
+      mix-blend-mode:screen;
+
+      filter:
+        brightness(1.05)
+        saturate(1.08);
+
+      transform:
+        translate3d(0,0,0)
+        scale(1.08);
+    }
+
+
+    .gold-sparkles img{
+      display:block;
+
+      width:100%;
+
+      height:100%;
+
+      object-fit:cover;
+
+      object-position:center;
+
+      animation:
+        sparkleBreath
+        5s
+        ease-in-out
+        infinite;
+    }
+
+
+    /* ========================================
+       LUZ ATRÁS DO NOME
     ======================================== */
 
     .center-light{
       position:absolute;
 
       left:50%;
-      top:42%;
+
+      top:41%;
 
       transform:
         translate(-50%,-50%);
 
-      width:92vw;
-      max-width:850px;
+      width:100vw;
 
-      height:30vh;
+      max-width:900px;
 
-      z-index:4;
+      height:32vh;
+
+      z-index:5;
 
       pointer-events:none;
 
@@ -185,15 +248,15 @@
         radial-gradient(
           ellipse at center,
 
-          rgba(190,137,57,.10),
+          rgba(194,142,61,.13),
 
-          rgba(155,105,37,.025) 45%,
+          rgba(151,102,37,.035) 42%,
 
           transparent 72%
         );
 
       filter:
-        blur(24px);
+        blur(27px);
     }
 
 
@@ -206,28 +269,32 @@
 
       top:
         calc(
-          22px +
+          20px +
           env(safe-area-inset-top)
         );
 
-      right:18px;
+      right:17px;
 
       z-index:8;
 
-      width:90px;
-      height:90px;
+      width:92px;
+
+      height:92px;
 
       display:flex;
 
       align-items:center;
+
       justify-content:center;
 
-      opacity:.92;
+      opacity:.96;
+
+      will-change:transform;
 
       filter:
         drop-shadow(
-          0 7px 18px
-          rgba(0,0,0,.65)
+          0 8px 18px
+          rgba(0,0,0,.70)
         );
 
       animation:
@@ -242,6 +309,7 @@
       display:block;
 
       width:100%;
+
       height:100%;
 
       object-fit:contain;
@@ -249,17 +317,18 @@
 
 
     /* ========================================
-       BLOCO CENTRAL
+       NOME + FRASE
     ======================================== */
 
     .hero-center{
       position:absolute;
 
       left:50%;
-      top:42%;
+
+      top:40.5%;
 
       transform:
-        translate(-50%,-50%);
+        translate3d(-50%,-50%,0);
 
       z-index:7;
 
@@ -276,14 +345,14 @@
       text-align:center;
 
       padding:
-        0 18px;
+        0 10px;
 
       will-change:transform;
     }
 
 
     /* ========================================
-       NOME YARA NICÁCIO
+       YARA NICÁCIO
     ======================================== */
 
     .hero-name{
@@ -291,22 +360,30 @@
 
       width:
         min(
-          94vw,
-          820px
-        );
-
-      filter:
-        drop-shadow(
-          0 7px 14px
-          rgba(0,0,0,.78)
-        )
-
-        drop-shadow(
-          0 18px 32px
-          rgba(0,0,0,.60)
+          96vw,
+          860px
         );
 
       opacity:0;
+
+      filter:
+        brightness(1.10)
+        contrast(1.04)
+
+        drop-shadow(
+          0 5px 10px
+          rgba(0,0,0,.88)
+        )
+
+        drop-shadow(
+          0 18px 35px
+          rgba(0,0,0,.70)
+        )
+
+        drop-shadow(
+          0 0 15px
+          rgba(186,126,38,.14)
+        );
 
       animation:
         nameEntrance
@@ -321,21 +398,23 @@
       display:block;
 
       width:100%;
+
       height:auto;
     }
 
 
     /* ========================================
-       FRASE ABAIXO DO NOME
+       FRASE
     ======================================== */
 
     .hero-phrase{
       position:relative;
 
-      margin-top:4px;
+      margin-top:7px;
 
       width:96%;
-      max-width:760px;
+
+      max-width:800px;
 
       white-space:nowrap;
 
@@ -345,44 +424,45 @@
 
       font-size:
         clamp(
-          13px,
-          3.2vw,
-          19px
+          17px,
+          3.7vw,
+          23px
         );
 
       font-weight:400;
 
       line-height:1;
 
-      letter-spacing:.7px;
+      letter-spacing:.6px;
 
       color:
-        rgba(205,187,160,.48);
+        rgba(218,200,174,.62);
 
       text-shadow:
-        0 2px 10px
-        rgba(0,0,0,.75);
+        0 3px 12px
+        rgba(0,0,0,.90);
 
       opacity:0;
 
       animation:
         phraseEntrance
         1.4s
-        .72s
+        .65s
         ease
         forwards;
     }
 
 
     /* ========================================
-       DETALHE DOURADO ABAIXO DA FRASE
+       DETALHE ABAIXO DA FRASE
     ======================================== */
 
     .phrase-line{
-      width:30px;
+      width:34px;
+
       height:1px;
 
-      margin-top:10px;
+      margin-top:13px;
 
       background:
         linear-gradient(
@@ -390,7 +470,7 @@
 
           transparent,
 
-          rgba(200,154,82,.62),
+          rgba(211,161,78,.72),
 
           transparent
         );
@@ -400,14 +480,14 @@
       animation:
         fadeIn
         1.3s
-        1.1s
+        1s
         ease
         forwards;
     }
 
 
     /* ========================================
-       INDICAÇÃO DESLIZE
+       DESLIZE
     ======================================== */
 
     .scroll-indicator{
@@ -417,14 +497,14 @@
 
       bottom:
         calc(
-          25px +
+          26px +
           env(safe-area-inset-bottom)
         );
 
       transform:
         translateX(-50%);
 
-      z-index:8;
+      z-index:9;
 
       display:flex;
 
@@ -435,7 +515,7 @@
       gap:8px;
 
       color:
-        rgba(255,255,255,.34);
+        rgba(255,255,255,.30);
 
       font-size:8px;
 
@@ -447,13 +527,14 @@
 
     .scroll-line{
       width:1px;
+
       height:32px;
 
       background:
         linear-gradient(
           to bottom,
 
-          rgba(199,154,83,.75),
+          rgba(202,155,79,.80),
 
           transparent
         );
@@ -469,7 +550,7 @@
 
 
     /* ========================================
-       WHATSAPP FLUTUANTE
+       WHATSAPP
     ======================================== */
 
     .whatsapp{
@@ -486,11 +567,13 @@
       z-index:9999;
 
       width:62px;
+
       height:62px;
 
       display:flex;
 
       align-items:center;
+
       justify-content:center;
 
       border-radius:50%;
@@ -507,8 +590,8 @@
 
       filter:
         drop-shadow(
-          0 9px 20px
-          rgba(0,0,0,.65)
+          0 9px 22px
+          rgba(0,0,0,.70)
         );
     }
 
@@ -517,6 +600,7 @@
       display:block;
 
       width:100%;
+
       height:100%;
 
       object-fit:contain;
@@ -524,8 +608,6 @@
       pointer-events:none;
     }
 
-
-    /* PRIMEIRO PULSO */
 
     .whatsapp::before{
       content:"";
@@ -549,8 +631,6 @@
       pointer-events:none;
     }
 
-
-    /* SEGUNDO PULSO */
 
     .whatsapp::after{
       content:"";
@@ -588,6 +668,7 @@
       display:flex;
 
       align-items:center;
+
       justify-content:center;
 
       padding:
@@ -653,6 +734,26 @@
        ANIMAÇÕES
     ======================================== */
 
+    @keyframes sparkleBreath{
+
+      0%,
+      100%{
+        opacity:.78;
+
+        transform:
+          scale(1);
+      }
+
+      50%{
+        opacity:1;
+
+        transform:
+          scale(1.015);
+      }
+
+    }
+
+
     @keyframes logoEntrance{
 
       from{
@@ -664,7 +765,7 @@
       }
 
       to{
-        opacity:.92;
+        opacity:.96;
 
         transform:
           translateY(0)
@@ -680,8 +781,8 @@
         opacity:0;
 
         transform:
-          translateY(25px)
-          scale(.965);
+          translateY(26px)
+          scale(.96);
       }
 
       to{
@@ -701,7 +802,7 @@
         opacity:0;
 
         transform:
-          translateY(10px);
+          translateY(12px);
       }
 
       to{
@@ -731,7 +832,7 @@
 
       0%,
       100%{
-        opacity:.3;
+        opacity:.25;
 
         transform:
           scaleY(.65);
@@ -816,27 +917,37 @@
 
 
     /* ========================================
-       AJUSTES PARA CELULAR
+       CELULAR
     ======================================== */
 
     @media(max-width:600px){
 
       .hero{
         height:100svh;
+
         min-height:620px;
       }
 
 
       .hero-bg{
-        object-position:center top;
+        object-position:
+          center top;
+      }
+
+
+      .gold-sparkles{
+        inset:-5% -12%;
+
+        opacity:.62;
       }
 
 
       .top-logo{
-        width:72px;
-        height:72px;
+        width:75px;
 
-        right:14px;
+        height:75px;
+
+        right:13px;
 
         top:
           calc(
@@ -846,56 +957,56 @@
       }
 
 
-      /* SOBE O NOME PARA A REGIÃO
-         MARCADA NO PRINT */
+      /* NOME MAIS ALTO */
 
       .hero-center{
-        top:41.5%;
+        top:40%;
 
         padding:
-          0 12px;
+          0 7px;
       }
 
 
       /* NOME MAIOR */
 
       .hero-name{
-        width:94vw;
+        width:96vw;
       }
 
 
-      /* FRASE EM UMA ÚNICA LINHA */
+      /* FRASE MAIOR */
 
       .hero-phrase{
-        margin-top:3px;
-
-        width:96%;
+        width:97%;
 
         max-width:none;
+
+        margin-top:6px;
 
         white-space:nowrap;
 
         font-size:
           clamp(
-            11px,
-            3.25vw,
-            14px
+            14px,
+            3.8vw,
+            18px
           );
 
-        letter-spacing:.35px;
+        letter-spacing:.25px;
 
         color:
-          rgba(205,187,160,.46);
+          rgba(218,200,174,.60);
       }
 
 
       .phrase-line{
-        margin-top:9px;
+        margin-top:11px;
       }
 
 
       .whatsapp{
         width:59px;
+
         height:59px;
 
         right:15px;
@@ -905,19 +1016,19 @@
 
 
     /* ========================================
-       TELAS MUITO PEQUENAS
+       TELAS PEQUENAS
     ======================================== */
 
     @media(max-width:360px){
 
       .hero-name{
-        width:93vw;
+        width:95vw;
       }
 
       .hero-phrase{
-        font-size:10.5px;
+        font-size:13px;
 
-        letter-spacing:.2px;
+        letter-spacing:.1px;
       }
 
     }
@@ -957,13 +1068,13 @@
   >
 
 
-    <!-- FOTO PRINCIPAL -->
+    <!-- NOVA CAPA -->
 
     <img
       class="hero-bg"
       id="heroBg"
 
-      src="521D5ECF-2893-4075-8886-F7688E2AAFE0.jpeg"
+      src="567E7566-6F98-4F5C-8C17-A00418788D50.png"
 
       alt="Yara Nicácio Nail Artistic"
     >
@@ -979,16 +1090,37 @@
     <div class="hero-vignette"></div>
 
 
-    <!-- LUZ DISCRETA ATRÁS DO NOME -->
+    <!-- ====================================
+         BRILHOS DOURADOS
+    ===================================== -->
+
+    <div
+      class="gold-sparkles"
+      id="goldSparkles"
+    >
+
+      <img
+        src="24CD378D-F11E-4CB2-B0FC-FCAFBE91B276.png"
+
+        alt=""
+      >
+
+    </div>
+
+
+    <!-- LUZ CENTRAL -->
 
     <div class="center-light"></div>
 
 
     <!-- ====================================
-         MONOGRAMA SUPERIOR DIREITO
+         LOGOTIPO
     ===================================== -->
 
-    <div class="top-logo">
+    <div
+      class="top-logo"
+      id="topLogo"
+    >
 
       <img
         src="B246332E-6D6E-47D0-B3DD-02096818D8AD.png"
@@ -1009,8 +1141,6 @@
     >
 
 
-      <!-- YARA NICÁCIO / NAIL ARTISTIC -->
-
       <div class="hero-name">
 
         <img
@@ -1022,14 +1152,10 @@
       </div>
 
 
-      <!-- FRASE -->
-
       <p class="hero-phrase">
         O que você escolhe, vira arte em suas unhas
       </p>
 
-
-      <!-- DETALHE -->
 
       <div class="phrase-line"></div>
 
@@ -1076,7 +1202,7 @@
 
 
   <!-- ======================================
-       WHATSAPP FLUTUANTE
+       WHATSAPP
   ======================================= -->
 
   <a
@@ -1101,7 +1227,7 @@
 
 
   <!-- ======================================
-       EFEITO FLUTUANTE / PARALLAX
+       PARALLAX / PROFUNDIDADE
   ======================================= -->
 
   <script>
@@ -1112,8 +1238,14 @@
     const heroBg =
       document.getElementById('heroBg');
 
+    const goldSparkles =
+      document.getElementById('goldSparkles');
+
     const heroCenter =
       document.getElementById('heroCenter');
+
+    const topLogo =
+      document.getElementById('topLogo');
 
 
     let ticking = false;
@@ -1130,34 +1262,73 @@
 
       if(scrollY <= heroHeight){
 
+
         /*
-          A FOTO SE MOVE MAIS DEVAGAR
+          PLANO 1
+          FOTO DE FUNDO
+
+          Movimento pequeno.
         */
 
         heroBg.style.transform =
           `translate3d(
             0,
-            ${scrollY * 0.11}px,
+            ${scrollY * 0.07}px,
             0
           )
-          scale(1.04)`;
+          scale(1.045)`;
 
 
         /*
-          O NOME E A FRASE SE MOVEM
-          EM OUTRA VELOCIDADE.
+          PLANO 2
+          BRILHOS
 
-          ISSO CRIA O EFEITO DE
-          CAMADAS / PROFUNDIDADE.
+          Movimento intermediário.
+          Isso faz os brilhos parecerem
+          estar à frente da fotografia.
+        */
+
+        goldSparkles.style.transform =
+          `translate3d(
+            0,
+            ${scrollY * 0.16}px,
+            0
+          )
+          scale(1.08)`;
+
+
+        /*
+          PLANO 3
+          NOME + FRASE
+
+          Movimento maior para criar
+          profundidade mais perceptível.
         */
 
         heroCenter.style.transform =
-          `translate(
+          `translate3d(
             -50%,
             calc(
               -50% +
-              ${scrollY * 0.04}px
-            )
+              ${scrollY * 0.25}px
+            ),
+            0
+          )`;
+
+
+        /*
+          LOGOTIPO
+
+          Também fica no plano frontal,
+          mas se movimenta um pouco menos
+          que o nome.
+        */
+
+        topLogo.style.transform =
+          `translate3d(
+            0,
+            ${scrollY * 0.18}px,
+            0
           )`;
 
       }
@@ -1191,6 +1362,7 @@
       }
 
     );
+
 
   </script>
 
