@@ -53,11 +53,6 @@
       -webkit-tap-highlight-color:transparent;
     }
 
-
-    /* =====================================================
-       OTIMIZAÇÃO
-    ===================================================== */
-
     .hero-content,
     .top-logo,
     .global-sparkles-layer,
@@ -68,11 +63,6 @@
       backface-visibility:hidden;
       -webkit-backface-visibility:hidden;
     }
-
-
-    /* =====================================================
-       FUNDO GERAL
-    ===================================================== */
 
     .site-background{
       position:fixed;
@@ -101,11 +91,6 @@
         );
     }
 
-
-    /* =====================================================
-       BRILHO BASE
-    ===================================================== */
-
     .global-sparkles-layer{
       position:fixed;
       inset:-7%;
@@ -120,11 +105,6 @@
       mix-blend-mode:screen;
       opacity:.075;
     }
-
-
-    /* =====================================================
-       BRILHOS ALEATÓRIOS
-    ===================================================== */
 
     .twinkle-field{
       position:absolute;
@@ -153,29 +133,27 @@
         0 0 16px rgba(222,161,56,.40),
         0 0 28px rgba(183,116,28,.16);
 
-      transform:
-        scale(.58);
+      transform:scale(.58);
 
-      filter:
-        blur(var(--blur));
+      filter:blur(var(--blur));
 
-      animation-duration:
-        var(--duration);
+      animation-duration:var(--duration);
+      animation-delay:var(--delay);
+      animation-timing-function:ease-in-out;
+      animation-iteration-count:infinite;
 
-      animation-delay:
-        var(--delay);
-
-      animation-timing-function:
-        ease-in-out;
-
-      animation-iteration-count:
-        infinite;
-
-      will-change:
-        opacity,
-        transform;
+      will-change:opacity,transform;
     }
 
+    .twinkle.micro{
+      box-shadow:
+        0 0 2px rgba(255,246,210,.90),
+        0 0 5px rgba(255,215,125,.62),
+        0 0 10px rgba(222,161,56,.26);
+
+      background:
+        rgba(255,232,182,.96);
+    }
 
     .twinkle::before,
     .twinkle::after{
@@ -194,13 +172,8 @@
       opacity:.58;
     }
 
-
     .twinkle::before{
-      width:
-        calc(
-          var(--size) * 5.7
-        );
-
+      width:calc(var(--size) * 5.7);
       height:1px;
 
       background:
@@ -212,14 +185,9 @@
         );
     }
 
-
     .twinkle::after{
       width:1px;
-
-      height:
-        calc(
-          var(--size) * 5.7
-        );
+      height:calc(var(--size) * 5.7);
 
       background:
         linear-gradient(
@@ -230,6 +198,15 @@
         );
     }
 
+    .twinkle.micro::before{
+      width:calc(var(--size) * 4.1);
+      opacity:.42;
+    }
+
+    .twinkle.micro::after{
+      height:calc(var(--size) * 4.1);
+      opacity:.42;
+    }
 
     .twinkle.variant-a{
       animation-name:twinkleA;
@@ -246,7 +223,6 @@
     .twinkle.variant-d{
       animation-name:twinkleD;
     }
-
 
     @keyframes twinkleA{
 
@@ -287,7 +263,6 @@
 
     }
 
-
     @keyframes twinkleB{
 
       0%{
@@ -326,7 +301,6 @@
       }
 
     }
-
 
     @keyframes twinkleC{
 
@@ -367,7 +341,6 @@
 
     }
 
-
     @keyframes twinkleD{
 
       0%{
@@ -407,21 +380,10 @@
 
     }
 
-
-    /* =====================================================
-       MENU
-    ===================================================== */
-
     .menu-trigger{
       position:fixed;
-
-      top:max(
-        30px,
-        env(safe-area-inset-top)
-      );
-
+      top:max(30px,env(safe-area-inset-top));
       left:18px;
-
       z-index:210;
 
       width:58px;
@@ -459,15 +421,11 @@
         border-color .35s ease;
     }
 
-
     .menu-trigger span{
       display:block;
-
       width:25px;
       height:2px;
-
       border-radius:10px;
-
       background:#e5bd71;
 
       box-shadow:
@@ -478,11 +436,8 @@
         opacity .35s ease;
     }
 
-
     .menu-trigger.active span:nth-child(1){
-      transform:
-        translateY(7px)
-        rotate(45deg);
+      transform:translateY(7px) rotate(45deg);
     }
 
     .menu-trigger.active span:nth-child(2){
@@ -490,19 +445,15 @@
     }
 
     .menu-trigger.active span:nth-child(3){
-      transform:
-        translateY(-7px)
-        rotate(-45deg);
+      transform:translateY(-7px) rotate(-45deg);
     }
-
 
     .menu-overlay{
       position:fixed;
       inset:0;
       z-index:190;
 
-      background:
-        rgba(0,0,0,.64);
+      background:rgba(0,0,0,.64);
 
       backdrop-filter:blur(4px);
       -webkit-backdrop-filter:blur(4px);
@@ -515,22 +466,17 @@
         visibility .45s ease;
     }
 
-
     .menu-overlay.active{
       opacity:1;
       visibility:visible;
     }
 
-
     .side-menu{
       position:fixed;
-
       top:0;
       left:0;
-
       width:min(84vw,370px);
       height:100svh;
-
       z-index:200;
 
       padding:
@@ -568,35 +514,23 @@
         cubic-bezier(.77,0,.18,1);
     }
 
-
     .side-menu.active{
-      transform:
-        translate3d(0,0,0);
+      transform:translate3d(0,0,0);
     }
 
-
     .menu-title{
-      font-family:
-        'Cormorant Garamond',
-        serif;
-
+      font-family:'Cormorant Garamond',serif;
       font-size:37px;
       font-weight:500;
-
       color:#e4bd72;
-
       margin-bottom:42px;
     }
 
-
     .menu-title::after{
       content:"";
-
       display:block;
-
       width:45px;
       height:1px;
-
       margin-top:15px;
 
       background:
@@ -607,28 +541,18 @@
         );
     }
 
-
     .menu-links{
       display:flex;
       flex-direction:column;
       gap:5px;
     }
 
-
     .menu-links a{
       display:block;
-
       padding:16px 0;
-
-      color:
-        rgba(255,255,255,.88);
-
+      color:rgba(255,255,255,.88);
       text-decoration:none;
-
-      font-family:
-        'Cormorant Garamond',
-        serif;
-
+      font-family:'Cormorant Garamond',serif;
       font-size:25px;
 
       border-bottom:
@@ -636,63 +560,41 @@
         rgba(255,255,255,.06);
     }
 
-
-    /* =====================================================
-       CAPA
-    ===================================================== */
-
     .hero{
       position:relative;
-
       width:100%;
       height:100svh;
-
       min-height:650px;
-
       overflow:hidden;
-
       background:#050505;
-
       isolation:isolate;
-
       z-index:5;
     }
-
 
     .hero-photo{
       position:absolute;
       inset:0;
-
       width:100%;
       height:100%;
-
       object-fit:cover;
       object-position:center;
-
       z-index:0;
-
       filter:none;
       opacity:1;
     }
 
-
     .hero-bottom-fade{
       position:absolute;
-
       left:0;
       right:0;
       bottom:-2px;
-
       height:62%;
-
       z-index:2;
-
       pointer-events:none;
 
       background:
         linear-gradient(
           to bottom,
-
           rgba(5,5,5,0) 0%,
           rgba(5,5,5,.02) 8%,
           rgba(5,5,5,.05) 16%,
@@ -706,49 +608,28 @@
           rgba(5,5,5,.90) 84%,
           rgba(5,5,5,.96) 90%,
           rgba(5,5,5,.985) 95%,
-
           #050505 100%
         );
     }
 
-
     .hero-sparkles{
       position:absolute;
-
       inset:-3%;
-
       width:106%;
       height:106%;
-
       object-fit:cover;
-
       z-index:1;
-
       pointer-events:none;
-
       mix-blend-mode:screen;
-
       opacity:.09;
     }
 
-
-    /* =====================================================
-       LOGO
-    ===================================================== */
-
     .top-logo{
       position:absolute;
-
-      top:max(
-        27px,
-        env(safe-area-inset-top)
-      );
-
+      top:max(27px,env(safe-area-inset-top));
       right:19px;
-
       width:125px;
       height:auto;
-
       z-index:7;
 
       filter:
@@ -762,40 +643,24 @@
         );
     }
 
-
-    /* =====================================================
-       CONTEÚDO DA CAPA
-    ===================================================== */
-
     .hero-content{
       position:absolute;
-
       top:50%;
       left:50%;
-
       width:min(97%,920px);
-
-      transform:
-        translate3d(-50%,-50%,0);
-
+      transform:translate3d(-50%,-50%,0);
       z-index:7;
-
       display:flex;
       flex-direction:column;
       align-items:center;
-
       text-align:center;
     }
 
-
     .name-image{
       display:block;
-
       width:min(98vw,920px);
       max-width:100%;
-
       height:auto;
-
       object-fit:contain;
 
       filter:
@@ -813,21 +678,16 @@
         );
     }
 
-
     .nail-artistic-wrap{
       width:min(83vw,680px);
-
       margin-top:-17px;
-
       display:flex;
       justify-content:center;
     }
 
-
     .nail-artistic{
       width:100%;
       height:auto;
-
       object-fit:contain;
 
       filter:
@@ -844,29 +704,14 @@
         );
     }
 
-
     .hero-phrase{
       margin-top:1px;
-
       width:100%;
-
-      font-family:
-        'Cormorant Garamond',
-        serif;
-
-      font-size:
-        clamp(
-          18px,
-          4.45vw,
-          30px
-        );
-
+      font-family:'Cormorant Garamond',serif;
+      font-size:clamp(18px,4.45vw,30px);
       font-weight:400;
       line-height:1.2;
-
-      color:
-        rgba(245,233,211,.94);
-
+      color:rgba(245,233,211,.94);
       white-space:nowrap;
 
       text-shadow:
@@ -874,11 +719,9 @@
         0 8px 18px rgba(0,0,0,.82);
     }
 
-
     .phrase-detail{
       width:48px;
       height:1px;
-
       margin-top:13px;
 
       background:
@@ -890,51 +733,33 @@
         );
     }
 
-
-    /* =====================================================
-       DESLIZE
-    ===================================================== */
-
     .scroll-indicator{
       position:absolute;
-
-      bottom:
-        max(
-          35px,
-          calc(
-            env(safe-area-inset-bottom)
-            + 20px
-          )
-        );
-
+      bottom:max(
+        35px,
+        calc(
+          env(safe-area-inset-bottom)
+          + 20px
+        )
+      );
       left:50%;
-
-      transform:
-        translateX(-50%);
-
+      transform:translateX(-50%);
       z-index:8;
 
       display:flex;
       flex-direction:column;
       align-items:center;
-
       gap:10px;
 
       pointer-events:none;
     }
 
-
     .scroll-indicator span{
-      color:
-        rgba(255,255,255,.34);
-
+      color:rgba(255,255,255,.34);
       font-size:10px;
-
       letter-spacing:.42em;
-
       padding-left:.42em;
     }
-
 
     .scroll-line{
       width:1px;
@@ -954,73 +779,43 @@
         infinite;
     }
 
-
-    /* =====================================================
-       TRABALHOS
-    ===================================================== */
-
     .works-section{
       position:relative;
-
       width:100%;
-
       min-height:100svh;
-
       margin-top:-95px;
-
-      padding:
-        205px
-        0
-        130px;
-
+      padding:205px 0 130px;
       overflow:hidden;
-
       background:#050505;
-
       z-index:2;
-
       isolation:isolate;
     }
 
-
     .works-background-photo{
       position:absolute;
-
       top:-180px;
       left:0;
-
       width:100%;
       height:calc(100% + 360px);
-
       object-fit:cover;
       object-position:center top;
-
       z-index:-5;
-
       pointer-events:none;
-
       filter:none;
       opacity:1;
-
-      transform:
-        translate3d(0,0,0);
+      transform:translate3d(0,0,0);
     }
-
 
     .works-background-blend{
       position:absolute;
       inset:0;
-
       z-index:-3;
-
       pointer-events:none;
 
       background:
         linear-gradient(
           to bottom,
-
           #050505 0%,
-
           rgba(5,5,5,.98) 2%,
           rgba(5,5,5,.94) 5%,
           rgba(5,5,5,.83) 9%,
@@ -1028,27 +823,20 @@
           rgba(5,5,5,.40) 20%,
           rgba(5,5,5,.20) 27%,
           rgba(5,5,5,.07) 34%,
-
           rgba(5,5,5,0) 43%,
-
           rgba(5,5,5,0) 72%,
-
           rgba(5,5,5,.08) 79%,
           rgba(5,5,5,.25) 86%,
           rgba(5,5,5,.52) 92%,
           rgba(5,5,5,.80) 96%,
-
           #050505 100%
         );
     }
 
-
     .works-background-depth{
       position:absolute;
       inset:0;
-
       z-index:-2;
-
       pointer-events:none;
 
       background:
@@ -1060,19 +848,14 @@
         );
     }
 
-
     .works-sparkles-layer{
       position:absolute;
-
       top:-250px;
       left:-7%;
       right:-7%;
       bottom:-180px;
-
       z-index:0;
-
       pointer-events:none;
-
       opacity:.32;
 
       -webkit-mask-image:
@@ -1100,34 +883,23 @@
         );
     }
 
-
     .works-sparkles{
       width:114%;
       height:114%;
-
       margin-left:-7%;
-
       object-fit:cover;
-
       mix-blend-mode:screen;
-
       opacity:.20;
     }
 
-
     .works-glow{
       position:absolute;
-
       width:950px;
       height:900px;
-
       top:-230px;
       right:-600px;
-
       z-index:1;
-
       pointer-events:none;
-
       border-radius:50%;
 
       background:
@@ -1141,57 +913,34 @@
       filter:blur(10px);
     }
 
-
-    /* =====================================================
-       CABEÇALHO TRABALHOS
-    ===================================================== */
-
     .works-header{
       position:relative;
-
       z-index:7;
-
       padding:0 35px;
-
       max-width:800px;
-
       margin-bottom:55px;
     }
 
-
     .works-header-float{
       position:relative;
-
-      transform:
-        translate3d(0,0,0);
+      transform:translate3d(0,0,0);
     }
-
 
     .works-eyebrow{
       display:flex;
       align-items:center;
-
       gap:20px;
-
-      color:
-        rgba(201,151,79,.80);
-
+      color:rgba(201,151,79,.80);
       font-size:10px;
-
       letter-spacing:.42em;
-
       text-transform:uppercase;
-
       margin-bottom:18px;
     }
 
-
     .works-eyebrow::before{
       content:"";
-
       width:58px;
       height:1px;
-
       flex-shrink:0;
 
       background:
@@ -1202,26 +951,12 @@
         );
     }
 
-
     .works-title{
-      font-family:
-        'Cormorant Garamond',
-        Georgia,
-        serif;
-
-      font-size:
-        clamp(
-          62px,
-          16vw,
-          100px
-        );
-
+      font-family:'Cormorant Garamond',Georgia,serif;
+      font-size:clamp(62px,16vw,100px);
       line-height:.90;
-
       font-weight:400;
-
       letter-spacing:-.04em;
-
       color:#f3eee7;
 
       text-shadow:
@@ -1229,74 +964,38 @@
         0 0 32px rgba(210,160,72,.06);
     }
 
-
     .works-description{
       max-width:650px;
-
       margin-top:28px;
-
-      font-family:
-        'Cormorant Garamond',
-        Georgia,
-        serif;
-
-      font-size:
-        clamp(
-          21px,
-          5vw,
-          28px
-        );
-
+      font-family:'Cormorant Garamond',Georgia,serif;
+      font-size:clamp(21px,5vw,28px);
       font-weight:400;
-
       line-height:1.43;
-
-      color:
-        rgba(238,229,216,.78);
+      color:rgba(238,229,216,.78);
 
       text-shadow:
         0 3px 12px rgba(0,0,0,.88);
     }
 
-
-    /* =====================================================
-       GALERIA
-    ===================================================== */
-
     .works-drag{
       position:relative;
-
       z-index:7;
-
       display:flex;
-
       align-items:center;
       justify-content:space-between;
-
-      padding:
-        0
-        35px
-        20px;
+      padding:0 35px 20px;
     }
 
-
     .works-drag-text{
-      color:
-        rgba(255,255,255,.40);
-
+      color:rgba(255,255,255,.40);
       font-size:9px;
-
       letter-spacing:.37em;
-
       text-transform:uppercase;
     }
 
-
     .works-drag-arrow{
       display:flex;
-
       align-items:center;
-
       gap:7px;
 
       animation:
@@ -1305,7 +1004,6 @@
         ease-in-out
         infinite;
     }
-
 
     .works-drag-line{
       width:58px;
@@ -1319,82 +1017,41 @@
         );
     }
 
-
     .works-drag-chevron{
       width:8px;
       height:8px;
-
-      border-top:
-        1px solid
-        rgba(218,175,100,.88);
-
-      border-right:
-        1px solid
-        rgba(218,175,100,.88);
-
-      transform:
-        rotate(45deg);
+      border-top:1px solid rgba(218,175,100,.88);
+      border-right:1px solid rgba(218,175,100,.88);
+      transform:rotate(45deg);
     }
-
 
     .works-slider{
       position:relative;
-
       z-index:7;
-
       width:100%;
-
       display:flex;
-
       gap:20px;
-
       overflow-x:auto;
       overflow-y:hidden;
-
       scroll-snap-type:x mandatory;
-
       scroll-padding-left:35px;
-
-      padding:
-        16px
-        35px
-        42px;
-
+      padding:16px 35px 42px;
       -webkit-overflow-scrolling:touch;
-
       scrollbar-width:none;
-
       cursor:grab;
     }
-
 
     .works-slider::-webkit-scrollbar{
       display:none;
     }
 
-
-    /* =====================================================
-       CARDS
-    ===================================================== */
-
     .work-card{
       position:relative;
-
-      flex:
-        0 0
-        min(
-          79vw,
-          430px
-        );
-
+      flex:0 0 min(79vw,430px);
       aspect-ratio:4 / 5;
-
       overflow:visible;
-
       scroll-snap-align:start;
-
       border-radius:7px;
-
       background:#0b0907;
 
       border:
@@ -1417,36 +1074,23 @@
       isolation:isolate;
     }
 
-
     .work-card-image{
       position:absolute;
-
       inset:0;
-
       overflow:hidden;
-
       border-radius:6px;
-
       z-index:1;
-
       background:#0b0907;
     }
 
-
     .work-card img{
       position:absolute;
-
       inset:0;
-
       width:100%;
       height:100%;
-
       object-fit:cover;
-
       display:block;
-
-      transform:
-        translate3d(0,0,0);
+      transform:translate3d(0,0,0);
 
       transition:
         transform
@@ -1454,14 +1098,10 @@
         cubic-bezier(.2,.75,.25,1);
     }
 
-
     .work-card-image::after{
       content:"";
-
       position:absolute;
-
       inset:0;
-
       pointer-events:none;
 
       background:
@@ -1474,18 +1114,12 @@
       z-index:2;
     }
 
-
     .work-card::before{
       content:"";
-
       position:absolute;
-
       inset:1px;
-
       z-index:5;
-
       border-radius:5px;
-
       pointer-events:none;
 
       border:
@@ -1497,18 +1131,12 @@
         inset 0 0 14px rgba(201,139,40,.06);
     }
 
-
     .work-card::after{
       content:"";
-
       position:absolute;
-
       inset:-2px;
-
       z-index:6;
-
       pointer-events:none;
-
       border-radius:8px;
 
       background:
@@ -1543,62 +1171,40 @@
       opacity:.70;
     }
 
-
     .work-card:active img{
       transform:
         scale(1.025)
         translate3d(0,0,0);
     }
 
-
-    /* =====================================================
-       CONTADOR
-    ===================================================== */
-
     .works-footer{
       position:relative;
-
       z-index:7;
-
       display:flex;
       align-items:center;
-
       padding:0 35px;
     }
 
-
     .works-counter{
       display:flex;
-
       align-items:baseline;
-
       gap:7px;
-
-      font-family:
-        'Cormorant Garamond',
-        serif;
+      font-family:'Cormorant Garamond',serif;
     }
-
 
     .works-current{
       font-size:30px;
       color:#e7d8be;
     }
 
-
     .works-total{
       font-size:15px;
-
-      color:
-        rgba(255,255,255,.28);
+      color:rgba(255,255,255,.28);
     }
-
 
     .works-footer-line{
       flex:1;
-
       height:1px;
-
       margin-left:20px;
 
       background:
@@ -1609,45 +1215,25 @@
         );
     }
 
-
-    /* =====================================================
-       OUTRAS SEÇÕES
-    ===================================================== */
-
     .future-section{
       position:relative;
-
       min-height:100svh;
-
       display:flex;
-
       align-items:center;
       justify-content:center;
-
-      padding:
-        130px
-        25px;
-
+      padding:130px 25px;
       overflow:hidden;
-
       background:transparent;
     }
 
-
     .future-light{
       position:absolute;
-
       width:850px;
       height:850px;
-
       left:50%;
       top:50%;
-
-      transform:
-        translate(-50%,-50%);
-
+      transform:translate(-50%,-50%);
       border-radius:50%;
-
       pointer-events:none;
 
       background:
@@ -1659,104 +1245,55 @@
         );
     }
 
-
     .future-content{
       position:relative;
-
       z-index:3;
-
       max-width:620px;
-
       text-align:center;
     }
 
-
     .future-content small{
       color:#b88b42;
-
       font-size:9px;
-
       letter-spacing:.42em;
-
       padding-left:.42em;
-
       text-transform:uppercase;
     }
 
-
     .future-content h2{
       margin-top:14px;
-
-      font-family:
-        'Cormorant Garamond',
-        serif;
-
-      font-size:
-        clamp(
-          44px,
-          12vw,
-          74px
-        );
-
+      font-family:'Cormorant Garamond',serif;
+      font-size:clamp(44px,12vw,74px);
       font-weight:400;
-
       color:#eee9e1;
     }
 
-
     .future-content p{
       margin-top:16px;
-
-      font-family:
-        'Cormorant Garamond',
-        serif;
-
+      font-family:'Cormorant Garamond',serif;
       font-size:19px;
-
       line-height:1.5;
-
-      color:
-        rgba(255,255,255,.42);
+      color:rgba(255,255,255,.42);
     }
-
-
-    /* =====================================================
-       ENDEREÇO
-    ===================================================== */
 
     .address-section{
       position:relative;
-
       min-height:100svh;
-
       display:flex;
-
       justify-content:center;
       align-items:center;
-
-      padding:
-        130px
-        25px
-        160px;
-
+      padding:130px 25px 160px;
       overflow:hidden;
-
       background:transparent;
     }
 
-
     .address-glow{
       position:absolute;
-
       width:950px;
       height:950px;
-
       left:50%;
       top:50%;
-
-      transform:
-        translate(-50%,-50%);
-
+      transform:translate(-50%,-50%);
       border-radius:50%;
 
       background:
@@ -1770,59 +1307,34 @@
       pointer-events:none;
     }
 
-
     .address-content{
       position:relative;
-
       z-index:3;
-
       width:100%;
       max-width:600px;
-
       text-align:center;
     }
 
-
     .address-eyebrow{
       color:#b88b42;
-
       font-size:9px;
-
       letter-spacing:.42em;
-
       padding-left:.42em;
-
       text-transform:uppercase;
     }
 
-
     .address-title{
       margin-top:14px;
-
-      font-family:
-        'Cormorant Garamond',
-        serif;
-
-      font-size:
-        clamp(
-          50px,
-          13vw,
-          78px
-        );
-
+      font-family:'Cormorant Garamond',serif;
+      font-size:clamp(50px,13vw,78px);
       font-weight:400;
-
       color:#f1ece4;
     }
-
 
     .address-line{
       width:1px;
       height:52px;
-
-      margin:
-        28px
-        auto;
+      margin:28px auto;
 
       background:
         linear-gradient(
@@ -1833,108 +1345,54 @@
         );
     }
 
-
     .building{
-      font-family:
-        'Cormorant Garamond',
-        serif;
-
-      font-size:
-        clamp(
-          27px,
-          7vw,
-          35px
-        );
-
+      font-family:'Cormorant Garamond',serif;
+      font-size:clamp(27px,7vw,35px);
       color:#dfbd82;
-
       margin-bottom:17px;
     }
 
-
     .address-text{
-      font-family:
-        'Cormorant Garamond',
-        serif;
-
-      font-size:
-        clamp(
-          20px,
-          5.2vw,
-          25px
-        );
-
+      font-family:'Cormorant Garamond',serif;
+      font-size:clamp(20px,5.2vw,25px);
       line-height:1.55;
-
-      color:
-        rgba(245,238,227,.72);
+      color:rgba(245,238,227,.72);
     }
-
 
     .address-room{
       display:block;
-
       margin-top:14px;
-
-      color:
-        rgba(218,173,95,.78);
-
-      font-size:
-        clamp(
-          17px,
-          4.4vw,
-          21px
-        );
-
+      color:rgba(218,173,95,.78);
+      font-size:clamp(17px,4.4vw,21px);
       letter-spacing:.04em;
     }
 
-
     .map-button{
       display:inline-flex;
-
       align-items:center;
       justify-content:center;
-
       min-width:190px;
-
       margin-top:35px;
-
-      padding:
-        15px
-        25px;
+      padding:15px 25px;
 
       border:
         1px solid
         rgba(211,164,84,.46);
 
       border-radius:50px;
-
       color:#dfbd82;
-
       text-decoration:none;
-
       font-size:9px;
-
       letter-spacing:.28em;
-
       text-transform:uppercase;
-
-      background:
-        rgba(7,6,5,.38);
+      background:rgba(7,6,5,.38);
 
       backdrop-filter:blur(8px);
       -webkit-backdrop-filter:blur(8px);
     }
 
-
-    /* =====================================================
-       WHATSAPP
-    ===================================================== */
-
     .whatsapp-button{
       position:fixed;
-
       right:18px;
 
       bottom:
@@ -1948,16 +1406,13 @@
 
       width:76px;
       height:76px;
-
       z-index:180;
 
       display:flex;
-
       align-items:center;
       justify-content:center;
 
       border-radius:50%;
-
       text-decoration:none;
 
       animation:
@@ -1967,18 +1422,13 @@
         infinite;
     }
 
-
     .whatsapp-button::before,
     .whatsapp-button::after{
       content:"";
-
       position:absolute;
-
       border-radius:50%;
-
       pointer-events:none;
     }
-
 
     .whatsapp-button::before{
       inset:-7px;
@@ -1994,7 +1444,6 @@
         infinite;
     }
 
-
     .whatsapp-button::after{
       inset:-16px;
 
@@ -2009,15 +1458,11 @@
         infinite;
     }
 
-
     .whatsapp-button img{
       position:relative;
-
       width:100%;
       height:100%;
-
       object-fit:contain;
-
       z-index:2;
 
       filter:
@@ -2031,11 +1476,6 @@
         );
     }
 
-
-    /* =====================================================
-       ANIMAÇÕES
-    ===================================================== */
-
     @keyframes whatsappPulse{
 
       0%,
@@ -2048,7 +1488,6 @@
       }
 
     }
-
 
     @keyframes whatsappRing{
 
@@ -2065,7 +1504,6 @@
 
     }
 
-
     @keyframes whatsappRingOuter{
 
       0%,
@@ -2080,7 +1518,6 @@
       }
 
     }
-
 
     @keyframes scrollLine{
 
@@ -2097,7 +1534,6 @@
 
     }
 
-
     @keyframes worksArrow{
 
       0%,
@@ -2112,7 +1548,6 @@
       }
 
     }
-
 
     @keyframes cardGoldPulse{
 
@@ -2145,11 +1580,6 @@
 
     }
 
-
-    /* =====================================================
-       MOBILE
-    ===================================================== */
-
     @media(max-width:600px){
 
       .hero{
@@ -2179,13 +1609,7 @@
       }
 
       .hero-phrase{
-        font-size:
-          clamp(
-            17px,
-            4.4vw,
-            22px
-          );
-
+        font-size:clamp(17px,4.4vw,22px);
         letter-spacing:0;
       }
 
@@ -2196,12 +1620,7 @@
 
       .works-background-photo{
         top:-150px;
-
-        height:
-          calc(
-            100% + 300px
-          );
-
+        height:calc(100% + 300px);
         object-position:center top;
       }
 
@@ -2220,32 +1639,17 @@
       }
 
       .works-title{
-        font-size:
-          clamp(
-            62px,
-            16vw,
-            82px
-          );
+        font-size:clamp(62px,16vw,82px);
       }
 
       .works-description{
         margin-top:27px;
-
-        font-size:
-          clamp(
-            21px,
-            5.3vw,
-            26px
-          );
-
+        font-size:clamp(21px,5.3vw,26px);
         line-height:1.45;
       }
 
       .works-drag{
-        padding:
-          0
-          36px
-          20px;
+        padding:0 36px 20px;
       }
 
       .works-drag-text{
@@ -2258,13 +1662,8 @@
       }
 
       .works-slider{
-        padding:
-          16px
-          36px
-          42px;
-
-        scroll-padding-left:
-          36px;
+        padding:16px 36px 42px;
+        scroll-padding-left:36px;
       }
 
       .work-card{
@@ -2277,19 +1676,12 @@
 
       .future-section{
         min-height:90svh;
-
-        padding:
-          115px
-          25px;
+        padding:115px 25px;
       }
 
       .address-section{
         min-height:90svh;
-
-        padding:
-          120px
-          25px
-          150px;
+        padding:120px 25px 150px;
       }
 
       .whatsapp-button{
@@ -2298,7 +1690,6 @@
       }
 
     }
-
 
     @media(max-width:390px){
 
@@ -2355,14 +1746,12 @@
 
     }
 
-
     @media(min-width:800px){
 
       .works-header,
       .works-drag,
       .works-footer{
         max-width:1250px;
-
         margin-left:auto;
         margin-right:auto;
       }
@@ -2384,7 +1773,6 @@
       }
 
     }
-
 
     @media(prefers-reduced-motion:reduce){
 
@@ -2433,8 +1821,6 @@
   </div>
 
 
-  <!-- MENU -->
-
   <button
     class="menu-trigger"
     id="menuTrigger"
@@ -2465,29 +1851,12 @@
 
     <div class="menu-links">
 
-      <a href="#trabalhos">
-        Trabalhos
-      </a>
-
-      <a href="#estudio">
-        O estúdio
-      </a>
-
-      <a href="#yara">
-        Yara Nicácio
-      </a>
-
-      <a href="#precos">
-        Tabela de preços
-      </a>
-
-      <a href="#avaliacoes">
-        Avaliações
-      </a>
-
-      <a href="#endereco">
-        Endereço
-      </a>
+      <a href="#trabalhos">Trabalhos</a>
+      <a href="#estudio">O estúdio</a>
+      <a href="#yara">Yara Nicácio</a>
+      <a href="#precos">Tabela de preços</a>
+      <a href="#avaliacoes">Avaliações</a>
+      <a href="#endereco">Endereço</a>
 
     </div>
 
@@ -2496,8 +1865,6 @@
 
   <main>
 
-
-    <!-- CAPA -->
 
     <section
       class="hero"
@@ -2517,19 +1884,16 @@
         aria-hidden="true"
       >
 
-
       <div
         class="twinkle-field"
         id="heroTwinkles"
         aria-hidden="true"
       ></div>
 
-
       <div
         class="hero-bottom-fade"
         aria-hidden="true"
       ></div>
-
 
       <img
         class="top-logo"
@@ -2537,7 +1901,6 @@
         src="B246332E-6D6E-47D0-B3DD-02096818D8AD.png"
         alt="Yara Nicácio"
       >
-
 
       <div
         class="hero-content"
@@ -2571,12 +1934,9 @@
 
       </div>
 
-
       <div class="scroll-indicator">
 
-        <span>
-          DESLIZE
-        </span>
+        <span>DESLIZE</span>
 
         <div class="scroll-line"></div>
 
@@ -2584,8 +1944,6 @@
 
     </section>
 
-
-    <!-- TRABALHOS -->
 
     <section
       class="works-section"
@@ -2609,7 +1967,6 @@
         aria-hidden="true"
       ></div>
 
-
       <div
         class="works-sparkles-layer"
         id="worksSparklesLayer"
@@ -2624,19 +1981,16 @@
 
       </div>
 
-
       <div
         class="twinkle-field"
         id="worksTwinkles"
         aria-hidden="true"
       ></div>
 
-
       <div
         class="works-glow"
         aria-hidden="true"
       ></div>
-
 
       <div class="works-header">
 
@@ -2662,7 +2016,6 @@
 
       </div>
 
-
       <div class="works-drag">
 
         <span class="works-drag-text">
@@ -2675,13 +2028,11 @@
         >
 
           <div class="works-drag-line"></div>
-
           <div class="works-drag-chevron"></div>
 
         </div>
 
       </div>
-
 
       <div
         class="works-slider"
@@ -2750,7 +2101,6 @@
 
       </div>
 
-
       <div class="works-footer">
 
         <div class="works-counter">
@@ -2775,27 +2125,15 @@
     </section>
 
 
-    <!-- ESTÚDIO -->
+    <section class="future-section" id="estudio">
 
-    <section
-      class="future-section"
-      id="estudio"
-    >
-
-      <div
-        class="future-light"
-        aria-hidden="true"
-      ></div>
+      <div class="future-light" aria-hidden="true"></div>
 
       <div class="future-content">
 
-        <small>
-          Yara Nicácio
-        </small>
+        <small>Yara Nicácio</small>
 
-        <h2>
-          O estúdio
-        </h2>
+        <h2>O estúdio</h2>
 
         <p>
           Uma experiência pensada em cada detalhe.
@@ -2806,27 +2144,15 @@
     </section>
 
 
-    <!-- YARA -->
+    <section class="future-section" id="yara">
 
-    <section
-      class="future-section"
-      id="yara"
-    >
-
-      <div
-        class="future-light"
-        aria-hidden="true"
-      ></div>
+      <div class="future-light" aria-hidden="true"></div>
 
       <div class="future-content">
 
-        <small>
-          Nail Artist
-        </small>
+        <small>Nail Artist</small>
 
-        <h2>
-          Yara Nicácio
-        </h2>
+        <h2>Yara Nicácio</h2>
 
         <p>
           Técnica, identidade e criatividade
@@ -2838,27 +2164,15 @@
     </section>
 
 
-    <!-- PREÇOS -->
+    <section class="future-section" id="precos">
 
-    <section
-      class="future-section"
-      id="precos"
-    >
-
-      <div
-        class="future-light"
-        aria-hidden="true"
-      ></div>
+      <div class="future-light" aria-hidden="true"></div>
 
       <div class="future-content">
 
-        <small>
-          Serviços
-        </small>
+        <small>Serviços</small>
 
-        <h2>
-          Tabela de preços
-        </h2>
+        <h2>Tabela de preços</h2>
 
         <p>
           Conheça os serviços e escolha
@@ -2870,27 +2184,15 @@
     </section>
 
 
-    <!-- AVALIAÇÕES -->
+    <section class="future-section" id="avaliacoes">
 
-    <section
-      class="future-section"
-      id="avaliacoes"
-    >
-
-      <div
-        class="future-light"
-        aria-hidden="true"
-      ></div>
+      <div class="future-light" aria-hidden="true"></div>
 
       <div class="future-content">
 
-        <small>
-          Experiências
-        </small>
+        <small>Experiências</small>
 
-        <h2>
-          Avaliações
-        </h2>
+        <h2>Avaliações</h2>
 
         <p>
           A experiência de quem já escolheu
@@ -2902,17 +2204,9 @@
     </section>
 
 
-    <!-- ENDEREÇO -->
+    <section class="address-section" id="endereco">
 
-    <section
-      class="address-section"
-      id="endereco"
-    >
-
-      <div
-        class="address-glow"
-        aria-hidden="true"
-      ></div>
+      <div class="address-glow" aria-hidden="true"></div>
 
       <div class="address-content">
 
@@ -2924,10 +2218,7 @@
           Endereço
         </h2>
 
-        <div
-          class="address-line"
-          aria-hidden="true"
-        ></div>
+        <div class="address-line" aria-hidden="true"></div>
 
         <div class="building">
           Edifício NBC
@@ -2946,7 +2237,6 @@
 
         </div>
 
-
         <a
           class="map-button"
           href="https://www.google.com/maps/search/?api=1&query=Avenida+Anapolis+105+Bethaville+Barueri+SP"
@@ -2962,8 +2252,6 @@
 
   </main>
 
-
-  <!-- WHATSAPP -->
 
   <a
     class="whatsapp-button"
@@ -2982,11 +2270,6 @@
 
 
   <script>
-
-
-    /* =====================================================
-       MENU
-    ===================================================== */
 
     const menuTrigger =
       document.getElementById(
@@ -3008,51 +2291,30 @@
         ".menu-links a"
       );
 
-
     function openMenu(){
 
-      menuTrigger.classList.add(
-        "active"
-      );
-
-      sideMenu.classList.add(
-        "active"
-      );
-
-      menuOverlay.classList.add(
-        "active"
-      );
+      menuTrigger.classList.add("active");
+      sideMenu.classList.add("active");
+      menuOverlay.classList.add("active");
 
       document.body.style.overflow =
         "hidden";
 
     }
 
-
     function closeMenu(){
 
-      menuTrigger.classList.remove(
-        "active"
-      );
-
-      sideMenu.classList.remove(
-        "active"
-      );
-
-      menuOverlay.classList.remove(
-        "active"
-      );
+      menuTrigger.classList.remove("active");
+      sideMenu.classList.remove("active");
+      menuOverlay.classList.remove("active");
 
       document.body.style.overflow =
         "";
 
     }
 
-
     menuTrigger.addEventListener(
-
       "click",
-
       function(){
 
         if(
@@ -3070,18 +2332,14 @@
         }
 
       }
-
     );
-
 
     menuOverlay.addEventListener(
       "click",
       closeMenu
     );
 
-
     menuLinks.forEach(
-
       function(link){
 
         link.addEventListener(
@@ -3090,19 +2348,13 @@
         );
 
       }
-
     );
 
-
-    /* =====================================================
-       BRILHOS ALEATÓRIOS
-    ===================================================== */
 
     const reducedMotion =
       window.matchMedia(
         "(prefers-reduced-motion: reduce)"
       ).matches;
-
 
     const variants = [
       "variant-a",
@@ -3110,7 +2362,6 @@
       "variant-c",
       "variant-d"
     ];
-
 
     function randomBetween(
       min,
@@ -3129,7 +2380,6 @@
 
     }
 
-
     function randomVariant(){
 
       return variants[
@@ -3141,159 +2391,198 @@
 
     }
 
-
-    /*
-       NOVA DISTRIBUIÇÃO:
-
-       72% DOS BRILHOS
-       FICAM MAIS CONCENTRADOS
-       NO MEIO DA TELA.
-
-       OS OUTROS 28%
-       CONTINUAM ESPALHADOS.
-    */
-
     function getTwinklePosition(){
 
       const centerChance =
         Math.random();
 
-
       if(
-        centerChance < .72
+        centerChance < .78
       ){
 
         return{
-          x:randomBetween(
-            12,
-            88
-          ),
-
-          y:randomBetween(
-            23,
-            77
-          )
+          x:randomBetween(10,90),
+          y:randomBetween(18,82)
         };
 
       }
 
-
       return{
-        x:randomBetween(
-          2,
-          98
-        ),
-
-        y:randomBetween(
-          3,
-          97
-        )
+        x:randomBetween(2,98),
+        y:randomBetween(3,97)
       };
 
     }
 
+    function getHeroMicroPosition(){
+
+      const tightCenter =
+        Math.random();
+
+      if(
+        tightCenter < .70
+      ){
+
+        return{
+          x:randomBetween(22,78),
+          y:randomBetween(26,46)
+        };
+
+      }
+
+      return{
+        x:randomBetween(12,88),
+        y:randomBetween(22,50)
+      };
+
+    }
 
     function configureTwinkle(
       twinkle,
-      firstTime = false
+      firstTime = false,
+      micro = false
     ){
 
-      /*
-         CONTINUA LENTO
-      */
-
       const duration =
+        micro
+        ?
+        randomBetween(
+          11,
+          20
+        )
+        :
         randomBetween(
           9,
           18
         );
 
-
       const intensityChance =
         Math.random();
 
-
       let peak;
 
+      if(micro){
 
-      if(
-        intensityChance < .24
-      ){
+        if(
+          intensityChance < .18
+        ){
 
-        peak =
-          randomBetween(
-            .68,
-            .92
-          );
+          peak =
+            randomBetween(
+              .48,
+              .70
+            );
 
-      }else if(
-        intensityChance < .70
-      ){
+        }else if(
+          intensityChance < .68
+        ){
 
-        peak =
-          randomBetween(
-            .40,
-            .69
-          );
+          peak =
+            randomBetween(
+              .28,
+              .50
+            );
+
+        }else{
+
+          peak =
+            randomBetween(
+              .12,
+              .30
+            );
+
+        }
 
       }else{
 
-        peak =
-          randomBetween(
-            .22,
-            .42
-          );
+        if(
+          intensityChance < .24
+        ){
+
+          peak =
+            randomBetween(
+              .68,
+              .92
+            );
+
+        }else if(
+          intensityChance < .70
+        ){
+
+          peak =
+            randomBetween(
+              .40,
+              .69
+            );
+
+        }else{
+
+          peak =
+            randomBetween(
+              .22,
+              .42
+            );
+
+        }
 
       }
 
-
       const soft =
+        micro
+        ?
+        randomBetween(
+          .008,
+          .038
+        )
+        :
         randomBetween(
           .018,
           .075
         );
 
-
       const blur =
-        Math.random() > .80
+        micro
         ?
         randomBetween(
-          .20,
-          .48
+          0,
+          .06
         )
         :
-        randomBetween(
-          0,
-          .10
+        (
+          Math.random() > .80
+          ?
+          randomBetween(
+            .20,
+            .48
+          )
+          :
+          randomBetween(
+            0,
+            .10
+          )
         );
-
 
       twinkle.style.setProperty(
         "--duration",
         `${duration.toFixed(2)}s`
       );
 
-
       twinkle.style.setProperty(
         "--peak",
         peak.toFixed(2)
       );
-
 
       twinkle.style.setProperty(
         "--soft",
         soft.toFixed(3)
       );
 
-
       twinkle.style.setProperty(
         "--blur",
         `${blur.toFixed(2)}px`
       );
 
-
       variants.forEach(
-
         function(variant){
 
           twinkle.classList.remove(
@@ -3301,20 +2590,17 @@
           );
 
         }
-
       );
-
 
       twinkle.classList.add(
         randomVariant()
       );
 
-
       if(firstTime){
 
         twinkle.style.setProperty(
           "--delay",
-          `${randomBetween(-18,0).toFixed(2)}s`
+          `${randomBetween(-20,0).toFixed(2)}s`
         );
 
       }else{
@@ -3328,7 +2614,6 @@
 
     }
 
-
     function createTwinkles(
       container,
       amount
@@ -3341,6 +2626,107 @@
         return;
       }
 
+      for(
+        let i = 0;
+        i < amount;
+        i++
+      ){
+
+        const twinkle =
+          document.createElement(
+            "span"
+          );
+
+        twinkle.className =
+          "twinkle";
+
+        const position =
+          getTwinklePosition();
+
+        twinkle.style.left =
+          `${position.x.toFixed(2)}%`;
+
+        twinkle.style.top =
+          `${position.y.toFixed(2)}%`;
+
+        const sizeChance =
+          Math.random();
+
+        let size;
+
+        if(
+          sizeChance < .10
+        ){
+
+          size =
+            randomBetween(
+              3.4,
+              4.1
+            );
+
+        }else if(
+          sizeChance < .55
+        ){
+
+          size =
+            randomBetween(
+              2.2,
+              3.4
+            );
+
+        }else{
+
+          size =
+            randomBetween(
+              1.2,
+              2.4
+            );
+
+        }
+
+        twinkle.style.setProperty(
+          "--size",
+          `${size.toFixed(2)}px`
+        );
+
+        configureTwinkle(
+          twinkle,
+          true,
+          false
+        );
+
+        twinkle.addEventListener(
+          "animationiteration",
+          function(){
+
+            configureTwinkle(
+              twinkle,
+              false,
+              false
+            );
+
+          }
+        );
+
+        container.appendChild(
+          twinkle
+        );
+
+      }
+
+    }
+
+    function createHeroMicroTwinkles(
+      container,
+      amount
+    ){
+
+      if(
+        !container ||
+        reducedMotion
+      ){
+        return;
+      }
 
       for(
         let i = 0;
@@ -3353,108 +2739,47 @@
             "span"
           );
 
-
         twinkle.className =
-          "twinkle";
-
-
-        /*
-           MAIS BRILHO NO CENTRO
-        */
+          "twinkle micro";
 
         const position =
-          getTwinklePosition();
-
+          getHeroMicroPosition();
 
         twinkle.style.left =
           `${position.x.toFixed(2)}%`;
 
-
         twinkle.style.top =
           `${position.y.toFixed(2)}%`;
 
-
-        /*
-           TODOS CONTINUAM PEQUENOS
-        */
-
-        const sizeChance =
-          Math.random();
-
-
-        let size;
-
-
-        if(
-          sizeChance < .12
-        ){
-
-          /*
-             PEQUENO MAIS PRESENTE
-          */
-
-          size =
-            randomBetween(
-              3.6,
-              4.4
-            );
-
-        }else if(
-          sizeChance < .58
-        ){
-
-          /*
-             MÉDIO-PEQUENO
-          */
-
-          size =
-            randomBetween(
-              2.4,
-              3.6
-            );
-
-        }else{
-
-          /*
-             MICRO BRILHOS
-          */
-
-          size =
-            randomBetween(
-              1.4,
-              2.6
-            );
-
-        }
-
+        const size =
+          randomBetween(
+            .8,
+            2.1
+          );
 
         twinkle.style.setProperty(
           "--size",
           `${size.toFixed(2)}px`
         );
 
-
         configureTwinkle(
           twinkle,
+          true,
           true
         );
 
-
         twinkle.addEventListener(
-
           "animationiteration",
-
           function(){
 
             configureTwinkle(
               twinkle,
-              false
+              false,
+              true
             );
 
           }
-
         );
-
 
         container.appendChild(
           twinkle
@@ -3465,29 +2790,28 @@
     }
 
 
-    /* =====================================================
-       MAIS BRILHOS
-    ===================================================== */
-
-    createTwinkles(
+    const heroTwinkleField =
       document.getElementById(
         "heroTwinkles"
-      ),
-      120
+      );
+
+    createTwinkles(
+      heroTwinkleField,
+      180
     );
 
+    createHeroMicroTwinkles(
+      heroTwinkleField,
+      90
+    );
 
     createTwinkles(
       document.getElementById(
         "worksTwinkles"
       ),
-      140
+      180
     );
 
-
-    /* =====================================================
-       MOVIMENTO FLUIDO
-    ===================================================== */
 
     const heroContent =
       document.getElementById(
@@ -3519,7 +2843,6 @@
         "worksSparklesLayer"
       );
 
-
     let heroTarget = 0;
     let heroCurrent = 0;
 
@@ -3534,7 +2857,6 @@
 
     let worksSparkTarget = 0;
     let worksSparkCurrent = 0;
-
 
     function lerp(
       start,
@@ -3552,12 +2874,10 @@
 
     }
 
-
     function calculateTargets(){
 
       const scrollY =
         window.scrollY;
-
 
       if(
         scrollY <
@@ -3572,14 +2892,11 @@
 
       }
 
-
       globalSparkTarget =
         scrollY * .012;
 
-
       const worksRect =
         worksSection.getBoundingClientRect();
-
 
       if(
         worksRect.top <
@@ -3591,20 +2908,16 @@
         const viewportCenter =
           window.innerHeight / 2;
 
-
         const sectionCenter =
           worksRect.top +
           worksRect.height / 2;
-
 
         const difference =
           viewportCenter -
           sectionCenter;
 
-
         worksHeaderTarget =
           difference * .032;
-
 
         worksSparkTarget =
           difference * .012;
@@ -3613,9 +2926,7 @@
 
     }
 
-
     function smoothAnimation(){
-
 
       heroCurrent =
         lerp(
@@ -3624,14 +2935,12 @@
           .10
         );
 
-
       logoCurrent =
         lerp(
           logoCurrent,
           logoTarget,
           .10
         );
-
 
       globalSparkCurrent =
         lerp(
@@ -3640,7 +2949,6 @@
           .075
         );
 
-
       worksHeaderCurrent =
         lerp(
           worksHeaderCurrent,
@@ -3648,14 +2956,12 @@
           .085
         );
 
-
       worksSparkCurrent =
         lerp(
           worksSparkCurrent,
           worksSparkTarget,
           .065
         );
-
 
       heroContent.style.transform =
         `translate3d(
@@ -3667,14 +2973,12 @@
           0
         )`;
 
-
       topLogo.style.transform =
         `translate3d(
           0,
           ${logoCurrent}px,
           0
         )`;
-
 
       globalSparklesLayer.style.transform =
         `translate3d(
@@ -3683,14 +2987,12 @@
           0
         )`;
 
-
       worksHeaderFloat.style.transform =
         `translate3d(
           0,
           ${worksHeaderCurrent}px,
           0
         )`;
-
 
       worksSparklesLayer.style.transform =
         `translate3d(
@@ -3699,13 +3001,11 @@
           0
         )`;
 
-
       requestAnimationFrame(
         smoothAnimation
       );
 
     }
-
 
     window.addEventListener(
       "scroll",
@@ -3715,30 +3015,22 @@
       }
     );
 
-
     window.addEventListener(
       "resize",
       calculateTargets
     );
 
-
     calculateTargets();
-
 
     requestAnimationFrame(
       smoothAnimation
     );
 
 
-    /* =====================================================
-       GALERIA
-    ===================================================== */
-
     const worksSlider =
       document.getElementById(
         "worksSlider"
       );
-
 
     const workCards =
       Array.from(
@@ -3747,33 +3039,26 @@
         )
       );
 
-
     const currentWork =
       document.getElementById(
         "currentWork"
       );
-
 
     function updateWorkCounter(){
 
       const sliderRect =
         worksSlider.getBoundingClientRect();
 
-
       const reference =
         sliderRect.left + 35;
-
 
       let closestIndex =
         0;
 
-
       let closestDistance =
         Infinity;
 
-
       workCards.forEach(
-
         function(
           card,
           index
@@ -3782,13 +3067,11 @@
           const cardRect =
             card.getBoundingClientRect();
 
-
           const distance =
             Math.abs(
               cardRect.left -
               reference
             );
-
 
           if(
             distance <
@@ -3804,9 +3087,7 @@
           }
 
         }
-
       );
-
 
       currentWork.textContent =
         String(
@@ -3818,15 +3099,11 @@
 
     }
 
-
     let galleryTicking =
       false;
 
-
     worksSlider.addEventListener(
-
       "scroll",
-
       function(){
 
         if(
@@ -3834,7 +3111,6 @@
         ){
 
           requestAnimationFrame(
-
             function(){
 
               updateWorkCounter();
@@ -3843,9 +3119,7 @@
                 false;
 
             }
-
           );
-
 
           galleryTicking =
             true;
@@ -3853,20 +3127,13 @@
         }
 
       },
-
       {
         passive:true
       }
-
     );
-
 
     updateWorkCounter();
 
-
-    /* =====================================================
-       ARRASTE DESKTOP
-    ===================================================== */
 
     let isDown =
       false;
@@ -3877,74 +3144,54 @@
     let sliderStart =
       0;
 
-
     worksSlider.addEventListener(
-
       "mousedown",
-
       function(event){
 
         isDown =
           true;
 
-
         worksSlider.style.cursor =
           "grabbing";
-
 
         startX =
           event.pageX -
           worksSlider.offsetLeft;
 
-
         sliderStart =
           worksSlider.scrollLeft;
 
       }
-
     );
 
-
     worksSlider.addEventListener(
-
       "mouseleave",
-
       function(){
 
         isDown =
           false;
 
-
         worksSlider.style.cursor =
           "grab";
 
       }
-
     );
 
-
     worksSlider.addEventListener(
-
       "mouseup",
-
       function(){
 
         isDown =
           false;
 
-
         worksSlider.style.cursor =
           "grab";
 
       }
-
     );
 
-
     worksSlider.addEventListener(
-
       "mousemove",
-
       function(event){
 
         if(
@@ -3953,14 +3200,11 @@
           return;
         }
 
-
         event.preventDefault();
-
 
         const x =
           event.pageX -
           worksSlider.offsetLeft;
-
 
         const walk =
           (
@@ -3969,15 +3213,12 @@
           )
           * 1.4;
 
-
         worksSlider.scrollLeft =
           sliderStart -
           walk;
 
       }
-
     );
-
 
   </script>
 
