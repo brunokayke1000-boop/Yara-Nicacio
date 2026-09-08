@@ -3147,11 +3147,6 @@
       firstTime = false
     ){
 
-      /*
-         MAIS LENTO:
-         9 A 18 SEGUNDOS
-      */
-
       const duration =
         randomBetween(
           9,
@@ -3316,11 +3311,6 @@
           `${randomBetween(3,97).toFixed(2)}%`;
 
 
-        /*
-           MAIS BRILHOS GRANDES
-           E MÉDIOS
-        */
-
         const sizeChance =
           Math.random();
 
@@ -3332,10 +3322,6 @@
           sizeChance < .22
         ){
 
-          /*
-             GRANDES
-          */
-
           size =
             randomBetween(
               5.8,
@@ -3346,10 +3332,6 @@
           sizeChance < .64
         ){
 
-          /*
-             MÉDIOS
-          */
-
           size =
             randomBetween(
               3.6,
@@ -3357,10 +3339,6 @@
             );
 
         }else{
-
-          /*
-             PEQUENOS
-          */
 
           size =
             randomBetween(
@@ -3408,15 +3386,15 @@
     }
 
 
-    /*
-       MAIS VOLUME
-    */
+    /* =====================================================
+       DOBRO DE BRILHOS
+    ===================================================== */
 
     createTwinkles(
       document.getElementById(
         "heroTwinkles"
       ),
-      42
+      84
     );
 
 
@@ -3424,7 +3402,7 @@
       document.getElementById(
         "worksTwinkles"
       ),
-      50
+      100
     );
 
 
