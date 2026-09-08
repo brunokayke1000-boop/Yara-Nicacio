@@ -44,9 +44,7 @@
 
     body{
       margin:0;
-
       background:#050403;
-
       color:#ffffff;
 
       font-family:
@@ -104,8 +102,8 @@
       will-change:transform;
 
       filter:
-        brightness(.69)
-        contrast(1.02)
+        brightness(.78)
+        contrast(1.03)
         saturate(.92);
     }
 
@@ -127,13 +125,13 @@
         linear-gradient(
           to bottom,
 
-          rgba(0,0,0,.26) 0%,
+          rgba(0,0,0,.18) 0%,
 
-          rgba(0,0,0,.32) 28%,
+          rgba(0,0,0,.26) 30%,
 
-          rgba(0,0,0,.44) 60%,
+          rgba(0,0,0,.38) 60%,
 
-          rgba(0,0,0,.68) 82%,
+          rgba(0,0,0,.64) 82%,
 
           #050403 100%
         );
@@ -157,29 +155,23 @@
         radial-gradient(
           ellipse at center,
 
-          transparent 18%,
+          transparent 16%,
 
-          rgba(0,0,0,.08) 46%,
+          rgba(0,0,0,.06) 44%,
 
-          rgba(0,0,0,.48) 100%
+          rgba(0,0,0,.44) 100%
         );
     }
 
 
     /* ========================================
        BRILHOS DOURADOS
-
-       Ficam:
-       - na frente da foto
-       - atrás do nome
-       - atrás da frase
-       - atrás do logotipo
     ======================================== */
 
     .gold-sparkles{
       position:absolute;
 
-      inset:-7%;
+      inset:-8%;
 
       z-index:4;
 
@@ -187,17 +179,17 @@
 
       will-change:transform;
 
-      opacity:.64;
+      opacity:.82;
 
       mix-blend-mode:screen;
 
       filter:
-        brightness(1.05)
-        saturate(1.08);
+        brightness(1.35)
+        saturate(1.18);
 
       transform:
         translate3d(0,0,0)
-        scale(1.08);
+        scale(1.10);
     }
 
 
@@ -213,8 +205,8 @@
       object-position:center;
 
       animation:
-        sparkleBreath
-        5s
+        sparkleFade
+        4.4s
         ease-in-out
         infinite;
     }
@@ -229,16 +221,16 @@
 
       left:50%;
 
-      top:41%;
+      top:40%;
 
       transform:
         translate(-50%,-50%);
 
       width:100vw;
 
-      max-width:900px;
+      max-width:950px;
 
-      height:32vh;
+      height:34vh;
 
       z-index:5;
 
@@ -248,15 +240,15 @@
         radial-gradient(
           ellipse at center,
 
-          rgba(194,142,61,.13),
+          rgba(205,149,62,.16),
 
-          rgba(151,102,37,.035) 42%,
+          rgba(166,110,35,.04) 44%,
 
           transparent 72%
         );
 
       filter:
-        blur(27px);
+        blur(28px);
     }
 
 
@@ -269,17 +261,17 @@
 
       top:
         calc(
-          20px +
+          18px +
           env(safe-area-inset-top)
         );
 
-      right:17px;
+      right:14px;
 
       z-index:8;
 
-      width:92px;
+      width:108px;
 
-      height:92px;
+      height:108px;
 
       display:flex;
 
@@ -287,14 +279,14 @@
 
       justify-content:center;
 
-      opacity:.96;
+      opacity:.98;
 
       will-change:transform;
 
       filter:
         drop-shadow(
-          0 8px 18px
-          rgba(0,0,0,.70)
+          0 8px 20px
+          rgba(0,0,0,.72)
         );
 
       animation:
@@ -325,7 +317,7 @@
 
       left:50%;
 
-      top:40.5%;
+      top:39.5%;
 
       transform:
         translate3d(-50%,-50%,0);
@@ -345,7 +337,7 @@
       text-align:center;
 
       padding:
-        0 10px;
+        0 4px;
 
       will-change:transform;
     }
@@ -360,29 +352,29 @@
 
       width:
         min(
-          96vw,
-          860px
+          98vw,
+          900px
         );
 
       opacity:0;
 
       filter:
-        brightness(1.10)
-        contrast(1.04)
+        brightness(1.16)
+        contrast(1.06)
 
         drop-shadow(
-          0 5px 10px
-          rgba(0,0,0,.88)
+          0 5px 11px
+          rgba(0,0,0,.90)
         )
 
         drop-shadow(
-          0 18px 35px
-          rgba(0,0,0,.70)
+          0 20px 38px
+          rgba(0,0,0,.72)
         )
 
         drop-shadow(
-          0 0 15px
-          rgba(186,126,38,.14)
+          0 0 18px
+          rgba(193,132,40,.18)
         );
 
       animation:
@@ -410,11 +402,11 @@
     .hero-phrase{
       position:relative;
 
-      margin-top:7px;
+      margin-top:8px;
 
-      width:96%;
+      width:97%;
 
-      max-width:800px;
+      max-width:820px;
 
       white-space:nowrap;
 
@@ -424,23 +416,23 @@
 
       font-size:
         clamp(
-          17px,
-          3.7vw,
-          23px
+          19px,
+          4.1vw,
+          26px
         );
 
       font-weight:400;
 
       line-height:1;
 
-      letter-spacing:.6px;
+      letter-spacing:.55px;
 
       color:
-        rgba(218,200,174,.62);
+        rgba(220,200,171,.66);
 
       text-shadow:
-        0 3px 12px
-        rgba(0,0,0,.90);
+        0 3px 13px
+        rgba(0,0,0,.92);
 
       opacity:0;
 
@@ -458,7 +450,7 @@
     ======================================== */
 
     .phrase-line{
-      width:34px;
+      width:36px;
 
       height:1px;
 
@@ -470,7 +462,7 @@
 
           transparent,
 
-          rgba(211,161,78,.72),
+          rgba(217,166,80,.76),
 
           transparent
         );
@@ -734,11 +726,17 @@
        ANIMAÇÕES
     ======================================== */
 
-    @keyframes sparkleBreath{
+    @keyframes sparkleFade{
 
-      0%,
-      100%{
-        opacity:.78;
+      0%{
+        opacity:.28;
+
+        transform:
+          scale(.985);
+      }
+
+      25%{
+        opacity:.82;
 
         transform:
           scale(1);
@@ -748,7 +746,21 @@
         opacity:1;
 
         transform:
-          scale(1.015);
+          scale(1.018);
+      }
+
+      75%{
+        opacity:.70;
+
+        transform:
+          scale(1.005);
+      }
+
+      100%{
+        opacity:.28;
+
+        transform:
+          scale(.985);
       }
 
     }
@@ -765,7 +777,7 @@
       }
 
       to{
-        opacity:.96;
+        opacity:.98;
 
         transform:
           translateY(0)
@@ -936,66 +948,64 @@
 
 
       .gold-sparkles{
-        inset:-5% -12%;
+        inset:-6% -12%;
 
-        opacity:.62;
+        opacity:.90;
+
+        filter:
+          brightness(1.42)
+          saturate(1.20);
       }
 
 
       .top-logo{
-        width:75px;
+        width:88px;
 
-        height:75px;
+        height:88px;
 
-        right:13px;
+        right:10px;
 
         top:
           calc(
-            17px +
+            13px +
             env(safe-area-inset-top)
           );
       }
 
 
-      /* NOME MAIS ALTO */
-
       .hero-center{
-        top:40%;
+        top:39%;
 
         padding:
-          0 7px;
+          0 2px;
       }
 
-
-      /* NOME MAIOR */
 
       .hero-name{
-        width:96vw;
+        width:98vw;
       }
 
 
-      /* FRASE MAIOR */
-
       .hero-phrase{
-        width:97%;
+        width:98%;
 
         max-width:none;
 
-        margin-top:6px;
+        margin-top:7px;
 
         white-space:nowrap;
 
         font-size:
           clamp(
-            14px,
-            3.8vw,
-            18px
+            16px,
+            4.25vw,
+            20px
           );
 
-        letter-spacing:.25px;
+        letter-spacing:.2px;
 
         color:
-          rgba(218,200,174,.60);
+          rgba(220,200,171,.66);
       }
 
 
@@ -1022,13 +1032,18 @@
     @media(max-width:360px){
 
       .hero-name{
-        width:95vw;
+        width:97vw;
       }
 
       .hero-phrase{
-        font-size:13px;
+        font-size:14.5px;
 
-        letter-spacing:.1px;
+        letter-spacing:.05px;
+      }
+
+      .top-logo{
+        width:82px;
+        height:82px;
       }
 
     }
@@ -1074,7 +1089,7 @@
       class="hero-bg"
       id="heroBg"
 
-      src="567E7566-6F98-4F5C-8C17-A00418788D50.png"
+      src="7D66BA8E-BFEA-40F3-968E-C63FEB764C0A.jpeg"
 
       alt="Yara Nicácio Nail Artistic"
     >
@@ -1263,71 +1278,47 @@
       if(scrollY <= heroHeight){
 
 
-        /*
-          PLANO 1
-          FOTO DE FUNDO
-
-          Movimento pequeno.
-        */
+        /* FUNDO */
 
         heroBg.style.transform =
           `translate3d(
             0,
-            ${scrollY * 0.07}px,
+            ${scrollY * 0.06}px,
             0
           )
           scale(1.045)`;
 
 
-        /*
-          PLANO 2
-          BRILHOS
-
-          Movimento intermediário.
-          Isso faz os brilhos parecerem
-          estar à frente da fotografia.
-        */
+        /* BRILHOS */
 
         goldSparkles.style.transform =
           `translate3d(
             0,
-            ${scrollY * 0.16}px,
+            ${scrollY * 0.19}px,
             0
           )
-          scale(1.08)`;
+          scale(1.10)`;
 
 
-        /*
-          PLANO 3
-          NOME + FRASE
-
-          Movimento maior para criar
-          profundidade mais perceptível.
-        */
+        /* NOME + FRASE */
 
         heroCenter.style.transform =
           `translate3d(
             -50%,
             calc(
               -50% +
-              ${scrollY * 0.25}px
+              ${scrollY * 0.30}px
             ),
             0
           )`;
 
 
-        /*
-          LOGOTIPO
-
-          Também fica no plano frontal,
-          mas se movimenta um pouco menos
-          que o nome.
-        */
+        /* LOGOTIPO */
 
         topLogo.style.transform =
           `translate3d(
             0,
-            ${scrollY * 0.18}px,
+            ${scrollY * 0.21}px,
             0
           )`;
 
