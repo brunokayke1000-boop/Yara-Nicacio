@@ -103,50 +103,36 @@
 
 
     /* =====================================================
-       IMAGEM DE BRILHO BASE
-
-       AGORA ELA NÃO PULSA MAIS.
-       FICA BEM DISCRETA COMO BASE.
+       BRILHO BASE
     ===================================================== */
 
     .global-sparkles-layer{
       position:fixed;
-
       inset:-7%;
-
       z-index:-15;
-
       pointer-events:none;
     }
 
     .global-sparkles{
       width:114%;
       height:114%;
-
       object-fit:cover;
-
       mix-blend-mode:screen;
-
-      opacity:.055;
+      opacity:.075;
     }
 
 
     /* =====================================================
-       SISTEMA DE BRILHOS ALEATÓRIOS
+       BRILHOS ALEATÓRIOS
     ===================================================== */
 
     .twinkle-field{
       position:absolute;
-
       inset:0;
-
       z-index:4;
-
       overflow:hidden;
-
       pointer-events:none;
     }
-
 
     .twinkle{
       position:absolute;
@@ -159,24 +145,16 @@
       opacity:var(--soft);
 
       background:
-        rgba(255,222,152,.98);
+        rgba(255,224,158,.98);
 
       box-shadow:
-
-        0 0 3px
-        rgba(255,244,203,.95),
-
-        0 0 7px
-        rgba(255,210,112,.78),
-
-        0 0 15px
-        rgba(218,157,50,.42),
-
-        0 0 28px
-        rgba(180,112,25,.18);
+        0 0 3px rgba(255,246,210,.92),
+        0 0 8px rgba(255,215,125,.72),
+        0 0 17px rgba(222,161,56,.40),
+        0 0 32px rgba(183,116,28,.17);
 
       transform:
-        scale(.55);
+        scale(.60);
 
       filter:
         blur(var(--blur));
@@ -213,25 +191,25 @@
 
       border-radius:20px;
 
-      background:
-        linear-gradient(
-          to right,
-          transparent,
-          rgba(255,234,179,.9),
-          transparent
-        );
-
-      opacity:.70;
+      opacity:.58;
     }
 
 
     .twinkle::before{
       width:
         calc(
-          var(--size) * 5
+          var(--size) * 5.5
         );
 
       height:1px;
+
+      background:
+        linear-gradient(
+          to right,
+          transparent,
+          rgba(255,235,185,.84),
+          transparent
+        );
     }
 
 
@@ -240,80 +218,78 @@
 
       height:
         calc(
-          var(--size) * 5
+          var(--size) * 5.5
         );
 
       background:
         linear-gradient(
           to bottom,
           transparent,
-          rgba(255,234,179,.9),
+          rgba(255,235,185,.84),
           transparent
         );
     }
 
 
     .twinkle.variant-a{
-      animation-name:
-        twinkleA;
+      animation-name:twinkleA;
     }
 
     .twinkle.variant-b{
-      animation-name:
-        twinkleB;
+      animation-name:twinkleB;
     }
 
     .twinkle.variant-c{
-      animation-name:
-        twinkleC;
+      animation-name:twinkleC;
     }
 
     .twinkle.variant-d{
-      animation-name:
-        twinkleD;
+      animation-name:twinkleD;
     }
 
+
+    /*
+       PISCADAS MAIS LENTAS.
+
+       O brilho passa mais tempo discreto
+       e sobe suavemente.
+    */
 
     @keyframes twinkleA{
 
       0%{
         opacity:var(--soft);
-        transform:scale(.50);
-      }
-
-      18%{
-        opacity:var(--soft);
         transform:scale(.58);
       }
 
-      25%{
+      20%{
+        opacity:var(--soft);
+        transform:scale(.60);
+      }
+
+      36%{
+        opacity:calc(var(--peak) * .48);
+        transform:scale(.82);
+      }
+
+      47%{
         opacity:var(--peak);
-        transform:scale(1.35);
+        transform:scale(1.18);
       }
 
-      34%{
-        opacity:calc(var(--peak) * .45);
-        transform:scale(.78);
+      60%{
+        opacity:calc(var(--peak) * .44);
+        transform:scale(.84);
       }
 
-      58%{
+      78%{
         opacity:var(--soft);
-        transform:scale(.55);
-      }
-
-      72%{
-        opacity:calc(var(--peak) * .70);
-        transform:scale(.95);
-      }
-
-      80%{
-        opacity:var(--soft);
-        transform:scale(.55);
+        transform:scale(.62);
       }
 
       100%{
         opacity:var(--soft);
-        transform:scale(.50);
+        transform:scale(.58);
       }
 
     }
@@ -323,32 +299,37 @@
 
       0%{
         opacity:var(--soft);
-        transform:scale(.45);
+        transform:scale(.58);
       }
 
-      36%{
+      31%{
         opacity:var(--soft);
-        transform:scale(.55);
+        transform:scale(.61);
       }
 
-      44%{
-        opacity:calc(var(--peak) * .55);
-        transform:scale(.82);
+      46%{
+        opacity:calc(var(--peak) * .42);
+        transform:scale(.80);
       }
 
-      49%{
+      60%{
         opacity:var(--peak);
-        transform:scale(1.45);
+        transform:scale(1.25);
       }
 
-      55%{
-        opacity:calc(var(--peak) * .35);
-        transform:scale(.72);
+      72%{
+        opacity:calc(var(--peak) * .36);
+        transform:scale(.79);
+      }
+
+      88%{
+        opacity:var(--soft);
+        transform:scale(.61);
       }
 
       100%{
         opacity:var(--soft);
-        transform:scale(.45);
+        transform:scale(.58);
       }
 
     }
@@ -358,42 +339,37 @@
 
       0%{
         opacity:var(--soft);
-        transform:scale(.55);
+        transform:scale(.60);
       }
 
-      12%{
-        opacity:calc(var(--peak) * .35);
-        transform:scale(.75);
+      14%{
+        opacity:calc(var(--peak) * .30);
+        transform:scale(.72);
       }
 
-      20%{
+      28%{
+        opacity:calc(var(--peak) * .72);
+        transform:scale(.96);
+      }
+
+      40%{
         opacity:var(--peak);
-        transform:scale(1.20);
+        transform:scale(1.15);
       }
 
-      27%{
+      55%{
+        opacity:calc(var(--peak) * .48);
+        transform:scale(.86);
+      }
+
+      72%{
         opacity:var(--soft);
-        transform:scale(.55);
-      }
-
-      68%{
-        opacity:var(--soft);
-        transform:scale(.50);
-      }
-
-      77%{
-        opacity:calc(var(--peak) * .75);
-        transform:scale(1);
-      }
-
-      83%{
-        opacity:var(--soft);
-        transform:scale(.55);
+        transform:scale(.61);
       }
 
       100%{
         opacity:var(--soft);
-        transform:scale(.55);
+        transform:scale(.60);
       }
 
     }
@@ -403,42 +379,37 @@
 
       0%{
         opacity:var(--soft);
-        transform:scale(.50);
+        transform:scale(.58);
       }
 
-      55%{
+      38%{
         opacity:var(--soft);
-        transform:scale(.55);
+        transform:scale(.60);
       }
 
-      63%{
-        opacity:calc(var(--peak) * .35);
-        transform:scale(.70);
+      51%{
+        opacity:calc(var(--peak) * .40);
+        transform:scale(.78);
       }
 
-      68%{
+      64%{
         opacity:var(--peak);
-        transform:scale(1.60);
+        transform:scale(1.22);
       }
 
-      72%{
+      75%{
         opacity:calc(var(--peak) * .50);
-        transform:scale(.85);
+        transform:scale(.88);
       }
 
-      76%{
-        opacity:var(--peak);
-        transform:scale(1.12);
-      }
-
-      84%{
+      89%{
         opacity:var(--soft);
-        transform:scale(.55);
+        transform:scale(.62);
       }
 
       100%{
         opacity:var(--soft);
-        transform:scale(.50);
+        transform:scale(.58);
       }
 
     }
@@ -507,8 +478,7 @@
       background:#e5bd71;
 
       box-shadow:
-        0 0 8px
-        rgba(218,171,76,.55);
+        0 0 8px rgba(218,171,76,.55);
 
       transition:
         transform .35s ease,
@@ -522,11 +492,9 @@
         rotate(45deg);
     }
 
-
     .menu-trigger.active span:nth-child(2){
       opacity:0;
     }
-
 
     .menu-trigger.active span:nth-child(3){
       transform:
@@ -538,7 +506,6 @@
     .menu-overlay{
       position:fixed;
       inset:0;
-
       z-index:190;
 
       background:
@@ -621,7 +588,6 @@
         serif;
 
       font-size:37px;
-
       font-weight:500;
 
       color:#e4bd72;
@@ -702,7 +668,6 @@
 
     .hero-photo{
       position:absolute;
-
       inset:0;
 
       width:100%;
@@ -714,7 +679,6 @@
       z-index:0;
 
       filter:none;
-
       opacity:1;
     }
 
@@ -755,10 +719,6 @@
     }
 
 
-    /* =====================================================
-       BRILHO BASE CAPA
-    ===================================================== */
-
     .hero-sparkles{
       position:absolute;
 
@@ -775,7 +735,7 @@
 
       mix-blend-mode:screen;
 
-      opacity:.07;
+      opacity:.09;
     }
 
 
@@ -794,7 +754,6 @@
       right:19px;
 
       width:125px;
-
       height:auto;
 
       z-index:7;
@@ -804,7 +763,6 @@
           0 5px 12px
           rgba(0,0,0,.75)
         )
-
         drop-shadow(
           0 0 8px
           rgba(207,159,67,.18)
@@ -841,7 +799,6 @@
       display:block;
 
       width:min(98vw,920px);
-
       max-width:100%;
 
       height:auto;
@@ -853,12 +810,10 @@
           0 7px 10px
           rgba(0,0,0,.90)
         )
-
         drop-shadow(
           0 16px 25px
           rgba(0,0,0,.72)
         )
-
         drop-shadow(
           0 0 7px
           rgba(255,255,255,.18)
@@ -872,14 +827,12 @@
       margin-top:-17px;
 
       display:flex;
-
       justify-content:center;
     }
 
 
     .nail-artistic{
       width:100%;
-
       height:auto;
 
       object-fit:contain;
@@ -888,12 +841,10 @@
         brightness(1.8)
         saturate(.55)
         contrast(1.12)
-
         drop-shadow(
           0 3px 5px
           rgba(0,0,0,.90)
         )
-
         drop-shadow(
           0 0 6px
           rgba(255,221,150,.42)
@@ -918,7 +869,6 @@
         );
 
       font-weight:400;
-
       line-height:1.2;
 
       color:
@@ -949,7 +899,7 @@
 
 
     /* =====================================================
-       DESLIZE CAPA
+       DESLIZE
     ===================================================== */
 
     .scroll-indicator{
@@ -972,9 +922,7 @@
       z-index:8;
 
       display:flex;
-
       flex-direction:column;
-
       align-items:center;
 
       gap:10px;
@@ -1049,23 +997,16 @@
       left:0;
 
       width:100%;
-
-      height:
-        calc(
-          100% + 360px
-        );
+      height:calc(100% + 360px);
 
       object-fit:cover;
-
-      object-position:
-        center top;
+      object-position:center top;
 
       z-index:-5;
 
       pointer-events:none;
 
       filter:none;
-
       opacity:1;
 
       transform:
@@ -1075,7 +1016,6 @@
 
     .works-background-blend{
       position:absolute;
-
       inset:0;
 
       z-index:-3;
@@ -1112,7 +1052,6 @@
 
     .works-background-depth{
       position:absolute;
-
       inset:0;
 
       z-index:-2;
@@ -1129,12 +1068,6 @@
     }
 
 
-    /* =====================================================
-       BRILHO BASE DOS TRABALHOS
-
-       TAMBÉM NÃO PULSA JUNTO.
-    ===================================================== */
-
     .works-sparkles-layer{
       position:absolute;
 
@@ -1147,7 +1080,7 @@
 
       pointer-events:none;
 
-      opacity:.25;
+      opacity:.32;
 
       -webkit-mask-image:
         linear-gradient(
@@ -1185,7 +1118,7 @@
 
       mix-blend-mode:screen;
 
-      opacity:.16;
+      opacity:.20;
     }
 
 
@@ -1225,9 +1158,7 @@
 
       z-index:7;
 
-      padding:
-        0
-        35px;
+      padding:0 35px;
 
       max-width:800px;
 
@@ -1245,7 +1176,6 @@
 
     .works-eyebrow{
       display:flex;
-
       align-items:center;
 
       gap:20px;
@@ -1348,9 +1278,7 @@
       display:flex;
 
       align-items:center;
-
-      justify-content:
-        space-between;
+      justify-content:space-between;
 
       padding:
         0
@@ -1428,22 +1356,18 @@
       gap:20px;
 
       overflow-x:auto;
-
       overflow-y:hidden;
 
-      scroll-snap-type:
-        x mandatory;
+      scroll-snap-type:x mandatory;
 
-      scroll-padding-left:
-        35px;
+      scroll-padding-left:35px;
 
       padding:
         16px
         35px
         42px;
 
-      -webkit-overflow-scrolling:
-        touch;
+      -webkit-overflow-scrolling:touch;
 
       scrollbar-width:none;
 
@@ -1457,7 +1381,7 @@
 
 
     /* =====================================================
-       CARDS NEON
+       CARDS
     ===================================================== */
 
     .work-card{
@@ -1470,8 +1394,7 @@
           430px
         );
 
-      aspect-ratio:
-        4 / 5;
+      aspect-ratio:4 / 5;
 
       overflow:visible;
 
@@ -1596,7 +1519,6 @@
       border-radius:8px;
 
       background:
-
         radial-gradient(
           circle at 8% 0%,
           rgba(255,245,205,.90) 0,
@@ -1646,12 +1568,9 @@
       z-index:7;
 
       display:flex;
-
       align-items:center;
 
-      padding:
-        0
-        35px;
+      padding:0 35px;
     }
 
 
@@ -1670,7 +1589,6 @@
 
     .works-current{
       font-size:30px;
-
       color:#e7d8be;
     }
 
@@ -1711,7 +1629,6 @@
       display:flex;
 
       align-items:center;
-
       justify-content:center;
 
       padding:
@@ -1822,7 +1739,6 @@
       display:flex;
 
       justify-content:center;
-
       align-items:center;
 
       padding:
@@ -1985,7 +1901,6 @@
       display:inline-flex;
 
       align-items:center;
-
       justify-content:center;
 
       min-width:190px;
@@ -2046,7 +1961,6 @@
       display:flex;
 
       align-items:center;
-
       justify-content:center;
 
       border-radius:50%;
@@ -2118,7 +2032,6 @@
           0 5px 10px
           rgba(0,0,0,.85)
         )
-
         drop-shadow(
           0 0 7px
           rgba(214,167,73,.18)
@@ -2127,7 +2040,7 @@
 
 
     /* =====================================================
-       ANIMAÇÕES RESTANTES
+       ANIMAÇÕES
     ===================================================== */
 
     @keyframes whatsappPulse{
@@ -2217,23 +2130,12 @@
           rgba(231,181,80,.68);
 
         box-shadow:
-
-          0 0 2px
-          rgba(255,229,160,.76),
-
-          0 0 6px
-          rgba(232,175,68,.42),
-
-          0 0 13px
-          rgba(201,139,34,.20),
-
-          0 0 27px
-          rgba(165,105,21,.08),
-
-          0 18px 45px
-          rgba(0,0,0,.58);
+          0 0 2px rgba(255,229,160,.76),
+          0 0 6px rgba(232,175,68,.42),
+          0 0 13px rgba(201,139,34,.20),
+          0 0 27px rgba(165,105,21,.08),
+          0 18px 45px rgba(0,0,0,.58);
       }
-
 
       50%{
 
@@ -2241,21 +2143,11 @@
           rgba(255,212,118,.95);
 
         box-shadow:
-
-          0 0 3px
-          rgba(255,242,201,.98),
-
-          0 0 8px
-          rgba(250,197,91,.72),
-
-          0 0 17px
-          rgba(218,154,44,.36),
-
-          0 0 34px
-          rgba(181,116,26,.15),
-
-          0 18px 45px
-          rgba(0,0,0,.58);
+          0 0 3px rgba(255,242,201,.98),
+          0 0 8px rgba(250,197,91,.72),
+          0 0 17px rgba(218,154,44,.36),
+          0 0 34px rgba(181,116,26,.15),
+          0 18px 45px rgba(0,0,0,.58);
       }
 
     }
@@ -2290,7 +2182,6 @@
 
       .nail-artistic-wrap{
         width:83vw;
-
         margin-top:-17px;
       }
 
@@ -2307,7 +2198,6 @@
 
       .works-section{
         margin-top:-95px;
-
         padding-top:205px;
       }
 
@@ -2319,21 +2209,16 @@
             100% + 300px
           );
 
-        object-position:
-          center top;
+        object-position:center top;
       }
 
       .works-header{
-        padding:
-          0
-          36px;
-
+        padding:0 36px;
         margin-bottom:55px;
       }
 
       .works-eyebrow{
         gap:18px;
-
         font-size:9px;
       }
 
@@ -2372,7 +2257,6 @@
 
       .works-drag-text{
         font-size:8px;
-
         letter-spacing:.36em;
       }
 
@@ -2395,9 +2279,7 @@
       }
 
       .works-footer{
-        padding:
-          0
-          36px;
+        padding:0 36px;
       }
 
       .future-section{
@@ -2446,27 +2328,21 @@
 
       .works-section{
         margin-top:-90px;
-
         padding-top:195px;
       }
 
       .works-header{
-        padding:
-          0
-          26px;
+        padding:0 26px;
       }
 
       .works-drag{
         padding-left:26px;
-
         padding-right:26px;
       }
 
       .works-slider{
         padding-left:26px;
-
         padding-right:26px;
-
         scroll-padding-left:26px;
       }
 
@@ -2476,13 +2352,11 @@
 
       .works-footer{
         padding-left:26px;
-
         padding-right:26px;
       }
 
       .whatsapp-button{
         width:70px;
-
         height:70px;
       }
 
@@ -2497,7 +2371,6 @@
         max-width:1250px;
 
         margin-left:auto;
-
         margin-right:auto;
       }
 
@@ -2545,8 +2418,6 @@
 
 <body>
 
-
-  <!-- FUNDO -->
 
   <div
     class="site-background"
@@ -2599,7 +2470,6 @@
       Menu
     </div>
 
-
     <div class="menu-links">
 
       <a href="#trabalhos">
@@ -2643,13 +2513,11 @@
       id="inicio"
     >
 
-
       <img
         class="hero-photo"
         src="6B987C82-0128-4805-9284-58DB898A5D27.jpeg"
         alt="Yara Nicácio e Nail Art"
       >
-
 
       <img
         class="hero-sparkles"
@@ -2659,7 +2527,7 @@
       >
 
 
-      <!-- BRILHOS ALEATÓRIOS CAPA -->
+      <!-- BRILHOS ALEATÓRIOS -->
 
       <div
         class="twinkle-field"
@@ -2687,13 +2555,11 @@
         id="heroContent"
       >
 
-
         <img
           class="name-image"
           src="C45E5C96-6A36-4BB4-B559-04CEAA03B6C2.png"
           alt="Yara Nicácio"
         >
-
 
         <div class="nail-artistic-wrap">
 
@@ -2705,17 +2571,14 @@
 
         </div>
 
-
         <p class="hero-phrase">
           O que você escolhe, vira arte em suas unhas
         </p>
-
 
         <div
           class="phrase-detail"
           aria-hidden="true"
         ></div>
-
 
       </div>
 
@@ -2730,7 +2593,6 @@
 
       </div>
 
-
     </section>
 
 
@@ -2743,7 +2605,6 @@
       id="trabalhos"
     >
 
-
       <img
         class="works-background-photo"
         src="22570524-7852-4D7E-99DE-6090DA3A9A55.jpeg"
@@ -2751,12 +2612,10 @@
         aria-hidden="true"
       >
 
-
       <div
         class="works-background-blend"
         aria-hidden="true"
       ></div>
-
 
       <div
         class="works-background-depth"
@@ -2779,7 +2638,7 @@
       </div>
 
 
-      <!-- BRILHOS ALEATÓRIOS TRABALHOS -->
+      <!-- BRILHOS ALEATÓRIOS -->
 
       <div
         class="twinkle-field"
@@ -2839,13 +2698,10 @@
       </div>
 
 
-      <!-- GALERIA -->
-
       <div
         class="works-slider"
         id="worksSlider"
       >
-
 
         <article class="work-card">
           <div class="work-card-image">
@@ -2956,7 +2812,6 @@
           </div>
         </article>
 
-
       </div>
 
 
@@ -2980,7 +2835,6 @@
         <div class="works-footer-line"></div>
 
       </div>
-
 
     </section>
 
@@ -3124,7 +2978,6 @@
         aria-hidden="true"
       ></div>
 
-
       <div class="address-content">
 
         <div class="address-eyebrow">
@@ -3171,7 +3024,6 @@
 
     </section>
 
-
   </main>
 
 
@@ -3179,13 +3031,9 @@
 
   <a
     class="whatsapp-button"
-
     href="https://wa.me/5511932942455?text=Ol%C3%A1%2C%20gostaria%20de%20fazer%20as%20unhas%20com%20a%20Yara%20Nic%C3%A1cio%21%21%20%F0%9F%98%8A%F0%9F%92%85"
-
     target="_blank"
-
     rel="noopener noreferrer"
-
     aria-label="Falar com Yara Nicácio pelo WhatsApp"
   >
 
@@ -3363,49 +3211,103 @@
       firstTime = false
     ){
 
+      /*
+         MAIS LENTO.
+
+         Cada ciclo pode durar
+         entre 5 e 12 segundos.
+      */
+
       const duration =
         randomBetween(
-          2.2,
-          8.2
+          5,
+          12
         );
 
 
       /*
-        Alguns ficam muito fortes,
-        outros quase imperceptíveis.
+         Mais presença,
+         mas sem todos ficarem fortes.
       */
 
-      const peak =
-        randomBetween(
-          .26,
-          .98
-        );
+      const intensityChance =
+        Math.random();
+
+
+      let peak;
+
+
+      if(
+        intensityChance < .22
+      ){
+
+        /*
+           Aproximadamente 22%
+           recebem uma intensidade
+           mais marcante.
+        */
+
+        peak =
+          randomBetween(
+            .72,
+            .98
+          );
+
+      }else if(
+        intensityChance < .68
+      ){
+
+        /*
+           A maior parte fica
+           numa intensidade intermediária.
+        */
+
+        peak =
+          randomBetween(
+            .42,
+            .72
+          );
+
+      }else{
+
+        /*
+           Outros continuam
+           bem discretos.
+        */
+
+        peak =
+          randomBetween(
+            .24,
+            .45
+          );
+
+      }
 
 
       const soft =
         randomBetween(
-          .015,
-          .085
+          .025,
+          .10
         );
 
 
       const blur =
-        Math.random() > .78
+        Math.random() > .76
         ?
         randomBetween(
-          .35,
-          .75
+          .30,
+          .70
         )
         :
         randomBetween(
           0,
-          .18
+          .15
         );
 
 
       twinkle.style.setProperty(
         "--duration",
-        `${duration}s`
+        `${duration.toFixed(2)}s`
       );
 
 
@@ -3427,16 +3329,16 @@
       );
 
 
-      /*
-        Troca também o tipo de piscada.
-      */
-
       variants.forEach(
-        variant => {
+
+        function(variant){
+
           twinkle.classList.remove(
             variant
           );
+
         }
+
       );
 
 
@@ -3447,9 +3349,14 @@
 
       if(firstTime){
 
+        /*
+           Começa cada um num momento
+           completamente diferente.
+        */
+
         twinkle.style.setProperty(
           "--delay",
-          `${randomBetween(-8,0)}s`
+          `${randomBetween(-12,0).toFixed(2)}s`
         );
 
       }else{
@@ -3494,29 +3401,60 @@
 
 
         /*
-          Posição completamente diferente
-          para cada brilho.
+           POSIÇÃO
         */
 
         twinkle.style.left =
-          `${randomBetween(2,98)}%`;
+          `${randomBetween(2,98).toFixed(2)}%`;
 
 
         twinkle.style.top =
-          `${randomBetween(3,97)}%`;
+          `${randomBetween(3,97).toFixed(2)}%`;
 
 
         /*
-          Alguns pequenos,
-          alguns mais destacados.
+           MAIS VOLUME.
+
+           Há mais brilhos médios
+           e alguns maiores.
         */
 
-        const size =
-          Math.random() > .84
-          ?
-          randomBetween(4.2,6.2)
-          :
-          randomBetween(1.8,4);
+        const sizeChance =
+          Math.random();
+
+
+        let size;
+
+
+        if(
+          sizeChance < .15
+        ){
+
+          size =
+            randomBetween(
+              4.8,
+              6.8
+            );
+
+        }else if(
+          sizeChance < .55
+        ){
+
+          size =
+            randomBetween(
+              3.0,
+              4.8
+            );
+
+        }else{
+
+          size =
+            randomBetween(
+              1.8,
+              3.3
+            );
+
+        }
 
 
         twinkle.style.setProperty(
@@ -3532,13 +3470,11 @@
 
 
         /*
-          A CADA CICLO:
-          intensidade nova,
-          duração nova,
-          tipo de piscada novo.
+           AO TERMINAR CADA CICLO,
+           ELE MUDA NOVAMENTE.
 
-          Então um brilho fraco pode
-          virar forte no próximo ciclo.
+           O QUE ERA FRACO PODE
+           FICAR FORTE E VICE-VERSA.
         */
 
         twinkle.addEventListener(
@@ -3567,15 +3503,20 @@
 
 
     /*
-      Quantidade propositalmente moderada
-      para continuar leve no iPhone.
+       AUMENTO DO VOLUME:
+
+       CAPA:
+       18 -> 28
+
+       TRABALHOS:
+       22 -> 34
     */
 
     createTwinkles(
       document.getElementById(
         "heroTwinkles"
       ),
-      18
+      28
     );
 
 
@@ -3583,12 +3524,12 @@
       document.getElementById(
         "worksTwinkles"
       ),
-      22
+      34
     );
 
 
     /* =====================================================
-       MOVIMENTO FLUIDO DOS TEXTOS
+       MOVIMENTO FLUIDO
     ===================================================== */
 
     const heroContent =
@@ -3900,7 +3841,6 @@
             closestDistance =
               distance;
 
-
             closestIndex =
               index;
 
@@ -3942,7 +3882,6 @@
 
               updateWorkCounter();
 
-
               galleryTicking =
                 false;
 
@@ -3969,7 +3908,7 @@
 
 
     /* =====================================================
-       ARRASTE COMPUTADOR
+       ARRASTE NO COMPUTADOR
     ===================================================== */
 
     let isDown =
