@@ -2,7 +2,6 @@
 <html lang="pt-BR">
 
 <head>
-
   <meta charset="UTF-8">
 
   <meta
@@ -87,17 +86,17 @@
 
 
     /* =====================================================
-       BRILHOS
+       NOVO SISTEMA DE BRILHOS
+
+       IMAGEM:
+       7122BB23-9C04-4672-B385-81F2AC60DB83.png
     ===================================================== */
 
     .sparkle-field{
       position:absolute;
       inset:0;
-
       overflow:hidden;
-
       pointer-events:none;
-
       z-index:4;
     }
 
@@ -105,11 +104,11 @@
     .sparkle-layer{
       position:absolute;
 
-      top:-12%;
-      left:-12%;
+      top:-15%;
+      left:-15%;
 
-      width:124%;
-      height:124%;
+      width:130%;
+      height:130%;
 
       object-fit:cover;
 
@@ -119,16 +118,18 @@
 
       transform:
         translate3d(
-          var(--move-x),
-          var(--move-y),
+          var(--x),
+          var(--y),
           0
         )
         scale(var(--scale));
 
       transform-origin:center;
 
+      will-change:opacity, transform;
+
       animation-name:
-        sparkleSlowFade;
+        sparkleBreath;
 
       animation-duration:
         var(--duration);
@@ -137,140 +138,96 @@
         var(--delay);
 
       animation-timing-function:
-        linear;
+        ease-in-out;
 
       animation-iteration-count:
         infinite;
-
-      will-change:
-        opacity,
-        transform;
     }
 
 
-    /* =====================================================
-       NOVO PISCAR
+    /*
+       NOVA LÓGICA:
 
-       MUITO MAIS LENTO.
+       - começa invisível
+       - aparece devagar
+       - passa suavemente pelo pico
+       - começa a desaparecer
+       - some por completo
 
-       ELE SURGE DEVAGAR,
-       CHEGA NO PONTO FORTE
-       E SOME DEVAGAR.
-    ===================================================== */
+       NÃO EXISTE PARTE "PARADA"
+       COM O BRILHO LIGADO.
+    */
 
-    @keyframes sparkleSlowFade{
+    @keyframes sparkleBreath{
 
       0%{
         opacity:0;
       }
 
-
-      8%{
+      10%{
         opacity:0;
       }
 
-
-      16%{
+      20%{
         opacity:
           calc(
-            var(--peak) * .025
+            var(--peak) * .12
           );
       }
 
-
-      24%{
-        opacity:
-          calc(
-            var(--peak) * .08
-          );
-      }
-
-
-      32%{
-        opacity:
-          calc(
-            var(--peak) * .18
-          );
-      }
-
-
-      40%{
-        opacity:
-          calc(
-            var(--peak) * .34
-          );
-      }
-
-
-      48%{
-        opacity:
-          calc(
-            var(--peak) * .55
-          );
-      }
-
-
-      56%{
-        opacity:
-          calc(
-            var(--peak) * .78
-          );
-      }
-
-
-      63%{
-        opacity:
-          var(--peak);
-      }
-
-
-      69%{
-        opacity:
-          calc(
-            var(--peak) * .94
-          );
-      }
-
-
-      76%{
-        opacity:
-          calc(
-            var(--peak) * .76
-          );
-      }
-
-
-      83%{
-        opacity:
-          calc(
-            var(--peak) * .52
-          );
-      }
-
-
-      89%{
+      30%{
         opacity:
           calc(
             var(--peak) * .30
           );
       }
 
-
-      94%{
+      40%{
         opacity:
           calc(
-            var(--peak) * .13
+            var(--peak) * .56
           );
       }
 
-
-      97%{
+      50%{
         opacity:
           calc(
-            var(--peak) * .045
+            var(--peak) * .80
           );
       }
 
+      58%{
+        opacity:
+          var(--peak);
+      }
+
+      66%{
+        opacity:
+          calc(
+            var(--peak) * .82
+          );
+      }
+
+      75%{
+        opacity:
+          calc(
+            var(--peak) * .55
+          );
+      }
+
+      84%{
+        opacity:
+          calc(
+            var(--peak) * .28
+          );
+      }
+
+      92%{
+        opacity:
+          calc(
+            var(--peak) * .09
+          );
+      }
 
       100%{
         opacity:0;
@@ -337,8 +294,7 @@
       background:#e5bd71;
 
       box-shadow:
-        0 0 8px
-        rgba(218,171,76,.55);
+        0 0 8px rgba(218,171,76,.55);
 
       transition:
         transform .35s ease,
@@ -352,11 +308,9 @@
         rotate(45deg);
     }
 
-
     .menu-trigger.active span:nth-child(2){
       opacity:0;
     }
-
 
     .menu-trigger.active span:nth-child(3){
       transform:
@@ -426,8 +380,7 @@
         rgba(218,171,76,.18);
 
       box-shadow:
-        25px 0 60px
-        rgba(0,0,0,.75);
+        25px 0 60px rgba(0,0,0,.75);
 
       transform:
         translate3d(-105%,0,0);
@@ -614,7 +567,7 @@
 
 
     /* =====================================================
-       CONTEÚDO CAPA
+       CONTEÚDO DA CAPA
     ===================================================== */
 
     .hero-content{
@@ -745,7 +698,7 @@
 
 
     /* =====================================================
-       DESLIZE
+       INDICADOR
     ===================================================== */
 
     .scroll-indicator{
@@ -1069,7 +1022,6 @@
       z-index:7;
 
       display:flex;
-
       align-items:center;
 
       justify-content:space-between;
@@ -1095,7 +1047,6 @@
 
     .works-drag-arrow{
       display:flex;
-
       align-items:center;
 
       gap:7px;
@@ -1345,7 +1296,6 @@
       z-index:7;
 
       display:flex;
-
       align-items:center;
 
       padding:0 35px;
@@ -1354,7 +1304,6 @@
 
     .works-counter{
       display:flex;
-
       align-items:baseline;
 
       gap:7px;
@@ -1406,9 +1355,7 @@
       min-height:100svh;
 
       display:flex;
-
       align-items:center;
-
       justify-content:center;
 
       padding:
@@ -1521,7 +1468,6 @@
       min-height:100svh;
 
       display:flex;
-
       justify-content:center;
       align-items:center;
 
@@ -1747,7 +1693,6 @@
       z-index:180;
 
       display:flex;
-
       align-items:center;
       justify-content:center;
 
@@ -1828,7 +1773,7 @@
 
 
     /* =====================================================
-       OUTRAS ANIMAÇÕES
+       ANIMAÇÕES RESTANTES
     ===================================================== */
 
     @keyframes whatsappPulse{
@@ -1989,11 +1934,7 @@
 
       .works-background-photo{
         top:-150px;
-
-        height:
-          calc(
-            100% + 300px
-          );
+        height:calc(100% + 300px);
       }
 
       .works-header{
@@ -2244,7 +2185,10 @@
         </p>
 
 
-        <div class="phrase-detail"></div>
+        <div
+          class="phrase-detail"
+          aria-hidden="true"
+        ></div>
 
       </div>
 
@@ -2273,12 +2217,20 @@
         class="works-background-photo"
         src="22570524-7852-4D7E-99DE-6090DA3A9A55.jpeg"
         alt=""
+        aria-hidden="true"
       >
 
 
-      <div class="works-background-blend"></div>
+      <div
+        class="works-background-blend"
+        aria-hidden="true"
+      ></div>
 
-      <div class="works-background-depth"></div>
+
+      <div
+        class="works-background-depth"
+        aria-hidden="true"
+      ></div>
 
 
       <div
@@ -2288,7 +2240,10 @@
       ></div>
 
 
-      <div class="works-glow"></div>
+      <div
+        class="works-glow"
+        aria-hidden="true"
+      ></div>
 
 
       <div class="works-header">
@@ -2503,9 +2458,11 @@
           Yara Nicácio
         </small>
 
+
         <h2>
           O estúdio
         </h2>
+
 
         <p>
           Uma experiência pensada em cada detalhe.
@@ -2539,9 +2496,11 @@
           Nail Artist
         </small>
 
+
         <h2>
           Yara Nicácio
         </h2>
+
 
         <p>
           Técnica, identidade e criatividade
@@ -2576,9 +2535,11 @@
           Serviços
         </small>
 
+
         <h2>
           Tabela de preços
         </h2>
+
 
         <p>
           Conheça os serviços e escolha
@@ -2613,9 +2574,11 @@
           Experiências
         </small>
 
+
         <h2>
           Avaliações
         </h2>
+
 
         <p>
           A experiência de quem já escolheu
@@ -2650,15 +2613,19 @@
           Localização
         </div>
 
+
         <h2 class="address-title">
           Endereço
         </h2>
 
+
         <div class="address-line"></div>
+
 
         <div class="building">
           Edifício NBC
         </div>
+
 
         <div class="address-text">
 
@@ -2667,6 +2634,7 @@
           <br>
 
           Bethaville — Barueri, SP
+
 
           <span class="address-room">
             10º andar • Sala 1007
@@ -2726,18 +2694,15 @@
         "menuTrigger"
       );
 
-
     const sideMenu =
       document.getElementById(
         "sideMenu"
       );
 
-
     const menuOverlay =
       document.getElementById(
         "menuOverlay"
       );
-
 
     const menuLinks =
       document.querySelectorAll(
@@ -2831,7 +2796,7 @@
 
 
     /* =====================================================
-       NOVA IMAGEM DE BRILHOS
+       NOVO SISTEMA DE BRILHO
     ===================================================== */
 
     const SPARKLE_IMAGE =
@@ -2858,127 +2823,105 @@
 
 
     /* =====================================================
-       CONFIGURA CADA CAMADA
+       CONFIGURAÇÃO
+
+       AGORA O PICO É BEM MAIS BAIXO.
     ===================================================== */
 
-    function configureSparkleLayer(
+    function configureSparkle(
       layer,
+      index,
+      total,
       firstTime = false
     ){
 
 
       /*
-         PRIMEIRO DECIDIMOS
-         A INTENSIDADE.
+         TEMPOS MAIS NATURAIS.
+
+         NÃO EXAGERADAMENTE LONGOS,
+         MAS TAMBÉM NADA RÁPIDO.
       */
 
-      const chance =
+      const duration =
+        randomBetween(
+          22,
+          34
+        );
+
+
+      /*
+         INTENSIDADE BAIXA.
+
+         O BRILHO DEVE FICAR
+         NO FUNDO, NÃO NA FRENTE.
+      */
+
+      const intensityChance =
         Math.random();
 
 
       let peak;
-      let duration;
 
-
-      /*
-         MAIS FORTE
-
-         TAMBÉM É O MAIS LENTO.
-      */
 
       if(
-        chance < .20
+        intensityChance < .15
       ){
 
         peak =
           randomBetween(
-            .28,
-            .42
-          );
-
-
-        duration =
-          randomBetween(
-            56,
-            70
+            .18,
+            .24
           );
 
       }
-
-
-      /*
-         MÉDIO
-      */
-
       else if(
-        chance < .68
+        intensityChance < .60
       ){
 
         peak =
           randomBetween(
-            .14,
-            .28
-          );
-
-
-        duration =
-          randomBetween(
-            48,
-            64
+            .11,
+            .18
           );
 
       }
-
-
-      /*
-         MAIS FRACO
-
-         AINDA ASSIM CONTINUA
-         BEM LENTO.
-      */
-
       else{
 
         peak =
           randomBetween(
-            .07,
-            .16
-          );
-
-
-        duration =
-          randomBetween(
-            42,
-            58
+            .055,
+            .12
           );
 
       }
 
 
       /*
-         A POSIÇÃO CONTINUA
-         EXATAMENTE COM A MESMA
-         LÓGICA DA VERSÃO ANTERIOR.
+         MOVIMENTO / POSIÇÃO.
+
+         MUDA SÓ QUANDO A CAMADA
+         JÁ SUMIU.
       */
 
-      const moveX =
-        randomBetween(
-          -9,
-          9
-        );
-
-
-      const moveY =
+      const x =
         randomBetween(
           -10,
           10
         );
 
 
+      const y =
+        randomBetween(
+          -11,
+          11
+        );
+
+
       const scale =
         randomBetween(
           1.03,
-          1.22
+          1.20
         );
 
 
@@ -2995,14 +2938,14 @@
 
 
       layer.style.setProperty(
-        "--move-x",
-        `${moveX.toFixed(2)}%`
+        "--x",
+        `${x.toFixed(2)}%`
       );
 
 
       layer.style.setProperty(
-        "--move-y",
-        `${moveY.toFixed(2)}%`
+        "--y",
+        `${y.toFixed(2)}%`
       );
 
 
@@ -3013,19 +2956,39 @@
 
 
       /*
-         CADA CAMADA COMEÇA
-         NUM PONTO DIFERENTE
-         DO CICLO.
+         ESSA PARTE É IMPORTANTE.
 
-         ASSIM ELAS NÃO PISCAM
-         TODAS JUNTAS.
+         AS CAMADAS SÃO DISTRIBUÍDAS
+         PELO CICLO.
+
+         ENQUANTO UMA DESAPARECE,
+         A OUTRA JÁ ESTÁ NASCENDO.
       */
 
       if(firstTime){
 
+        const stagger =
+          duration / total;
+
+
+        const calculatedDelay =
+          -(index * stagger);
+
+
+        const smallRandomOffset =
+          randomBetween(
+            -2.5,
+            2.5
+          );
+
+
         layer.style.setProperty(
           "--delay",
-          `${randomBetween(-68,0).toFixed(2)}s`
+          `${(
+            calculatedDelay
+            +
+            smallRandomOffset
+          ).toFixed(2)}s`
         );
 
       }else{
@@ -3044,7 +3007,7 @@
        CRIA AS CAMADAS
     ===================================================== */
 
-    function createSparkleLayers(
+    function createSparkles(
       container,
       amount
     ){
@@ -3084,22 +3047,25 @@
           false;
 
 
-        configureSparkleLayer(
+        configureSparkle(
           layer,
+          i,
+          amount,
           true
         );
 
 
         /*
-           QUANDO SOME COMPLETAMENTE:
+           QUANDO A CAMADA SOME:
 
-           - MUDA POSIÇÃO
-           - MUDA INTENSIDADE
-           - MUDA ESCALA
-           - MUDA TEMPO
+           ELA TROCA:
+           - POSIÇÃO
+           - ESCALA
+           - INTENSIDADE
+           - TEMPO
 
-           E ENTÃO COMEÇA A APARECER
-           DEVAGAR DE NOVO.
+           SÓ DEPOIS COMEÇA
+           A NASCER DE NOVO.
         */
 
         layer.addEventListener(
@@ -3108,8 +3074,10 @@
 
           function(){
 
-            configureSparkleLayer(
+            configureSparkle(
               layer,
+              i,
+              amount,
               false
             );
 
@@ -3128,9 +3096,12 @@
 
 
     /* =====================================================
-       MESMA QUANTIDADE DA VERSÃO
-       ANTERIOR
+       QUANTIDADE DE CAMADAS
+
+       MAIS CAMADAS,
+       MAS TODAS MAIS FRACAS.
     ===================================================== */
+
 
     document
       .querySelectorAll(
@@ -3140,9 +3111,9 @@
 
         function(container){
 
-          createSparkleLayers(
+          createSparkles(
             container,
-            5
+            7
           );
 
         }
@@ -3158,9 +3129,9 @@
 
         function(container){
 
-          createSparkleLayers(
+          createSparkles(
             container,
-            6
+            8
           );
 
         }
@@ -3176,9 +3147,9 @@
 
         function(container){
 
-          createSparkleLayers(
+          createSparkles(
             container,
-            4
+            6
           );
 
         }
@@ -3555,6 +3526,7 @@
             function(){
 
               updateWorkCounter();
+
 
               galleryTicking =
                 false;
