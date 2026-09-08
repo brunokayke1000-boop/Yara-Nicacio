@@ -64,7 +64,6 @@
     .works-header-float,
     .works-sparkles-layer{
       will-change:transform;
-      transform-style:preserve-3d;
       backface-visibility:hidden;
       -webkit-backface-visibility:hidden;
     }
@@ -83,13 +82,13 @@
       background:
         radial-gradient(
           circle at 88% 28%,
-          rgba(130,86,26,.055),
+          rgba(130,86,26,.060),
           transparent 36%
         ),
 
         radial-gradient(
           circle at 8% 68%,
-          rgba(105,67,18,.035),
+          rgba(105,67,18,.045),
           transparent 35%
         ),
 
@@ -118,7 +117,7 @@
       height:114%;
       object-fit:cover;
       mix-blend-mode:screen;
-      opacity:.075;
+      opacity:.105;
     }
 
 
@@ -134,6 +133,7 @@
       z-index:4;
     }
 
+
     .twinkle{
       position:absolute;
 
@@ -148,7 +148,7 @@
         rgba(255,225,160,.98);
 
       transform:
-        scale(.55);
+        scale(.50);
 
       filter:
         blur(var(--blur));
@@ -172,7 +172,7 @@
 
 
     /* =====================================================
-       BRILHO PEQUENO
+       PEQUENOS
     ===================================================== */
 
     .twinkle.small{
@@ -180,19 +180,19 @@
       box-shadow:
 
         0 0 3px
-        rgba(255,246,211,.92),
+        rgba(255,248,216,.94),
 
-        0 0 8px
-        rgba(255,215,125,.68),
+        0 0 9px
+        rgba(255,215,125,.72),
 
-        0 0 15px
-        rgba(220,159,53,.34);
+        0 0 18px
+        rgba(220,159,53,.39);
 
     }
 
 
     /* =====================================================
-       BRILHO MÉDIO
+       MÉDIOS
     ===================================================== */
 
     .twinkle.medium{
@@ -200,48 +200,48 @@
       box-shadow:
 
         0 0 4px
-        rgba(255,248,218,.96),
+        rgba(255,249,220,.98),
 
-        0 0 10px
-        rgba(255,216,124,.78),
+        0 0 12px
+        rgba(255,219,130,.84),
 
-        0 0 22px
-        rgba(224,160,52,.44),
+        0 0 26px
+        rgba(224,160,52,.50),
 
-        0 0 38px
-        rgba(181,112,24,.16);
+        0 0 46px
+        rgba(181,112,24,.20);
 
     }
 
 
     /* =====================================================
-       BRILHO GRANDE
+       GRANDES
     ===================================================== */
 
     .twinkle.large{
 
       box-shadow:
 
-        0 0 5px
-        rgba(255,250,224,.98),
+        0 0 6px
+        rgba(255,252,230,.99),
 
-        0 0 13px
-        rgba(255,222,139,.90),
+        0 0 16px
+        rgba(255,225,145,.94),
 
-        0 0 28px
-        rgba(228,165,59,.55),
+        0 0 34px
+        rgba(232,171,67,.62),
 
-        0 0 55px
-        rgba(190,121,29,.24),
+        0 0 65px
+        rgba(197,128,33,.31),
 
-        0 0 80px
-        rgba(142,83,15,.10);
+        0 0 100px
+        rgba(146,86,17,.14);
 
     }
 
 
     /* =====================================================
-       CRUZ DO BRILHO
+       RAIOS
     ===================================================== */
 
     .twinkle::before,
@@ -259,7 +259,7 @@
 
       border-radius:30px;
 
-      opacity:.58;
+      opacity:.62;
 
     }
 
@@ -277,7 +277,7 @@
         linear-gradient(
           to right,
           transparent,
-          rgba(255,239,194,.88),
+          rgba(255,241,200,.92),
           transparent
         );
 
@@ -297,7 +297,7 @@
         linear-gradient(
           to bottom,
           transparent,
-          rgba(255,239,194,.88),
+          rgba(255,241,200,.92),
           transparent
         );
 
@@ -330,44 +330,49 @@
 
 
     /* =====================================================
-       ANIMAÇÕES MAIS LENTAS
+       ANIMAÇÕES LENTAS
     ===================================================== */
 
     @keyframes twinkleA{
 
       0%{
         opacity:var(--soft);
-        transform:scale(.48);
+        transform:scale(.46);
       }
 
-      24%{
+      22%{
         opacity:var(--soft);
-        transform:scale(.54);
+        transform:scale(.50);
       }
 
-      40%{
-        opacity:calc(var(--peak) * .36);
-        transform:scale(.76);
+      38%{
+        opacity:calc(var(--peak) * .30);
+        transform:scale(.68);
       }
 
-      55%{
+      52%{
+        opacity:calc(var(--peak) * .68);
+        transform:scale(.94);
+      }
+
+      62%{
         opacity:var(--peak);
-        transform:scale(1.18);
+        transform:scale(1.16);
       }
 
-      70%{
-        opacity:calc(var(--peak) * .42);
-        transform:scale(.84);
+      73%{
+        opacity:calc(var(--peak) * .62);
+        transform:scale(.94);
       }
 
       86%{
-        opacity:var(--soft);
-        transform:scale(.56);
+        opacity:calc(var(--peak) * .20);
+        transform:scale(.64);
       }
 
       100%{
         opacity:var(--soft);
-        transform:scale(.48);
+        transform:scale(.46);
       }
 
     }
@@ -377,37 +382,42 @@
 
       0%{
         opacity:var(--soft);
-        transform:scale(.50);
+        transform:scale(.48);
       }
 
-      32%{
+      30%{
         opacity:var(--soft);
-        transform:scale(.56);
+        transform:scale(.52);
       }
 
-      48%{
-        opacity:calc(var(--peak) * .40);
-        transform:scale(.78);
+      44%{
+        opacity:calc(var(--peak) * .28);
+        transform:scale(.68);
       }
 
-      64%{
+      57%{
+        opacity:calc(var(--peak) * .62);
+        transform:scale(.92);
+      }
+
+      68%{
         opacity:var(--peak);
-        transform:scale(1.30);
+        transform:scale(1.22);
       }
 
-      77%{
-        opacity:calc(var(--peak) * .40);
-        transform:scale(.84);
+      79%{
+        opacity:calc(var(--peak) * .55);
+        transform:scale(.92);
       }
 
-      91%{
-        opacity:var(--soft);
-        transform:scale(.56);
+      90%{
+        opacity:calc(var(--peak) * .17);
+        transform:scale(.61);
       }
 
       100%{
         opacity:var(--soft);
-        transform:scale(.50);
+        transform:scale(.48);
       }
 
     }
@@ -417,37 +427,42 @@
 
       0%{
         opacity:var(--soft);
-        transform:scale(.50);
+        transform:scale(.48);
       }
 
-      18%{
-        opacity:calc(var(--peak) * .18);
-        transform:scale(.62);
+      16%{
+        opacity:calc(var(--peak) * .12);
+        transform:scale(.55);
       }
 
-      36%{
-        opacity:calc(var(--peak) * .52);
-        transform:scale(.88);
+      32%{
+        opacity:calc(var(--peak) * .32);
+        transform:scale(.70);
       }
 
-      54%{
+      48%{
+        opacity:calc(var(--peak) * .66);
+        transform:scale(.94);
+      }
+
+      60%{
         opacity:var(--peak);
         transform:scale(1.16);
       }
 
-      72%{
-        opacity:calc(var(--peak) * .36);
-        transform:scale(.79);
+      73%{
+        opacity:calc(var(--peak) * .60);
+        transform:scale(.91);
       }
 
-      90%{
-        opacity:var(--soft);
-        transform:scale(.55);
+      87%{
+        opacity:calc(var(--peak) * .18);
+        transform:scale(.60);
       }
 
       100%{
         opacity:var(--soft);
-        transform:scale(.50);
+        transform:scale(.48);
       }
 
     }
@@ -457,85 +472,101 @@
 
       0%{
         opacity:var(--soft);
-        transform:scale(.45);
+        transform:scale(.44);
       }
 
-      40%{
+      36%{
         opacity:var(--soft);
-        transform:scale(.52);
+        transform:scale(.50);
       }
 
-      55%{
-        opacity:calc(var(--peak) * .35);
-        transform:scale(.80);
+      49%{
+        opacity:calc(var(--peak) * .25);
+        transform:scale(.67);
       }
 
-      70%{
+      62%{
+        opacity:calc(var(--peak) * .64);
+        transform:scale(.94);
+      }
+
+      72%{
         opacity:var(--peak);
-        transform:scale(1.28);
+        transform:scale(1.22);
       }
 
       83%{
-        opacity:calc(var(--peak) * .28);
-        transform:scale(.74);
+        opacity:calc(var(--peak) * .50);
+        transform:scale(.88);
+      }
+
+      93%{
+        opacity:calc(var(--peak) * .14);
+        transform:scale(.58);
       }
 
       100%{
         opacity:var(--soft);
-        transform:scale(.45);
+        transform:scale(.44);
       }
 
     }
 
 
-    /*
-       ESSA É A MAIS IMPORTANTE PARA OS GRANDES.
-
-       ELE ABRE DEVAGAR,
-       FICA MAIS FORTE,
-       E SOME DEVAGAR.
-    */
+    /* =====================================================
+       GRANDES ABREM E SOMEM GRADATIVAMENTE
+    ===================================================== */
 
     @keyframes twinkleE{
 
       0%{
-        opacity:.01;
-        transform:scale(.30);
+        opacity:.005;
+        transform:scale(.25);
       }
 
-      20%{
-        opacity:.02;
-        transform:scale(.38);
+      18%{
+        opacity:.012;
+        transform:scale(.32);
       }
 
-      38%{
-        opacity:calc(var(--peak) * .24);
-        transform:scale(.65);
+      34%{
+        opacity:calc(var(--peak) * .16);
+        transform:scale(.52);
       }
 
-      52%{
-        opacity:calc(var(--peak) * .60);
-        transform:scale(.96);
+      47%{
+        opacity:calc(var(--peak) * .38);
+        transform:scale(.74);
       }
 
-      62%{
+      58%{
+        opacity:calc(var(--peak) * .70);
+        transform:scale(1);
+      }
+
+      67%{
         opacity:var(--peak);
-        transform:scale(1.40);
+        transform:scale(1.44);
       }
 
-      74%{
-        opacity:calc(var(--peak) * .62);
-        transform:scale(1.04);
+      76%{
+        opacity:calc(var(--peak) * .72);
+        transform:scale(1.12);
       }
 
-      86%{
-        opacity:calc(var(--peak) * .22);
-        transform:scale(.70);
+      85%{
+        opacity:calc(var(--peak) * .40);
+        transform:scale(.82);
+      }
+
+      93%{
+        opacity:calc(var(--peak) * .15);
+        transform:scale(.52);
       }
 
       100%{
-        opacity:.01;
-        transform:scale(.32);
+        opacity:.005;
+        transform:scale(.26);
       }
 
     }
@@ -613,9 +644,11 @@
         rotate(45deg);
     }
 
+
     .menu-trigger.active span:nth-child(2){
       opacity:0;
     }
+
 
     .menu-trigger.active span:nth-child(3){
       transform:
@@ -856,7 +889,7 @@
 
       mix-blend-mode:screen;
 
-      opacity:.09;
+      opacity:.115;
     }
 
 
@@ -1203,7 +1236,7 @@
 
       pointer-events:none;
 
-      opacity:.32;
+      opacity:.38;
     }
 
 
@@ -1217,7 +1250,7 @@
 
       mix-blend-mode:screen;
 
-      opacity:.20;
+      opacity:.24;
     }
 
 
@@ -1761,8 +1794,8 @@
       background:
         radial-gradient(
           circle,
-          rgba(139,91,24,.055) 0%,
-          rgba(94,57,14,.02) 35%,
+          rgba(139,91,24,.060) 0%,
+          rgba(94,57,14,.025) 35%,
           transparent 68%
         );
     }
@@ -1873,8 +1906,8 @@
       background:
         radial-gradient(
           circle,
-          rgba(165,112,34,.075),
-          rgba(91,57,15,.025) 38%,
+          rgba(165,112,34,.080),
+          rgba(91,57,15,.030) 38%,
           transparent 70%
         );
 
@@ -2499,7 +2532,9 @@
   <main>
 
 
-    <!-- CAPA -->
+    <!-- ===================================================
+         CAPA
+    ==================================================== -->
 
     <section
       class="hero"
@@ -2516,14 +2551,19 @@
         class="hero-sparkles"
         src="24CD378D-F11E-4CB2-B0FC-FCAFBE91B276.png"
         alt=""
+        aria-hidden="true"
       >
 
       <div
         class="twinkle-field"
         id="heroTwinkles"
+        aria-hidden="true"
       ></div>
 
-      <div class="hero-bottom-fade"></div>
+      <div
+        class="hero-bottom-fade"
+        aria-hidden="true"
+      ></div>
 
 
       <img
@@ -2577,7 +2617,9 @@
     </section>
 
 
-    <!-- TRABALHOS -->
+    <!-- ===================================================
+         TRABALHOS
+    ==================================================== -->
 
     <section
       class="works-section"
@@ -2588,6 +2630,7 @@
         class="works-background-photo"
         src="22570524-7852-4D7E-99DE-6090DA3A9A55.jpeg"
         alt=""
+        aria-hidden="true"
       >
 
       <div class="works-background-blend"></div>
@@ -2598,6 +2641,7 @@
       <div
         class="works-sparkles-layer"
         id="worksSparklesLayer"
+        aria-hidden="true"
       >
 
         <img
@@ -2612,6 +2656,7 @@
       <div
         class="twinkle-field"
         id="worksTwinkles"
+        aria-hidden="true"
       ></div>
 
 
@@ -2668,70 +2713,70 @@
 
         <article class="work-card">
           <div class="work-card-image">
-            <img src="e3ad0ae1-c488-46af-9158-a3deb5face01.jpeg" alt="Nail Art Yara Nicácio">
+            <img src="e3ad0ae1-c488-46af-9158-a3deb5face01.jpeg" alt="Nail Art Yara Nicácio" loading="lazy">
           </div>
         </article>
 
 
         <article class="work-card">
           <div class="work-card-image">
-            <img src="bc419ed5-ed49-4355-9452-30b7eb869860.jpeg" alt="Nail Art Yara Nicácio">
+            <img src="bc419ed5-ed49-4355-9452-30b7eb869860.jpeg" alt="Nail Art Yara Nicácio" loading="lazy">
           </div>
         </article>
 
 
         <article class="work-card">
           <div class="work-card-image">
-            <img src="5527e37e-3148-4c0c-8bbf-0f6710ba04a6.jpeg" alt="Nail Art Yara Nicácio">
+            <img src="5527e37e-3148-4c0c-8bbf-0f6710ba04a6.jpeg" alt="Nail Art Yara Nicácio" loading="lazy">
           </div>
         </article>
 
 
         <article class="work-card">
           <div class="work-card-image">
-            <img src="15b54e6d-a6bb-42b6-84e1-fcdf0c0d6169.jpeg" alt="Nail Art Yara Nicácio">
+            <img src="15b54e6d-a6bb-42b6-84e1-fcdf0c0d6169.jpeg" alt="Nail Art Yara Nicácio" loading="lazy">
           </div>
         </article>
 
 
         <article class="work-card">
           <div class="work-card-image">
-            <img src="debe1e33-9d29-4f2b-9bd4-f5fa6a37f009.jpeg" alt="Nail Art Yara Nicácio">
+            <img src="debe1e33-9d29-4f2b-9bd4-f5fa6a37f009.jpeg" alt="Nail Art Yara Nicácio" loading="lazy">
           </div>
         </article>
 
 
         <article class="work-card">
           <div class="work-card-image">
-            <img src="0c71fd76-948f-4522-b7a3-06e1555c9dda.jpeg" alt="Nail Art Yara Nicácio">
+            <img src="0c71fd76-948f-4522-b7a3-06e1555c9dda.jpeg" alt="Nail Art Yara Nicácio" loading="lazy">
           </div>
         </article>
 
 
         <article class="work-card">
           <div class="work-card-image">
-            <img src="244f17b4-d1d6-4516-b3a8-629694c8f941.jpeg" alt="Nail Art Yara Nicácio">
+            <img src="244f17b4-d1d6-4516-b3a8-629694c8f941.jpeg" alt="Nail Art Yara Nicácio" loading="lazy">
           </div>
         </article>
 
 
         <article class="work-card">
           <div class="work-card-image">
-            <img src="d242cc6d-d5b6-4f96-b9fb-2ff206de1ae5.jpeg" alt="Nail Art Yara Nicácio">
+            <img src="d242cc6d-d5b6-4f96-b9fb-2ff206de1ae5.jpeg" alt="Nail Art Yara Nicácio" loading="lazy">
           </div>
         </article>
 
 
         <article class="work-card">
           <div class="work-card-image">
-            <img src="25c27bb6-e5b5-4ca5-aa81-eac0b57ff341.jpeg" alt="Nail Art Yara Nicácio">
+            <img src="25c27bb6-e5b5-4ca5-aa81-eac0b57ff341.jpeg" alt="Nail Art Yara Nicácio" loading="lazy">
           </div>
         </article>
 
 
         <article class="work-card">
           <div class="work-card-image">
-            <img src="0874cfbe-f9fd-4974-ac18-385dba047b94.jpeg" alt="Nail Art Yara Nicácio">
+            <img src="0874cfbe-f9fd-4974-ac18-385dba047b94.jpeg" alt="Nail Art Yara Nicácio" loading="lazy">
           </div>
         </article>
 
@@ -2763,7 +2808,9 @@
     </section>
 
 
-    <!-- ESTÚDIO -->
+    <!-- ===================================================
+         ESTÚDIO
+    ==================================================== -->
 
     <section
       class="future-section"
@@ -2772,6 +2819,7 @@
 
       <div
         class="twinkle-field page-twinkles"
+        aria-hidden="true"
       ></div>
 
       <div class="future-light"></div>
@@ -2795,7 +2843,9 @@
     </section>
 
 
-    <!-- YARA -->
+    <!-- ===================================================
+         YARA
+    ==================================================== -->
 
     <section
       class="future-section"
@@ -2804,6 +2854,7 @@
 
       <div
         class="twinkle-field page-twinkles"
+        aria-hidden="true"
       ></div>
 
       <div class="future-light"></div>
@@ -2828,7 +2879,9 @@
     </section>
 
 
-    <!-- PREÇOS -->
+    <!-- ===================================================
+         PREÇOS
+    ==================================================== -->
 
     <section
       class="future-section"
@@ -2837,6 +2890,7 @@
 
       <div
         class="twinkle-field page-twinkles"
+        aria-hidden="true"
       ></div>
 
       <div class="future-light"></div>
@@ -2861,7 +2915,9 @@
     </section>
 
 
-    <!-- AVALIAÇÕES -->
+    <!-- ===================================================
+         AVALIAÇÕES
+    ==================================================== -->
 
     <section
       class="future-section"
@@ -2870,6 +2926,7 @@
 
       <div
         class="twinkle-field page-twinkles"
+        aria-hidden="true"
       ></div>
 
       <div class="future-light"></div>
@@ -2894,7 +2951,9 @@
     </section>
 
 
-    <!-- ENDEREÇO -->
+    <!-- ===================================================
+         ENDEREÇO
+    ==================================================== -->
 
     <section
       class="address-section"
@@ -2903,6 +2962,7 @@
 
       <div
         class="twinkle-field page-twinkles"
+        aria-hidden="true"
       ></div>
 
       <div class="address-glow"></div>
@@ -2943,6 +3003,7 @@
           class="map-button"
           href="https://www.google.com/maps/search/?api=1&query=Avenida+Anapolis+105+Bethaville+Barueri+SP"
           target="_blank"
+          rel="noopener noreferrer"
         >
           Ver no mapa
         </a>
@@ -2955,7 +3016,9 @@
   </main>
 
 
-  <!-- WHATSAPP -->
+  <!-- =====================================================
+       WHATSAPP
+  ====================================================== -->
 
   <a
     class="whatsapp-button"
@@ -2963,6 +3026,10 @@
     href="https://wa.me/5511932942455?text=Ol%C3%A1%2C%20gostaria%20de%20fazer%20as%20unhas%20com%20a%20Yara%20Nic%C3%A1cio%21%21%20%F0%9F%98%8A%F0%9F%92%85"
 
     target="_blank"
+
+    rel="noopener noreferrer"
+
+    aria-label="Falar com Yara Nicácio pelo WhatsApp"
   >
 
     <img
@@ -3146,39 +3213,43 @@
         );
 
 
+      /*
+         TODOS MAIS LENTOS
+      */
+
       let duration;
 
 
       if(isLarge){
 
-        /*
-           GRANDES SÃO BEM LENTOS
-        */
-
         duration =
           randomBetween(
-            8.5,
-            16
+            13,
+            24
           );
 
       }else if(isMedium){
 
         duration =
           randomBetween(
-            6.5,
-            13
+            10,
+            19
           );
 
       }else{
 
         duration =
           randomBetween(
-            5.5,
-            11.5
+            8,
+            16
           );
 
       }
 
+
+      /*
+         INTENSIDADES DIFERENTES
+      */
 
       let peak;
 
@@ -3187,24 +3258,24 @@
 
         peak =
           randomBetween(
-            .62,
-            .96
+            .70,
+            1
           );
 
       }else if(isMedium){
 
         peak =
           randomBetween(
-            .38,
-            .78
+            .46,
+            .82
           );
 
       }else{
 
         peak =
           randomBetween(
-            .22,
-            .58
+            .28,
+            .62
           );
 
       }
@@ -3212,8 +3283,8 @@
 
       const soft =
         randomBetween(
-          .01,
-          .065
+          .012,
+          .075
         );
 
 
@@ -3221,13 +3292,13 @@
         isLarge
         ?
         randomBetween(
-          .10,
-          .55
+          .08,
+          .48
         )
         :
         randomBetween(
           0,
-          .24
+          .20
         );
 
 
@@ -3264,11 +3335,6 @@
       );
 
 
-      /*
-         GRANDES USAM MAIS O EFEITO
-         DE ABRIR E SUMIR.
-      */
-
       if(isLarge){
 
         twinkle.classList.add(
@@ -3288,7 +3354,7 @@
 
         twinkle.style.setProperty(
           "--delay",
-          `${randomBetween(-16,0).toFixed(2)}s`
+          `${randomBetween(-24,0).toFixed(2)}s`
         );
 
       }else{
@@ -3331,19 +3397,19 @@
 
 
         twinkle.style.left =
-          `${randomBetween(2,98).toFixed(2)}%`;
+          `${randomBetween(1,99).toFixed(2)}%`;
 
 
         twinkle.style.top =
-          `${randomBetween(2,98).toFixed(2)}%`;
+          `${randomBetween(1,99).toFixed(2)}%`;
 
 
         /*
-           DISTRIBUIÇÃO DE TAMANHOS
+           DISTRIBUIÇÃO:
 
-           17% GRANDES
-           37% MÉDIOS
-           RESTANTE PEQUENOS
+           20% GRANDES
+           42% MÉDIOS
+           38% PEQUENOS
         */
 
         const chance =
@@ -3353,45 +3419,54 @@
         let size;
 
 
-        if(chance < .17){
+        if(chance < .20){
 
           twinkle.classList.add(
             "large"
           );
 
+          /*
+             GRANDES BEM MAIS VISÍVEIS
+          */
+
           size =
             randomBetween(
-              7,
-              11.5
+              9,
+              15
             );
+
 
           twinkle.style.setProperty(
             "--ray",
             randomBetween(
-              6.5,
-              9
+              7,
+              10
             )
           );
 
-        }else if(chance < .54){
+
+        }else if(chance < .62){
 
           twinkle.classList.add(
             "medium"
           );
 
+
           size =
             randomBetween(
-              4,
-              6.8
+              4.8,
+              8
             );
+
 
           twinkle.style.setProperty(
             "--ray",
             randomBetween(
-              5.5,
-              7
+              5.8,
+              7.5
             )
           );
+
 
         }else{
 
@@ -3399,17 +3474,19 @@
             "small"
           );
 
+
           size =
             randomBetween(
-              1.8,
-              4
+              2.2,
+              4.6
             );
+
 
           twinkle.style.setProperty(
             "--ray",
             randomBetween(
-              4.5,
-              6
+              4.7,
+              6.2
             )
           );
 
@@ -3453,37 +3530,40 @@
     }
 
 
+    /* =====================================================
+       VOLUME DOS BRILHOS
+    ===================================================== */
+
+
     /*
        CAPA
-
-       MAIS VOLUME
+       42 PONTOS
     */
 
     createTwinkles(
       document.getElementById(
         "heroTwinkles"
       ),
-      38
+      42
     );
 
 
     /*
        TRABALHOS
-
-       AINDA MAIS VOLUME
-       POR SER UMA ÁREA GRANDE
+       50 PONTOS
     */
 
     createTwinkles(
       document.getElementById(
         "worksTwinkles"
       ),
-      44
+      50
     );
 
 
     /*
-       TODAS AS DEMAIS SEÇÕES
+       TODAS AS OUTRAS SEÇÕES
+       34 POR SEÇÃO
     */
 
     document
@@ -3496,7 +3576,7 @@
 
           createTwinkles(
             container,
-            30
+            34
           );
 
         }
