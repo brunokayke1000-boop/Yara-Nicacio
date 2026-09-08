@@ -55,22 +55,6 @@
 
 
     /* =====================================================
-       OTIMIZAÇÃO
-    ===================================================== */
-
-    .hero-content,
-    .top-logo,
-    .global-sparkles-layer,
-    .works-header-float,
-    .works-sparkles-layer{
-      will-change:transform;
-      transform-style:preserve-3d;
-      backface-visibility:hidden;
-      -webkit-backface-visibility:hidden;
-    }
-
-
-    /* =====================================================
        FUNDO GERAL
     ===================================================== */
 
@@ -83,7 +67,7 @@
       background:
         radial-gradient(
           circle at 88% 28%,
-          rgba(130,86,26,.055),
+          rgba(130,86,26,.05),
           transparent 36%
         ),
 
@@ -103,83 +87,50 @@
 
 
     /* =====================================================
-       IMAGEM DE BRILHO BASE
+       NOVO SISTEMA DE BRILHOS
 
-       AGORA ELA NÃO PULSA MAIS.
-       FICA BEM DISCRETA COMO BASE.
+       USA A IMAGEM NOVA.
     ===================================================== */
 
-    .global-sparkles-layer{
-      position:fixed;
+    .sparkle-field{
+      position:absolute;
+      inset:0;
 
-      inset:-7%;
-
-      z-index:-15;
+      overflow:hidden;
 
       pointer-events:none;
+
+      z-index:4;
     }
 
-    .global-sparkles{
-      width:114%;
-      height:114%;
+
+    .sparkle-layer{
+      position:absolute;
+
+      top:-12%;
+      left:-12%;
+
+      width:124%;
+      height:124%;
 
       object-fit:cover;
 
       mix-blend-mode:screen;
 
-      opacity:.055;
-    }
-
-
-    /* =====================================================
-       SISTEMA DE BRILHOS ALEATÓRIOS
-    ===================================================== */
-
-    .twinkle-field{
-      position:absolute;
-
-      inset:0;
-
-      z-index:4;
-
-      overflow:hidden;
-
-      pointer-events:none;
-    }
-
-
-    .twinkle{
-      position:absolute;
-
-      width:var(--size);
-      height:var(--size);
-
-      border-radius:50%;
-
-      opacity:var(--soft);
-
-      background:
-        rgba(255,222,152,.98);
-
-      box-shadow:
-
-        0 0 3px
-        rgba(255,244,203,.95),
-
-        0 0 7px
-        rgba(255,210,112,.78),
-
-        0 0 15px
-        rgba(218,157,50,.42),
-
-        0 0 28px
-        rgba(180,112,25,.18);
+      opacity:0;
 
       transform:
-        scale(.55);
+        translate3d(
+          var(--move-x),
+          var(--move-y),
+          0
+        )
+        scale(var(--scale));
 
-      filter:
-        blur(var(--blur));
+      transform-origin:center;
+
+      animation-name:
+        sparkleSlowFade;
 
       animation-duration:
         var(--duration);
@@ -199,246 +150,81 @@
     }
 
 
-    .twinkle::before,
-    .twinkle::after{
-      content:"";
+    /*
+       SEM PULSO.
 
-      position:absolute;
+       APARECE DEVAGAR,
+       CHEGA NO AUGE,
+       FICA UM POUCO,
+       E SOME DEVAGAR.
+    */
 
-      left:50%;
-      top:50%;
-
-      transform:
-        translate(-50%,-50%);
-
-      border-radius:20px;
-
-      background:
-        linear-gradient(
-          to right,
-          transparent,
-          rgba(255,234,179,.9),
-          transparent
-        );
-
-      opacity:.70;
-    }
-
-
-    .twinkle::before{
-      width:
-        calc(
-          var(--size) * 5
-        );
-
-      height:1px;
-    }
-
-
-    .twinkle::after{
-      width:1px;
-
-      height:
-        calc(
-          var(--size) * 5
-        );
-
-      background:
-        linear-gradient(
-          to bottom,
-          transparent,
-          rgba(255,234,179,.9),
-          transparent
-        );
-    }
-
-
-    .twinkle.variant-a{
-      animation-name:
-        twinkleA;
-    }
-
-    .twinkle.variant-b{
-      animation-name:
-        twinkleB;
-    }
-
-    .twinkle.variant-c{
-      animation-name:
-        twinkleC;
-    }
-
-    .twinkle.variant-d{
-      animation-name:
-        twinkleD;
-    }
-
-
-    @keyframes twinkleA{
+    @keyframes sparkleSlowFade{
 
       0%{
-        opacity:var(--soft);
-        transform:scale(.50);
-      }
-
-      18%{
-        opacity:var(--soft);
-        transform:scale(.58);
-      }
-
-      25%{
-        opacity:var(--peak);
-        transform:scale(1.35);
-      }
-
-      34%{
-        opacity:calc(var(--peak) * .45);
-        transform:scale(.78);
-      }
-
-      58%{
-        opacity:var(--soft);
-        transform:scale(.55);
-      }
-
-      72%{
-        opacity:calc(var(--peak) * .70);
-        transform:scale(.95);
-      }
-
-      80%{
-        opacity:var(--soft);
-        transform:scale(.55);
-      }
-
-      100%{
-        opacity:var(--soft);
-        transform:scale(.50);
-      }
-
-    }
-
-
-    @keyframes twinkleB{
-
-      0%{
-        opacity:var(--soft);
-        transform:scale(.45);
-      }
-
-      36%{
-        opacity:var(--soft);
-        transform:scale(.55);
-      }
-
-      44%{
-        opacity:calc(var(--peak) * .55);
-        transform:scale(.82);
-      }
-
-      49%{
-        opacity:var(--peak);
-        transform:scale(1.45);
-      }
-
-      55%{
-        opacity:calc(var(--peak) * .35);
-        transform:scale(.72);
-      }
-
-      100%{
-        opacity:var(--soft);
-        transform:scale(.45);
-      }
-
-    }
-
-
-    @keyframes twinkleC{
-
-      0%{
-        opacity:var(--soft);
-        transform:scale(.55);
+        opacity:0;
       }
 
       12%{
-        opacity:calc(var(--peak) * .35);
-        transform:scale(.75);
+        opacity:0;
       }
 
-      20%{
-        opacity:var(--peak);
-        transform:scale(1.20);
+      25%{
+        opacity:
+          calc(
+            var(--peak) * .10
+          );
       }
 
-      27%{
-        opacity:var(--soft);
-        transform:scale(.55);
+      38%{
+        opacity:
+          calc(
+            var(--peak) * .34
+          );
       }
 
-      68%{
-        opacity:var(--soft);
-        transform:scale(.50);
+      48%{
+        opacity:
+          calc(
+            var(--peak) * .70
+          );
       }
 
-      77%{
-        opacity:calc(var(--peak) * .75);
-        transform:scale(1);
+      56%{
+        opacity:
+          var(--peak);
       }
 
-      83%{
-        opacity:var(--soft);
-        transform:scale(.55);
+      64%{
+        opacity:
+          calc(
+            var(--peak) * .88
+          );
       }
 
-      100%{
-        opacity:var(--soft);
-        transform:scale(.55);
+      74%{
+        opacity:
+          calc(
+            var(--peak) * .54
+          );
       }
 
-    }
-
-
-    @keyframes twinkleD{
-
-      0%{
-        opacity:var(--soft);
-        transform:scale(.50);
+      85%{
+        opacity:
+          calc(
+            var(--peak) * .20
+          );
       }
 
-      55%{
-        opacity:var(--soft);
-        transform:scale(.55);
-      }
-
-      63%{
-        opacity:calc(var(--peak) * .35);
-        transform:scale(.70);
-      }
-
-      68%{
-        opacity:var(--peak);
-        transform:scale(1.60);
-      }
-
-      72%{
-        opacity:calc(var(--peak) * .50);
-        transform:scale(.85);
-      }
-
-      76%{
-        opacity:var(--peak);
-        transform:scale(1.12);
-      }
-
-      84%{
-        opacity:var(--soft);
-        transform:scale(.55);
+      94%{
+        opacity:
+          calc(
+            var(--peak) * .04
+          );
       }
 
       100%{
-        opacity:var(--soft);
-        transform:scale(.50);
+        opacity:0;
       }
 
     }
@@ -488,11 +274,6 @@
         0 0 0 5px rgba(214,167,73,.05),
         0 7px 25px rgba(0,0,0,.72),
         0 0 18px rgba(214,167,73,.17);
-
-      transition:
-        transform .35s ease,
-        background .35s ease,
-        border-color .35s ease;
     }
 
 
@@ -621,7 +402,6 @@
         serif;
 
       font-size:37px;
-
       font-weight:500;
 
       color:#e4bd72;
@@ -702,7 +482,6 @@
 
     .hero-photo{
       position:absolute;
-
       inset:0;
 
       width:100%;
@@ -714,7 +493,6 @@
       z-index:0;
 
       filter:none;
-
       opacity:1;
     }
 
@@ -756,30 +534,6 @@
 
 
     /* =====================================================
-       BRILHO BASE CAPA
-    ===================================================== */
-
-    .hero-sparkles{
-      position:absolute;
-
-      inset:-3%;
-
-      width:106%;
-      height:106%;
-
-      object-fit:cover;
-
-      z-index:1;
-
-      pointer-events:none;
-
-      mix-blend-mode:screen;
-
-      opacity:.07;
-    }
-
-
-    /* =====================================================
        LOGO
     ===================================================== */
 
@@ -794,7 +548,6 @@
       right:19px;
 
       width:125px;
-
       height:auto;
 
       z-index:7;
@@ -804,7 +557,6 @@
           0 5px 12px
           rgba(0,0,0,.75)
         )
-
         drop-shadow(
           0 0 8px
           rgba(207,159,67,.18)
@@ -813,7 +565,7 @@
 
 
     /* =====================================================
-       CONTEÚDO DA CAPA
+       CONTEÚDO CAPA
     ===================================================== */
 
     .hero-content{
@@ -834,6 +586,8 @@
       align-items:center;
 
       text-align:center;
+
+      will-change:transform;
     }
 
 
@@ -841,7 +595,6 @@
       display:block;
 
       width:min(98vw,920px);
-
       max-width:100%;
 
       height:auto;
@@ -853,12 +606,10 @@
           0 7px 10px
           rgba(0,0,0,.90)
         )
-
         drop-shadow(
           0 16px 25px
           rgba(0,0,0,.72)
         )
-
         drop-shadow(
           0 0 7px
           rgba(255,255,255,.18)
@@ -872,14 +623,12 @@
       margin-top:-17px;
 
       display:flex;
-
       justify-content:center;
     }
 
 
     .nail-artistic{
       width:100%;
-
       height:auto;
 
       object-fit:contain;
@@ -888,12 +637,10 @@
         brightness(1.8)
         saturate(.55)
         contrast(1.12)
-
         drop-shadow(
           0 3px 5px
           rgba(0,0,0,.90)
         )
-
         drop-shadow(
           0 0 6px
           rgba(255,221,150,.42)
@@ -949,7 +696,7 @@
 
 
     /* =====================================================
-       DESLIZE CAPA
+       DESLIZE
     ===================================================== */
 
     .scroll-indicator{
@@ -972,9 +719,7 @@
       z-index:8;
 
       display:flex;
-
       flex-direction:column;
-
       align-items:center;
 
       gap:10px;
@@ -1049,27 +794,17 @@
       left:0;
 
       width:100%;
-
-      height:
-        calc(
-          100% + 360px
-        );
+      height:calc(100% + 360px);
 
       object-fit:cover;
-
-      object-position:
-        center top;
+      object-position:center top;
 
       z-index:-5;
 
       pointer-events:none;
 
       filter:none;
-
       opacity:1;
-
-      transform:
-        translate3d(0,0,0);
     }
 
 
@@ -1112,7 +847,6 @@
 
     .works-background-depth{
       position:absolute;
-
       inset:0;
 
       z-index:-2;
@@ -1126,66 +860,6 @@
           rgba(0,0,0,.04) 48%,
           rgba(0,0,0,.14) 100%
         );
-    }
-
-
-    /* =====================================================
-       BRILHO BASE DOS TRABALHOS
-
-       TAMBÉM NÃO PULSA JUNTO.
-    ===================================================== */
-
-    .works-sparkles-layer{
-      position:absolute;
-
-      top:-250px;
-      left:-7%;
-      right:-7%;
-      bottom:-180px;
-
-      z-index:0;
-
-      pointer-events:none;
-
-      opacity:.25;
-
-      -webkit-mask-image:
-        linear-gradient(
-          to bottom,
-          transparent 0%,
-          rgba(0,0,0,.15) 15%,
-          rgba(0,0,0,.65) 30%,
-          #000 45%,
-          #000 75%,
-          rgba(0,0,0,.55) 88%,
-          transparent 100%
-        );
-
-      mask-image:
-        linear-gradient(
-          to bottom,
-          transparent 0%,
-          rgba(0,0,0,.15) 15%,
-          rgba(0,0,0,.65) 30%,
-          #000 45%,
-          #000 75%,
-          rgba(0,0,0,.55) 88%,
-          transparent 100%
-        );
-    }
-
-
-    .works-sparkles{
-      width:114%;
-      height:114%;
-
-      margin-left:-7%;
-
-      object-fit:cover;
-
-      mix-blend-mode:screen;
-
-      opacity:.16;
     }
 
 
@@ -1225,9 +899,7 @@
 
       z-index:7;
 
-      padding:
-        0
-        35px;
+      padding:0 35px;
 
       max-width:800px;
 
@@ -1240,12 +912,13 @@
 
       transform:
         translate3d(0,0,0);
+
+      will-change:transform;
     }
 
 
     .works-eyebrow{
       display:flex;
-
       align-items:center;
 
       gap:20px;
@@ -1332,7 +1005,8 @@
         rgba(238,229,216,.78);
 
       text-shadow:
-        0 3px 12px rgba(0,0,0,.88);
+        0 3px 12px
+        rgba(0,0,0,.88);
     }
 
 
@@ -1349,8 +1023,7 @@
 
       align-items:center;
 
-      justify-content:
-        space-between;
+      justify-content:space-between;
 
       padding:
         0
@@ -1428,22 +1101,18 @@
       gap:20px;
 
       overflow-x:auto;
-
       overflow-y:hidden;
 
-      scroll-snap-type:
-        x mandatory;
+      scroll-snap-type:x mandatory;
 
-      scroll-padding-left:
-        35px;
+      scroll-padding-left:35px;
 
       padding:
         16px
         35px
         42px;
 
-      -webkit-overflow-scrolling:
-        touch;
+      -webkit-overflow-scrolling:touch;
 
       scrollbar-width:none;
 
@@ -1457,7 +1126,7 @@
 
 
     /* =====================================================
-       CARDS NEON
+       CARDS
     ===================================================== */
 
     .work-card{
@@ -1470,8 +1139,7 @@
           430px
         );
 
-      aspect-ratio:
-        4 / 5;
+      aspect-ratio:4 / 5;
 
       overflow:visible;
 
@@ -1504,7 +1172,6 @@
 
     .work-card-image{
       position:absolute;
-
       inset:0;
 
       overflow:hidden;
@@ -1519,7 +1186,6 @@
 
     .work-card img{
       position:absolute;
-
       inset:0;
 
       width:100%;
@@ -1528,14 +1194,6 @@
       object-fit:cover;
 
       display:block;
-
-      transform:
-        translate3d(0,0,0);
-
-      transition:
-        transform
-        .75s
-        cubic-bezier(.2,.75,.25,1);
     }
 
 
@@ -1596,7 +1254,6 @@
       border-radius:8px;
 
       background:
-
         radial-gradient(
           circle at 8% 0%,
           rgba(255,245,205,.90) 0,
@@ -1629,13 +1286,6 @@
     }
 
 
-    .work-card:active img{
-      transform:
-        scale(1.025)
-        translate3d(0,0,0);
-    }
-
-
     /* =====================================================
        CONTADOR
     ===================================================== */
@@ -1649,9 +1299,7 @@
 
       align-items:center;
 
-      padding:
-        0
-        35px;
+      padding:0 35px;
     }
 
 
@@ -1700,7 +1348,7 @@
 
 
     /* =====================================================
-       OUTRAS SEÇÕES
+       DEMAIS SEÇÕES
     ===================================================== */
 
     .future-section{
@@ -1721,6 +1369,8 @@
       overflow:hidden;
 
       background:transparent;
+
+      isolation:isolate;
     }
 
 
@@ -1740,6 +1390,8 @@
 
       pointer-events:none;
 
+      z-index:0;
+
       background:
         radial-gradient(
           circle,
@@ -1753,7 +1405,7 @@
     .future-content{
       position:relative;
 
-      z-index:3;
+      z-index:7;
 
       max-width:620px;
 
@@ -1822,7 +1474,6 @@
       display:flex;
 
       justify-content:center;
-
       align-items:center;
 
       padding:
@@ -1833,6 +1484,8 @@
       overflow:hidden;
 
       background:transparent;
+
+      isolation:isolate;
     }
 
 
@@ -1859,13 +1512,15 @@
         );
 
       pointer-events:none;
+
+      z-index:0;
     }
 
 
     .address-content{
       position:relative;
 
-      z-index:3;
+      z-index:7;
 
       width:100%;
       max-width:600px;
@@ -1985,7 +1640,6 @@
       display:inline-flex;
 
       align-items:center;
-
       justify-content:center;
 
       min-width:190px;
@@ -2046,7 +1700,6 @@
       display:flex;
 
       align-items:center;
-
       justify-content:center;
 
       border-radius:50%;
@@ -2118,7 +1771,6 @@
           0 5px 10px
           rgba(0,0,0,.85)
         )
-
         drop-shadow(
           0 0 7px
           rgba(214,167,73,.18)
@@ -2127,7 +1779,7 @@
 
 
     /* =====================================================
-       ANIMAÇÕES RESTANTES
+       ANIMAÇÕES
     ===================================================== */
 
     @keyframes whatsappPulse{
@@ -2217,23 +1869,12 @@
           rgba(231,181,80,.68);
 
         box-shadow:
-
-          0 0 2px
-          rgba(255,229,160,.76),
-
-          0 0 6px
-          rgba(232,175,68,.42),
-
-          0 0 13px
-          rgba(201,139,34,.20),
-
-          0 0 27px
-          rgba(165,105,21,.08),
-
-          0 18px 45px
-          rgba(0,0,0,.58);
+          0 0 2px rgba(255,229,160,.76),
+          0 0 6px rgba(232,175,68,.42),
+          0 0 13px rgba(201,139,34,.20),
+          0 0 27px rgba(165,105,21,.08),
+          0 18px 45px rgba(0,0,0,.58);
       }
-
 
       50%{
 
@@ -2241,21 +1882,11 @@
           rgba(255,212,118,.95);
 
         box-shadow:
-
-          0 0 3px
-          rgba(255,242,201,.98),
-
-          0 0 8px
-          rgba(250,197,91,.72),
-
-          0 0 17px
-          rgba(218,154,44,.36),
-
-          0 0 34px
-          rgba(181,116,26,.15),
-
-          0 18px 45px
-          rgba(0,0,0,.58);
+          0 0 3px rgba(255,242,201,.98),
+          0 0 8px rgba(250,197,91,.72),
+          0 0 17px rgba(218,154,44,.36),
+          0 0 34px rgba(181,116,26,.15),
+          0 18px 45px rgba(0,0,0,.58);
       }
 
     }
@@ -2290,7 +1921,6 @@
 
       .nail-artistic-wrap{
         width:83vw;
-
         margin-top:-17px;
       }
 
@@ -2301,13 +1931,10 @@
             4.4vw,
             22px
           );
-
-        letter-spacing:0;
       }
 
       .works-section{
         margin-top:-95px;
-
         padding-top:205px;
       }
 
@@ -2318,49 +1945,10 @@
           calc(
             100% + 300px
           );
-
-        object-position:
-          center top;
       }
 
       .works-header{
-        padding:
-          0
-          36px;
-
-        margin-bottom:55px;
-      }
-
-      .works-eyebrow{
-        gap:18px;
-
-        font-size:9px;
-      }
-
-      .works-eyebrow::before{
-        width:58px;
-      }
-
-      .works-title{
-        font-size:
-          clamp(
-            62px,
-            16vw,
-            82px
-          );
-      }
-
-      .works-description{
-        margin-top:27px;
-
-        font-size:
-          clamp(
-            21px,
-            5.3vw,
-            26px
-          );
-
-        line-height:1.45;
+        padding:0 36px;
       }
 
       .works-drag{
@@ -2370,24 +1958,11 @@
           20px;
       }
 
-      .works-drag-text{
-        font-size:8px;
-
-        letter-spacing:.36em;
-      }
-
-      .works-drag-line{
-        width:45px;
-      }
-
       .works-slider{
         padding:
           16px
           36px
           42px;
-
-        scroll-padding-left:
-          36px;
       }
 
       .work-card{
@@ -2395,9 +1970,7 @@
       }
 
       .works-footer{
-        padding:
-          0
-          36px;
+        padding:0 36px;
       }
 
       .future-section{
@@ -2417,11 +1990,6 @@
           150px;
       }
 
-      .whatsapp-button{
-        width:76px;
-        height:76px;
-      }
-
     }
 
 
@@ -2436,85 +2004,32 @@
         height:54px;
       }
 
-      .hero-content{
-        width:98%;
-      }
-
       .hero-phrase{
         font-size:16px;
       }
 
       .works-section{
         margin-top:-90px;
-
         padding-top:195px;
       }
 
       .works-header{
-        padding:
-          0
-          26px;
+        padding:0 26px;
       }
 
       .works-drag{
         padding-left:26px;
-
         padding-right:26px;
       }
 
       .works-slider{
         padding-left:26px;
-
         padding-right:26px;
-
-        scroll-padding-left:26px;
-      }
-
-      .work-card{
-        flex-basis:80vw;
       }
 
       .works-footer{
         padding-left:26px;
-
         padding-right:26px;
-      }
-
-      .whatsapp-button{
-        width:70px;
-
-        height:70px;
-      }
-
-    }
-
-
-    @media(min-width:800px){
-
-      .works-header,
-      .works-drag,
-      .works-footer{
-        max-width:1250px;
-
-        margin-left:auto;
-
-        margin-right:auto;
-      }
-
-      .works-slider{
-        padding-left:
-          max(
-            35px,
-            calc(
-              (100vw - 1250px) / 2
-            )
-          );
-
-        padding-right:35px;
-      }
-
-      .work-card{
-        flex-basis:390px;
       }
 
     }
@@ -2526,7 +2041,7 @@
         scroll-behavior:auto;
       }
 
-      .twinkle,
+      .sparkle-layer,
       .work-card,
       .whatsapp-button,
       .whatsapp-button::before,
@@ -2546,27 +2061,10 @@
 <body>
 
 
-  <!-- FUNDO -->
-
   <div
     class="site-background"
     aria-hidden="true"
   ></div>
-
-
-  <div
-    class="global-sparkles-layer"
-    id="globalSparklesLayer"
-    aria-hidden="true"
-  >
-
-    <img
-      class="global-sparkles"
-      src="24CD378D-F11E-4CB2-B0FC-FCAFBE91B276.png"
-      alt=""
-    >
-
-  </div>
 
 
   <!-- MENU -->
@@ -2643,7 +2141,6 @@
       id="inicio"
     >
 
-
       <img
         class="hero-photo"
         src="6B987C82-0128-4805-9284-58DB898A5D27.jpeg"
@@ -2651,19 +2148,9 @@
       >
 
 
-      <img
-        class="hero-sparkles"
-        src="24CD378D-F11E-4CB2-B0FC-FCAFBE91B276.png"
-        alt=""
-        aria-hidden="true"
-      >
-
-
-      <!-- BRILHOS ALEATÓRIOS CAPA -->
-
       <div
-        class="twinkle-field"
-        id="heroTwinkles"
+        class="sparkle-field"
+        data-sparkles="hero"
         aria-hidden="true"
       ></div>
 
@@ -2686,7 +2173,6 @@
         class="hero-content"
         id="heroContent"
       >
-
 
         <img
           class="name-image"
@@ -2716,7 +2202,6 @@
           aria-hidden="true"
         ></div>
 
-
       </div>
 
 
@@ -2730,7 +2215,6 @@
 
       </div>
 
-
     </section>
 
 
@@ -2742,7 +2226,6 @@
       class="works-section"
       id="trabalhos"
     >
-
 
       <img
         class="works-background-photo"
@@ -2765,25 +2248,8 @@
 
 
       <div
-        class="works-sparkles-layer"
-        id="worksSparklesLayer"
-        aria-hidden="true"
-      >
-
-        <img
-          class="works-sparkles"
-          src="24CD378D-F11E-4CB2-B0FC-FCAFBE91B276.png"
-          alt=""
-        >
-
-      </div>
-
-
-      <!-- BRILHOS ALEATÓRIOS TRABALHOS -->
-
-      <div
-        class="twinkle-field"
-        id="worksTwinkles"
+        class="sparkle-field"
+        data-sparkles="works"
         aria-hidden="true"
       ></div>
 
@@ -2805,9 +2271,11 @@
             Nail Artistic
           </div>
 
+
           <h2 class="works-title">
             Trabalhos
           </h2>
+
 
           <p class="works-description">
             Criações desenvolvidas nos mínimos detalhes,
@@ -2825,10 +2293,8 @@
           Deslize para explorar
         </span>
 
-        <div
-          class="works-drag-arrow"
-          aria-hidden="true"
-        >
+
+        <div class="works-drag-arrow">
 
           <div class="works-drag-line"></div>
 
@@ -2838,8 +2304,6 @@
 
       </div>
 
-
-      <!-- GALERIA -->
 
       <div
         class="works-slider"
@@ -2977,15 +2441,17 @@
 
         </div>
 
+
         <div class="works-footer-line"></div>
 
       </div>
 
-
     </section>
 
 
-    <!-- ESTÚDIO -->
+    <!-- ===================================================
+         ESTÚDIO
+    ==================================================== -->
 
     <section
       class="future-section"
@@ -2993,9 +2459,14 @@
     >
 
       <div
-        class="future-light"
+        class="sparkle-field"
+        data-sparkles="page"
         aria-hidden="true"
       ></div>
+
+
+      <div class="future-light"></div>
+
 
       <div class="future-content">
 
@@ -3003,9 +2474,11 @@
           Yara Nicácio
         </small>
 
+
         <h2>
           O estúdio
         </h2>
+
 
         <p>
           Uma experiência pensada em cada detalhe.
@@ -3016,7 +2489,9 @@
     </section>
 
 
-    <!-- YARA -->
+    <!-- ===================================================
+         YARA
+    ==================================================== -->
 
     <section
       class="future-section"
@@ -3024,9 +2499,14 @@
     >
 
       <div
-        class="future-light"
+        class="sparkle-field"
+        data-sparkles="page"
         aria-hidden="true"
       ></div>
+
+
+      <div class="future-light"></div>
+
 
       <div class="future-content">
 
@@ -3034,9 +2514,11 @@
           Nail Artist
         </small>
 
+
         <h2>
           Yara Nicácio
         </h2>
+
 
         <p>
           Técnica, identidade e criatividade
@@ -3048,7 +2530,9 @@
     </section>
 
 
-    <!-- PREÇOS -->
+    <!-- ===================================================
+         PREÇOS
+    ==================================================== -->
 
     <section
       class="future-section"
@@ -3056,9 +2540,14 @@
     >
 
       <div
-        class="future-light"
+        class="sparkle-field"
+        data-sparkles="page"
         aria-hidden="true"
       ></div>
+
+
+      <div class="future-light"></div>
+
 
       <div class="future-content">
 
@@ -3066,9 +2555,11 @@
           Serviços
         </small>
 
+
         <h2>
           Tabela de preços
         </h2>
+
 
         <p>
           Conheça os serviços e escolha
@@ -3080,7 +2571,9 @@
     </section>
 
 
-    <!-- AVALIAÇÕES -->
+    <!-- ===================================================
+         AVALIAÇÕES
+    ==================================================== -->
 
     <section
       class="future-section"
@@ -3088,9 +2581,14 @@
     >
 
       <div
-        class="future-light"
+        class="sparkle-field"
+        data-sparkles="page"
         aria-hidden="true"
       ></div>
+
+
+      <div class="future-light"></div>
+
 
       <div class="future-content">
 
@@ -3098,9 +2596,11 @@
           Experiências
         </small>
 
+
         <h2>
           Avaliações
         </h2>
+
 
         <p>
           A experiência de quem já escolheu
@@ -3112,7 +2612,9 @@
     </section>
 
 
-    <!-- ENDEREÇO -->
+    <!-- ===================================================
+         ENDEREÇO
+    ==================================================== -->
 
     <section
       class="address-section"
@@ -3120,9 +2622,13 @@
     >
 
       <div
-        class="address-glow"
+        class="sparkle-field"
+        data-sparkles="page"
         aria-hidden="true"
       ></div>
+
+
+      <div class="address-glow"></div>
 
 
       <div class="address-content">
@@ -3131,25 +2637,28 @@
           Localização
         </div>
 
+
         <h2 class="address-title">
           Endereço
         </h2>
 
-        <div
-          class="address-line"
-          aria-hidden="true"
-        ></div>
+
+        <div class="address-line"></div>
+
 
         <div class="building">
           Edifício NBC
         </div>
 
+
         <div class="address-text">
 
           Avenida Anápolis, 105
+
           <br>
 
           Bethaville — Barueri, SP
+
 
           <span class="address-room">
             10º andar • Sala 1007
@@ -3209,15 +2718,18 @@
         "menuTrigger"
       );
 
+
     const sideMenu =
       document.getElementById(
         "sideMenu"
       );
 
+
     const menuOverlay =
       document.getElementById(
         "menuOverlay"
       );
+
 
     const menuLinks =
       document.querySelectorAll(
@@ -3311,21 +2823,11 @@
 
 
     /* =====================================================
-       BRILHOS ALEATÓRIOS
+       NOVA IMAGEM DE BRILHOS
     ===================================================== */
 
-    const reducedMotion =
-      window.matchMedia(
-        "(prefers-reduced-motion: reduce)"
-      ).matches;
-
-
-    const variants = [
-      "variant-a",
-      "variant-b",
-      "variant-c",
-      "variant-d"
-    ];
+    const SPARKLE_IMAGE =
+      "7122BB23-9C04-4672-B385-81F2AC60DB83.png";
 
 
     function randomBetween(
@@ -3334,7 +2836,8 @@
     ){
 
       return (
-        Math.random() *
+        Math.random()
+        *
         (
           max -
           min
@@ -3346,115 +2849,145 @@
     }
 
 
-    function randomVariant(){
+    /* =====================================================
+       CONFIGURA UMA CAMADA
+    ===================================================== */
 
-      return variants[
-        Math.floor(
-          Math.random() *
-          variants.length
-        )
-      ];
-
-    }
-
-
-    function configureTwinkle(
-      twinkle,
+    function configureSparkleLayer(
+      layer,
       firstTime = false
     ){
 
+
+      /*
+         TEMPO BEM LENTO.
+      */
+
       const duration =
         randomBetween(
-          2.2,
-          8.2
+          24,
+          42
         );
 
 
       /*
-        Alguns ficam muito fortes,
-        outros quase imperceptíveis.
+         CADA CAMADA TEM UMA
+         INTENSIDADE DIFERENTE.
+
+         ALGUMAS QUASE IMPERCEPTÍVEIS,
+         OUTRAS MAIS FORTES.
       */
 
-      const peak =
-        randomBetween(
-          .26,
-          .98
-        );
+      const chance =
+        Math.random();
 
 
-      const soft =
-        randomBetween(
-          .015,
-          .085
-        );
+      let peak;
 
 
-      const blur =
-        Math.random() > .78
-        ?
-        randomBetween(
-          .35,
-          .75
-        )
-        :
-        randomBetween(
-          0,
-          .18
-        );
+      if(
+        chance < .20
+      ){
 
-
-      twinkle.style.setProperty(
-        "--duration",
-        `${duration}s`
-      );
-
-
-      twinkle.style.setProperty(
-        "--peak",
-        peak.toFixed(2)
-      );
-
-
-      twinkle.style.setProperty(
-        "--soft",
-        soft.toFixed(3)
-      );
-
-
-      twinkle.style.setProperty(
-        "--blur",
-        `${blur.toFixed(2)}px`
-      );
-
-
-      /*
-        Troca também o tipo de piscada.
-      */
-
-      variants.forEach(
-        variant => {
-          twinkle.classList.remove(
-            variant
+        peak =
+          randomBetween(
+            .28,
+            .42
           );
-        }
+
+      }
+      else if(
+        chance < .68
+      ){
+
+        peak =
+          randomBetween(
+            .14,
+            .28
+          );
+
+      }
+      else{
+
+        peak =
+          randomBetween(
+            .07,
+            .16
+          );
+
+      }
+
+
+      /*
+         A CAMADA MUDA DE PONTO.
+
+         COMO A TEXTURA É MAIOR QUE
+         A TELA, MOVER E ESCALAR A
+         IMAGEM FAZ OS BRILHOS FORTES
+         APARECEREM EM OUTRO LOCAL.
+      */
+
+      const moveX =
+        randomBetween(
+          -9,
+          9
+        );
+
+
+      const moveY =
+        randomBetween(
+          -10,
+          10
+        );
+
+
+      const scale =
+        randomBetween(
+          1.03,
+          1.22
+        );
+
+
+      layer.style.setProperty(
+        "--duration",
+        `${duration.toFixed(2)}s`
       );
 
 
-      twinkle.classList.add(
-        randomVariant()
+      layer.style.setProperty(
+        "--peak",
+        peak.toFixed(3)
+      );
+
+
+      layer.style.setProperty(
+        "--move-x",
+        `${moveX.toFixed(2)}%`
+      );
+
+
+      layer.style.setProperty(
+        "--move-y",
+        `${moveY.toFixed(2)}%`
+      );
+
+
+      layer.style.setProperty(
+        "--scale",
+        scale.toFixed(3)
       );
 
 
       if(firstTime){
 
-        twinkle.style.setProperty(
+        layer.style.setProperty(
           "--delay",
-          `${randomBetween(-8,0)}s`
+          `${randomBetween(-42,0).toFixed(2)}s`
         );
 
       }else{
 
-        twinkle.style.setProperty(
+        layer.style.setProperty(
           "--delay",
           "0s"
         );
@@ -3464,14 +2997,17 @@
     }
 
 
-    function createTwinkles(
+    /* =====================================================
+       CRIA AS CAMADAS
+    ===================================================== */
+
+    function createSparkleLayers(
       container,
       amount
     ){
 
       if(
-        !container ||
-        reducedMotion
+        !container
       ){
         return;
       }
@@ -3483,72 +3019,57 @@
         i++
       ){
 
-        const twinkle =
+        const layer =
           document.createElement(
-            "span"
+            "img"
           );
 
 
-        twinkle.className =
-          "twinkle";
+        layer.className =
+          "sparkle-layer";
 
 
-        /*
-          Posição completamente diferente
-          para cada brilho.
-        */
-
-        twinkle.style.left =
-          `${randomBetween(2,98)}%`;
+        layer.src =
+          SPARKLE_IMAGE;
 
 
-        twinkle.style.top =
-          `${randomBetween(3,97)}%`;
+        layer.alt =
+          "";
 
 
-        /*
-          Alguns pequenos,
-          alguns mais destacados.
-        */
-
-        const size =
-          Math.random() > .84
-          ?
-          randomBetween(4.2,6.2)
-          :
-          randomBetween(1.8,4);
+        layer.draggable =
+          false;
 
 
-        twinkle.style.setProperty(
-          "--size",
-          `${size.toFixed(2)}px`
-        );
-
-
-        configureTwinkle(
-          twinkle,
+        configureSparkleLayer(
+          layer,
           true
         );
 
 
         /*
-          A CADA CICLO:
-          intensidade nova,
-          duração nova,
-          tipo de piscada novo.
+           AO TERMINAR:
 
-          Então um brilho fraco pode
-          virar forte no próximo ciclo.
+           A CAMADA ESTÁ INVISÍVEL.
+
+           AÍ MUDAMOS:
+           - POSIÇÃO
+           - ESCALA
+           - INTENSIDADE
+           - DURAÇÃO
+
+           DEPOIS ELA SURGE DE NOVO
+           EM OUTRO PONTO.
         */
 
-        twinkle.addEventListener(
+        layer.addEventListener(
 
           "animationiteration",
 
           function(){
 
-            configureTwinkle(
-              twinkle,
+            configureSparkleLayer(
+              layer,
               false
             );
 
@@ -3558,7 +3079,7 @@
 
 
         container.appendChild(
-          twinkle
+          layer
         );
 
       }
@@ -3566,29 +3087,70 @@
     }
 
 
-    /*
-      Quantidade propositalmente moderada
-      para continuar leve no iPhone.
-    */
+    /* =====================================================
+       VOLUME
 
-    createTwinkles(
-      document.getElementById(
-        "heroTwinkles"
-      ),
-      18
-    );
+       USAMOS POUCAS CAMADAS,
+       MAS CADA UMA COBRE A TELA TODA.
+    ===================================================== */
 
 
-    createTwinkles(
-      document.getElementById(
-        "worksTwinkles"
-      ),
-      22
-    );
+    document
+      .querySelectorAll(
+        '[data-sparkles="hero"]'
+      )
+      .forEach(
+
+        function(container){
+
+          createSparkleLayers(
+            container,
+            5
+          );
+
+        }
+
+      );
+
+
+    document
+      .querySelectorAll(
+        '[data-sparkles="works"]'
+      )
+      .forEach(
+
+        function(container){
+
+          createSparkleLayers(
+            container,
+            6
+          );
+
+        }
+
+      );
+
+
+    document
+      .querySelectorAll(
+        '[data-sparkles="page"]'
+      )
+      .forEach(
+
+        function(container){
+
+          createSparkleLayers(
+            container,
+            4
+          );
+
+        }
+
+      );
 
 
     /* =====================================================
-       MOVIMENTO FLUIDO DOS TEXTOS
+       PARALLAX FLUIDO
     ===================================================== */
 
     const heroContent =
@@ -3596,29 +3158,22 @@
         "heroContent"
       );
 
+
     const topLogo =
       document.getElementById(
         "topLogo"
       );
 
-    const globalSparklesLayer =
-      document.getElementById(
-        "globalSparklesLayer"
-      );
 
     const worksSection =
       document.getElementById(
         "trabalhos"
       );
 
+
     const worksHeaderFloat =
       document.getElementById(
         "worksHeaderFloat"
-      );
-
-    const worksSparklesLayer =
-      document.getElementById(
-        "worksSparklesLayer"
       );
 
 
@@ -3628,14 +3183,11 @@
     let logoTarget = 0;
     let logoCurrent = 0;
 
-    let globalSparkTarget = 0;
-    let globalSparkCurrent = 0;
-
     let worksHeaderTarget = 0;
     let worksHeaderCurrent = 0;
 
-    let worksSparkTarget = 0;
-    let worksSparkCurrent = 0;
+    let animationRunning =
+      false;
 
 
     function lerp(
@@ -3644,13 +3196,16 @@
       amount
     ){
 
-      return start +
+      return (
+        start
+        +
         (
           end -
           start
         )
         *
-        amount;
+        amount
+      );
 
     }
 
@@ -3669,14 +3224,11 @@
         heroTarget =
           scrollY * .145;
 
+
         logoTarget =
           scrollY * .065;
 
       }
-
-
-      globalSparkTarget =
-        scrollY * .012;
 
 
       const worksRect =
@@ -3686,8 +3238,11 @@
       if(
         worksRect.top <
         window.innerHeight * 1.25
+
         &&
-        worksRect.bottom > -200
+
+        worksRect.bottom >
+        -200
       ){
 
         const viewportCenter =
@@ -3695,23 +3250,44 @@
 
 
         const sectionCenter =
-          worksRect.top +
+          worksRect.top
+          +
           worksRect.height / 2;
 
 
         const difference =
-          viewportCenter -
+          viewportCenter
+          -
           sectionCenter;
 
 
         worksHeaderTarget =
           difference * .032;
 
-
-        worksSparkTarget =
-          difference * .012;
-
       }
+
+
+      startSmoothAnimation();
+
+    }
+
+
+    function startSmoothAnimation(){
+
+      if(
+        animationRunning
+      ){
+        return;
+      }
+
+
+      animationRunning =
+        true;
+
+
+      requestAnimationFrame(
+        smoothAnimation
+      );
 
     }
 
@@ -3735,14 +3311,6 @@
         );
 
 
-      globalSparkCurrent =
-        lerp(
-          globalSparkCurrent,
-          globalSparkTarget,
-          .075
-        );
-
-
       worksHeaderCurrent =
         lerp(
           worksHeaderCurrent,
@@ -3751,19 +3319,12 @@
         );
 
 
-      worksSparkCurrent =
-        lerp(
-          worksSparkCurrent,
-          worksSparkTarget,
-          .065
-        );
-
-
       heroContent.style.transform =
         `translate3d(
           -50%,
           calc(
-            -50% +
+            -50%
+            +
             ${heroCurrent}px
           ),
           0
@@ -3778,14 +3339,6 @@
         )`;
 
 
-      globalSparklesLayer.style.transform =
-        `translate3d(
-          0,
-          ${globalSparkCurrent}px,
-          0
-        )`;
-
-
       worksHeaderFloat.style.transform =
         `translate3d(
           0,
@@ -3794,27 +3347,59 @@
         )`;
 
 
-      worksSparklesLayer.style.transform =
-        `translate3d(
-          0,
-          ${worksSparkCurrent}px,
-          0
-        )`;
+      const heroDifference =
+        Math.abs(
+          heroTarget -
+          heroCurrent
+        );
 
 
-      requestAnimationFrame(
-        smoothAnimation
-      );
+      const logoDifference =
+        Math.abs(
+          logoTarget -
+          logoCurrent
+        );
+
+
+      const worksDifference =
+        Math.abs(
+          worksHeaderTarget -
+          worksHeaderCurrent
+        );
+
+
+      if(
+        heroDifference > .05
+        ||
+        logoDifference > .05
+        ||
+        worksDifference > .05
+      ){
+
+        requestAnimationFrame(
+          smoothAnimation
+        );
+
+      }else{
+
+        animationRunning =
+          false;
+
+      }
 
     }
 
 
     window.addEventListener(
+
       "scroll",
+
       calculateTargets,
+
       {
         passive:true
       }
+
     );
 
 
@@ -3825,11 +3410,6 @@
 
 
     calculateTargets();
-
-
-    requestAnimationFrame(
-      smoothAnimation
-    );
 
 
     /* =====================================================
@@ -3885,7 +3465,7 @@
             card.getBoundingClientRect();
 
 
-          const distance =
+          const cardDistance =
             Math.abs(
               cardRect.left -
               reference
@@ -3893,12 +3473,12 @@
 
 
           if(
-            distance <
+            cardDistance <
             closestDistance
           ){
 
             closestDistance =
-              distance;
+              cardDistance;
 
 
             closestIndex =
@@ -3942,7 +3522,6 @@
 
               updateWorkCounter();
 
-
               galleryTicking =
                 false;
 
@@ -3969,7 +3548,7 @@
 
 
     /* =====================================================
-       ARRASTE COMPUTADOR
+       ARRASTE DESKTOP
     ===================================================== */
 
     let isDown =
