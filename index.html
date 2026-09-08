@@ -27,7 +27,12 @@
     rel="stylesheet"
   >
 
+
   <style>
+
+    /* =========================================
+       RESET
+    ========================================= */
 
     *{
       margin:0;
@@ -42,15 +47,23 @@
 
     body{
       margin:0;
-      background:#050505;
-      color:#ffffff;
+
       overflow-x:hidden;
-      font-family:'Montserrat',sans-serif;
+
+      color:#ffffff;
+
+      font-family:
+        'Montserrat',
+        sans-serif;
+
+      background:
+        #050505;
     }
 
     button,
     a{
-      -webkit-tap-highlight-color:transparent;
+      -webkit-tap-highlight-color:
+        transparent;
     }
 
 
@@ -60,23 +73,30 @@
 
     .hero{
       position:relative;
+
       width:100%;
       height:100svh;
+
       min-height:680px;
+
       overflow:hidden;
+
       background:#050505;
+
       isolation:isolate;
     }
 
+
     .hero-background{
       position:absolute;
+
       inset:0;
 
       width:100%;
       height:100%;
 
       object-fit:cover;
-      object-position:center center;
+      object-position:center;
 
       z-index:0;
 
@@ -86,7 +106,7 @@
 
 
     /* =========================================
-       DEGRADÊ DA CAPA
+       DEGRADÊ INFERIOR DA CAPA
     ========================================= */
 
     .hero-fade{
@@ -94,9 +114,9 @@
 
       left:0;
       right:0;
-      bottom:0;
+      bottom:-2px;
 
-      height:55%;
+      height:62%;
 
       z-index:1;
 
@@ -105,28 +125,46 @@
       background:
         linear-gradient(
           to bottom,
+
           rgba(5,5,5,0) 0%,
-          rgba(5,5,5,.04) 16%,
-          rgba(5,5,5,.12) 32%,
-          rgba(5,5,5,.30) 50%,
-          rgba(5,5,5,.58) 70%,
-          rgba(5,5,5,.86) 88%,
+
+          rgba(5,5,5,.03) 12%,
+
+          rgba(5,5,5,.08) 23%,
+
+          rgba(5,5,5,.17) 34%,
+
+          rgba(5,5,5,.31) 46%,
+
+          rgba(5,5,5,.48) 58%,
+
+          rgba(5,5,5,.67) 70%,
+
+          rgba(5,5,5,.82) 81%,
+
+          rgba(5,5,5,.94) 91%,
+
           #050505 100%
         );
     }
 
 
     /* =========================================
-       BRILHOS
+       BRILHO CAPA
     ========================================= */
 
     .sparkles-layer{
       position:absolute;
+
       inset:-3%;
+
       z-index:2;
+
       pointer-events:none;
+
       will-change:transform;
     }
+
 
     .gold-sparkles{
       width:106%;
@@ -143,6 +181,7 @@
         infinite;
     }
 
+
     @keyframes sparklePulse{
 
       0%,
@@ -153,7 +192,7 @@
 
       50%{
         opacity:.30;
-        transform:scale(1.016);
+        transform:scale(1.018);
       }
 
     }
@@ -166,10 +205,11 @@
     .top-logo{
       position:absolute;
 
-      top:max(
-        27px,
-        env(safe-area-inset-top)
-      );
+      top:
+        max(
+          27px,
+          env(safe-area-inset-top)
+        );
 
       right:19px;
 
@@ -183,6 +223,7 @@
           0 5px 12px
           rgba(0,0,0,.75)
         )
+
         drop-shadow(
           0 0 8px
           rgba(207,159,67,.18)
@@ -193,16 +234,17 @@
 
 
     /* =========================================
-       BOTÃO DO MENU
+       MENU
     ========================================= */
 
     .menu-trigger{
       position:fixed;
 
-      top:max(
-        30px,
-        env(safe-area-inset-top)
-      );
+      top:
+        max(
+          30px,
+          env(safe-area-inset-top)
+        );
 
       left:18px;
 
@@ -220,11 +262,16 @@
       background:
         rgba(5,5,5,.72);
 
-      backdrop-filter:blur(12px);
-      -webkit-backdrop-filter:blur(12px);
+      backdrop-filter:
+        blur(12px);
+
+      -webkit-backdrop-filter:
+        blur(12px);
 
       display:flex;
+
       flex-direction:column;
+
       align-items:center;
       justify-content:center;
 
@@ -242,6 +289,7 @@
         border-color .35s ease,
         background .35s ease;
     }
+
 
     .menu-trigger span{
       display:block;
@@ -262,15 +310,18 @@
         opacity .35s ease;
     }
 
+
     .menu-trigger.active span:nth-child(1){
       transform:
         translateY(7px)
         rotate(45deg);
     }
 
+
     .menu-trigger.active span:nth-child(2){
       opacity:0;
     }
+
 
     .menu-trigger.active span:nth-child(3){
       transform:
@@ -280,11 +331,12 @@
 
 
     /* =========================================
-       OVERLAY DO MENU
+       OVERLAY MENU
     ========================================= */
 
     .menu-overlay{
       position:fixed;
+
       inset:0;
 
       z-index:190;
@@ -292,16 +344,21 @@
       background:
         rgba(0,0,0,.62);
 
-      backdrop-filter:blur(3px);
-      -webkit-backdrop-filter:blur(3px);
+      backdrop-filter:
+        blur(3px);
+
+      -webkit-backdrop-filter:
+        blur(3px);
 
       opacity:0;
+
       visibility:hidden;
 
       transition:
         opacity .45s ease,
         visibility .45s ease;
     }
+
 
     .menu-overlay.active{
       opacity:1;
@@ -354,13 +411,17 @@
         translateX(-105%);
 
       transition:
-        transform .55s
+        transform
+        .55s
         cubic-bezier(.77,0,.18,1);
     }
 
+
     .side-menu.active{
-      transform:translateX(0);
+      transform:
+        translateX(0);
     }
+
 
     .menu-title{
       font-family:
@@ -377,6 +438,7 @@
 
       margin-bottom:42px;
     }
+
 
     .menu-title::after{
       content:"";
@@ -396,18 +458,23 @@
         );
     }
 
+
     .menu-links{
       display:flex;
+
       flex-direction:column;
+
       gap:5px;
     }
+
 
     .menu-links a{
       position:relative;
 
       display:block;
 
-      padding:16px 0;
+      padding:
+        16px 0;
 
       color:
         rgba(255,255,255,.88);
@@ -433,6 +500,7 @@
         padding-left .3s ease;
     }
 
+
     .menu-links a::before{
       content:"";
 
@@ -450,10 +518,12 @@
         width .3s ease;
     }
 
+
     .menu-links a:hover{
       color:#e6bf75;
       padding-left:25px;
     }
+
 
     .menu-links a:hover::before{
       width:15px;
@@ -461,7 +531,7 @@
 
 
     /* =========================================
-       CONTEÚDO DA CAPA
+       CONTEÚDO CAPA
     ========================================= */
 
     .hero-content{
@@ -478,7 +548,9 @@
       z-index:4;
 
       display:flex;
+
       flex-direction:column;
+
       align-items:center;
 
       text-align:center;
@@ -486,10 +558,12 @@
       will-change:transform;
     }
 
+
     .name-image{
       display:block;
 
       width:min(98vw,920px);
+
       max-width:100%;
 
       height:auto;
@@ -501,15 +575,18 @@
           0 7px 10px
           rgba(0,0,0,.90)
         )
+
         drop-shadow(
           0 16px 25px
           rgba(0,0,0,.72)
         )
+
         drop-shadow(
           0 0 7px
           rgba(255,255,255,.18)
         );
     }
+
 
     .nail-artistic-wrap{
       width:min(83vw,680px);
@@ -520,6 +597,7 @@
 
       justify-content:center;
     }
+
 
     .nail-artistic{
       width:100%;
@@ -532,15 +610,18 @@
         brightness(1.8)
         saturate(.55)
         contrast(1.12)
+
         drop-shadow(
           0 3px 5px
           rgba(0,0,0,.90)
         )
+
         drop-shadow(
           0 0 6px
           rgba(255,221,150,.42)
         );
     }
+
 
     .hero-phrase{
       margin-top:1px;
@@ -570,9 +651,11 @@
       text-shadow:
         0 3px 7px
         rgba(0,0,0,.95),
+
         0 8px 18px
         rgba(0,0,0,.82);
     }
+
 
     .phrase-detail{
       width:48px;
@@ -591,7 +674,7 @@
 
 
     /* =========================================
-       DESLIZE DA CAPA
+       DESLIZE CAPA
     ========================================= */
 
     .scroll-indicator{
@@ -622,6 +705,7 @@
       gap:11px;
     }
 
+
     .scroll-indicator span{
       color:
         rgba(255,255,255,.34);
@@ -632,6 +716,7 @@
 
       padding-left:.42em;
     }
+
 
     .scroll-line{
       width:1px;
@@ -651,6 +736,7 @@
         infinite;
     }
 
+
     @keyframes scrollLine{
 
       0%,
@@ -668,6 +754,46 @@
 
 
     /* =========================================
+       CONEXÃO CAPA > TRABALHOS
+
+       Essa faixa fica sobre as duas seções
+       e elimina o recorte visual.
+    ========================================= */
+
+    .hero-to-works-blend{
+      position:relative;
+
+      z-index:8;
+
+      height:230px;
+
+      margin-top:-170px;
+      margin-bottom:-60px;
+
+      pointer-events:none;
+
+      background:
+        linear-gradient(
+          to bottom,
+
+          rgba(5,5,5,0) 0%,
+
+          rgba(5,5,5,.18) 18%,
+
+          rgba(5,5,5,.48) 38%,
+
+          rgba(5,5,5,.78) 58%,
+
+          rgba(5,5,5,.95) 76%,
+
+          #050505 88%,
+
+          #050505 100%
+        );
+    }
+
+
+    /* =========================================
        TRABALHOS
     ========================================= */
 
@@ -679,29 +805,146 @@
       min-height:100svh;
 
       padding:
-        88px
+        125px
         0
-        110px;
+        120px;
 
       overflow:hidden;
 
+      isolation:isolate;
+
       background:
-        radial-gradient(
-          circle at 90% 10%,
-          rgba(185,132,45,.10),
-          transparent 30%
-        ),
-
-        radial-gradient(
-          circle at 5% 62%,
-          rgba(115,76,24,.06),
-          transparent 28%
-        ),
-
         linear-gradient(
           to bottom,
+
           #050505 0%,
-          #080705 48%,
+
+          #060504 15%,
+
+          #080604 34%,
+
+          #090705 52%,
+
+          #070604 72%,
+
+          #050505 100%
+        );
+    }
+
+
+    /* =========================================
+       LUZ AMBIENTE DOS TRABALHOS
+    ========================================= */
+
+    .works-ambient{
+      position:absolute;
+
+      inset:0;
+
+      z-index:0;
+
+      pointer-events:none;
+
+      background:
+        radial-gradient(
+          circle at 85% 12%,
+          rgba(181,126,38,.12),
+          transparent 32%
+        ),
+
+        radial-gradient(
+          circle at 6% 65%,
+          rgba(127,83,27,.07),
+          transparent 30%
+        );
+    }
+
+
+    /* =========================================
+       BRILHO DUPLICADO NOS TRABALHOS
+    ========================================= */
+
+    .works-sparkles-wrap{
+      position:absolute;
+
+      inset:-6%;
+
+      z-index:1;
+
+      pointer-events:none;
+
+      will-change:transform;
+    }
+
+
+    .works-sparkles{
+      width:112%;
+      height:112%;
+
+      object-fit:cover;
+      object-position:center;
+
+      mix-blend-mode:screen;
+
+      filter:
+        drop-shadow(
+          0 0 8px
+          rgba(205,153,65,.08)
+        );
+
+      animation:
+        worksSparklePulse
+        3s
+        ease-in-out
+        infinite;
+    }
+
+
+    @keyframes worksSparklePulse{
+
+      0%,
+      100%{
+        opacity:.10;
+        transform:scale(1);
+      }
+
+      50%{
+        opacity:.27;
+        transform:scale(1.018);
+      }
+
+    }
+
+
+    /* =========================================
+       DEGRADÊ SOBRE O BRILHO
+    ========================================= */
+
+    .works-depth-overlay{
+      position:absolute;
+
+      inset:0;
+
+      z-index:2;
+
+      pointer-events:none;
+
+      background:
+        linear-gradient(
+          to bottom,
+
+          rgba(5,5,5,.86) 0%,
+
+          rgba(5,5,5,.45) 14%,
+
+          rgba(5,5,5,.14) 32%,
+
+          rgba(5,5,5,.08) 48%,
+
+          rgba(5,5,5,.28) 70%,
+
+          rgba(5,5,5,.72) 88%,
+
           #050505 100%
         );
     }
@@ -714,7 +957,7 @@
     .works-header{
       position:relative;
 
-      z-index:3;
+      z-index:5;
 
       padding:
         0
@@ -763,6 +1006,24 @@
     }
 
 
+    /* =========================================
+       TÍTULO FLUTUANTE
+    ========================================= */
+
+    .works-title-float{
+      position:relative;
+
+      will-change:transform;
+
+      transform:
+        translate3d(
+          0,
+          0,
+          0
+        );
+    }
+
+
     .works-title{
       font-family:
         'Cormorant Garamond',
@@ -786,7 +1047,10 @@
 
       text-shadow:
         0 9px 25px
-        rgba(0,0,0,.45);
+        rgba(0,0,0,.50),
+
+        0 0 30px
+        rgba(213,168,87,.035);
     }
 
 
@@ -817,13 +1081,13 @@
 
 
     /* =========================================
-       DESLIZE PARA EXPLORAR
+       DESLIZE TRABALHOS
     ========================================= */
 
     .works-drag{
       position:relative;
 
-      z-index:3;
+      z-index:5;
 
       display:flex;
 
@@ -921,7 +1185,7 @@
     .works-slider{
       position:relative;
 
-      z-index:3;
+      z-index:5;
 
       width:100%;
 
@@ -984,7 +1248,10 @@
 
       box-shadow:
         0 20px 45px
-        rgba(0,0,0,.48);
+        rgba(0,0,0,.48),
+
+        0 0 24px
+        rgba(196,143,51,.025);
     }
 
 
@@ -1019,14 +1286,34 @@
       background:
         linear-gradient(
           to top,
-          rgba(0,0,0,.38),
-          transparent 38%
+          rgba(0,0,0,.42),
+          transparent 40%
         );
     }
 
 
+    .work-card::after{
+      content:"";
+
+      position:absolute;
+
+      inset:0;
+
+      z-index:3;
+
+      pointer-events:none;
+
+      border:
+        1px solid
+        rgba(255,255,255,.02);
+
+      border-radius:5px;
+    }
+
+
     .work-card:active img{
-      transform:scale(1.025);
+      transform:
+        scale(1.025);
     }
 
 
@@ -1037,7 +1324,7 @@
     .works-footer{
       position:relative;
 
-      z-index:3;
+      z-index:5;
 
       display:flex;
 
@@ -1095,7 +1382,36 @@
 
 
     /* =========================================
-       PRÓXIMAS SEÇÕES
+       DEGRADÊ FINAL DOS TRABALHOS
+    ========================================= */
+
+    .works-bottom-fade{
+      position:absolute;
+
+      left:0;
+      right:0;
+      bottom:0;
+
+      height:260px;
+
+      z-index:3;
+
+      pointer-events:none;
+
+      background:
+        linear-gradient(
+          to bottom,
+          rgba(5,5,5,0),
+          rgba(5,5,5,.20),
+          rgba(5,5,5,.58),
+          rgba(5,5,5,.88),
+          #050505
+        );
+    }
+
+
+    /* =========================================
+       SEÇÕES SEGUINTES
     ========================================= */
 
     .future-section{
@@ -1109,21 +1425,25 @@
       justify-content:center;
 
       padding:
-        110px
+        150px
         25px;
+
+      overflow:hidden;
 
       background:
         radial-gradient(
-          circle at 50% 0%,
-          rgba(160,107,33,.05),
-          transparent 35%
+          circle at 50% 5%,
+          rgba(158,108,37,.07),
+          transparent 37%
         ),
 
         linear-gradient(
           to bottom,
-          #050505,
-          #080705,
-          #050505
+          #050505 0%,
+          #070604 24%,
+          #080705 48%,
+          #070604 74%,
+          #050505 100%
         );
     }
 
@@ -1133,27 +1453,54 @@
 
       position:absolute;
 
-      top:0;
+      top:-150px;
+      left:0;
+      right:0;
 
-      left:50%;
+      height:260px;
 
-      transform:
-        translateX(-50%);
-
-      width:70%;
-      height:1px;
+      pointer-events:none;
 
       background:
         linear-gradient(
-          90deg,
+          to bottom,
+          rgba(5,5,5,0),
+          rgba(5,5,5,.38),
+          rgba(5,5,5,.82),
+          #050505
+        );
+    }
+
+
+    .future-section::after{
+      content:"";
+
+      position:absolute;
+
+      left:0;
+      right:0;
+      bottom:-1px;
+
+      height:220px;
+
+      pointer-events:none;
+
+      background:
+        linear-gradient(
+          to bottom,
           transparent,
-          rgba(214,167,73,.16),
-          transparent
+          rgba(5,5,5,.28),
+          rgba(5,5,5,.76),
+          #050505
         );
     }
 
 
     .future-content{
+      position:relative;
+
+      z-index:3;
+
       text-align:center;
 
       max-width:600px;
@@ -1256,6 +1603,8 @@
       position:absolute;
 
       border-radius:50%;
+
+      pointer-events:none;
     }
 
 
@@ -1368,26 +1717,33 @@
         min-height:100svh;
       }
 
+
       .hero-fade{
-        height:55%;
+        height:63%;
       }
+
 
       .top-logo{
         width:120px;
       }
 
+
       .hero-content{
         width:97%;
       }
+
 
       .name-image{
         width:98vw;
       }
 
+
       .nail-artistic-wrap{
         width:83vw;
+
         margin-top:-17px;
       }
+
 
       .hero-phrase{
         font-size:
@@ -1401,11 +1757,23 @@
       }
 
 
-      /* TRABALHOS NO CELULAR */
+      .hero-to-works-blend{
+        height:250px;
+
+        margin-top:-185px;
+
+        margin-bottom:-65px;
+      }
+
+
+      /* =====================================
+         TRABALHOS MOBILE
+      ===================================== */
 
       .works-section{
-        padding-top:92px;
+        padding-top:135px;
       }
+
 
       .works-header{
         padding:
@@ -1415,6 +1783,7 @@
         margin-bottom:58px;
       }
 
+
       .works-eyebrow{
         gap:18px;
 
@@ -1423,9 +1792,11 @@
         margin-bottom:18px;
       }
 
+
       .works-eyebrow::before{
         width:58px;
       }
+
 
       .works-title{
         font-size:
@@ -1435,6 +1806,7 @@
             82px
           );
       }
+
 
       .works-description{
         margin-top:27px;
@@ -1449,6 +1821,7 @@
         line-height:1.45;
       }
 
+
       .works-drag{
         padding:
           0
@@ -1456,14 +1829,18 @@
           20px;
       }
 
+
       .works-drag-text{
         font-size:8px;
+
         letter-spacing:.36em;
       }
+
 
       .works-drag-line{
         width:45px;
       }
+
 
       .works-slider{
         padding:
@@ -1475,15 +1852,18 @@
           36px;
       }
 
+
       .work-card{
         flex-basis:79vw;
       }
+
 
       .works-footer{
         padding:
           0
           36px;
       }
+
 
       .whatsapp-button{
         width:76px;
@@ -1499,18 +1879,22 @@
         width:108px;
       }
 
+
       .menu-trigger{
         width:54px;
         height:54px;
       }
 
+
       .hero-content{
         width:98%;
       }
 
+
       .hero-phrase{
         font-size:16px;
       }
+
 
       .works-header{
         padding:
@@ -1518,10 +1902,12 @@
           26px;
       }
 
+
       .works-drag{
         padding-left:26px;
         padding-right:26px;
       }
+
 
       .works-slider{
         padding-left:26px;
@@ -1530,14 +1916,17 @@
         scroll-padding-left:26px;
       }
 
+
       .work-card{
         flex-basis:80vw;
       }
+
 
       .works-footer{
         padding-left:26px;
         padding-right:26px;
       }
+
 
       .whatsapp-button{
         width:70px;
@@ -1558,6 +1947,7 @@
         margin-right:auto;
       }
 
+
       .works-slider{
         padding-left:
           max(
@@ -1569,6 +1959,7 @@
 
         padding-right:35px;
       }
+
 
       .work-card{
         flex-basis:390px;
@@ -1583,7 +1974,9 @@
         scroll-behavior:auto;
       }
 
+
       .gold-sparkles,
+      .works-sparkles,
       .whatsapp-button,
       .whatsapp-button::before,
       .whatsapp-button::after,
@@ -1768,6 +2161,16 @@
 
 
     <!-- =========================================
+         GRANDE DEGRADÊ ENTRE CAPA E TRABALHOS
+    ========================================= -->
+
+    <div
+      class="hero-to-works-blend"
+      aria-hidden="true"
+    ></div>
+
+
+    <!-- =========================================
          TRABALHOS
     ========================================= -->
 
@@ -1777,7 +2180,45 @@
     >
 
 
-      <div class="works-header">
+      <!-- LUZ AMBIENTE -->
+
+      <div
+        class="works-ambient"
+        aria-hidden="true"
+      ></div>
+
+
+      <!-- MESMO BRILHO DA CAPA -->
+
+      <div
+        class="works-sparkles-wrap"
+        id="worksSparklesLayer"
+        aria-hidden="true"
+      >
+
+        <img
+          class="works-sparkles"
+          src="24CD378D-F11E-4CB2-B0FC-FCAFBE91B276.png"
+          alt=""
+        >
+
+      </div>
+
+
+      <!-- CAMADA DE PROFUNDIDADE -->
+
+      <div
+        class="works-depth-overlay"
+        aria-hidden="true"
+      ></div>
+
+
+      <!-- CABEÇALHO -->
+
+      <div
+        class="works-header"
+        id="worksHeader"
+      >
 
 
         <div class="works-eyebrow">
@@ -1785,9 +2226,16 @@
         </div>
 
 
-        <h2 class="works-title">
-          Trabalhos
-        </h2>
+        <div
+          class="works-title-float"
+          id="worksTitleFloat"
+        >
+
+          <h2 class="works-title">
+            Trabalhos
+          </h2>
+
+        </div>
 
 
         <p class="works-description">
@@ -1798,6 +2246,8 @@
 
       </div>
 
+
+      <!-- DESLIZE -->
 
       <div class="works-drag">
 
@@ -1941,7 +2391,10 @@
       </div>
 
 
+      <!-- CONTADOR -->
+
       <div class="works-footer">
+
 
         <div class="works-counter">
 
@@ -1952,6 +2405,7 @@
             01
           </span>
 
+
           <span class="works-total">
             / 10
           </span>
@@ -1961,7 +2415,14 @@
 
         <div class="works-footer-line"></div>
 
+
       </div>
+
+
+      <div
+        class="works-bottom-fade"
+        aria-hidden="true"
+      ></div>
 
 
     </section>
@@ -2025,7 +2486,7 @@
 
 
     <!-- =========================================
-         TABELA DE PREÇOS
+         PREÇOS
     ========================================= -->
 
     <section
@@ -2249,15 +2710,8 @@
       function(link){
 
         link.addEventListener(
-
           "click",
-
-          function(){
-
-            closeMenu();
-
-          }
-
+          closeMenu
         );
 
       }
@@ -2266,7 +2720,7 @@
 
 
     /* =========================================
-       PROFUNDIDADE DA CAPA
+       ELEMENTOS DE PROFUNDIDADE
     ========================================= */
 
     const heroContent =
@@ -2287,7 +2741,25 @@
       );
 
 
-    let ticking =
+    const worksSection =
+      document.getElementById(
+        "trabalhos"
+      );
+
+
+    const worksTitleFloat =
+      document.getElementById(
+        "worksTitleFloat"
+      );
+
+
+    const worksSparklesLayer =
+      document.getElementById(
+        "worksSparklesLayer"
+      );
+
+
+    let depthTicking =
       false;
 
 
@@ -2297,9 +2769,13 @@
         window.scrollY;
 
 
+      /* =====================================
+         CAPA
+      ===================================== */
+
       if(
         scrollY <
-        window.innerHeight * 1.15
+        window.innerHeight * 1.2
       ){
 
         sparklesLayer.style.transform =
@@ -2331,7 +2807,73 @@
       }
 
 
-      ticking =
+      /* =====================================
+         TRABALHOS
+
+         O título se desloca um pouco mais
+         rápido que o fundo, criando profundidade.
+      ===================================== */
+
+      const worksRect =
+        worksSection.getBoundingClientRect();
+
+
+      const worksVisible =
+        worksRect.top <
+          window.innerHeight
+        &&
+        worksRect.bottom > 0;
+
+
+      if(worksVisible){
+
+        const progress =
+          (
+            window.innerHeight -
+            worksRect.top
+          )
+          /
+          (
+            window.innerHeight +
+            worksRect.height
+          );
+
+
+        const titleMovement =
+          (
+            progress -
+            0.32
+          )
+          * 80;
+
+
+        const sparkleMovement =
+          (
+            progress -
+            0.32
+          )
+          * 32;
+
+
+        worksTitleFloat.style.transform =
+          `translate3d(
+            0,
+            ${titleMovement}px,
+            0
+          )`;
+
+
+        worksSparklesLayer.style.transform =
+          `translate3d(
+            0,
+            ${sparkleMovement}px,
+            0
+          )`;
+
+      }
+
+
+      depthTicking =
         false;
 
     }
@@ -2343,13 +2885,14 @@
 
       function(){
 
-        if(!ticking){
+        if(!depthTicking){
 
           window.requestAnimationFrame(
             updateDepth
           );
 
-          ticking =
+
+          depthTicking =
             true;
 
         }
@@ -2361,6 +2904,15 @@
       }
 
     );
+
+
+    window.addEventListener(
+      "resize",
+      updateDepth
+    );
+
+
+    updateDepth();
 
 
     /* =========================================
@@ -2499,7 +3051,7 @@
 
 
     /* =========================================
-       ARRASTAR GALERIA NO COMPUTADOR
+       ARRASTE NO COMPUTADOR
     ========================================= */
 
     let isDown =
@@ -2597,7 +3149,11 @@
 
 
         const walk =
-          (x - startX) * 1.4;
+          (
+            x -
+            startX
+          )
+          * 1.4;
 
 
         worksSlider.scrollLeft =
