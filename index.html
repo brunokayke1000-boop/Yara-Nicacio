@@ -117,12 +117,12 @@
       height:114%;
       object-fit:cover;
       mix-blend-mode:screen;
-      opacity:.105;
+      opacity:.095;
     }
 
 
     /* =====================================================
-       CAMPO DE BRILHOS
+       CAMPO DAS ESTRELAS
     ===================================================== */
 
     .twinkle-field{
@@ -134,24 +134,81 @@
     }
 
 
+    /* =====================================================
+       NOVO BRILHO
+
+       SEM CÍRCULO.
+       FORMATO DE ESTRELA DE LUZ.
+    ===================================================== */
+
     .twinkle{
       position:absolute;
 
-      width:var(--size);
-      height:var(--size);
+      width:var(--star-size);
+      height:var(--star-size);
 
-      border-radius:50%;
-
-      opacity:var(--soft);
-
-      background:
-        rgba(255,225,160,.98);
+      opacity:0;
 
       transform:
-        scale(.50);
+        translate3d(0,0,0)
+        scale(.35)
+        rotate(var(--rotation));
 
-      filter:
-        blur(var(--blur));
+      transform-origin:center;
+
+      background:
+
+        linear-gradient(
+          90deg,
+          transparent 0%,
+          transparent 34%,
+          rgba(255,226,154,.10) 43%,
+          rgba(255,245,210,.96) 49.4%,
+          rgba(255,255,245,1) 50%,
+          rgba(255,245,210,.96) 50.6%,
+          rgba(255,226,154,.10) 57%,
+          transparent 66%,
+          transparent 100%
+        ),
+
+        linear-gradient(
+          0deg,
+          transparent 0%,
+          transparent 34%,
+          rgba(255,226,154,.10) 43%,
+          rgba(255,245,210,.96) 49.4%,
+          rgba(255,255,245,1) 50%,
+          rgba(255,245,210,.96) 50.6%,
+          rgba(255,226,154,.10) 57%,
+          transparent 66%,
+          transparent 100%
+        ),
+
+        linear-gradient(
+          45deg,
+          transparent 0%,
+          transparent 40%,
+          rgba(231,183,91,.05) 46%,
+          rgba(255,229,163,.42) 49.5%,
+          rgba(255,245,207,.66) 50%,
+          rgba(255,229,163,.42) 50.5%,
+          rgba(231,183,91,.05) 54%,
+          transparent 60%,
+          transparent 100%
+        ),
+
+        linear-gradient(
+          -45deg,
+          transparent 0%,
+          transparent 40%,
+          rgba(231,183,91,.05) 46%,
+          rgba(255,229,163,.42) 49.5%,
+          rgba(255,245,207,.66) 50%,
+          rgba(255,229,163,.42) 50.5%,
+          rgba(231,183,91,.05) 54%,
+          transparent 60%,
+          transparent 100%
+        );
 
       animation-duration:
         var(--duration);
@@ -160,10 +217,21 @@
         var(--delay);
 
       animation-timing-function:
-        ease-in-out;
+        cubic-bezier(.45,0,.2,1);
 
       animation-iteration-count:
         infinite;
+
+      filter:
+        drop-shadow(
+          0 0 var(--glow-small)
+          rgba(255,219,135,.70)
+        )
+
+        drop-shadow(
+          0 0 var(--glow-large)
+          rgba(208,145,44,.30)
+        );
 
       will-change:
         opacity,
@@ -172,401 +240,507 @@
 
 
     /* =====================================================
-       PEQUENOS
+       TAMANHOS
     ===================================================== */
 
     .twinkle.small{
-
-      box-shadow:
-
-        0 0 3px
-        rgba(255,248,216,.94),
-
-        0 0 9px
-        rgba(255,215,125,.72),
-
-        0 0 18px
-        rgba(220,159,53,.39);
-
+      --glow-small:3px;
+      --glow-large:7px;
     }
 
-
-    /* =====================================================
-       MÉDIOS
-    ===================================================== */
 
     .twinkle.medium{
-
-      box-shadow:
-
-        0 0 4px
-        rgba(255,249,220,.98),
-
-        0 0 12px
-        rgba(255,219,130,.84),
-
-        0 0 26px
-        rgba(224,160,52,.50),
-
-        0 0 46px
-        rgba(181,112,24,.20);
-
+      --glow-small:5px;
+      --glow-large:13px;
     }
 
-
-    /* =====================================================
-       GRANDES
-    ===================================================== */
 
     .twinkle.large{
-
-      box-shadow:
-
-        0 0 6px
-        rgba(255,252,230,.99),
-
-        0 0 16px
-        rgba(255,225,145,.94),
-
-        0 0 34px
-        rgba(232,171,67,.62),
-
-        0 0 65px
-        rgba(197,128,33,.31),
-
-        0 0 100px
-        rgba(146,86,17,.14);
-
+      --glow-small:8px;
+      --glow-large:22px;
     }
 
 
     /* =====================================================
-       RAIOS
-    ===================================================== */
-
-    .twinkle::before,
-    .twinkle::after{
-
-      content:"";
-
-      position:absolute;
-
-      left:50%;
-      top:50%;
-
-      transform:
-        translate(-50%,-50%);
-
-      border-radius:30px;
-
-      opacity:.62;
-
-    }
-
-
-    .twinkle::before{
-
-      width:
-        calc(
-          var(--size) * var(--ray)
-        );
-
-      height:1px;
-
-      background:
-        linear-gradient(
-          to right,
-          transparent,
-          rgba(255,241,200,.92),
-          transparent
-        );
-
-    }
-
-
-    .twinkle::after{
-
-      width:1px;
-
-      height:
-        calc(
-          var(--size) * var(--ray)
-        );
-
-      background:
-        linear-gradient(
-          to bottom,
-          transparent,
-          rgba(255,241,200,.92),
-          transparent
-        );
-
-    }
-
-
-    /* =====================================================
-       VARIAÇÕES
+       VARIAÇÕES ORGÂNICAS
     ===================================================== */
 
     .variant-a{
-      animation-name:twinkleA;
+      animation-name:
+        starFadeA;
     }
 
     .variant-b{
-      animation-name:twinkleB;
+      animation-name:
+        starFadeB;
     }
 
     .variant-c{
-      animation-name:twinkleC;
+      animation-name:
+        starFadeC;
     }
 
     .variant-d{
-      animation-name:twinkleD;
+      animation-name:
+        starFadeD;
     }
 
-    .variant-e{
-      animation-name:twinkleE;
-    }
-
-
-    /* =====================================================
-       ANIMAÇÕES LENTAS
-    ===================================================== */
-
-    @keyframes twinkleA{
-
-      0%{
-        opacity:var(--soft);
-        transform:scale(.46);
-      }
-
-      22%{
-        opacity:var(--soft);
-        transform:scale(.50);
-      }
-
-      38%{
-        opacity:calc(var(--peak) * .30);
-        transform:scale(.68);
-      }
-
-      52%{
-        opacity:calc(var(--peak) * .68);
-        transform:scale(.94);
-      }
-
-      62%{
-        opacity:var(--peak);
-        transform:scale(1.16);
-      }
-
-      73%{
-        opacity:calc(var(--peak) * .62);
-        transform:scale(.94);
-      }
-
-      86%{
-        opacity:calc(var(--peak) * .20);
-        transform:scale(.64);
-      }
-
-      100%{
-        opacity:var(--soft);
-        transform:scale(.46);
-      }
-
-    }
-
-
-    @keyframes twinkleB{
-
-      0%{
-        opacity:var(--soft);
-        transform:scale(.48);
-      }
-
-      30%{
-        opacity:var(--soft);
-        transform:scale(.52);
-      }
-
-      44%{
-        opacity:calc(var(--peak) * .28);
-        transform:scale(.68);
-      }
-
-      57%{
-        opacity:calc(var(--peak) * .62);
-        transform:scale(.92);
-      }
-
-      68%{
-        opacity:var(--peak);
-        transform:scale(1.22);
-      }
-
-      79%{
-        opacity:calc(var(--peak) * .55);
-        transform:scale(.92);
-      }
-
-      90%{
-        opacity:calc(var(--peak) * .17);
-        transform:scale(.61);
-      }
-
-      100%{
-        opacity:var(--soft);
-        transform:scale(.48);
-      }
-
-    }
-
-
-    @keyframes twinkleC{
-
-      0%{
-        opacity:var(--soft);
-        transform:scale(.48);
-      }
-
-      16%{
-        opacity:calc(var(--peak) * .12);
-        transform:scale(.55);
-      }
-
-      32%{
-        opacity:calc(var(--peak) * .32);
-        transform:scale(.70);
-      }
-
-      48%{
-        opacity:calc(var(--peak) * .66);
-        transform:scale(.94);
-      }
-
-      60%{
-        opacity:var(--peak);
-        transform:scale(1.16);
-      }
-
-      73%{
-        opacity:calc(var(--peak) * .60);
-        transform:scale(.91);
-      }
-
-      87%{
-        opacity:calc(var(--peak) * .18);
-        transform:scale(.60);
-      }
-
-      100%{
-        opacity:var(--soft);
-        transform:scale(.48);
-      }
-
-    }
-
-
-    @keyframes twinkleD{
-
-      0%{
-        opacity:var(--soft);
-        transform:scale(.44);
-      }
-
-      36%{
-        opacity:var(--soft);
-        transform:scale(.50);
-      }
-
-      49%{
-        opacity:calc(var(--peak) * .25);
-        transform:scale(.67);
-      }
-
-      62%{
-        opacity:calc(var(--peak) * .64);
-        transform:scale(.94);
-      }
-
-      72%{
-        opacity:var(--peak);
-        transform:scale(1.22);
-      }
-
-      83%{
-        opacity:calc(var(--peak) * .50);
-        transform:scale(.88);
-      }
-
-      93%{
-        opacity:calc(var(--peak) * .14);
-        transform:scale(.58);
-      }
-
-      100%{
-        opacity:var(--soft);
-        transform:scale(.44);
-      }
-
+    .variant-large{
+      animation-name:
+        starFadeLarge;
     }
 
 
     /* =====================================================
-       GRANDES ABREM E SOMEM GRADATIVAMENTE
+       ESTRELA A
     ===================================================== */
 
-    @keyframes twinkleE{
+    @keyframes starFadeA{
 
       0%{
-        opacity:.005;
-        transform:scale(.25);
+        opacity:0;
+        transform:
+          scale(.30)
+          rotate(var(--rotation));
       }
 
       18%{
-        opacity:.012;
-        transform:scale(.32);
+        opacity:0;
+        transform:
+          scale(.34)
+          rotate(var(--rotation));
       }
 
-      34%{
-        opacity:calc(var(--peak) * .16);
-        transform:scale(.52);
+      33%{
+        opacity:
+          calc(
+            var(--peak) * .20
+          );
+
+        transform:
+          scale(.55)
+          rotate(var(--rotation));
       }
 
       47%{
-        opacity:calc(var(--peak) * .38);
-        transform:scale(.74);
+        opacity:
+          calc(
+            var(--peak) * .55
+          );
+
+        transform:
+          scale(.80)
+          rotate(var(--rotation));
       }
 
-      58%{
-        opacity:calc(var(--peak) * .70);
-        transform:scale(1);
+      59%{
+        opacity:
+          var(--peak);
+
+        transform:
+          scale(1)
+          rotate(var(--rotation));
       }
 
-      67%{
-        opacity:var(--peak);
-        transform:scale(1.44);
+      70%{
+        opacity:
+          calc(
+            var(--peak) * .62
+          );
+
+        transform:
+          scale(.85)
+          rotate(var(--rotation));
       }
 
-      76%{
-        opacity:calc(var(--peak) * .72);
-        transform:scale(1.12);
-      }
+      84%{
+        opacity:
+          calc(
+            var(--peak) * .18
+          );
 
-      85%{
-        opacity:calc(var(--peak) * .40);
-        transform:scale(.82);
-      }
-
-      93%{
-        opacity:calc(var(--peak) * .15);
-        transform:scale(.52);
+        transform:
+          scale(.56)
+          rotate(var(--rotation));
       }
 
       100%{
-        opacity:.005;
-        transform:scale(.26);
+        opacity:0;
+
+        transform:
+          scale(.30)
+          rotate(var(--rotation));
+      }
+
+    }
+
+
+    /* =====================================================
+       ESTRELA B
+    ===================================================== */
+
+    @keyframes starFadeB{
+
+      0%{
+        opacity:0;
+
+        transform:
+          scale(.32)
+          rotate(var(--rotation));
+      }
+
+      27%{
+        opacity:0;
+
+        transform:
+          scale(.36)
+          rotate(var(--rotation));
+      }
+
+      41%{
+        opacity:
+          calc(
+            var(--peak) * .22
+          );
+
+        transform:
+          scale(.56)
+          rotate(var(--rotation));
+      }
+
+      55%{
+        opacity:
+          calc(
+            var(--peak) * .65
+          );
+
+        transform:
+          scale(.84)
+          rotate(var(--rotation));
+      }
+
+      66%{
+        opacity:
+          var(--peak);
+
+        transform:
+          scale(1.04)
+          rotate(var(--rotation));
+      }
+
+      77%{
+        opacity:
+          calc(
+            var(--peak) * .56
+          );
+
+        transform:
+          scale(.82)
+          rotate(var(--rotation));
+      }
+
+      90%{
+        opacity:
+          calc(
+            var(--peak) * .12
+          );
+
+        transform:
+          scale(.50)
+          rotate(var(--rotation));
+      }
+
+      100%{
+        opacity:0;
+
+        transform:
+          scale(.32)
+          rotate(var(--rotation));
+      }
+
+    }
+
+
+    /* =====================================================
+       ESTRELA C
+    ===================================================== */
+
+    @keyframes starFadeC{
+
+      0%{
+        opacity:0;
+
+        transform:
+          scale(.28)
+          rotate(var(--rotation));
+      }
+
+      13%{
+        opacity:
+          calc(
+            var(--peak) * .05
+          );
+
+        transform:
+          scale(.36)
+          rotate(var(--rotation));
+      }
+
+      30%{
+        opacity:
+          calc(
+            var(--peak) * .25
+          );
+
+        transform:
+          scale(.56)
+          rotate(var(--rotation));
+      }
+
+      46%{
+        opacity:
+          calc(
+            var(--peak) * .60
+          );
+
+        transform:
+          scale(.82)
+          rotate(var(--rotation));
+      }
+
+      58%{
+        opacity:
+          var(--peak);
+
+        transform:
+          scale(1)
+          rotate(var(--rotation));
+      }
+
+      71%{
+        opacity:
+          calc(
+            var(--peak) * .58
+          );
+
+        transform:
+          scale(.81)
+          rotate(var(--rotation));
+      }
+
+      87%{
+        opacity:
+          calc(
+            var(--peak) * .14
+          );
+
+        transform:
+          scale(.50)
+          rotate(var(--rotation));
+      }
+
+      100%{
+        opacity:0;
+
+        transform:
+          scale(.28)
+          rotate(var(--rotation));
+      }
+
+    }
+
+
+    /* =====================================================
+       ESTRELA D
+    ===================================================== */
+
+    @keyframes starFadeD{
+
+      0%{
+        opacity:0;
+
+        transform:
+          scale(.32)
+          rotate(var(--rotation));
+      }
+
+      35%{
+        opacity:0;
+
+        transform:
+          scale(.38)
+          rotate(var(--rotation));
+      }
+
+      48%{
+        opacity:
+          calc(
+            var(--peak) * .23
+          );
+
+        transform:
+          scale(.57)
+          rotate(var(--rotation));
+      }
+
+      61%{
+        opacity:
+          calc(
+            var(--peak) * .64
+          );
+
+        transform:
+          scale(.84)
+          rotate(var(--rotation));
+      }
+
+      72%{
+        opacity:
+          var(--peak);
+
+        transform:
+          scale(1.02)
+          rotate(var(--rotation));
+      }
+
+      83%{
+        opacity:
+          calc(
+            var(--peak) * .50
+          );
+
+        transform:
+          scale(.76)
+          rotate(var(--rotation));
+      }
+
+      93%{
+        opacity:
+          calc(
+            var(--peak) * .10
+          );
+
+        transform:
+          scale(.47)
+          rotate(var(--rotation));
+      }
+
+      100%{
+        opacity:0;
+
+        transform:
+          scale(.32)
+          rotate(var(--rotation));
+      }
+
+    }
+
+
+    /* =====================================================
+       ESTRELA GRANDE
+
+       ABRE MUITO DEVAGAR E SOME.
+    ===================================================== */
+
+    @keyframes starFadeLarge{
+
+      0%{
+        opacity:0;
+
+        transform:
+          scale(.20)
+          rotate(var(--rotation));
+      }
+
+      20%{
+        opacity:0;
+
+        transform:
+          scale(.25)
+          rotate(var(--rotation));
+      }
+
+      34%{
+        opacity:
+          calc(
+            var(--peak) * .12
+          );
+
+        transform:
+          scale(.42)
+          rotate(var(--rotation));
+      }
+
+      46%{
+        opacity:
+          calc(
+            var(--peak) * .32
+          );
+
+        transform:
+          scale(.60)
+          rotate(var(--rotation));
+      }
+
+      57%{
+        opacity:
+          calc(
+            var(--peak) * .63
+          );
+
+        transform:
+          scale(.82)
+          rotate(var(--rotation));
+      }
+
+      66%{
+        opacity:
+          var(--peak);
+
+        transform:
+          scale(1)
+          rotate(var(--rotation));
+      }
+
+      75%{
+        opacity:
+          calc(
+            var(--peak) * .68
+          );
+
+        transform:
+          scale(.88)
+          rotate(var(--rotation));
+      }
+
+      84%{
+        opacity:
+          calc(
+            var(--peak) * .36
+          );
+
+        transform:
+          scale(.68)
+          rotate(var(--rotation));
+      }
+
+      93%{
+        opacity:
+          calc(
+            var(--peak) * .10
+          );
+
+        transform:
+          scale(.42)
+          rotate(var(--rotation));
+      }
+
+      100%{
+        opacity:0;
+
+        transform:
+          scale(.20)
+          rotate(var(--rotation));
       }
 
     }
@@ -630,7 +804,8 @@
       background:#e5bd71;
 
       box-shadow:
-        0 0 8px rgba(218,171,76,.55);
+        0 0 8px
+        rgba(218,171,76,.55);
 
       transition:
         transform .35s ease,
@@ -718,7 +893,8 @@
         rgba(218,171,76,.18);
 
       box-shadow:
-        25px 0 60px rgba(0,0,0,.75);
+        25px 0 60px
+        rgba(0,0,0,.75);
 
       transform:
         translate3d(-105%,0,0);
@@ -889,7 +1065,7 @@
 
       mix-blend-mode:screen;
 
-      opacity:.115;
+      opacity:.09;
     }
 
 
@@ -917,6 +1093,7 @@
           0 5px 12px
           rgba(0,0,0,.75)
         )
+
         drop-shadow(
           0 0 8px
           rgba(207,159,67,.18)
@@ -964,10 +1141,12 @@
           0 7px 10px
           rgba(0,0,0,.90)
         )
+
         drop-shadow(
           0 16px 25px
           rgba(0,0,0,.72)
         )
+
         drop-shadow(
           0 0 7px
           rgba(255,255,255,.18)
@@ -995,10 +1174,12 @@
         brightness(1.8)
         saturate(.55)
         contrast(1.12)
+
         drop-shadow(
           0 3px 5px
           rgba(0,0,0,.90)
         )
+
         drop-shadow(
           0 0 6px
           rgba(255,221,150,.42)
@@ -1152,9 +1333,14 @@
       left:0;
 
       width:100%;
-      height:calc(100% + 360px);
+
+      height:
+        calc(
+          100% + 360px
+        );
 
       object-fit:cover;
+
       object-position:center top;
 
       z-index:-5;
@@ -1162,6 +1348,7 @@
       pointer-events:none;
 
       filter:none;
+
       opacity:1;
 
       transform:
@@ -1208,6 +1395,7 @@
 
     .works-background-depth{
       position:absolute;
+
       inset:0;
 
       z-index:-2;
@@ -1236,7 +1424,7 @@
 
       pointer-events:none;
 
-      opacity:.38;
+      opacity:.28;
     }
 
 
@@ -1250,7 +1438,7 @@
 
       mix-blend-mode:screen;
 
-      opacity:.24;
+      opacity:.18;
     }
 
 
@@ -1397,7 +1585,8 @@
         rgba(238,229,216,.78);
 
       text-shadow:
-        0 3px 12px rgba(0,0,0,.88);
+        0 3px 12px
+        rgba(0,0,0,.88);
     }
 
 
@@ -1414,7 +1603,8 @@
 
       align-items:center;
 
-      justify-content:space-between;
+      justify-content:
+        space-between;
 
       padding:
         0
@@ -1494,16 +1684,19 @@
       overflow-x:auto;
       overflow-y:hidden;
 
-      scroll-snap-type:x mandatory;
+      scroll-snap-type:
+        x mandatory;
 
-      scroll-padding-left:35px;
+      scroll-padding-left:
+        35px;
 
       padding:
         16px
         35px
         42px;
 
-      -webkit-overflow-scrolling:touch;
+      -webkit-overflow-scrolling:
+        touch;
 
       scrollbar-width:none;
 
@@ -1530,7 +1723,8 @@
           430px
         );
 
-      aspect-ratio:4 / 5;
+      aspect-ratio:
+        4 / 5;
 
       overflow:visible;
 
@@ -1587,11 +1781,6 @@
       object-fit:cover;
 
       display:block;
-
-      transition:
-        transform
-        .75s
-        cubic-bezier(.2,.75,.25,1);
     }
 
 
@@ -2173,6 +2362,7 @@
           0 5px 10px
           rgba(0,0,0,.85)
         )
+
         drop-shadow(
           0 0 7px
           rgba(214,167,73,.18)
@@ -2181,7 +2371,7 @@
 
 
     /* =====================================================
-       ANIMAÇÕES RESTANTES
+       OUTRAS ANIMAÇÕES
     ===================================================== */
 
     @keyframes whatsappPulse{
@@ -2342,7 +2532,11 @@
 
       .works-background-photo{
         top:-150px;
-        height:calc(100% + 300px);
+
+        height:
+          calc(
+            100% + 300px
+          );
       }
 
       .works-header{
@@ -2510,19 +2704,32 @@
       Menu
     </div>
 
+
     <div class="menu-links">
 
-      <a href="#trabalhos">Trabalhos</a>
+      <a href="#trabalhos">
+        Trabalhos
+      </a>
 
-      <a href="#estudio">O estúdio</a>
+      <a href="#estudio">
+        O estúdio
+      </a>
 
-      <a href="#yara">Yara Nicácio</a>
+      <a href="#yara">
+        Yara Nicácio
+      </a>
 
-      <a href="#precos">Tabela de preços</a>
+      <a href="#precos">
+        Tabela de preços
+      </a>
 
-      <a href="#avaliacoes">Avaliações</a>
+      <a href="#avaliacoes">
+        Avaliações
+      </a>
 
-      <a href="#endereco">Endereço</a>
+      <a href="#endereco">
+        Endereço
+      </a>
 
     </div>
 
@@ -2532,9 +2739,7 @@
   <main>
 
 
-    <!-- ===================================================
-         CAPA
-    ==================================================== -->
+    <!-- CAPA -->
 
     <section
       class="hero"
@@ -2547,23 +2752,21 @@
         alt="Yara Nicácio e Nail Art"
       >
 
+
       <img
         class="hero-sparkles"
         src="24CD378D-F11E-4CB2-B0FC-FCAFBE91B276.png"
         alt=""
-        aria-hidden="true"
       >
+
 
       <div
         class="twinkle-field"
         id="heroTwinkles"
-        aria-hidden="true"
       ></div>
 
-      <div
-        class="hero-bottom-fade"
-        aria-hidden="true"
-      ></div>
+
+      <div class="hero-bottom-fade"></div>
 
 
       <img
@@ -2585,6 +2788,7 @@
           alt="Yara Nicácio"
         >
 
+
         <div class="nail-artistic-wrap">
 
           <img
@@ -2595,9 +2799,11 @@
 
         </div>
 
+
         <p class="hero-phrase">
           O que você escolhe, vira arte em suas unhas
         </p>
+
 
         <div class="phrase-detail"></div>
 
@@ -2617,9 +2823,7 @@
     </section>
 
 
-    <!-- ===================================================
-         TRABALHOS
-    ==================================================== -->
+    <!-- TRABALHOS -->
 
     <section
       class="works-section"
@@ -2630,8 +2834,8 @@
         class="works-background-photo"
         src="22570524-7852-4D7E-99DE-6090DA3A9A55.jpeg"
         alt=""
-        aria-hidden="true"
       >
+
 
       <div class="works-background-blend"></div>
 
@@ -2641,7 +2845,6 @@
       <div
         class="works-sparkles-layer"
         id="worksSparklesLayer"
-        aria-hidden="true"
       >
 
         <img
@@ -2656,7 +2859,6 @@
       <div
         class="twinkle-field"
         id="worksTwinkles"
-        aria-hidden="true"
       ></div>
 
 
@@ -2713,70 +2915,110 @@
 
         <article class="work-card">
           <div class="work-card-image">
-            <img src="e3ad0ae1-c488-46af-9158-a3deb5face01.jpeg" alt="Nail Art Yara Nicácio" loading="lazy">
+            <img
+              src="e3ad0ae1-c488-46af-9158-a3deb5face01.jpeg"
+              alt="Nail Art Yara Nicácio"
+              loading="lazy"
+            >
           </div>
         </article>
 
 
         <article class="work-card">
           <div class="work-card-image">
-            <img src="bc419ed5-ed49-4355-9452-30b7eb869860.jpeg" alt="Nail Art Yara Nicácio" loading="lazy">
+            <img
+              src="bc419ed5-ed49-4355-9452-30b7eb869860.jpeg"
+              alt="Nail Art Yara Nicácio"
+              loading="lazy"
+            >
           </div>
         </article>
 
 
         <article class="work-card">
           <div class="work-card-image">
-            <img src="5527e37e-3148-4c0c-8bbf-0f6710ba04a6.jpeg" alt="Nail Art Yara Nicácio" loading="lazy">
+            <img
+              src="5527e37e-3148-4c0c-8bbf-0f6710ba04a6.jpeg"
+              alt="Nail Art Yara Nicácio"
+              loading="lazy"
+            >
           </div>
         </article>
 
 
         <article class="work-card">
           <div class="work-card-image">
-            <img src="15b54e6d-a6bb-42b6-84e1-fcdf0c0d6169.jpeg" alt="Nail Art Yara Nicácio" loading="lazy">
+            <img
+              src="15b54e6d-a6bb-42b6-84e1-fcdf0c0d6169.jpeg"
+              alt="Nail Art Yara Nicácio"
+              loading="lazy"
+            >
           </div>
         </article>
 
 
         <article class="work-card">
           <div class="work-card-image">
-            <img src="debe1e33-9d29-4f2b-9bd4-f5fa6a37f009.jpeg" alt="Nail Art Yara Nicácio" loading="lazy">
+            <img
+              src="debe1e33-9d29-4f2b-9bd4-f5fa6a37f009.jpeg"
+              alt="Nail Art Yara Nicácio"
+              loading="lazy"
+            >
           </div>
         </article>
 
 
         <article class="work-card">
           <div class="work-card-image">
-            <img src="0c71fd76-948f-4522-b7a3-06e1555c9dda.jpeg" alt="Nail Art Yara Nicácio" loading="lazy">
+            <img
+              src="0c71fd76-948f-4522-b7a3-06e1555c9dda.jpeg"
+              alt="Nail Art Yara Nicácio"
+              loading="lazy"
+            >
           </div>
         </article>
 
 
         <article class="work-card">
           <div class="work-card-image">
-            <img src="244f17b4-d1d6-4516-b3a8-629694c8f941.jpeg" alt="Nail Art Yara Nicácio" loading="lazy">
+            <img
+              src="244f17b4-d1d6-4516-b3a8-629694c8f941.jpeg"
+              alt="Nail Art Yara Nicácio"
+              loading="lazy"
+            >
           </div>
         </article>
 
 
         <article class="work-card">
           <div class="work-card-image">
-            <img src="d242cc6d-d5b6-4f96-b9fb-2ff206de1ae5.jpeg" alt="Nail Art Yara Nicácio" loading="lazy">
+            <img
+              src="d242cc6d-d5b6-4f96-b9fb-2ff206de1ae5.jpeg"
+              alt="Nail Art Yara Nicácio"
+              loading="lazy"
+            >
           </div>
         </article>
 
 
         <article class="work-card">
           <div class="work-card-image">
-            <img src="25c27bb6-e5b5-4ca5-aa81-eac0b57ff341.jpeg" alt="Nail Art Yara Nicácio" loading="lazy">
+            <img
+              src="25c27bb6-e5b5-4ca5-aa81-eac0b57ff341.jpeg"
+              alt="Nail Art Yara Nicácio"
+              loading="lazy"
+            >
           </div>
         </article>
 
 
         <article class="work-card">
           <div class="work-card-image">
-            <img src="0874cfbe-f9fd-4974-ac18-385dba047b94.jpeg" alt="Nail Art Yara Nicácio" loading="lazy">
+            <img
+              src="0874cfbe-f9fd-4974-ac18-385dba047b94.jpeg"
+              alt="Nail Art Yara Nicácio"
+              loading="lazy"
+            >
           </div>
         </article>
 
@@ -2808,9 +3050,7 @@
     </section>
 
 
-    <!-- ===================================================
-         ESTÚDIO
-    ==================================================== -->
+    <!-- ESTÚDIO -->
 
     <section
       class="future-section"
@@ -2819,10 +3059,11 @@
 
       <div
         class="twinkle-field page-twinkles"
-        aria-hidden="true"
       ></div>
 
+
       <div class="future-light"></div>
+
 
       <div class="future-content">
 
@@ -2843,9 +3084,7 @@
     </section>
 
 
-    <!-- ===================================================
-         YARA
-    ==================================================== -->
+    <!-- YARA -->
 
     <section
       class="future-section"
@@ -2854,10 +3093,11 @@
 
       <div
         class="twinkle-field page-twinkles"
-        aria-hidden="true"
       ></div>
 
+
       <div class="future-light"></div>
+
 
       <div class="future-content">
 
@@ -2879,9 +3119,7 @@
     </section>
 
 
-    <!-- ===================================================
-         PREÇOS
-    ==================================================== -->
+    <!-- PREÇOS -->
 
     <section
       class="future-section"
@@ -2890,10 +3128,11 @@
 
       <div
         class="twinkle-field page-twinkles"
-        aria-hidden="true"
       ></div>
 
+
       <div class="future-light"></div>
+
 
       <div class="future-content">
 
@@ -2915,9 +3154,7 @@
     </section>
 
 
-    <!-- ===================================================
-         AVALIAÇÕES
-    ==================================================== -->
+    <!-- AVALIAÇÕES -->
 
     <section
       class="future-section"
@@ -2926,10 +3163,11 @@
 
       <div
         class="twinkle-field page-twinkles"
-        aria-hidden="true"
       ></div>
 
+
       <div class="future-light"></div>
+
 
       <div class="future-content">
 
@@ -2951,9 +3189,7 @@
     </section>
 
 
-    <!-- ===================================================
-         ENDEREÇO
-    ==================================================== -->
+    <!-- ENDEREÇO -->
 
     <section
       class="address-section"
@@ -2962,8 +3198,8 @@
 
       <div
         class="twinkle-field page-twinkles"
-        aria-hidden="true"
       ></div>
+
 
       <div class="address-glow"></div>
 
@@ -2974,15 +3210,19 @@
           Localização
         </div>
 
+
         <h2 class="address-title">
           Endereço
         </h2>
 
+
         <div class="address-line"></div>
+
 
         <div class="building">
           Edifício NBC
         </div>
+
 
         <div class="address-text">
 
@@ -3016,9 +3256,7 @@
   </main>
 
 
-  <!-- =====================================================
-       WHATSAPP
-  ====================================================== -->
+  <!-- WHATSAPP -->
 
   <a
     class="whatsapp-button"
@@ -3154,14 +3392,16 @@
 
 
     /* =====================================================
-       BRILHOS ALEATÓRIOS
+       ESTRELAS ALEATÓRIAS
     ===================================================== */
 
     const variants = [
+
       "variant-a",
       "variant-b",
       "variant-c",
       "variant-d"
+
     ];
 
 
@@ -3186,164 +3426,152 @@
     function randomVariant(){
 
       return variants[
+
         Math.floor(
           Math.random() *
           variants.length
         )
+
       ];
 
     }
 
 
-    function configureTwinkle(
-      twinkle,
+    /* =====================================================
+       MUDA A POSIÇÃO
+
+       ISSO ACONTECE QUANDO A ESTRELA
+       ESTÁ INVISÍVEL.
+    ===================================================== */
+
+    function randomizePosition(
+      star
+    ){
+
+      star.style.left =
+        `${randomBetween(1,99).toFixed(2)}%`;
+
+
+      star.style.top =
+        `${randomBetween(1,99).toFixed(2)}%`;
+
+
+      star.style.setProperty(
+        "--rotation",
+        `${randomBetween(-18,18).toFixed(1)}deg`
+      );
+
+    }
+
+
+    /* =====================================================
+       CONFIGURAÇÃO DO CICLO
+    ===================================================== */
+
+    function configureStar(
+      star,
       firstTime = false
     ){
 
 
-      const isLarge =
-        twinkle.classList.contains(
+      const large =
+        star.classList.contains(
           "large"
         );
 
 
-      const isMedium =
-        twinkle.classList.contains(
+      const medium =
+        star.classList.contains(
           "medium"
         );
 
 
-      /*
-         TODOS MAIS LENTOS
-      */
-
       let duration;
-
-
-      if(isLarge){
-
-        duration =
-          randomBetween(
-            13,
-            24
-          );
-
-      }else if(isMedium){
-
-        duration =
-          randomBetween(
-            10,
-            19
-          );
-
-      }else{
-
-        duration =
-          randomBetween(
-            8,
-            16
-          );
-
-      }
-
-
-      /*
-         INTENSIDADES DIFERENTES
-      */
-
       let peak;
 
 
-      if(isLarge){
+      /*
+         TODOS LENTOS.
+      */
 
-        peak =
+      if(large){
+
+        duration =
           randomBetween(
-            .70,
-            1
+            20,
+            36
           );
 
-      }else if(isMedium){
 
         peak =
           randomBetween(
-            .46,
+            .50,
             .82
+          );
+
+      }else if(medium){
+
+        duration =
+          randomBetween(
+            15,
+            28
+          );
+
+
+        peak =
+          randomBetween(
+            .32,
+            .66
           );
 
       }else{
 
+        duration =
+          randomBetween(
+            12,
+            22
+          );
+
+
         peak =
           randomBetween(
-            .28,
-            .62
+            .20,
+            .50
           );
 
       }
 
 
-      const soft =
-        randomBetween(
-          .012,
-          .075
-        );
-
-
-      const blur =
-        isLarge
-        ?
-        randomBetween(
-          .08,
-          .48
-        )
-        :
-        randomBetween(
-          0,
-          .20
-        );
-
-
-      twinkle.style.setProperty(
+      star.style.setProperty(
         "--duration",
         `${duration.toFixed(2)}s`
       );
 
 
-      twinkle.style.setProperty(
+      star.style.setProperty(
         "--peak",
         peak.toFixed(2)
       );
 
 
-      twinkle.style.setProperty(
-        "--soft",
-        soft.toFixed(3)
-      );
-
-
-      twinkle.style.setProperty(
-        "--blur",
-        `${blur.toFixed(2)}px`
-      );
-
-
-      twinkle.classList.remove(
+      star.classList.remove(
         "variant-a",
         "variant-b",
         "variant-c",
         "variant-d",
-        "variant-e"
+        "variant-large"
       );
 
 
-      if(isLarge){
+      if(large){
 
-        twinkle.classList.add(
-          "variant-e"
+        star.classList.add(
+          "variant-large"
         );
 
       }else{
 
-        twinkle.classList.add(
+        star.classList.add(
           randomVariant()
         );
 
@@ -3352,14 +3580,14 @@
 
       if(firstTime){
 
-        twinkle.style.setProperty(
+        star.style.setProperty(
           "--delay",
-          `${randomBetween(-24,0).toFixed(2)}s`
+          `${randomBetween(-34,0).toFixed(2)}s`
         );
 
       }else{
 
-        twinkle.style.setProperty(
+        star.style.setProperty(
           "--delay",
           "0s"
         );
@@ -3369,7 +3597,11 @@
     }
 
 
-    function createTwinkles(
+    /* =====================================================
+       CRIAÇÃO DAS ESTRELAS
+    ===================================================== */
+
+    function createStars(
       container,
       amount
     ){
@@ -3385,31 +3617,23 @@
         i++
       ){
 
-        const twinkle =
+        const star =
           document.createElement(
             "span"
           );
 
 
-        twinkle.classList.add(
+        star.classList.add(
           "twinkle"
         );
 
 
-        twinkle.style.left =
-          `${randomBetween(1,99).toFixed(2)}%`;
-
-
-        twinkle.style.top =
-          `${randomBetween(1,99).toFixed(2)}%`;
-
-
         /*
-           DISTRIBUIÇÃO:
+           TAMANHOS:
 
-           20% GRANDES
+           16% GRANDES
            42% MÉDIOS
-           38% PEQUENOS
+           42% PEQUENOS
         */
 
         const chance =
@@ -3419,100 +3643,92 @@
         let size;
 
 
-        if(chance < .20){
+        if(
+          chance < .16
+        ){
 
-          twinkle.classList.add(
+          star.classList.add(
             "large"
           );
 
-          /*
-             GRANDES BEM MAIS VISÍVEIS
-          */
 
           size =
             randomBetween(
-              9,
-              15
+              55,
+              105
             );
 
+        }else if(
+          chance < .58
+        ){
 
-          twinkle.style.setProperty(
-            "--ray",
-            randomBetween(
-              7,
-              10
-            )
-          );
-
-
-        }else if(chance < .62){
-
-          twinkle.classList.add(
+          star.classList.add(
             "medium"
           );
 
 
           size =
             randomBetween(
-              4.8,
-              8
+              27,
+              54
             );
-
-
-          twinkle.style.setProperty(
-            "--ray",
-            randomBetween(
-              5.8,
-              7.5
-            )
-          );
-
 
         }else{
 
-          twinkle.classList.add(
+          star.classList.add(
             "small"
           );
 
 
           size =
             randomBetween(
-              2.2,
-              4.6
+              11,
+              28
             );
-
-
-          twinkle.style.setProperty(
-            "--ray",
-            randomBetween(
-              4.7,
-              6.2
-            )
-          );
 
         }
 
 
-        twinkle.style.setProperty(
-          "--size",
-          `${size.toFixed(2)}px`
+        star.style.setProperty(
+          "--star-size",
+          `${size.toFixed(1)}px`
         );
 
 
-        configureTwinkle(
-          twinkle,
+        randomizePosition(
+          star
+        );
+
+
+        configureStar(
+          star,
           true
         );
 
 
-        twinkle.addEventListener(
+        /*
+           QUANDO TERMINA:
+
+           - ESTÁ INVISÍVEL
+           - MUDA POSIÇÃO
+           - MUDA TEMPO
+           - MUDA INTENSIDADE
+           - MUDA TIPO DE MOVIMENTO
+        */
+
+        star.addEventListener(
 
           "animationiteration",
 
           function(){
 
-            configureTwinkle(
-              twinkle,
+            randomizePosition(
+              star
+            );
+
+
+            configureStar(
+              star,
               false
             );
 
@@ -3522,7 +3738,7 @@
 
 
         container.appendChild(
-          twinkle
+          star
         );
 
       }
@@ -3531,39 +3747,42 @@
 
 
     /* =====================================================
-       VOLUME DOS BRILHOS
+       VOLUME
     ===================================================== */
 
 
     /*
        CAPA
-       42 PONTOS
     */
 
-    createTwinkles(
+    createStars(
+
       document.getElementById(
         "heroTwinkles"
       ),
-      42
+
+      48
+
     );
 
 
     /*
        TRABALHOS
-       50 PONTOS
     */
 
-    createTwinkles(
+    createStars(
+
       document.getElementById(
         "worksTwinkles"
       ),
-      50
+
+      56
+
     );
 
 
     /*
-       TODAS AS OUTRAS SEÇÕES
-       34 POR SEÇÃO
+       RESTANTE DO SITE
     */
 
     document
@@ -3574,9 +3793,9 @@
 
         function(container){
 
-          createTwinkles(
+          createStars(
             container,
-            34
+            40
           );
 
         }
@@ -3585,7 +3804,7 @@
 
 
     /* =====================================================
-       PARALLAX FLUIDO
+       PARALLAX
     ===================================================== */
 
     const heroContent =
@@ -3641,13 +3860,15 @@
       amount
     ){
 
-      return start +
+      return (
+        start +
         (
           end -
           start
         )
         *
-        amount;
+        amount
+      );
 
     }
 
@@ -3665,6 +3886,7 @@
 
         heroTarget =
           scrollY * .145;
+
 
         logoTarget =
           scrollY * .065;
@@ -3897,6 +4119,7 @@
             closestDistance =
               distance;
 
+
             closestIndex =
               index;
 
@@ -3937,6 +4160,7 @@
             function(){
 
               updateWorkCounter();
+
 
               galleryTicking =
                 false;
