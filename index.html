@@ -711,11 +711,6 @@
 
       pointer-events:none;
 
-      /*
-        SEM FILTRO.
-        A FOTO APARECE EXATAMENTE COMO FOI EDITADA.
-      */
-
       filter:none;
       opacity:1;
 
@@ -724,7 +719,7 @@
 
 
     /* =====================================================
-       DEGRADÊ QUE FUNDE A CAPA COM O FUNDO DOS TRABALHOS
+       DEGRADÊ DO FUNDO DOS TRABALHOS
     ===================================================== */
 
     .works-background-blend{
@@ -773,11 +768,6 @@
         );
     }
 
-
-    /* =====================================================
-       SOMBRA LEVE PARA LEITURA
-       NÃO ALTERA A COR DA FOTO
-    ===================================================== */
 
     .works-background-depth{
       position:absolute;
@@ -2242,9 +2232,7 @@
   <main>
 
 
-    <!-- ===================================================
-         CAPA
-    ==================================================== -->
+    <!-- CAPA -->
 
     <section
       class="hero"
@@ -2321,13 +2309,10 @@
 
       </div>
 
-
     </section>
 
 
-    <!-- ===================================================
-         TRABALHOS
-    ==================================================== -->
+    <!-- TRABALHOS -->
 
     <section
       class="works-section"
@@ -2339,13 +2324,11 @@
 
       <img
         class="works-background-photo"
-        src="1E4CCF80-B082-40CE-B986-13D67C3FBC05.jpeg"
+        src="22570524-7852-4D7E-99DE-6090DA3A9A55.jpeg"
         alt=""
         aria-hidden="true"
       >
 
-
-      <!-- DEGRADÊ PARA A FOTO NASCER E SUMIR SEM RECORTE -->
 
       <div
         class="works-background-blend"
@@ -2358,8 +2341,6 @@
         aria-hidden="true"
       ></div>
 
-
-      <!-- BRILHOS -->
 
       <div
         class="works-sparkles-layer"
@@ -2381,8 +2362,6 @@
         aria-hidden="true"
       ></div>
 
-
-      <!-- TÍTULO -->
 
       <div class="works-header">
 
@@ -2575,9 +2554,7 @@
     </section>
 
 
-    <!-- ===================================================
-         ESTÚDIO
-    ==================================================== -->
+    <!-- O ESTÚDIO -->
 
     <section
       class="future-section"
@@ -2608,9 +2585,7 @@
     </section>
 
 
-    <!-- ===================================================
-         YARA
-    ==================================================== -->
+    <!-- YARA -->
 
     <section
       class="future-section"
@@ -2642,9 +2617,7 @@
     </section>
 
 
-    <!-- ===================================================
-         PREÇOS
-    ==================================================== -->
+    <!-- PREÇOS -->
 
     <section
       class="future-section"
@@ -2676,9 +2649,7 @@
     </section>
 
 
-    <!-- ===================================================
-         AVALIAÇÕES
-    ==================================================== -->
+    <!-- AVALIAÇÕES -->
 
     <section
       class="future-section"
@@ -2710,9 +2681,7 @@
     </section>
 
 
-    <!-- ===================================================
-         ENDEREÇO
-    ==================================================== -->
+    <!-- ENDEREÇO -->
 
     <section
       class="address-section"
@@ -2775,9 +2744,7 @@
   </main>
 
 
-  <!-- =====================================================
-       WHATSAPP
-  ====================================================== -->
+  <!-- WHATSAPP -->
 
   <a
     class="whatsapp-button"
@@ -2802,9 +2769,7 @@
   <script>
 
 
-    /* =====================================================
-       MENU
-    ===================================================== */
+    /* MENU */
 
     const menuTrigger =
       document.getElementById(
@@ -2912,9 +2877,7 @@
     );
 
 
-    /* =====================================================
-       PROFUNDIDADE
-    ===================================================== */
+    /* PROFUNDIDADE */
 
     const heroContent =
       document.getElementById(
@@ -3084,9 +3047,7 @@
     updateDepth();
 
 
-    /* =====================================================
-       GALERIA
-    ===================================================== */
+    /* GALERIA */
 
     const worksSlider =
       document.getElementById(
@@ -3213,9 +3174,7 @@
     updateWorkCounter();
 
 
-    /* =====================================================
-       ARRASTAR GALERIA NO COMPUTADOR
-    ===================================================== */
+    /* ARRASTAR NO COMPUTADOR */
 
     let isDown =
       false;
