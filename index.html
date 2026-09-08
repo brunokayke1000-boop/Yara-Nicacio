@@ -55,6 +55,22 @@
 
 
     /* =====================================================
+       OTIMIZAÇÃO DE MOVIMENTO
+    ===================================================== */
+
+    .hero-content,
+    .top-logo,
+    .global-sparkles-layer,
+    .works-header-float,
+    .works-sparkles-layer{
+      will-change:transform;
+      transform-style:preserve-3d;
+      backface-visibility:hidden;
+      -webkit-backface-visibility:hidden;
+    }
+
+
+    /* =====================================================
        FUNDO GERAL
     ===================================================== */
 
@@ -85,7 +101,7 @@
 
 
     /* =====================================================
-       BRILHOS GLOBAIS
+       BRILHO GLOBAL
     ===================================================== */
 
     .global-sparkles-layer{
@@ -93,7 +109,6 @@
       inset:-7%;
       z-index:-15;
       pointer-events:none;
-      will-change:transform;
     }
 
     .global-sparkles{
@@ -163,7 +178,6 @@
 
     .menu-trigger span{
       display:block;
-
       width:25px;
       height:2px;
 
@@ -172,8 +186,7 @@
       background:#e5bd71;
 
       box-shadow:
-        0 0 8px
-        rgba(218,171,76,.55);
+        0 0 8px rgba(218,171,76,.55);
 
       transition:
         transform .35s ease,
@@ -197,13 +210,10 @@
     }
 
 
-    /* =====================================================
-       MENU OVERLAY
-    ===================================================== */
-
     .menu-overlay{
       position:fixed;
       inset:0;
+
       z-index:190;
 
       background:
@@ -225,10 +235,6 @@
       visibility:visible;
     }
 
-
-    /* =====================================================
-       MENU LATERAL
-    ===================================================== */
 
     .side-menu{
       position:fixed;
@@ -268,7 +274,7 @@
         rgba(0,0,0,.75);
 
       transform:
-        translateX(-105%);
+        translate3d(-105%,0,0);
 
       transition:
         transform
@@ -277,7 +283,8 @@
     }
 
     .side-menu.active{
-      transform:translateX(0);
+      transform:
+        translate3d(0,0,0);
     }
 
     .menu-title{
@@ -294,6 +301,7 @@
 
     .menu-title::after{
       content:"";
+
       display:block;
 
       width:45px;
@@ -360,7 +368,6 @@
 
     .hero-photo{
       position:absolute;
-
       inset:0;
 
       width:100%;
@@ -377,7 +384,7 @@
 
 
     /* =====================================================
-       DEGRADÊ DA CAPA
+       DEGRADÊ CAPA
     ===================================================== */
 
     .hero-bottom-fade{
@@ -414,10 +421,6 @@
         );
     }
 
-
-    /* =====================================================
-       BRILHOS CAPA
-    ===================================================== */
 
     .hero-sparkles{
       position:absolute;
@@ -471,13 +474,11 @@
           0 0 8px
           rgba(207,159,67,.18)
         );
-
-      will-change:transform;
     }
 
 
     /* =====================================================
-       CONTEÚDO DA CAPA
+       CONTEÚDO CAPA
     ===================================================== */
 
     .hero-content{
@@ -489,7 +490,7 @@
       width:min(97%,920px);
 
       transform:
-        translate(-50%,-50%);
+        translate3d(-50%,-50%,0);
 
       z-index:5;
 
@@ -498,8 +499,6 @@
       align-items:center;
 
       text-align:center;
-
-      will-change:transform;
     }
 
     .name-image{
@@ -573,6 +572,7 @@
         );
 
       font-weight:400;
+
       line-height:1.2;
 
       color:
@@ -692,7 +692,7 @@
 
 
     /* =====================================================
-       NOVA FOTO DE FUNDO DOS TRABALHOS
+       FUNDO TRABALHOS
     ===================================================== */
 
     .works-background-photo{
@@ -714,17 +714,15 @@
       filter:none;
       opacity:1;
 
-      transform:translateZ(0);
+      transform:translate3d(0,0,0);
+
+      backface-visibility:hidden;
+      -webkit-backface-visibility:hidden;
     }
 
 
-    /* =====================================================
-       DEGRADÊ DO FUNDO DOS TRABALHOS
-    ===================================================== */
-
     .works-background-blend{
       position:absolute;
-
       inset:0;
 
       z-index:-3;
@@ -732,36 +730,23 @@
       pointer-events:none;
 
       background:
-
         linear-gradient(
           to bottom,
 
           #050505 0%,
 
           rgba(5,5,5,.98) 2%,
-
           rgba(5,5,5,.94) 5%,
-
           rgba(5,5,5,.83) 9%,
-
           rgba(5,5,5,.63) 14%,
-
           rgba(5,5,5,.40) 20%,
-
           rgba(5,5,5,.20) 27%,
-
           rgba(5,5,5,.07) 34%,
-
           rgba(5,5,5,0) 43%,
-
           rgba(5,5,5,0) 72%,
-
           rgba(5,5,5,.08) 79%,
-
           rgba(5,5,5,.25) 86%,
-
           rgba(5,5,5,.52) 92%,
-
           rgba(5,5,5,.80) 96%,
 
           #050505 100%
@@ -789,7 +774,7 @@
 
 
     /* =====================================================
-       BRILHOS DOS TRABALHOS
+       BRILHO TRABALHOS
     ===================================================== */
 
     .works-sparkles-layer{
@@ -829,8 +814,6 @@
           rgba(0,0,0,.55) 88%,
           transparent 100%
         );
-
-      will-change:transform;
     }
 
     .works-sparkles{
@@ -850,10 +833,6 @@
         infinite;
     }
 
-
-    /* =====================================================
-       LUZ DOURADA
-    ===================================================== */
 
     .works-glow{
       position:absolute;
@@ -902,7 +881,9 @@
 
     .works-header-float{
       position:relative;
-      will-change:transform;
+
+      transform:
+        translate3d(0,0,0);
     }
 
     .works-eyebrow{
@@ -996,7 +977,7 @@
 
 
     /* =====================================================
-       INDICAÇÃO DA GALERIA
+       DESLIZE TRABALHOS
     ===================================================== */
 
     .works-drag{
@@ -1112,7 +1093,7 @@
 
 
     /* =====================================================
-       CARD + BORDA NEON DOURADA
+       CARDS + NEON
     ===================================================== */
 
     .work-card{
@@ -1181,6 +1162,12 @@
 
       display:block;
 
+      transform:
+        translate3d(0,0,0);
+
+      backface-visibility:hidden;
+      -webkit-backface-visibility:hidden;
+
       transition:
         transform
         .75s
@@ -1248,18 +1235,21 @@
           rgba(255,213,112,.55) 1px,
           transparent 8px
         ),
+
         radial-gradient(
           circle at 83% 0%,
           rgba(255,244,204,.90) 0,
           rgba(246,196,90,.42) 1px,
           transparent 9px
         ),
+
         radial-gradient(
           circle at 100% 70%,
           rgba(255,235,170,.72) 0,
           rgba(227,167,55,.34) 1px,
           transparent 8px
         ),
+
         radial-gradient(
           circle at 8% 100%,
           rgba(255,242,196,.78) 0,
@@ -1271,7 +1261,9 @@
     }
 
     .work-card:active img{
-      transform:scale(1.025);
+      transform:
+        scale(1.025)
+        translate3d(0,0,0);
     }
 
 
@@ -2320,8 +2312,6 @@
     >
 
 
-      <!-- NOVO FUNDO -->
-
       <img
         class="works-background-photo"
         src="22570524-7852-4D7E-99DE-6090DA3A9A55.jpeg"
@@ -2407,8 +2397,6 @@
 
       </div>
 
-
-      <!-- GALERIA -->
 
       <div
         class="works-slider"
@@ -2554,7 +2542,7 @@
     </section>
 
 
-    <!-- O ESTÚDIO -->
+    <!-- ESTÚDIO -->
 
     <section
       class="future-section"
@@ -2768,43 +2756,30 @@
 
   <script>
 
-
-    /* MENU */
+    /* =====================================================
+       MENU
+    ===================================================== */
 
     const menuTrigger =
-      document.getElementById(
-        "menuTrigger"
-      );
+      document.getElementById("menuTrigger");
 
     const sideMenu =
-      document.getElementById(
-        "sideMenu"
-      );
+      document.getElementById("sideMenu");
 
     const menuOverlay =
-      document.getElementById(
-        "menuOverlay"
-      );
+      document.getElementById("menuOverlay");
 
     const menuLinks =
-      document.querySelectorAll(
-        ".menu-links a"
-      );
+      document.querySelectorAll(".menu-links a");
 
 
     function openMenu(){
 
-      menuTrigger.classList.add(
-        "active"
-      );
+      menuTrigger.classList.add("active");
 
-      sideMenu.classList.add(
-        "active"
-      );
+      sideMenu.classList.add("active");
 
-      menuOverlay.classList.add(
-        "active"
-      );
+      menuOverlay.classList.add("active");
 
       document.body.style.overflow =
         "hidden";
@@ -2814,17 +2789,11 @@
 
     function closeMenu(){
 
-      menuTrigger.classList.remove(
-        "active"
-      );
+      menuTrigger.classList.remove("active");
 
-      sideMenu.classList.remove(
-        "active"
-      );
+      sideMenu.classList.remove("active");
 
-      menuOverlay.classList.remove(
-        "active"
-      );
+      menuOverlay.classList.remove("active");
 
       document.body.style.overflow =
         "";
@@ -2833,9 +2802,7 @@
 
 
     menuTrigger.addEventListener(
-
       "click",
-
       function(){
 
         if(
@@ -2843,17 +2810,12 @@
             "active"
           )
         ){
-
           closeMenu();
-
         }else{
-
           openMenu();
-
         }
 
       }
-
     );
 
 
@@ -2864,7 +2826,6 @@
 
 
     menuLinks.forEach(
-
       function(link){
 
         link.addEventListener(
@@ -2873,11 +2834,12 @@
         );
 
       }
-
     );
 
 
-    /* PROFUNDIDADE */
+    /* =====================================================
+       MOVIMENTO FLUIDO / LERP
+    ===================================================== */
 
     const heroContent =
       document.getElementById(
@@ -2910,50 +2872,101 @@
       );
 
 
-    let depthTicking =
-      false;
+    /*
+      TARGET = ONDE O ELEMENTO QUER CHEGAR
+
+      CURRENT = POSIÇÃO ATUAL
+
+      A ANIMAÇÃO VAI SE APROXIMANDO DO TARGET
+      A CADA FRAME, EM VEZ DE PULAR DIRETO.
+    */
+
+    let heroTarget = 0;
+    let heroCurrent = 0;
+
+    let logoTarget = 0;
+    let logoCurrent = 0;
+
+    let globalSparkTarget = 0;
+    let globalSparkCurrent = 0;
+
+    let worksHeaderTarget = 0;
+    let worksHeaderCurrent = 0;
+
+    let worksSparkTarget = 0;
+    let worksSparkCurrent = 0;
 
 
-    function updateDepth(){
+    /*
+      Quanto menor esse valor,
+      mais "macio" fica.
 
+      0.10 ficou num ponto leve,
+      mas ainda responde bem ao dedo.
+    */
+
+    const smoothness =
+      0.10;
+
+
+    function lerp(
+      start,
+      end,
+      amount
+    ){
+
+      return start +
+        (
+          end -
+          start
+        )
+        *
+        amount;
+
+    }
+
+
+    function calculateTargets(){
 
       const scrollY =
         window.scrollY;
 
 
+      /* CAPA */
+
       if(
         scrollY <
-        window.innerHeight * 1.25
+        window.innerHeight * 1.30
       ){
 
-        heroContent.style.transform =
-          `translate3d(
-            -50%,
-            calc(
-              -50% +
-              ${scrollY * 0.16}px
-            ),
-            0
-          )`;
+        heroTarget =
+          scrollY * 0.145;
 
+        logoTarget =
+          scrollY * 0.065;
 
-        topLogo.style.transform =
-          `translate3d(
-            0,
-            ${scrollY * 0.08}px,
-            0
-          )`;
+      }else{
+
+        heroTarget =
+          window.innerHeight *
+          1.30 *
+          0.145;
+
+        logoTarget =
+          window.innerHeight *
+          1.30 *
+          0.065;
 
       }
 
 
-      globalSparklesLayer.style.transform =
-        `translate3d(
-          0,
-          ${scrollY * 0.018}px,
-          0
-        )`;
+      /* BRILHO GLOBAL */
 
+      globalSparkTarget =
+        scrollY * 0.012;
+
+
+      /* TRABALHOS */
 
       const worksRect =
         worksSection.getBoundingClientRect();
@@ -2961,9 +2974,9 @@
 
       if(
         worksRect.top <
-        window.innerHeight
+        window.innerHeight * 1.25
         &&
-        worksRect.bottom > 0
+        worksRect.bottom > -200
       ){
 
         const viewportCenter =
@@ -2980,80 +2993,168 @@
           sectionCenter;
 
 
-        const headerMove =
-          difference * .045;
+        /*
+          Movimento menor do que antes.
+          Mantém profundidade, mas fica mais elegante.
+        */
+
+        worksHeaderTarget =
+          difference * 0.032;
 
 
-        const sparkMove =
-          difference * .020;
-
-
-        worksHeaderFloat.style.transform =
-          `translate3d(
-            0,
-            ${headerMove}px,
-            0
-          )`;
-
-
-        worksSparklesLayer.style.transform =
-          `translate3d(
-            0,
-            ${sparkMove}px,
-            0
-          )`;
+        worksSparkTarget =
+          difference * 0.012;
 
       }
-
-
-      depthTicking =
-        false;
 
     }
 
 
+    /*
+      LOOP DE ANIMAÇÃO CONTÍNUO.
+
+      Não depende da quantidade de eventos
+      de scroll que o navegador dispara.
+    */
+
+    function smoothAnimation(){
+
+
+      heroCurrent =
+        lerp(
+          heroCurrent,
+          heroTarget,
+          smoothness
+        );
+
+
+      logoCurrent =
+        lerp(
+          logoCurrent,
+          logoTarget,
+          smoothness
+        );
+
+
+      globalSparkCurrent =
+        lerp(
+          globalSparkCurrent,
+          globalSparkTarget,
+          0.075
+        );
+
+
+      worksHeaderCurrent =
+        lerp(
+          worksHeaderCurrent,
+          worksHeaderTarget,
+          0.085
+        );
+
+
+      worksSparkCurrent =
+        lerp(
+          worksSparkCurrent,
+          worksSparkTarget,
+          0.065
+        );
+
+
+      /* CAPA */
+
+      heroContent.style.transform =
+        `translate3d(
+          -50%,
+          calc(
+            -50% +
+            ${heroCurrent}px
+          ),
+          0
+        )`;
+
+
+      /* LOGO */
+
+      topLogo.style.transform =
+        `translate3d(
+          0,
+          ${logoCurrent}px,
+          0
+        )`;
+
+
+      /* BRILHO GLOBAL */
+
+      globalSparklesLayer.style.transform =
+        `translate3d(
+          0,
+          ${globalSparkCurrent}px,
+          0
+        )`;
+
+
+      /* TRABALHOS */
+
+      worksHeaderFloat.style.transform =
+        `translate3d(
+          0,
+          ${worksHeaderCurrent}px,
+          0
+        )`;
+
+
+      /* BRILHO TRABALHOS */
+
+      worksSparklesLayer.style.transform =
+        `translate3d(
+          0,
+          ${worksSparkCurrent}px,
+          0
+        )`;
+
+
+      requestAnimationFrame(
+        smoothAnimation
+      );
+
+    }
+
+
+    /*
+      Scroll agora só calcula os destinos.
+      Ele não movimenta diretamente os elementos.
+    */
+
     window.addEventListener(
-
       "scroll",
-
-      function(){
-
-        if(!depthTicking){
-
-          window.requestAnimationFrame(
-            updateDepth
-          );
-
-          depthTicking =
-            true;
-
-        }
-
-      },
-
+      calculateTargets,
       {
         passive:true
       }
-
     );
 
 
     window.addEventListener(
       "resize",
-      updateDepth
+      calculateTargets
     );
 
 
-    updateDepth();
+    calculateTargets();
+
+    requestAnimationFrame(
+      smoothAnimation
+    );
 
 
-    /* GALERIA */
+    /* =====================================================
+       GALERIA / CONTADOR
+    ===================================================== */
 
     const worksSlider =
       document.getElementById(
         "worksSlider"
       );
-
 
     const workCards =
       Array.from(
@@ -3061,7 +3162,6 @@
           ".work-card"
         )
       );
-
 
     const currentWork =
       document.getElementById(
@@ -3143,7 +3243,7 @@
 
         if(!galleryTicking){
 
-          window.requestAnimationFrame(
+          requestAnimationFrame(
 
             function(){
 
@@ -3174,15 +3274,15 @@
     updateWorkCounter();
 
 
-    /* ARRASTAR NO COMPUTADOR */
+    /* =====================================================
+       ARRASTE GALERIA NO COMPUTADOR
+    ===================================================== */
 
     let isDown =
       false;
 
-
     let startX =
       0;
-
 
     let sliderStart =
       0;
@@ -3196,7 +3296,6 @@
 
         isDown =
           true;
-
 
         worksSlider.style.cursor =
           "grabbing";
