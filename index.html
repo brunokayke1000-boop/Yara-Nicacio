@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 
 <head>
@@ -29,10 +29,6 @@
 
 
   <style>
-
-    /* =====================================================
-       RESET
-    ===================================================== */
 
     *{
       margin:0;
@@ -408,9 +404,6 @@
 
     /* =====================================================
        DEGRADÊ DA CAPA
-
-       A FOTO VAI SUMINDO AOS POUCOS
-       NO MESMO PRETO DO RESTANTE DO SITE.
     ===================================================== */
 
     .hero-bottom-fade{
@@ -727,10 +720,6 @@
 
     /* =====================================================
        TRABALHOS
-
-       A SEÇÃO SOBE POR BAIXO DA CAPA.
-       O CONTEÚDO, PORÉM, COMEÇA MAIS ABAIXO.
-       ASSIM NÃO APARECE NA PRIMEIRA TELA.
     ===================================================== */
 
     .works-section{
@@ -1062,7 +1051,7 @@
 
       display:flex;
 
-      gap:16px;
+      gap:20px;
 
       overflow-x:auto;
       overflow-y:hidden;
@@ -1071,10 +1060,15 @@
 
       scroll-padding-left:35px;
 
+      /*
+        AUMENTEI UM POUCO O ESPAÇO
+        VERTICAL PARA O GLOW NÃO SER CORTADO.
+      */
+
       padding:
-        5px
+        16px
         35px
-        35px;
+        42px;
 
       -webkit-overflow-scrolling:touch;
 
@@ -1089,6 +1083,10 @@
     }
 
 
+    /* =====================================================
+       CARD + NEON DOURADO
+    ===================================================== */
+
     .work-card{
       position:relative;
 
@@ -1101,21 +1099,73 @@
 
       aspect-ratio:4 / 5;
 
-      overflow:hidden;
+      overflow:visible;
 
       scroll-snap-align:start;
 
-      border-radius:5px;
+      border-radius:7px;
 
       background:#0b0907;
 
+      /*
+        LINHA DOURADA PRINCIPAL.
+      */
+
       border:
         1px solid
-        rgba(208,160,80,.17);
+        rgba(239,192,94,.78);
+
+      /*
+        AQUI ESTÁ O EFEITO NEON:
+        várias sombras cada vez mais suaves.
+      */
 
       box-shadow:
-        0 20px 45px
-        rgba(0,0,0,.48);
+
+        0 0 2px
+        rgba(255,231,169,.95),
+
+        0 0 6px
+        rgba(237,184,75,.56),
+
+        0 0 13px
+        rgba(212,151,43,.28),
+
+        0 0 28px
+        rgba(181,117,26,.11),
+
+        0 18px 45px
+        rgba(0,0,0,.58);
+
+      animation:
+        cardGoldPulse
+        3s
+        ease-in-out
+        infinite;
+
+      isolation:isolate;
+    }
+
+
+    /* =====================================================
+       RECIPIENTE DA FOTO
+       
+       NECESSÁRIO PARA A FOTO CONTINUAR
+       CORTADA DENTRO DA BORDA.
+    ===================================================== */
+
+    .work-card-image{
+      position:absolute;
+
+      inset:0;
+
+      overflow:hidden;
+
+      border-radius:6px;
+
+      z-index:1;
+
+      background:#0b0907;
     }
 
 
@@ -1129,6 +1179,8 @@
 
       object-fit:cover;
 
+      display:block;
+
       transition:
         transform
         .75s
@@ -1136,7 +1188,7 @@
     }
 
 
-    .work-card::after{
+    .work-card-image::after{
       content:"";
 
       position:absolute;
@@ -1148,14 +1200,156 @@
       background:
         linear-gradient(
           to top,
-          rgba(0,0,0,.36),
+          rgba(0,0,0,.34),
           transparent 40%
         );
+
+      z-index:2;
+    }
+
+
+    /* =====================================================
+       SEGUNDA LINHA DE LUZ
+       
+       ESSA FICA LOGO PARA DENTRO DA BORDA.
+    ===================================================== */
+
+    .work-card::before{
+      content:"";
+
+      position:absolute;
+
+      inset:1px;
+
+      z-index:5;
+
+      border-radius:5px;
+
+      pointer-events:none;
+
+      border:
+        1px solid
+        rgba(255,229,162,.28);
+
+      box-shadow:
+
+        inset 0 0 7px
+        rgba(255,213,119,.12),
+
+        inset 0 0 14px
+        rgba(201,139,40,.06);
+    }
+
+
+    /* =====================================================
+       PONTOS DE LUZ NA BORDA
+       
+       CRIA AQUELES PEQUENOS TRECHOS MAIS
+       CLAROS COMO NA REFERÊNCIA.
+    ===================================================== */
+
+    .work-card::after{
+      content:"";
+
+      position:absolute;
+
+      inset:-2px;
+
+      z-index:6;
+
+      pointer-events:none;
+
+      border-radius:8px;
+
+      background:
+
+        radial-gradient(
+          circle at 8% 0%,
+          rgba(255,245,205,.90) 0,
+          rgba(255,213,112,.55) 1px,
+          transparent 8px
+        ),
+
+        radial-gradient(
+          circle at 83% 0%,
+          rgba(255,244,204,.90) 0,
+          rgba(246,196,90,.42) 1px,
+          transparent 9px
+        ),
+
+        radial-gradient(
+          circle at 100% 70%,
+          rgba(255,235,170,.72) 0,
+          rgba(227,167,55,.34) 1px,
+          transparent 8px
+        ),
+
+        radial-gradient(
+          circle at 8% 100%,
+          rgba(255,242,196,.78) 0,
+          rgba(228,168,57,.35) 1px,
+          transparent 8px
+        );
+
+      opacity:.70;
     }
 
 
     .work-card:active img{
       transform:scale(1.025);
+    }
+
+
+    @keyframes cardGoldPulse{
+
+      0%,
+      100%{
+
+        border-color:
+          rgba(231,181,80,.68);
+
+        box-shadow:
+
+          0 0 2px
+          rgba(255,229,160,.76),
+
+          0 0 6px
+          rgba(232,175,68,.42),
+
+          0 0 13px
+          rgba(201,139,34,.20),
+
+          0 0 27px
+          rgba(165,105,21,.08),
+
+          0 18px 45px
+          rgba(0,0,0,.58);
+      }
+
+
+      50%{
+
+        border-color:
+          rgba(255,212,118,.95);
+
+        box-shadow:
+
+          0 0 3px
+          rgba(255,242,201,.98),
+
+          0 0 8px
+          rgba(250,197,91,.72),
+
+          0 0 17px
+          rgba(218,154,44,.36),
+
+          0 0 34px
+          rgba(181,116,26,.15),
+
+          0 18px 45px
+          rgba(0,0,0,.58);
+      }
+
     }
 
 
@@ -1193,6 +1387,7 @@
 
     .works-current{
       font-size:30px;
+
       color:#e7d8be;
     }
 
@@ -1222,9 +1417,7 @@
 
 
     /* =====================================================
-       PRÓXIMAS SEÇÕES
-
-       TODAS SEM BACKGROUND INDIVIDUAL.
+       SEÇÕES
     ===================================================== */
 
     .future-section{
@@ -1549,20 +1742,6 @@
 
       backdrop-filter:blur(8px);
       -webkit-backdrop-filter:blur(8px);
-
-      box-shadow:
-        0 10px 25px
-        rgba(0,0,0,.25);
-
-      transition:
-        transform .25s ease,
-        border-color .25s ease,
-        background .25s ease;
-    }
-
-
-    .map-button:active{
-      transform:scale(.96);
     }
 
 
@@ -1836,11 +2015,6 @@
       }
 
 
-      /* =====================================
-         AQUI SOBE OS TRABALHOS
-         SEM MOSTRAR O TÍTULO NA CAPA
-      ===================================== */
-
       .works-section{
         margin-top:-95px;
 
@@ -1915,9 +2089,9 @@
 
       .works-slider{
         padding:
-          5px
+          16px
           36px
-          32px;
+          42px;
 
         scroll-padding-left:
           36px;
@@ -2075,6 +2249,7 @@
       .global-sparkles,
       .hero-sparkles,
       .works-sparkles,
+      .work-card,
       .whatsapp-button,
       .whatsapp-button::before,
       .whatsapp-button::after,
@@ -2093,9 +2268,7 @@
 <body>
 
 
-  <!-- =====================================================
-       FUNDO
-  ===================================================== -->
+  <!-- FUNDO -->
 
   <div
     class="site-background"
@@ -2118,9 +2291,7 @@
   </div>
 
 
-  <!-- =====================================================
-       MENU
-  ===================================================== -->
+  <!-- MENU -->
 
   <button
     class="menu-trigger"
@@ -2185,9 +2356,7 @@
   <main>
 
 
-    <!-- =====================================================
-         CAPA
-    ===================================================== -->
+    <!-- CAPA -->
 
     <section
       class="hero"
@@ -2276,9 +2445,7 @@
     </section>
 
 
-    <!-- =====================================================
-         TRABALHOS
-    ===================================================== -->
+    <!-- TRABALHOS -->
 
     <section
       class="works-section"
@@ -2357,6 +2524,8 @@
       </div>
 
 
+      <!-- GALERIA -->
+
       <div
         class="works-slider"
         id="worksSlider"
@@ -2364,92 +2533,112 @@
 
 
         <article class="work-card">
-          <img
-            src="e3ad0ae1-c488-46af-9158-a3deb5face01.jpeg"
-            alt="Nail Art Yara Nicácio"
-            loading="lazy"
-          >
+          <div class="work-card-image">
+            <img
+              src="e3ad0ae1-c488-46af-9158-a3deb5face01.jpeg"
+              alt="Nail Art Yara Nicácio"
+              loading="lazy"
+            >
+          </div>
         </article>
 
 
         <article class="work-card">
-          <img
-            src="bc419ed5-ed49-4355-9452-30b7eb869860.jpeg"
-            alt="Nail Art Yara Nicácio"
-            loading="lazy"
-          >
+          <div class="work-card-image">
+            <img
+              src="bc419ed5-ed49-4355-9452-30b7eb869860.jpeg"
+              alt="Nail Art Yara Nicácio"
+              loading="lazy"
+            >
+          </div>
         </article>
 
 
         <article class="work-card">
-          <img
-            src="5527e37e-3148-4c0c-8bbf-0f6710ba04a6.jpeg"
-            alt="Nail Art Yara Nicácio"
-            loading="lazy"
-          >
+          <div class="work-card-image">
+            <img
+              src="5527e37e-3148-4c0c-8bbf-0f6710ba04a6.jpeg"
+              alt="Nail Art Yara Nicácio"
+              loading="lazy"
+            >
+          </div>
         </article>
 
 
         <article class="work-card">
-          <img
-            src="15b54e6d-a6bb-42b6-84e1-fcdf0c0d6169.jpeg"
-            alt="Nail Art Yara Nicácio"
-            loading="lazy"
-          >
+          <div class="work-card-image">
+            <img
+              src="15b54e6d-a6bb-42b6-84e1-fcdf0c0d6169.jpeg"
+              alt="Nail Art Yara Nicácio"
+              loading="lazy"
+            >
+          </div>
         </article>
 
 
         <article class="work-card">
-          <img
-            src="debe1e33-9d29-4f2b-9bd4-f5fa6a37f009.jpeg"
-            alt="Nail Art Yara Nicácio"
-            loading="lazy"
-          >
+          <div class="work-card-image">
+            <img
+              src="debe1e33-9d29-4f2b-9bd4-f5fa6a37f009.jpeg"
+              alt="Nail Art Yara Nicácio"
+              loading="lazy"
+            >
+          </div>
         </article>
 
 
         <article class="work-card">
-          <img
-            src="0c71fd76-948f-4522-b7a3-06e1555c9dda.jpeg"
-            alt="Nail Art Yara Nicácio"
-            loading="lazy"
-          >
+          <div class="work-card-image">
+            <img
+              src="0c71fd76-948f-4522-b7a3-06e1555c9dda.jpeg"
+              alt="Nail Art Yara Nicácio"
+              loading="lazy"
+            >
+          </div>
         </article>
 
 
         <article class="work-card">
-          <img
-            src="244f17b4-d1d6-4516-b3a8-629694c8f941.jpeg"
-            alt="Nail Art Yara Nicácio"
-            loading="lazy"
-          >
+          <div class="work-card-image">
+            <img
+              src="244f17b4-d1d6-4516-b3a8-629694c8f941.jpeg"
+              alt="Nail Art Yara Nicácio"
+              loading="lazy"
+            >
+          </div>
         </article>
 
 
         <article class="work-card">
-          <img
-            src="d242cc6d-d5b6-4f96-b9fb-2ff206de1ae5.jpeg"
-            alt="Nail Art Yara Nicácio"
-            loading="lazy"
-          >
+          <div class="work-card-image">
+            <img
+              src="d242cc6d-d5b6-4f96-b9fb-2ff206de1ae5.jpeg"
+              alt="Nail Art Yara Nicácio"
+              loading="lazy"
+            >
+          </div>
         </article>
 
 
         <article class="work-card">
-          <img
-            src="25c27bb6-e5b5-4ca5-aa81-eac0b57ff341.jpeg"
-            alt="Nail Art Yara Nicácio"
-            loading="lazy"
-          >
+          <div class="work-card-image">
+            <img
+              src="25c27bb6-e5b5-4ca5-aa81-eac0b57ff341.jpeg"
+              alt="Nail Art Yara Nicácio"
+              loading="lazy"
+            >
+          </div>
         </article>
 
 
         <article class="work-card">
-          <img
-            src="0874cfbe-f9fd-4974-ac18-385dba047b94.jpeg"
-            alt="Nail Art Yara Nicácio"
-            loading="lazy"
-          >
+          <div class="work-card-image">
+            <img
+              src="0874cfbe-f9fd-4974-ac18-385dba047b94.jpeg"
+              alt="Nail Art Yara Nicácio"
+              loading="lazy"
+            >
+          </div>
         </article>
 
 
@@ -2481,9 +2670,7 @@
     </section>
 
 
-    <!-- =====================================================
-         O ESTÚDIO
-    ===================================================== -->
+    <!-- O ESTÚDIO -->
 
     <section
       class="future-section"
@@ -2514,9 +2701,7 @@
     </section>
 
 
-    <!-- =====================================================
-         YARA NICÁCIO
-    ===================================================== -->
+    <!-- YARA -->
 
     <section
       class="future-section"
@@ -2548,9 +2733,7 @@
     </section>
 
 
-    <!-- =====================================================
-         TABELA DE PREÇOS
-    ===================================================== -->
+    <!-- PREÇOS -->
 
     <section
       class="future-section"
@@ -2582,9 +2765,7 @@
     </section>
 
 
-    <!-- =====================================================
-         AVALIAÇÕES
-    ===================================================== -->
+    <!-- AVALIAÇÕES -->
 
     <section
       class="future-section"
@@ -2616,9 +2797,7 @@
     </section>
 
 
-    <!-- =====================================================
-         ENDEREÇO
-    ===================================================== -->
+    <!-- ENDEREÇO -->
 
     <section
       class="address-section"
@@ -2689,9 +2868,7 @@
   </main>
 
 
-  <!-- =====================================================
-       WHATSAPP
-  ===================================================== -->
+  <!-- WHATSAPP -->
 
   <a
     class="whatsapp-button"
@@ -2880,8 +3057,6 @@
         window.scrollY;
 
 
-      /* CAPA */
-
       if(
         scrollY <
         window.innerHeight * 1.25
@@ -2908,8 +3083,6 @@
       }
 
 
-      /* BRILHO GLOBAL */
-
       globalSparklesLayer.style.transform =
         `translate3d(
           0,
@@ -2917,8 +3090,6 @@
           0
         )`;
 
-
-      /* TRABALHOS */
 
       const worksRect =
         worksSection.getBoundingClientRect();
@@ -3013,7 +3184,7 @@
 
 
     /* =====================================================
-       GALERIA / CONTADOR
+       GALERIA
     ===================================================== */
 
     const worksSlider =
@@ -3142,7 +3313,7 @@
 
 
     /* =====================================================
-       ARRASTE NO COMPUTADOR
+       ARRASTAR GALERIA NO COMPUTADOR
     ===================================================== */
 
     let isDown =
