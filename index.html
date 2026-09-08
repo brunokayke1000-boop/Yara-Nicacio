@@ -73,7 +73,7 @@
 
     /* ========================================
        FOTO DE FUNDO
-       SEM QUALQUER ALTERAÇÃO DE COR
+       SEM ALTERAÇÃO DE COR
     ======================================== */
 
     .hero-background{
@@ -99,7 +99,6 @@
 
     /* ========================================
        BRILHOS DOURADOS
-       SUAVES
     ======================================== */
 
     .gold-sparkles{
@@ -119,7 +118,7 @@
 
       mix-blend-mode:screen;
 
-      opacity:.14;
+      opacity:.19;
 
       animation:
         sparklePulse
@@ -137,13 +136,13 @@
 
       0%,
       100%{
-        opacity:.08;
+        opacity:.13;
         transform:scale(1);
       }
 
       50%{
-        opacity:.20;
-        transform:scale(1.012);
+        opacity:.30;
+        transform:scale(1.016);
       }
 
     }
@@ -193,7 +192,7 @@
     .hero-content{
       position:absolute;
 
-      top:43%;
+      top:49%;
       left:50%;
 
       width:min(95%,900px);
@@ -250,12 +249,13 @@
 
     /* ========================================
        NAIL ARTISTIC
+       MAIS JUNTO DO NOME
     ======================================== */
 
     .nail-artistic-wrap{
       width:min(80vw,660px);
 
-      margin-top:15px;
+      margin-top:2px;
 
       display:flex;
       align-items:center;
@@ -300,7 +300,7 @@
     ======================================== */
 
     .hero-phrase{
-      margin-top:18px;
+      margin-top:9px;
 
       width:100%;
 
@@ -345,7 +345,7 @@
       width:48px;
       height:1px;
 
-      margin-top:17px;
+      margin-top:14px;
 
       background:
         linear-gradient(
@@ -641,7 +641,7 @@
         width:104%;
         height:104%;
 
-        opacity:.13;
+        opacity:.18;
       }
 
 
@@ -658,8 +658,10 @@
       }
 
 
+      /* BLOCO MAIS PARA BAIXO */
+
       .hero-content{
-        top:43%;
+        top:49.5%;
 
         width:96%;
       }
@@ -670,15 +672,17 @@
       }
 
 
+      /* QUASE COLADO AO NOME */
+
       .nail-artistic-wrap{
         width:80vw;
 
-        margin-top:15px;
+        margin-top:1px;
       }
 
 
       .hero-phrase{
-        margin-top:17px;
+        margin-top:8px;
 
         font-size:
           clamp(
@@ -768,7 +772,7 @@
     >
 
 
-      <!-- FOTO DE FUNDO SEM ALTERAÇÃO -->
+      <!-- FOTO DE FUNDO -->
 
       <img
         class="hero-background"
@@ -899,10 +903,7 @@
   </a>
 
 
-  <!-- ========================================
-       PROFUNDIDADE
-       A FOTO NÃO SE MOVE
-  ======================================== -->
+  <!-- PROFUNDIDADE -->
 
   <script>
 
@@ -925,16 +926,7 @@
         window.scrollY;
 
 
-      /*
-        FOTO DE FUNDO:
-        NÃO SE MOVE.
-      */
-
-
-      /*
-        BRILHOS:
-        PLANO INTERMEDIÁRIO.
-      */
+      /* BRILHOS */
 
       goldSparkles.style.transform =
         `translate3d(
@@ -944,10 +936,7 @@
         )`;
 
 
-      /*
-        NOME + NAIL ARTISTIC + FRASE:
-        CAMADA FRONTAL.
-      */
+      /* NOME + NAIL ARTISTIC + FRASE */
 
       heroContent.style.transform =
         `translate3d(
@@ -960,10 +949,7 @@
         )`;
 
 
-      /*
-        LOGOTIPO:
-        CAMADA FRONTAL.
-      */
+      /* LOGOTIPO */
 
       topLogo.style.transform =
         `translate3d(
