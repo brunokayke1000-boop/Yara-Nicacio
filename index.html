@@ -68,39 +68,27 @@
     }
 
 
-    /* FOTO */
-
     .hero-background{
       position:absolute;
       inset:0;
-
       width:100%;
       height:100%;
-
       object-fit:cover;
       object-position:center center;
-
       z-index:0;
-
       filter:none;
       opacity:1;
       transform:none;
     }
 
 
-    /* DEGRADÊ INFERIOR */
-
     .bottom-fade{
       position:absolute;
-
       left:0;
       right:0;
       bottom:0;
-
       height:48%;
-
       z-index:1;
-
       pointer-events:none;
 
       background:
@@ -123,21 +111,14 @@
 
     .gold-sparkles{
       position:absolute;
-
       inset:-3%;
-
       width:106%;
       height:106%;
-
       z-index:2;
-
       object-fit:cover;
       object-position:center;
-
       pointer-events:none;
-
       mix-blend-mode:screen;
-
       opacity:.19;
 
       animation:
@@ -150,7 +131,6 @@
         opacity,
         transform;
     }
-
 
     @keyframes sparklePulse{
 
@@ -169,7 +149,7 @@
 
 
     /* ========================================
-       MENU - BOTÃO
+       BOTÃO DO MENU
     ======================================== */
 
     .menu-trigger{
@@ -177,36 +157,61 @@
 
       top:
         max(
-          31px,
+          24px,
           env(safe-area-inset-top)
         );
 
-      left:20px;
+      left:16px;
 
-      z-index:30;
+      z-index:40;
+
+      width:58px;
+      height:58px;
 
       display:flex;
       align-items:center;
+      justify-content:center;
 
-      gap:11px;
+      border-radius:50%;
 
-      background:transparent;
+      border:
+        1px solid
+        rgba(211,164,84,.68);
 
-      border:0;
+      background:
+        rgba(5,5,5,.62);
 
-      color:rgba(255,255,255,.78);
+      backdrop-filter:
+        blur(8px);
+
+      -webkit-backdrop-filter:
+        blur(8px);
+
+      box-shadow:
+        0 6px 18px rgba(0,0,0,.45),
+        0 0 14px rgba(211,164,84,.12),
+        inset 0 0 12px rgba(211,164,84,.035);
 
       cursor:pointer;
 
-      padding:8px 4px;
-
       -webkit-tap-highlight-color:transparent;
+
+      transition:
+        transform .25s ease,
+        background .25s ease,
+        border-color .25s ease,
+        box-shadow .25s ease;
+    }
+
+
+    .menu-trigger:active{
+      transform:scale(.94);
     }
 
 
     .menu-icon{
-      width:24px;
-      height:18px;
+      width:28px;
+      height:21px;
 
       display:flex;
       flex-direction:column;
@@ -216,11 +221,21 @@
 
     .menu-icon span{
       display:block;
-
       width:100%;
-      height:1px;
+      height:2px;
 
-      background:#c79b56;
+      border-radius:10px;
+
+      background:
+        linear-gradient(
+          90deg,
+          #9f7334,
+          #e4bf78,
+          #a87531
+        );
+
+      box-shadow:
+        0 0 5px rgba(226,187,110,.38);
 
       transition:
         transform .35s ease,
@@ -228,22 +243,22 @@
     }
 
 
-    .menu-trigger-text{
-      font-size:9px;
+    body.menu-open .menu-trigger{
+      background:
+        rgba(8,7,5,.90);
 
-      letter-spacing:3px;
+      border-color:
+        rgba(220,177,96,.82);
 
-      text-transform:uppercase;
-
-      font-weight:400;
+      box-shadow:
+        0 6px 22px rgba(0,0,0,.60),
+        0 0 18px rgba(211,164,84,.18);
     }
 
 
-    /* botão aberto */
-
     body.menu-open .menu-icon span:nth-child(1){
       transform:
-        translateY(8.5px)
+        translateY(9.5px)
         rotate(45deg);
     }
 
@@ -253,30 +268,30 @@
 
     body.menu-open .menu-icon span:nth-child(3){
       transform:
-        translateY(-8.5px)
+        translateY(-9.5px)
         rotate(-45deg);
     }
 
 
     /* ========================================
-       MENU - FUNDO
+       FUNDO AO ABRIR MENU
     ======================================== */
 
     .menu-backdrop{
       position:fixed;
-
       inset:0;
-
       z-index:19;
 
       background:
         rgba(0,0,0,.58);
 
-      backdrop-filter:blur(4px);
-      -webkit-backdrop-filter:blur(4px);
+      backdrop-filter:
+        blur(4px);
+
+      -webkit-backdrop-filter:
+        blur(4px);
 
       opacity:0;
-
       visibility:hidden;
 
       transition:
@@ -297,11 +312,10 @@
 
     .side-menu{
       position:fixed;
-
       top:0;
       left:0;
 
-      width:min(82vw,390px);
+      width:min(84vw,390px);
       height:100svh;
 
       z-index:20;
@@ -320,8 +334,8 @@
       background:
         linear-gradient(
           145deg,
-          rgba(8,7,5,.98),
-          rgba(2,2,2,.98)
+          rgba(8,7,5,.985),
+          rgba(2,2,2,.99)
         );
 
       border-right:
@@ -341,7 +355,6 @@
         cubic-bezier(.22,.8,.25,1);
 
       display:flex;
-
       flex-direction:column;
     }
 
@@ -351,8 +364,6 @@
         translateX(0);
     }
 
-
-    /* pequena identificação */
 
     .menu-eyebrow{
       color:#b58b50;
@@ -367,7 +378,7 @@
 
       text-transform:uppercase;
 
-      margin-bottom:10px;
+      margin-bottom:11px;
     }
 
 
@@ -376,13 +387,18 @@
         'Cormorant Garamond',
         serif;
 
-      font-size:31px;
+      font-size:38px;
 
-      font-weight:400;
+      line-height:1;
+
+      font-weight:500;
 
       color:#f1ece4;
 
-      margin-bottom:36px;
+      margin-bottom:52px;
+
+      text-shadow:
+        0 5px 14px rgba(0,0,0,.50);
     }
 
 
@@ -392,11 +408,8 @@
 
     .menu-list{
       list-style:none;
-
       display:flex;
-
       flex-direction:column;
-
       gap:0;
     }
 
@@ -412,9 +425,7 @@
       position:relative;
 
       display:flex;
-
       align-items:center;
-
       justify-content:space-between;
 
       padding:
@@ -422,7 +433,7 @@
         3px;
 
       color:
-        rgba(255,255,255,.76);
+        rgba(255,255,255,.78);
 
       text-decoration:none;
 
@@ -462,14 +473,12 @@
 
     .menu-list a:hover{
       color:#d2aa6c;
-
       padding-left:8px;
     }
 
 
     .menu-list a:hover::after{
       width:36px;
-
       background:#c79b56;
     }
 
@@ -489,7 +498,7 @@
 
 
     /* ========================================
-       LOGOTIPO SUPERIOR DIREITO
+       LOGOTIPO SUPERIOR
     ======================================== */
 
     .top-logo{
@@ -526,16 +535,13 @@
 
 
     /* ========================================
-       CONTEÚDO CENTRAL
+       CONTEÚDO
     ======================================== */
 
     .hero-content{
       position:absolute;
-
       top:50%;
-
       left:50%;
-
       width:min(96%,920px);
 
       transform:
@@ -544,28 +550,20 @@
       z-index:4;
 
       display:flex;
-
       flex-direction:column;
-
       align-items:center;
-
       justify-content:center;
-
       text-align:center;
 
       will-change:transform;
     }
 
 
-    /* YARA NICÁCIO */
-
     .name-image{
       display:block;
 
       width:min(98vw,920px);
-
       max-width:100%;
-
       height:auto;
 
       object-fit:contain;
@@ -590,33 +588,24 @@
     }
 
 
-    /* NAIL ARTISTIC */
-
     .nail-artistic-wrap{
       width:min(82vw,680px);
-
       margin-top:-15px;
 
       display:flex;
-
       align-items:center;
-
       justify-content:center;
 
       position:relative;
-
       z-index:2;
     }
 
 
     .nail-artistic{
       display:block;
-
       width:100%;
       height:auto;
-
       object-fit:contain;
-
       opacity:1;
 
       filter:
@@ -641,11 +630,8 @@
     }
 
 
-    /* FRASE */
-
     .hero-phrase{
       margin-top:2px;
-
       width:100%;
 
       font-family:
@@ -661,34 +647,25 @@
         );
 
       font-weight:400;
-
       line-height:1.2;
-
       letter-spacing:.025em;
 
       color:
         rgba(245,233,211,.94);
 
       white-space:nowrap;
-
       text-align:center;
 
       text-shadow:
-        0 3px 7px
-        rgba(0,0,0,.95),
-
-        0 8px 18px
-        rgba(0,0,0,.82),
-
-        0 0 8px
-        rgba(209,166,87,.15);
+        0 3px 7px rgba(0,0,0,.95),
+        0 8px 18px rgba(0,0,0,.82),
+        0 0 8px rgba(209,166,87,.15);
     }
 
 
     .phrase-detail{
       width:48px;
       height:1px;
-
       margin-top:13px;
 
       background:
@@ -729,9 +706,7 @@
       z-index:5;
 
       display:flex;
-
       flex-direction:column;
-
       align-items:center;
 
       gap:11px;
@@ -745,11 +720,8 @@
         rgba(255,255,255,.34);
 
       font-size:10px;
-
       font-weight:400;
-
       letter-spacing:.42em;
-
       padding-left:.42em;
     }
 
@@ -778,19 +750,13 @@
       0%,
       100%{
         opacity:.25;
-
-        transform:
-          scaleY(.7);
-
+        transform:scaleY(.7);
         transform-origin:top;
       }
 
       50%{
         opacity:.85;
-
-        transform:
-          scaleY(1);
-
+        transform:scaleY(1);
         transform-origin:top;
       }
 
@@ -821,9 +787,7 @@
       z-index:100;
 
       display:flex;
-
       align-items:center;
-
       justify-content:center;
 
       border-radius:50%;
@@ -843,11 +807,8 @@
     .whatsapp-button::before,
     .whatsapp-button::after{
       content:"";
-
       position:absolute;
-
       border-radius:50%;
-
       pointer-events:none;
     }
 
@@ -884,12 +845,9 @@
 
     .whatsapp-button img{
       position:relative;
-
       width:100%;
       height:100%;
-
       object-fit:contain;
-
       z-index:2;
 
       filter:
@@ -924,13 +882,11 @@
       0%,
       100%{
         opacity:.28;
-
         transform:scale(.94);
       }
 
       50%{
         opacity:.65;
-
         transform:scale(1.08);
       }
 
@@ -942,13 +898,11 @@
       0%,
       100%{
         opacity:.10;
-
         transform:scale(.92);
       }
 
       50%{
         opacity:.35;
-
         transform:scale(1.10);
       }
 
@@ -977,7 +931,7 @@
 
 
     /* ========================================
-       CELULAR
+       MOBILE
     ======================================== */
 
     @media(max-width:600px){
@@ -999,10 +953,8 @@
 
       .gold-sparkles{
         inset:-2%;
-
         width:104%;
         height:104%;
-
         opacity:.18;
       }
 
@@ -1010,27 +962,29 @@
       .menu-trigger{
         top:
           max(
-            25px,
+            22px,
             env(safe-area-inset-top)
           );
 
-        left:16px;
-      }
+        left:15px;
 
-
-      .menu-trigger-text{
-        display:none;
+        width:58px;
+        height:58px;
       }
 
 
       .side-menu{
         width:84vw;
-
         max-width:360px;
 
         padding-left:27px;
-
         padding-right:27px;
+      }
+
+
+      .menu-title{
+        font-size:38px;
+        margin-bottom:50px;
       }
 
 
@@ -1049,7 +1003,6 @@
 
       .hero-content{
         top:50.5%;
-
         width:97%;
       }
 
@@ -1061,7 +1014,6 @@
 
       .nail-artistic-wrap{
         width:83vw;
-
         margin-top:-17px;
       }
 
@@ -1077,16 +1029,13 @@
           );
 
         letter-spacing:.01em;
-
         white-space:nowrap;
       }
 
 
       .whatsapp-button{
         width:76px;
-
         height:76px;
-
         right:18px;
       }
 
@@ -1107,14 +1056,12 @@
 
       .nail-artistic-wrap{
         width:84vw;
-
         margin-top:-15px;
       }
 
 
       .hero-phrase{
         font-size:16px;
-
         letter-spacing:0;
       }
 
@@ -1126,7 +1073,6 @@
 
       .whatsapp-button{
         width:70px;
-
         height:70px;
       }
 
@@ -1153,15 +1099,15 @@
 <body>
 
 
-  <!-- ========================================
-       PAINEL DO MENU
-  ======================================== -->
+  <!-- FUNDO DO MENU -->
 
   <div
     class="menu-backdrop"
     id="menuBackdrop"
   ></div>
 
+
+  <!-- MENU LATERAL -->
 
   <nav
     class="side-menu"
@@ -1174,7 +1120,7 @@
     </div>
 
     <div class="menu-title">
-      Explore
+      Menu
     </div>
 
 
@@ -1235,7 +1181,7 @@
     >
 
 
-      <!-- MENU -->
+      <!-- BOTÃO MENU -->
 
       <button
         class="menu-trigger"
@@ -1252,10 +1198,6 @@
 
         </span>
 
-        <span class="menu-trigger-text">
-          Menu
-        </span>
-
       </button>
 
 
@@ -1263,9 +1205,7 @@
 
       <img
         class="hero-background"
-
         src="6B987C82-0128-4805-9284-58DB898A5D27.jpeg"
-
         alt="Yara Nicácio e Nail Art"
       >
 
@@ -1283,23 +1223,18 @@
       <img
         class="gold-sparkles"
         id="goldSparkles"
-
         src="24CD378D-F11E-4CB2-B0FC-FCAFBE91B276.png"
-
         alt=""
-
         aria-hidden="true"
       >
 
 
-      <!-- LOGOTIPO -->
+      <!-- LOGO -->
 
       <img
         class="top-logo"
         id="topLogo"
-
         src="B246332E-6D6E-47D0-B3DD-02096818D8AD.png"
-
         alt="Yara Nicácio"
       >
 
@@ -1311,12 +1246,9 @@
         id="heroContent"
       >
 
-
         <img
           class="name-image"
-
           src="C45E5C96-6A36-4BB4-B559-04CEAA03B6C2.png"
-
           alt="Yara Nicácio"
         >
 
@@ -1325,9 +1257,7 @@
 
           <img
             class="nail-artistic"
-
             src="AABE6DC3-4C34-4FDB-9157-B08BFC6D263D.png"
-
             alt="Nail Artistic"
           >
 
@@ -1343,7 +1273,6 @@
           class="phrase-detail"
           aria-hidden="true"
         ></div>
-
 
       </div>
 
@@ -1374,19 +1303,14 @@
 
   <a
     class="whatsapp-button"
-
     href="https://wa.me/5511932942455?text=Ol%C3%A1%2C%20gostaria%20de%20fazer%20as%20unhas%20com%20a%20Yara%20Nic%C3%A1cio%21%21%20%F0%9F%98%8A%F0%9F%92%85"
-
     target="_blank"
-
     rel="noopener noreferrer"
-
     aria-label="Falar com Yara Nicácio pelo WhatsApp"
   >
 
     <img
       src="0F16142F-FE3F-4FF5-B505-D1D0285A19CA.png"
-
       alt="WhatsApp"
     >
 
@@ -1395,9 +1319,9 @@
 
   <script>
 
-    /* ========================================
+    /* ================================
        MENU
-    ======================================== */
+    ================================ */
 
     const menuTrigger =
       document.getElementById("menuTrigger");
@@ -1433,12 +1357,6 @@
     );
 
 
-    /*
-      Os links ainda não levam a outra página.
-      Conforme criarmos cada página,
-      vamos conectar aqui.
-    */
-
     document
       .querySelectorAll(".future-link")
       .forEach(link => {
@@ -1455,9 +1373,9 @@
       });
 
 
-    /* ========================================
+    /* ================================
        PROFUNDIDADE
-    ======================================== */
+    ================================ */
 
     const heroContent =
       document.getElementById("heroContent");
