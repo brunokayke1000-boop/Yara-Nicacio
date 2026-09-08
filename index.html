@@ -27,7 +27,12 @@
     rel="stylesheet"
   >
 
+
   <style>
+
+    /* =========================================
+       RESET
+    ========================================= */
 
     *{
       margin:0;
@@ -43,19 +48,20 @@
     body{
       margin:0;
       background:#050505;
-      color:#ffffff;
+      color:#fff;
       overflow-x:hidden;
       font-family:'Montserrat',sans-serif;
     }
 
-    body.menu-open{
-      overflow:hidden;
+    button,
+    a{
+      -webkit-tap-highlight-color:transparent;
     }
 
 
-    /* ========================================
+    /* =========================================
        CAPA
-    ======================================== */
+    ========================================= */
 
     .hero{
       position:relative;
@@ -71,66 +77,83 @@
     .hero-background{
       position:absolute;
       inset:0;
+
       width:100%;
       height:100%;
+
       object-fit:cover;
-      object-position:center center;
+      object-position:center;
+
       z-index:0;
+
       filter:none;
       opacity:1;
-      transform:none;
     }
 
 
-    .bottom-fade{
+    /* =========================================
+       DEGRADÊ DA CAPA
+    ========================================= */
+
+    .hero-fade{
       position:absolute;
+
       left:0;
       right:0;
       bottom:0;
-      height:48%;
+
+      height:52%;
+
       z-index:1;
+
       pointer-events:none;
 
       background:
         linear-gradient(
           to bottom,
           rgba(5,5,5,0) 0%,
-          rgba(5,5,5,.04) 18%,
-          rgba(5,5,5,.13) 34%,
-          rgba(5,5,5,.30) 52%,
-          rgba(5,5,5,.58) 70%,
-          rgba(5,5,5,.84) 86%,
+          rgba(5,5,5,.05) 18%,
+          rgba(5,5,5,.15) 35%,
+          rgba(5,5,5,.36) 55%,
+          rgba(5,5,5,.68) 76%,
+          rgba(5,5,5,.92) 92%,
           #050505 100%
         );
     }
 
 
-    /* ========================================
+    /* =========================================
        BRILHOS
-    ======================================== */
+    ========================================= */
+
+    .sparkles-layer{
+      position:absolute;
+
+      inset:-3%;
+
+      z-index:2;
+
+      pointer-events:none;
+
+      will-change:transform;
+    }
+
 
     .gold-sparkles{
-      position:absolute;
-      inset:-3%;
       width:106%;
       height:106%;
-      z-index:2;
+
       object-fit:cover;
-      object-position:center;
-      pointer-events:none;
+
       mix-blend-mode:screen;
-      opacity:.19;
 
       animation:
         sparklePulse
         3s
         ease-in-out
         infinite;
-
-      will-change:
-        opacity,
-        transform;
     }
+
 
     @keyframes sparklePulse{
 
@@ -148,94 +171,111 @@
     }
 
 
-    /* ========================================
-       BOTÃO DO MENU
-    ======================================== */
+    /* =========================================
+       LOGO SUPERIOR
+    ========================================= */
 
-    .menu-trigger{
+    .top-logo{
       position:absolute;
 
-      top:
-        max(
-          24px,
-          env(safe-area-inset-top)
+      top:max(
+        27px,
+        env(safe-area-inset-top)
+      );
+
+      right:19px;
+
+      width:125px;
+
+      height:auto;
+
+      z-index:6;
+
+      filter:
+        drop-shadow(
+          0 5px 12px
+          rgba(0,0,0,.75)
+        )
+
+        drop-shadow(
+          0 0 8px
+          rgba(207,159,67,.18)
         );
 
-      left:16px;
+      will-change:transform;
+    }
 
-      z-index:40;
+
+    /* =========================================
+       BOTÃO MENU
+    ========================================= */
+
+    .menu-trigger{
+      position:fixed;
+
+      top:max(
+        30px,
+        env(safe-area-inset-top)
+      );
+
+      left:18px;
+
+      z-index:210;
 
       width:58px;
       height:58px;
-
-      display:flex;
-      align-items:center;
-      justify-content:center;
 
       border-radius:50%;
 
       border:
         1px solid
-        rgba(211,164,84,.68);
+        rgba(215,170,83,.60);
 
       background:
-        rgba(5,5,5,.62);
+        rgba(5,5,5,.72);
 
       backdrop-filter:
-        blur(8px);
+        blur(12px);
 
       -webkit-backdrop-filter:
-        blur(8px);
+        blur(12px);
 
-      box-shadow:
-        0 6px 18px rgba(0,0,0,.45),
-        0 0 14px rgba(211,164,84,.12),
-        inset 0 0 12px rgba(211,164,84,.035);
+      display:flex;
+
+      flex-direction:column;
+
+      align-items:center;
+      justify-content:center;
+
+      gap:5px;
 
       cursor:pointer;
 
-      -webkit-tap-highlight-color:transparent;
+      box-shadow:
+        0 0 0 5px rgba(214,167,73,.05),
+        0 6px 25px rgba(0,0,0,.75),
+        0 0 18px rgba(214,167,73,.16);
 
       transition:
-        transform .25s ease,
-        background .25s ease,
-        border-color .25s ease,
-        box-shadow .25s ease;
+        transform .35s ease,
+        border-color .35s ease,
+        background .35s ease;
     }
 
 
-    .menu-trigger:active{
-      transform:scale(.94);
-    }
-
-
-    .menu-icon{
-      width:28px;
-      height:21px;
-
-      display:flex;
-      flex-direction:column;
-      justify-content:space-between;
-    }
-
-
-    .menu-icon span{
+    .menu-trigger span{
       display:block;
-      width:100%;
+
+      width:25px;
       height:2px;
 
       border-radius:10px;
 
-      background:
-        linear-gradient(
-          90deg,
-          #9f7334,
-          #e4bf78,
-          #a87531
-        );
+      background:#e5bd71;
 
       box-shadow:
-        0 0 5px rgba(226,187,110,.38);
+        0 0 8px
+        rgba(218,171,76,.55);
 
       transition:
         transform .35s ease,
@@ -243,55 +283,45 @@
     }
 
 
-    body.menu-open .menu-trigger{
-      background:
-        rgba(8,7,5,.90);
-
-      border-color:
-        rgba(220,177,96,.82);
-
-      box-shadow:
-        0 6px 22px rgba(0,0,0,.60),
-        0 0 18px rgba(211,164,84,.18);
-    }
-
-
-    body.menu-open .menu-icon span:nth-child(1){
+    .menu-trigger.active span:nth-child(1){
       transform:
-        translateY(9.5px)
+        translateY(7px)
         rotate(45deg);
     }
 
-    body.menu-open .menu-icon span:nth-child(2){
+    .menu-trigger.active span:nth-child(2){
       opacity:0;
     }
 
-    body.menu-open .menu-icon span:nth-child(3){
+    .menu-trigger.active span:nth-child(3){
       transform:
-        translateY(-9.5px)
+        translateY(-7px)
         rotate(-45deg);
     }
 
 
-    /* ========================================
-       FUNDO AO ABRIR MENU
-    ======================================== */
+    /* =========================================
+       FUNDO DO MENU
+    ========================================= */
 
-    .menu-backdrop{
+    .menu-overlay{
       position:fixed;
+
       inset:0;
-      z-index:19;
+
+      z-index:190;
 
       background:
-        rgba(0,0,0,.58);
+        rgba(0,0,0,.62);
 
       backdrop-filter:
-        blur(4px);
+        blur(3px);
 
       -webkit-backdrop-filter:
-        blur(4px);
+        blur(3px);
 
       opacity:0;
+
       visibility:hidden;
 
       transition:
@@ -300,85 +330,59 @@
     }
 
 
-    body.menu-open .menu-backdrop{
+    .menu-overlay.active{
       opacity:1;
       visibility:visible;
     }
 
 
-    /* ========================================
-       PAINEL LATERAL
-    ======================================== */
+    /* =========================================
+       MENU LATERAL
+    ========================================= */
 
     .side-menu{
       position:fixed;
+
       top:0;
       left:0;
 
-      width:min(84vw,390px);
+      width:min(84vw,370px);
+
       height:100svh;
 
-      z-index:20;
+      z-index:200;
 
       padding:
-        max(
-          115px,
-          calc(
-            env(safe-area-inset-top)
-            + 95px
-          )
-        )
-        30px
-        45px;
+        max(120px,calc(env(safe-area-inset-top) + 100px))
+        34px
+        40px;
 
       background:
         linear-gradient(
           145deg,
-          rgba(8,7,5,.985),
-          rgba(2,2,2,.99)
+          rgba(7,7,7,.98),
+          rgba(13,10,6,.98)
         );
 
       border-right:
         1px solid
-        rgba(199,155,86,.18);
+        rgba(218,171,76,.18);
 
       box-shadow:
-        20px 0 60px
-        rgba(0,0,0,.45);
+        25px 0 60px
+        rgba(0,0,0,.75);
 
       transform:
-        translateX(-102%);
+        translateX(-105%);
 
       transition:
-        transform
-        .52s
-        cubic-bezier(.22,.8,.25,1);
-
-      display:flex;
-      flex-direction:column;
+        transform .55s
+        cubic-bezier(.77,0,.18,1);
     }
 
 
-    body.menu-open .side-menu{
-      transform:
-        translateX(0);
-    }
-
-
-    .menu-eyebrow{
-      color:#b58b50;
-
-      font-family:
-        'Cormorant Garamond',
-        serif;
-
-      font-size:13px;
-
-      letter-spacing:4px;
-
-      text-transform:uppercase;
-
-      margin-bottom:11px;
+    .side-menu.active{
+      transform:translateX(0);
     }
 
 
@@ -387,53 +391,56 @@
         'Cormorant Garamond',
         serif;
 
-      font-size:38px;
-
-      line-height:1;
+      font-size:37px;
 
       font-weight:500;
 
-      color:#f1ece4;
+      letter-spacing:.04em;
 
-      margin-bottom:52px;
+      color:#e4bd72;
 
-      text-shadow:
-        0 5px 14px rgba(0,0,0,.50);
+      margin-bottom:42px;
     }
 
 
-    /* ========================================
-       LINKS DO MENU
-    ======================================== */
+    .menu-title::after{
+      content:"";
 
-    .menu-list{
-      list-style:none;
+      display:block;
+
+      width:45px;
+      height:1px;
+
+      margin-top:15px;
+
+      background:
+        linear-gradient(
+          90deg,
+          #d6a749,
+          transparent
+        );
+    }
+
+
+    .menu-links{
       display:flex;
+
       flex-direction:column;
-      gap:0;
+
+      gap:5px;
     }
 
 
-    .menu-list li{
-      border-bottom:
-        1px solid
-        rgba(255,255,255,.08);
-    }
-
-
-    .menu-list a{
+    .menu-links a{
       position:relative;
 
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
+      display:block;
 
       padding:
-        17px
-        3px;
+        16px 0;
 
       color:
-        rgba(255,255,255,.78);
+        rgba(255,255,255,.88);
 
       text-decoration:none;
 
@@ -441,14 +448,15 @@
         'Cormorant Garamond',
         serif;
 
-      font-size:
-        clamp(
-          21px,
-          6vw,
-          27px
-        );
+      font-size:25px;
 
       font-weight:400;
+
+      letter-spacing:.02em;
+
+      border-bottom:
+        1px solid
+        rgba(255,255,255,.06);
 
       transition:
         color .3s ease,
@@ -456,93 +464,46 @@
     }
 
 
-    .menu-list a::after{
+    .menu-links a::before{
       content:"";
 
-      width:24px;
-      height:1px;
-
-      background:
-        rgba(199,155,86,.45);
-
-      transition:
-        width .3s ease,
-        background .3s ease;
-    }
-
-
-    .menu-list a:hover{
-      color:#d2aa6c;
-      padding-left:8px;
-    }
-
-
-    .menu-list a:hover::after{
-      width:36px;
-      background:#c79b56;
-    }
-
-
-    .menu-footer{
-      margin-top:auto;
-
-      color:
-        rgba(255,255,255,.27);
-
-      font-size:8px;
-
-      letter-spacing:3px;
-
-      text-transform:uppercase;
-    }
-
-
-    /* ========================================
-       LOGOTIPO SUPERIOR
-    ======================================== */
-
-    .top-logo{
       position:absolute;
 
-      top:
-        max(
-          27px,
-          env(safe-area-inset-top)
-        );
+      left:0;
+      top:50%;
 
-      right:19px;
+      width:0;
+      height:1px;
 
-      width:125px;
-      height:auto;
+      background:#d6a749;
 
-      object-fit:contain;
-
-      z-index:5;
-
-      filter:
-        drop-shadow(
-          0 5px 12px
-          rgba(0,0,0,.70)
-        )
-
-        drop-shadow(
-          0 0 7px
-          rgba(207,159,67,.12)
-        );
-
-      will-change:transform;
+      transition:
+        width .3s ease;
     }
 
 
-    /* ========================================
-       CONTEÚDO
-    ======================================== */
+    .menu-links a:hover{
+      color:#e6bf75;
+      padding-left:25px;
+    }
+
+
+    .menu-links a:hover::before{
+      width:15px;
+    }
+
+
+    /* =========================================
+       CONTEÚDO DA CAPA
+    ========================================= */
 
     .hero-content{
       position:absolute;
-      top:50%;
+
+      top:50.5%;
       left:50%;
-      width:min(96%,920px);
+
+      width:min(97%,920px);
 
       transform:
         translate(-50%,-50%);
@@ -550,9 +511,11 @@
       z-index:4;
 
       display:flex;
+
       flex-direction:column;
+
       align-items:center;
-      justify-content:center;
+
       text-align:center;
 
       will-change:transform;
@@ -563,12 +526,12 @@
       display:block;
 
       width:min(98vw,920px);
+
       max-width:100%;
+
       height:auto;
 
       object-fit:contain;
-
-      margin:0 auto;
 
       filter:
         drop-shadow(
@@ -589,24 +552,22 @@
 
 
     .nail-artistic-wrap{
-      width:min(82vw,680px);
-      margin-top:-15px;
+      width:min(83vw,680px);
+
+      margin-top:-17px;
 
       display:flex;
-      align-items:center;
-      justify-content:center;
 
-      position:relative;
-      z-index:2;
+      justify-content:center;
     }
 
 
     .nail-artistic{
-      display:block;
       width:100%;
+
       height:auto;
+
       object-fit:contain;
-      opacity:1;
 
       filter:
         brightness(1.8)
@@ -621,51 +582,48 @@
         drop-shadow(
           0 0 6px
           rgba(255,221,150,.42)
-        )
-
-        drop-shadow(
-          0 0 12px
-          rgba(218,171,76,.22)
         );
     }
 
 
     .hero-phrase{
-      margin-top:2px;
+      margin-top:1px;
+
       width:100%;
 
       font-family:
         'Cormorant Garamond',
-        Georgia,
         serif;
 
       font-size:
         clamp(
-          20px,
-          4.5vw,
+          18px,
+          4.45vw,
           30px
         );
 
       font-weight:400;
+
       line-height:1.2;
-      letter-spacing:.025em;
 
       color:
         rgba(245,233,211,.94);
 
       white-space:nowrap;
-      text-align:center;
 
       text-shadow:
-        0 3px 7px rgba(0,0,0,.95),
-        0 8px 18px rgba(0,0,0,.82),
-        0 0 8px rgba(209,166,87,.15);
+        0 3px 7px
+        rgba(0,0,0,.95),
+
+        0 8px 18px
+        rgba(0,0,0,.82);
     }
 
 
     .phrase-detail{
       width:48px;
       height:1px;
+
       margin-top:13px;
 
       background:
@@ -675,16 +633,12 @@
           rgba(218,171,76,.85),
           transparent
         );
-
-      box-shadow:
-        0 0 7px
-        rgba(218,171,76,.25);
     }
 
 
-    /* ========================================
-       DESLIZE
-    ======================================== */
+    /* =========================================
+       INDICADOR DESLIZE
+    ========================================= */
 
     .scroll-indicator{
       position:absolute;
@@ -706,12 +660,12 @@
       z-index:5;
 
       display:flex;
+
       flex-direction:column;
+
       align-items:center;
 
       gap:11px;
-
-      pointer-events:none;
     }
 
 
@@ -720,8 +674,9 @@
         rgba(255,255,255,.34);
 
       font-size:10px;
-      font-weight:400;
+
       letter-spacing:.42em;
+
       padding-left:.42em;
     }
 
@@ -751,21 +706,451 @@
       100%{
         opacity:.25;
         transform:scaleY(.7);
-        transform-origin:top;
       }
 
       50%{
         opacity:.85;
         transform:scaleY(1);
-        transform-origin:top;
       }
 
     }
 
 
-    /* ========================================
+    /* =========================================
+       TRABALHOS
+    ========================================= */
+
+    .works-section{
+      position:relative;
+
+      width:100%;
+
+      min-height:100svh;
+
+      padding:
+        90px
+        0
+        110px;
+
+      overflow:hidden;
+
+      background:
+        radial-gradient(
+          circle at 50% 10%,
+          rgba(126,86,25,.09),
+          transparent 34%
+        ),
+        linear-gradient(
+          to bottom,
+          #050505 0%,
+          #080705 48%,
+          #050505 100%
+        );
+    }
+
+
+    .works-section::before{
+      content:"";
+
+      position:absolute;
+
+      top:0;
+      left:50%;
+
+      transform:
+        translateX(-50%);
+
+      width:70%;
+      height:1px;
+
+      background:
+        linear-gradient(
+          90deg,
+          transparent,
+          rgba(216,168,75,.25),
+          transparent
+        );
+    }
+
+
+    .works-header{
+      position:relative;
+
+      z-index:2;
+
+      padding:
+        0 24px;
+
+      margin-bottom:45px;
+
+      text-align:center;
+    }
+
+
+    .section-eyebrow{
+      display:block;
+
+      margin-bottom:10px;
+
+      color:#c89b4b;
+
+      font-size:10px;
+
+      font-weight:400;
+
+      letter-spacing:.46em;
+
+      padding-left:.46em;
+
+      text-transform:uppercase;
+    }
+
+
+    .section-title{
+      font-family:
+        'Cormorant Garamond',
+        serif;
+
+      font-size:
+        clamp(
+          46px,
+          13vw,
+          78px
+        );
+
+      font-weight:400;
+
+      line-height:.95;
+
+      color:#f3eee7;
+
+      letter-spacing:-.025em;
+    }
+
+
+    .section-title em{
+      font-style:italic;
+
+      color:#d5aa60;
+    }
+
+
+    .section-description{
+      max-width:510px;
+
+      margin:
+        20px auto 0;
+
+      color:
+        rgba(255,255,255,.48);
+
+      font-family:
+        'Cormorant Garamond',
+        serif;
+
+      font-size:
+        clamp(
+          17px,
+          4.2vw,
+          21px
+        );
+
+      line-height:1.45;
+
+      font-weight:400;
+    }
+
+
+    /* =========================================
+       CARROSSEL
+    ========================================= */
+
+    .works-slider{
+      position:relative;
+
+      width:100%;
+
+      overflow-x:auto;
+      overflow-y:hidden;
+
+      display:flex;
+
+      gap:16px;
+
+      padding:
+        10px
+        22px
+        35px;
+
+      scroll-snap-type:
+        x mandatory;
+
+      scroll-padding-left:
+        22px;
+
+      -webkit-overflow-scrolling:
+        touch;
+
+      scrollbar-width:none;
+
+      cursor:grab;
+    }
+
+
+    .works-slider::-webkit-scrollbar{
+      display:none;
+    }
+
+
+    .work-card{
+      position:relative;
+
+      flex:
+        0 0
+        min(78vw,390px);
+
+      height:
+        min(112vw,545px);
+
+      min-height:460px;
+
+      border-radius:3px;
+
+      overflow:hidden;
+
+      scroll-snap-align:start;
+
+      background:#0b0a08;
+
+      border:
+        1px solid
+        rgba(215,169,78,.14);
+
+      box-shadow:
+        0 25px 55px
+        rgba(0,0,0,.40);
+    }
+
+
+    .work-card img{
+      width:100%;
+      height:100%;
+
+      object-fit:cover;
+
+      display:block;
+
+      transition:
+        transform
+        1.2s
+        cubic-bezier(.2,.7,.2,1);
+    }
+
+
+    .work-card::after{
+      content:"";
+
+      position:absolute;
+
+      inset:0;
+
+      pointer-events:none;
+
+      background:
+        linear-gradient(
+          to top,
+          rgba(0,0,0,.40),
+          transparent 38%
+        );
+    }
+
+
+    .work-card:active img{
+      transform:scale(1.025);
+    }
+
+
+    /* =========================================
+       INDICAÇÃO DO CARROSSEL
+    ========================================= */
+
+    .works-navigation{
+      display:flex;
+
+      align-items:center;
+      justify-content:center;
+
+      gap:16px;
+
+      margin-top:12px;
+
+      padding:
+        0 25px;
+    }
+
+
+    .works-navigation span{
+      color:
+        rgba(255,255,255,.38);
+
+      font-size:9px;
+
+      letter-spacing:.30em;
+
+      padding-left:.30em;
+    }
+
+
+    .works-arrow{
+      position:relative;
+
+      width:70px;
+      height:1px;
+
+      background:
+        linear-gradient(
+          90deg,
+          rgba(210,164,76,.25),
+          #d2a44c
+        );
+    }
+
+
+    .works-arrow::after{
+      content:"";
+
+      position:absolute;
+
+      right:0;
+      top:-3px;
+
+      width:7px;
+      height:7px;
+
+      border-top:
+        1px solid #d2a44c;
+
+      border-right:
+        1px solid #d2a44c;
+
+      transform:
+        rotate(45deg);
+    }
+
+
+    /* =========================================
+       SEÇÕES FUTURAS
+    ========================================= */
+
+    .future-section{
+      position:relative;
+
+      min-height:100svh;
+
+      display:flex;
+
+      align-items:center;
+      justify-content:center;
+
+      padding:
+        110px 25px;
+
+      background:
+        linear-gradient(
+          to bottom,
+          #050505,
+          #080705,
+          #050505
+        );
+
+      scroll-margin-top:0;
+    }
+
+
+    .future-section::before{
+      content:"";
+
+      position:absolute;
+
+      top:0;
+
+      left:50%;
+
+      transform:
+        translateX(-50%);
+
+      width:70%;
+      height:1px;
+
+      background:
+        linear-gradient(
+          90deg,
+          transparent,
+          rgba(214,167,73,.16),
+          transparent
+        );
+    }
+
+
+    .future-content{
+      text-align:center;
+
+      max-width:600px;
+    }
+
+
+    .future-content small{
+      color:#b88b42;
+
+      font-size:9px;
+
+      letter-spacing:.42em;
+
+      padding-left:.42em;
+
+      text-transform:uppercase;
+    }
+
+
+    .future-content h2{
+      margin-top:14px;
+
+      font-family:
+        'Cormorant Garamond',
+        serif;
+
+      font-size:
+        clamp(
+          44px,
+          12vw,
+          74px
+        );
+
+      font-weight:400;
+
+      color:#eee9e1;
+    }
+
+
+    .future-content p{
+      margin-top:16px;
+
+      font-family:
+        'Cormorant Garamond',
+        serif;
+
+      font-size:18px;
+
+      line-height:1.5;
+
+      color:
+        rgba(255,255,255,.38);
+    }
+
+
+    /* =========================================
        WHATSAPP
-    ======================================== */
+    ========================================= */
 
     .whatsapp-button{
       position:fixed;
@@ -784,9 +1169,10 @@
       width:76px;
       height:76px;
 
-      z-index:100;
+      z-index:180;
 
       display:flex;
+
       align-items:center;
       justify-content:center;
 
@@ -799,17 +1185,16 @@
         3s
         ease-in-out
         infinite;
-
-      -webkit-tap-highlight-color:transparent;
     }
 
 
     .whatsapp-button::before,
     .whatsapp-button::after{
       content:"";
+
       position:absolute;
+
       border-radius:50%;
-      pointer-events:none;
     }
 
 
@@ -845,9 +1230,12 @@
 
     .whatsapp-button img{
       position:relative;
+
       width:100%;
       height:100%;
+
       object-fit:contain;
+
       z-index:2;
 
       filter:
@@ -909,30 +1297,9 @@
     }
 
 
-    /* ========================================
-       PRÓXIMA SEÇÃO
-    ======================================== */
-
-    .next-section{
-      position:relative;
-
-      min-height:70vh;
-
-      background:
-        linear-gradient(
-          to bottom,
-          #050505 0%,
-          #070604 45%,
-          #090705 100%
-        );
-
-      z-index:10;
-    }
-
-
-    /* ========================================
-       MOBILE
-    ======================================== */
+    /* =========================================
+       CELULAR
+    ========================================= */
 
     @media(max-width:600px){
 
@@ -940,105 +1307,59 @@
         min-height:100svh;
       }
 
-
-      .hero-background{
-        object-position:center center;
+      .hero-fade{
+        height:55%;
       }
-
-
-      .bottom-fade{
-        height:52%;
-      }
-
-
-      .gold-sparkles{
-        inset:-2%;
-
-        width:104%;
-        height:104%;
-
-        opacity:.18;
-      }
-
-
-      .menu-trigger{
-        top:
-          max(
-            22px,
-            env(safe-area-inset-top)
-          );
-
-        left:15px;
-
-        width:58px;
-        height:58px;
-      }
-
-
-      .side-menu{
-        width:84vw;
-        max-width:360px;
-
-        padding-left:27px;
-        padding-right:27px;
-      }
-
-
-      .menu-title{
-        font-size:38px;
-        margin-bottom:50px;
-      }
-
 
       .top-logo{
-        width:125px;
-
-        top:
-          max(
-            27px,
-            env(safe-area-inset-top)
-          );
-
-        right:19px;
+        width:120px;
       }
-
 
       .hero-content{
-        top:50.5%;
         width:97%;
       }
-
 
       .name-image{
         width:98vw;
       }
-
 
       .nail-artistic-wrap{
         width:83vw;
         margin-top:-17px;
       }
 
-
       .hero-phrase{
-        margin-top:1px;
-
         font-size:
           clamp(
-            18px,
-            4.45vw,
+            17px,
+            4.4vw,
             22px
           );
 
-        letter-spacing:.01em;
-        white-space:nowrap;
+        letter-spacing:0;
       }
 
+      .works-section{
+        padding-top:82px;
+      }
+
+      .works-header{
+        margin-bottom:38px;
+      }
+
+      .work-card{
+        flex-basis:78vw;
+
+        height:112vw;
+
+        min-height:440px;
+
+        max-height:540px;
+      }
 
       .whatsapp-button{
         width:76px;
         height:76px;
-        right:18px;
       }
 
     }
@@ -1046,32 +1367,26 @@
 
     @media(max-width:390px){
 
+      .top-logo{
+        width:108px;
+      }
+
+      .menu-trigger{
+        width:54px;
+        height:54px;
+      }
+
       .hero-content{
         width:98%;
       }
 
-
-      .name-image{
-        width:98vw;
-      }
-
-
-      .nail-artistic-wrap{
-        width:84vw;
-        margin-top:-15px;
-      }
-
-
       .hero-phrase{
         font-size:16px;
-        letter-spacing:0;
       }
 
-
-      .top-logo{
-        width:112px;
+      .work-card{
+        flex-basis:80vw;
       }
-
 
       .whatsapp-button{
         width:70px;
@@ -1082,6 +1397,10 @@
 
 
     @media(prefers-reduced-motion:reduce){
+
+      html{
+        scroll-behavior:auto;
+      }
 
       .gold-sparkles,
       .whatsapp-button,
@@ -1101,74 +1420,71 @@
 <body>
 
 
-  <!-- FUNDO DO MENU -->
+  <!-- =========================================
+       BOTÃO DO MENU
+  ========================================= -->
+
+  <button
+    class="menu-trigger"
+    id="menuTrigger"
+    aria-label="Abrir menu"
+  >
+
+    <span></span>
+    <span></span>
+    <span></span>
+
+  </button>
+
+
+  <!-- FUNDO ESCURO DO MENU -->
 
   <div
-    class="menu-backdrop"
-    id="menuBackdrop"
+    class="menu-overlay"
+    id="menuOverlay"
   ></div>
 
 
-  <!-- MENU LATERAL -->
+  <!-- =========================================
+       MENU LATERAL
+  ========================================= -->
 
   <nav
     class="side-menu"
     id="sideMenu"
-    aria-label="Menu principal"
   >
-
-    <div class="menu-eyebrow">
-      Yara Nicácio
-    </div>
 
     <div class="menu-title">
       Menu
     </div>
 
 
-    <ul class="menu-list">
+    <div class="menu-links">
 
-      <li>
-        <a href="trabalhos.html">
-          Trabalhos
-        </a>
-      </li>
+      <a href="#trabalhos">
+        Trabalhos
+      </a>
 
-      <li>
-        <a href="#" class="future-link">
-          O estúdio
-        </a>
-      </li>
+      <a href="#estudio">
+        O estúdio
+      </a>
 
-      <li>
-        <a href="#" class="future-link">
-          Yara Nicácio
-        </a>
-      </li>
+      <a href="#yara">
+        Yara Nicácio
+      </a>
 
-      <li>
-        <a href="#" class="future-link">
-          Tabela de preços
-        </a>
-      </li>
+      <a href="#precos">
+        Tabela de preços
+      </a>
 
-      <li>
-        <a href="#" class="future-link">
-          Avaliações
-        </a>
-      </li>
+      <a href="#avaliacoes">
+        Avaliações
+      </a>
 
-      <li>
-        <a href="#" class="future-link">
-          Endereço
-        </a>
-      </li>
+      <a href="#endereco">
+        Endereço
+      </a>
 
-    </ul>
-
-
-    <div class="menu-footer">
-      Nail Artistic
     </div>
 
   </nav>
@@ -1177,33 +1493,15 @@
   <main>
 
 
+    <!-- =========================================
+         CAPA
+    ========================================= -->
+
     <section
       class="hero"
       id="inicio"
     >
 
-
-      <!-- BOTÃO MENU -->
-
-      <button
-        class="menu-trigger"
-        id="menuTrigger"
-        aria-label="Abrir menu"
-        aria-expanded="false"
-      >
-
-        <span class="menu-icon">
-
-          <span></span>
-          <span></span>
-          <span></span>
-
-        </span>
-
-      </button>
-
-
-      <!-- FOTO -->
 
       <img
         class="hero-background"
@@ -1212,26 +1510,26 @@
       >
 
 
-      <!-- DEGRADÊ -->
-
       <div
-        class="bottom-fade"
+        class="hero-fade"
         aria-hidden="true"
       ></div>
 
 
-      <!-- BRILHOS -->
-
-      <img
-        class="gold-sparkles"
-        id="goldSparkles"
-        src="24CD378D-F11E-4CB2-B0FC-FCAFBE91B276.png"
-        alt=""
-        aria-hidden="true"
+      <div
+        class="sparkles-layer"
+        id="sparklesLayer"
       >
 
+        <img
+          class="gold-sparkles"
+          src="24CD378D-F11E-4CB2-B0FC-FCAFBE91B276.png"
+          alt=""
+          aria-hidden="true"
+        >
 
-      <!-- LOGO -->
+      </div>
+
 
       <img
         class="top-logo"
@@ -1241,12 +1539,11 @@
       >
 
 
-      <!-- CONTEÚDO -->
-
       <div
         class="hero-content"
         id="heroContent"
       >
+
 
         <img
           class="name-image"
@@ -1276,10 +1573,9 @@
           aria-hidden="true"
         ></div>
 
+
       </div>
 
-
-      <!-- DESLIZE -->
 
       <div class="scroll-indicator">
 
@@ -1295,13 +1591,323 @@
     </section>
 
 
-    <section class="next-section"></section>
+    <!-- =========================================
+         TRABALHOS
+    ========================================= -->
+
+    <section
+      class="works-section"
+      id="trabalhos"
+    >
+
+
+      <div class="works-header">
+
+        <span class="section-eyebrow">
+          Nail Artistic
+        </span>
+
+
+        <h2 class="section-title">
+          Trabalhos <em>exclusivos</em>
+        </h2>
+
+
+        <p class="section-description">
+          Cada criação nasce de uma ideia única,
+          transformada em detalhes que carregam
+          personalidade, técnica e identidade.
+        </p>
+
+      </div>
+
+
+      <!-- CARROSSEL DAS FOTOS -->
+
+      <div
+        class="works-slider"
+        id="worksSlider"
+      >
+
+
+        <article class="work-card">
+
+          <img
+            src="e3ad0ae1-c488-46af-9158-a3deb5face01.jpeg"
+            alt="Trabalho de Nail Art por Yara Nicácio"
+            loading="lazy"
+          >
+
+        </article>
+
+
+        <article class="work-card">
+
+          <img
+            src="bc419ed5-ed49-4355-9452-30b7eb869860.jpeg"
+            alt="Trabalho de Nail Art por Yara Nicácio"
+            loading="lazy"
+          >
+
+        </article>
+
+
+        <article class="work-card">
+
+          <img
+            src="5527e37e-3148-4c0c-8bbf-0f6710ba04a6.jpeg"
+            alt="Trabalho de Nail Art por Yara Nicácio"
+            loading="lazy"
+          >
+
+        </article>
+
+
+        <article class="work-card">
+
+          <img
+            src="15b54e6d-a6bb-42b6-84e1-fcdf0c0d6169.jpeg"
+            alt="Trabalho de Nail Art por Yara Nicácio"
+            loading="lazy"
+          >
+
+        </article>
+
+
+        <article class="work-card">
+
+          <img
+            src="debe1e33-9d29-4f2b-9bd4-f5fa6a37f009.jpeg"
+            alt="Trabalho de Nail Art por Yara Nicácio"
+            loading="lazy"
+          >
+
+        </article>
+
+
+        <article class="work-card">
+
+          <img
+            src="0c71fd76-948f-4522-b7a3-06e1555c9dda.jpeg"
+            alt="Trabalho de Nail Art por Yara Nicácio"
+            loading="lazy"
+          >
+
+        </article>
+
+
+        <article class="work-card">
+
+          <img
+            src="244f17b4-d1d6-4516-b3a8-629694c8f941.jpeg"
+            alt="Trabalho de Nail Art por Yara Nicácio"
+            loading="lazy"
+          >
+
+        </article>
+
+
+        <article class="work-card">
+
+          <img
+            src="d242cc6d-d5b6-4f96-b9fb-2ff206de1ae5.jpeg"
+            alt="Trabalho de Nail Art por Yara Nicácio"
+            loading="lazy"
+          >
+
+        </article>
+
+
+        <article class="work-card">
+
+          <img
+            src="25c27bb6-e5b5-4ca5-aa81-eac0b57ff341.jpeg"
+            alt="Trabalho de Nail Art por Yara Nicácio"
+            loading="lazy"
+          >
+
+        </article>
+
+
+        <article class="work-card">
+
+          <img
+            src="0874cfbe-f9fd-4974-ac18-385dba047b94.jpeg"
+            alt="Trabalho de Nail Art por Yara Nicácio"
+            loading="lazy"
+          >
+
+        </article>
+
+
+      </div>
+
+
+      <div class="works-navigation">
+
+        <span>
+          DESLIZE PARA VER
+        </span>
+
+        <div class="works-arrow"></div>
+
+      </div>
+
+
+    </section>
+
+
+    <!-- =========================================
+         O ESTÚDIO
+         VAMOS DESENVOLVER DEPOIS
+    ========================================= -->
+
+    <section
+      class="future-section"
+      id="estudio"
+    >
+
+      <div class="future-content">
+
+        <small>
+          Yara Nicácio
+        </small>
+
+        <h2>
+          O estúdio
+        </h2>
+
+        <p>
+          Uma experiência pensada em cada detalhe.
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================================
+         YARA NICÁCIO
+    ========================================= -->
+
+    <section
+      class="future-section"
+      id="yara"
+    >
+
+      <div class="future-content">
+
+        <small>
+          Nail Artist
+        </small>
+
+        <h2>
+          Yara Nicácio
+        </h2>
+
+        <p>
+          Técnica, identidade e criatividade
+          transformadas em arte.
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================================
+         TABELA DE PREÇOS
+    ========================================= -->
+
+    <section
+      class="future-section"
+      id="precos"
+    >
+
+      <div class="future-content">
+
+        <small>
+          Serviços
+        </small>
+
+        <h2>
+          Tabela de preços
+        </h2>
+
+        <p>
+          Conheça os serviços e escolha
+          a experiência ideal para você.
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================================
+         AVALIAÇÕES
+    ========================================= -->
+
+    <section
+      class="future-section"
+      id="avaliacoes"
+    >
+
+      <div class="future-content">
+
+        <small>
+          Experiências
+        </small>
+
+        <h2>
+          Avaliações
+        </h2>
+
+        <p>
+          A experiência de quem já escolheu
+          transformar suas unhas em arte.
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================================
+         ENDEREÇO
+    ========================================= -->
+
+    <section
+      class="future-section"
+      id="endereco"
+    >
+
+      <div class="future-content">
+
+        <small>
+          Localização
+        </small>
+
+        <h2>
+          Endereço
+        </h2>
+
+        <p>
+          Em breve vamos adicionar aqui
+          todas as informações do espaço.
+        </p>
+
+      </div>
+
+    </section>
 
 
   </main>
 
 
-  <!-- WHATSAPP -->
+  <!-- =========================================
+       WHATSAPP
+  ========================================= -->
 
   <a
     class="whatsapp-button"
@@ -1319,79 +1925,131 @@
   </a>
 
 
+  <!-- =========================================
+       JAVASCRIPT
+  ========================================= -->
+
   <script>
 
-    /* ================================
+    /* =========================================
        MENU
-    ================================ */
+    ========================================= */
 
     const menuTrigger =
       document.getElementById("menuTrigger");
 
-    const menuBackdrop =
-      document.getElementById("menuBackdrop");
+    const sideMenu =
+      document.getElementById("sideMenu");
 
+    const menuOverlay =
+      document.getElementById("menuOverlay");
 
-    function toggleMenu(){
-
-      const opened =
-        document.body.classList.toggle(
-          "menu-open"
-        );
-
-      menuTrigger.setAttribute(
-        "aria-expanded",
-        opened
+    const menuLinks =
+      document.querySelectorAll(
+        ".menu-links a"
       );
+
+
+    function openMenu(){
+
+      menuTrigger.classList.add(
+        "active"
+      );
+
+      sideMenu.classList.add(
+        "active"
+      );
+
+      menuOverlay.classList.add(
+        "active"
+      );
+
+      document.body.style.overflow =
+        "hidden";
+
+    }
+
+
+    function closeMenu(){
+
+      menuTrigger.classList.remove(
+        "active"
+      );
+
+      sideMenu.classList.remove(
+        "active"
+      );
+
+      menuOverlay.classList.remove(
+        "active"
+      );
+
+      document.body.style.overflow =
+        "";
 
     }
 
 
     menuTrigger.addEventListener(
       "click",
-      toggleMenu
+      function(){
+
+        if(
+          sideMenu.classList.contains(
+            "active"
+          )
+        ){
+
+          closeMenu();
+
+        }else{
+
+          openMenu();
+
+        }
+
+      }
     );
 
 
-    menuBackdrop.addEventListener(
+    menuOverlay.addEventListener(
       "click",
-      toggleMenu
+      closeMenu
     );
 
 
-    /*
-      SOMENTE OS LINKS QUE AINDA
-      NÃO TÊM PÁGINA FICAM BLOQUEADOS
-    */
+    menuLinks.forEach(
 
-    document
-      .querySelectorAll(".future-link")
-      .forEach(link => {
+      function(link){
 
         link.addEventListener(
           "click",
-          function(event){
-
-            event.preventDefault();
-
-          }
+          closeMenu
         );
 
-      });
+      }
+
+    );
 
 
-    /* ================================
-       PROFUNDIDADE
-    ================================ */
+    /* =========================================
+       PROFUNDIDADE DA CAPA
+    ========================================= */
 
     const heroContent =
-      document.getElementById("heroContent");
+      document.getElementById(
+        "heroContent"
+      );
 
-    const goldSparkles =
-      document.getElementById("goldSparkles");
+    const sparklesLayer =
+      document.getElementById(
+        "sparklesLayer"
+      );
 
     const topLogo =
-      document.getElementById("topLogo");
+      document.getElementById(
+        "topLogo"
+      );
 
 
     let ticking = false;
@@ -1403,31 +2061,44 @@
         window.scrollY;
 
 
-      goldSparkles.style.transform =
-        `translate3d(
-          0,
-          ${scrollY * 0.10}px,
-          0
-        )`;
+      /*
+        O EFEITO ACONTECE SOMENTE
+        ENQUANTO A CAPA ESTIVER
+        PRÓXIMA DA TELA.
+      */
+
+      if(
+        scrollY <
+        window.innerHeight * 1.15
+      ){
+
+        sparklesLayer.style.transform =
+          `translate3d(
+            0,
+            ${scrollY * 0.10}px,
+            0
+          )`;
 
 
-      heroContent.style.transform =
-        `translate3d(
-          -50%,
-          calc(
-            -50% +
-            ${scrollY * 0.18}px
-          ),
-          0
-        )`;
+        heroContent.style.transform =
+          `translate3d(
+            -50%,
+            calc(
+              -50% +
+              ${scrollY * 0.18}px
+            ),
+            0
+          )`;
 
 
-      topLogo.style.transform =
-        `translate3d(
-          0,
-          ${scrollY * 0.10}px,
-          0
-        )`;
+        topLogo.style.transform =
+          `translate3d(
+            0,
+            ${scrollY * 0.10}px,
+            0
+          )`;
+
+      }
 
 
       ticking = false;
@@ -1457,6 +2128,94 @@
         passive:true
       }
 
+    );
+
+
+    /* =========================================
+       CARROSSEL COM ARRASTE NO COMPUTADOR
+    ========================================= */
+
+    const slider =
+      document.getElementById(
+        "worksSlider"
+      );
+
+
+    let isDown = false;
+
+    let startX;
+
+    let scrollLeft;
+
+
+    slider.addEventListener(
+      "mousedown",
+      function(e){
+
+        isDown = true;
+
+        slider.style.cursor =
+          "grabbing";
+
+        startX =
+          e.pageX -
+          slider.offsetLeft;
+
+        scrollLeft =
+          slider.scrollLeft;
+
+      }
+    );
+
+
+    slider.addEventListener(
+      "mouseleave",
+      function(){
+
+        isDown = false;
+
+        slider.style.cursor =
+          "grab";
+
+      }
+    );
+
+
+    slider.addEventListener(
+      "mouseup",
+      function(){
+
+        isDown = false;
+
+        slider.style.cursor =
+          "grab";
+
+      }
+    );
+
+
+    slider.addEventListener(
+      "mousemove",
+      function(e){
+
+        if(!isDown){
+          return;
+        }
+
+        e.preventDefault();
+
+        const x =
+          e.pageX -
+          slider.offsetLeft;
+
+        const walk =
+          (x - startX) * 1.4;
+
+        slider.scrollLeft =
+          scrollLeft -
+          walk;
+
+      }
     );
 
   </script>
