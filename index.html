@@ -148,10 +148,10 @@
         rgba(255,224,158,.98);
 
       box-shadow:
-        0 0 4px rgba(255,246,210,.94),
-        0 0 10px rgba(255,215,125,.76),
-        0 0 21px rgba(222,161,56,.44),
-        0 0 40px rgba(183,116,28,.20);
+        0 0 3px rgba(255,246,210,.92),
+        0 0 8px rgba(255,215,125,.72),
+        0 0 16px rgba(222,161,56,.40),
+        0 0 28px rgba(183,116,28,.16);
 
       transform:
         scale(.58);
@@ -191,14 +191,14 @@
 
       border-radius:20px;
 
-      opacity:.60;
+      opacity:.58;
     }
 
 
     .twinkle::before{
       width:
         calc(
-          var(--size) * 6.2
+          var(--size) * 5.7
         );
 
       height:1px;
@@ -207,7 +207,7 @@
         linear-gradient(
           to right,
           transparent,
-          rgba(255,235,185,.88),
+          rgba(255,235,185,.86),
           transparent
         );
     }
@@ -218,14 +218,14 @@
 
       height:
         calc(
-          var(--size) * 6.2
+          var(--size) * 5.7
         );
 
       background:
         linear-gradient(
           to bottom,
           transparent,
-          rgba(255,235,185,.88),
+          rgba(255,235,185,.86),
           transparent
         );
     }
@@ -267,7 +267,7 @@
 
       50%{
         opacity:var(--peak);
-        transform:scale(1.22);
+        transform:scale(1.18);
       }
 
       64%{
@@ -307,7 +307,7 @@
 
       61%{
         opacity:var(--peak);
-        transform:scale(1.28);
+        transform:scale(1.21);
       }
 
       74%{
@@ -347,7 +347,7 @@
 
       43%{
         opacity:var(--peak);
-        transform:scale(1.18);
+        transform:scale(1.16);
       }
 
       58%{
@@ -387,7 +387,7 @@
 
       66%{
         opacity:var(--peak);
-        transform:scale(1.24);
+        transform:scale(1.20);
       }
 
       78%{
@@ -3142,10 +3142,65 @@
     }
 
 
+    /*
+       NOVA DISTRIBUIÇÃO:
+
+       72% DOS BRILHOS
+       FICAM MAIS CONCENTRADOS
+       NO MEIO DA TELA.
+
+       OS OUTROS 28%
+       CONTINUAM ESPALHADOS.
+    */
+
+    function getTwinklePosition(){
+
+      const centerChance =
+        Math.random();
+
+
+      if(
+        centerChance < .72
+      ){
+
+        return{
+          x:randomBetween(
+            12,
+            88
+          ),
+
+          y:randomBetween(
+            23,
+            77
+          )
+        };
+
+      }
+
+
+      return{
+        x:randomBetween(
+          2,
+          98
+        ),
+
+        y:randomBetween(
+          3,
+          97
+        )
+      };
+
+    }
+
+
     function configureTwinkle(
       twinkle,
       firstTime = false
     ){
+
+      /*
+         CONTINUA LENTO
+      */
 
       const duration =
         randomBetween(
@@ -3162,7 +3217,7 @@
 
 
       if(
-        intensityChance < .22
+        intensityChance < .24
       ){
 
         peak =
@@ -3172,21 +3227,21 @@
           );
 
       }else if(
-        intensityChance < .68
+        intensityChance < .70
       ){
 
         peak =
           randomBetween(
-            .38,
-            .68
+            .40,
+            .69
           );
 
       }else{
 
         peak =
           randomBetween(
-            .20,
-            .40
+            .22,
+            .42
           );
 
       }
@@ -3200,16 +3255,16 @@
 
 
       const blur =
-        Math.random() > .76
+        Math.random() > .80
         ?
         randomBetween(
-          .28,
-          .65
+          .20,
+          .48
         )
         :
         randomBetween(
           0,
-          .12
+          .10
         );
 
 
@@ -3303,13 +3358,25 @@
           "twinkle";
 
 
+        /*
+           MAIS BRILHO NO CENTRO
+        */
+
+        const position =
+          getTwinklePosition();
+
+
         twinkle.style.left =
-          `${randomBetween(2,98).toFixed(2)}%`;
+          `${position.x.toFixed(2)}%`;
 
 
         twinkle.style.top =
-          `${randomBetween(3,97).toFixed(2)}%`;
+          `${position.y.toFixed(2)}%`;
 
+
+        /*
+           TODOS CONTINUAM PEQUENOS
+        */
 
         const sizeChance =
           Math.random();
@@ -3319,31 +3386,43 @@
 
 
         if(
-          sizeChance < .22
+          sizeChance < .12
         ){
 
-          size =
-            randomBetween(
-              5.8,
-              8.4
-            );
-
-        }else if(
-          sizeChance < .64
-        ){
+          /*
+             PEQUENO MAIS PRESENTE
+          */
 
           size =
             randomBetween(
               3.6,
-              5.8
+              4.4
+            );
+
+        }else if(
+          sizeChance < .58
+        ){
+
+          /*
+             MÉDIO-PEQUENO
+          */
+
+          size =
+            randomBetween(
+              2.4,
+              3.6
             );
 
         }else{
 
+          /*
+             MICRO BRILHOS
+          */
+
           size =
             randomBetween(
-              2.0,
-              3.8
+              1.4,
+              2.6
             );
 
         }
@@ -3387,14 +3466,14 @@
 
 
     /* =====================================================
-       DOBRO DE BRILHOS
+       MAIS BRILHOS
     ===================================================== */
 
     createTwinkles(
       document.getElementById(
         "heroTwinkles"
       ),
-      84
+      120
     );
 
 
@@ -3402,7 +3481,7 @@
       document.getElementById(
         "worksTwinkles"
       ),
-      100
+      140
     );
 
 
