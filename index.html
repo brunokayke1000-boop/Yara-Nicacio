@@ -27,7 +27,6 @@
     rel="stylesheet"
   >
 
-
   <style>
 
     *{
@@ -45,7 +44,7 @@
       margin:0;
       overflow-x:hidden;
       background:#050505;
-      color:#ffffff;
+      color:#fff;
       font-family:'Montserrat',sans-serif;
     }
 
@@ -56,7 +55,7 @@
 
 
     /* =====================================================
-       FUNDO CONTÍNUO
+       FUNDO GERAL
     ===================================================== */
 
     .site-background{
@@ -71,13 +70,11 @@
           rgba(130,86,26,.055),
           transparent 36%
         ),
-
         radial-gradient(
           circle at 8% 68%,
           rgba(105,67,18,.035),
           transparent 35%
         ),
-
         linear-gradient(
           180deg,
           #050505 0%,
@@ -88,28 +85,21 @@
 
 
     /* =====================================================
-       BRILHO GLOBAL
+       BRILHOS GLOBAIS
     ===================================================== */
 
     .global-sparkles-layer{
       position:fixed;
-
       inset:-7%;
-
       z-index:-15;
-
       pointer-events:none;
-
       will-change:transform;
     }
-
 
     .global-sparkles{
       width:114%;
       height:114%;
-
       object-fit:cover;
-
       mix-blend-mode:screen;
 
       animation:
@@ -171,7 +161,6 @@
         border-color .35s ease;
     }
 
-
     .menu-trigger span{
       display:block;
 
@@ -191,18 +180,15 @@
         opacity .35s ease;
     }
 
-
     .menu-trigger.active span:nth-child(1){
       transform:
         translateY(7px)
         rotate(45deg);
     }
 
-
     .menu-trigger.active span:nth-child(2){
       opacity:0;
     }
-
 
     .menu-trigger.active span:nth-child(3){
       transform:
@@ -212,14 +198,12 @@
 
 
     /* =====================================================
-       OVERLAY MENU
+       MENU OVERLAY
     ===================================================== */
 
     .menu-overlay{
       position:fixed;
-
       inset:0;
-
       z-index:190;
 
       background:
@@ -235,7 +219,6 @@
         opacity .45s ease,
         visibility .45s ease;
     }
-
 
     .menu-overlay.active{
       opacity:1;
@@ -293,11 +276,9 @@
         cubic-bezier(.77,0,.18,1);
     }
 
-
     .side-menu.active{
       transform:translateX(0);
     }
-
 
     .menu-title{
       font-family:
@@ -305,18 +286,14 @@
         serif;
 
       font-size:37px;
-
       font-weight:500;
-
       color:#e4bd72;
 
       margin-bottom:42px;
     }
 
-
     .menu-title::after{
       content:"";
-
       display:block;
 
       width:45px;
@@ -332,13 +309,11 @@
         );
     }
 
-
     .menu-links{
       display:flex;
       flex-direction:column;
       gap:5px;
     }
-
 
     .menu-links a{
       display:block;
@@ -383,7 +358,6 @@
       z-index:5;
     }
 
-
     .hero-photo{
       position:absolute;
 
@@ -413,7 +387,7 @@
       right:0;
       bottom:-2px;
 
-      height:58%;
+      height:62%;
 
       z-index:2;
 
@@ -424,38 +398,25 @@
           to bottom,
 
           rgba(5,5,5,0) 0%,
-
           rgba(5,5,5,.02) 8%,
-
           rgba(5,5,5,.05) 16%,
-
           rgba(5,5,5,.10) 24%,
-
           rgba(5,5,5,.18) 33%,
-
           rgba(5,5,5,.29) 42%,
-
           rgba(5,5,5,.43) 51%,
-
           rgba(5,5,5,.58) 60%,
-
           rgba(5,5,5,.71) 69%,
-
           rgba(5,5,5,.82) 77%,
-
           rgba(5,5,5,.90) 84%,
-
           rgba(5,5,5,.96) 90%,
-
           rgba(5,5,5,.985) 95%,
-
           #050505 100%
         );
     }
 
 
     /* =====================================================
-       BRILHO DA CAPA
+       BRILHOS CAPA
     ===================================================== */
 
     .hero-sparkles{
@@ -506,7 +467,6 @@
           0 5px 12px
           rgba(0,0,0,.75)
         )
-
         drop-shadow(
           0 0 8px
           rgba(207,159,67,.18)
@@ -542,7 +502,6 @@
       will-change:transform;
     }
 
-
     .name-image{
       display:block;
 
@@ -558,18 +517,15 @@
           0 7px 10px
           rgba(0,0,0,.90)
         )
-
         drop-shadow(
           0 16px 25px
           rgba(0,0,0,.72)
         )
-
         drop-shadow(
           0 0 7px
           rgba(255,255,255,.18)
         );
     }
-
 
     .nail-artistic-wrap{
       width:min(83vw,680px);
@@ -579,7 +535,6 @@
       display:flex;
       justify-content:center;
     }
-
 
     .nail-artistic{
       width:100%;
@@ -591,18 +546,15 @@
         brightness(1.8)
         saturate(.55)
         contrast(1.12)
-
         drop-shadow(
           0 3px 5px
           rgba(0,0,0,.90)
         )
-
         drop-shadow(
           0 0 6px
           rgba(255,221,150,.42)
         );
     }
-
 
     .hero-phrase{
       margin-top:1px;
@@ -621,7 +573,6 @@
         );
 
       font-weight:400;
-
       line-height:1.2;
 
       color:
@@ -630,13 +581,9 @@
       white-space:nowrap;
 
       text-shadow:
-        0 3px 7px
-        rgba(0,0,0,.95),
-
-        0 8px 18px
-        rgba(0,0,0,.82);
+        0 3px 7px rgba(0,0,0,.95),
+        0 8px 18px rgba(0,0,0,.82);
     }
-
 
     .phrase-detail{
       width:48px;
@@ -686,7 +633,6 @@
       pointer-events:none;
     }
 
-
     .scroll-indicator span{
       color:
         rgba(255,255,255,.34);
@@ -697,7 +643,6 @@
 
       padding-left:.42em;
     }
-
 
     .scroll-line{
       width:1px;
@@ -729,7 +674,7 @@
 
       min-height:100svh;
 
-      margin-top:-90px;
+      margin-top:-95px;
 
       padding:
         205px
@@ -738,14 +683,123 @@
 
       overflow:hidden;
 
-      background:transparent;
+      background:#050505;
 
       z-index:2;
+
+      isolation:isolate;
     }
 
 
     /* =====================================================
-       BRILHO DOS TRABALHOS
+       NOVA FOTO DE FUNDO DOS TRABALHOS
+    ===================================================== */
+
+    .works-background-photo{
+      position:absolute;
+
+      top:-180px;
+      left:0;
+
+      width:100%;
+      height:calc(100% + 360px);
+
+      object-fit:cover;
+      object-position:center top;
+
+      z-index:-5;
+
+      pointer-events:none;
+
+      /*
+        SEM FILTRO.
+        A FOTO APARECE EXATAMENTE COMO FOI EDITADA.
+      */
+
+      filter:none;
+      opacity:1;
+
+      transform:translateZ(0);
+    }
+
+
+    /* =====================================================
+       DEGRADÊ QUE FUNDE A CAPA COM O FUNDO DOS TRABALHOS
+    ===================================================== */
+
+    .works-background-blend{
+      position:absolute;
+
+      inset:0;
+
+      z-index:-3;
+
+      pointer-events:none;
+
+      background:
+
+        linear-gradient(
+          to bottom,
+
+          #050505 0%,
+
+          rgba(5,5,5,.98) 2%,
+
+          rgba(5,5,5,.94) 5%,
+
+          rgba(5,5,5,.83) 9%,
+
+          rgba(5,5,5,.63) 14%,
+
+          rgba(5,5,5,.40) 20%,
+
+          rgba(5,5,5,.20) 27%,
+
+          rgba(5,5,5,.07) 34%,
+
+          rgba(5,5,5,0) 43%,
+
+          rgba(5,5,5,0) 72%,
+
+          rgba(5,5,5,.08) 79%,
+
+          rgba(5,5,5,.25) 86%,
+
+          rgba(5,5,5,.52) 92%,
+
+          rgba(5,5,5,.80) 96%,
+
+          #050505 100%
+        );
+    }
+
+
+    /* =====================================================
+       SOMBRA LEVE PARA LEITURA
+       NÃO ALTERA A COR DA FOTO
+    ===================================================== */
+
+    .works-background-depth{
+      position:absolute;
+
+      inset:0;
+
+      z-index:-2;
+
+      pointer-events:none;
+
+      background:
+        radial-gradient(
+          ellipse at 50% 35%,
+          rgba(0,0,0,0) 0%,
+          rgba(0,0,0,.04) 48%,
+          rgba(0,0,0,.14) 100%
+        );
+    }
+
+
+    /* =====================================================
+       BRILHOS DOS TRABALHOS
     ===================================================== */
 
     .works-sparkles-layer{
@@ -789,7 +843,6 @@
       will-change:transform;
     }
 
-
     .works-sparkles{
       width:114%;
       height:114%;
@@ -830,11 +883,8 @@
       background:
         radial-gradient(
           ellipse,
-
           rgba(174,120,35,.11) 0%,
-
           rgba(126,82,20,.05) 32%,
-
           transparent 68%
         );
 
@@ -860,13 +910,10 @@
       margin-bottom:55px;
     }
 
-
     .works-header-float{
       position:relative;
-
       will-change:transform;
     }
-
 
     .works-eyebrow{
       display:flex;
@@ -887,7 +934,6 @@
       margin-bottom:18px;
     }
 
-
     .works-eyebrow::before{
       content:"";
 
@@ -903,7 +949,6 @@
           rgba(210,163,83,.85)
         );
     }
-
 
     .works-title{
       font-family:
@@ -927,13 +972,9 @@
       color:#f3eee7;
 
       text-shadow:
-        0 10px 28px
-        rgba(0,0,0,.55),
-
-        0 0 32px
-        rgba(210,160,72,.035);
+        0 10px 28px rgba(0,0,0,.75),
+        0 0 32px rgba(210,160,72,.06);
     }
-
 
     .works-description{
       max-width:650px;
@@ -957,12 +998,15 @@
       line-height:1.43;
 
       color:
-        rgba(238,229,216,.69);
+        rgba(238,229,216,.78);
+
+      text-shadow:
+        0 3px 12px rgba(0,0,0,.88);
     }
 
 
     /* =====================================================
-       DESLIZE TRABALHOS
+       INDICAÇÃO DA GALERIA
     ===================================================== */
 
     .works-drag{
@@ -971,6 +1015,7 @@
       z-index:5;
 
       display:flex;
+
       align-items:center;
       justify-content:space-between;
 
@@ -980,18 +1025,19 @@
         20px;
     }
 
-
     .works-drag-text{
       color:
-        rgba(255,255,255,.33);
+        rgba(255,255,255,.40);
 
       font-size:9px;
 
       letter-spacing:.37em;
 
       text-transform:uppercase;
-    }
 
+      text-shadow:
+        0 2px 8px #000;
+    }
 
     .works-drag-arrow{
       display:flex;
@@ -1007,7 +1053,6 @@
         infinite;
     }
 
-
     .works-drag-line{
       width:58px;
       height:1px;
@@ -1019,7 +1064,6 @@
           rgba(218,175,100,.80)
         );
     }
-
 
     .works-drag-chevron{
       width:8px;
@@ -1060,11 +1104,6 @@
 
       scroll-padding-left:35px;
 
-      /*
-        AUMENTEI UM POUCO O ESPAÇO
-        VERTICAL PARA O GLOW NÃO SER CORTADO.
-      */
-
       padding:
         16px
         35px
@@ -1077,14 +1116,13 @@
       cursor:grab;
     }
 
-
     .works-slider::-webkit-scrollbar{
       display:none;
     }
 
 
     /* =====================================================
-       CARD + NEON DOURADO
+       CARD + BORDA NEON DOURADA
     ===================================================== */
 
     .work-card{
@@ -1107,35 +1145,16 @@
 
       background:#0b0907;
 
-      /*
-        LINHA DOURADA PRINCIPAL.
-      */
-
       border:
         1px solid
         rgba(239,192,94,.78);
 
-      /*
-        AQUI ESTÁ O EFEITO NEON:
-        várias sombras cada vez mais suaves.
-      */
-
       box-shadow:
-
-        0 0 2px
-        rgba(255,231,169,.95),
-
-        0 0 6px
-        rgba(237,184,75,.56),
-
-        0 0 13px
-        rgba(212,151,43,.28),
-
-        0 0 28px
-        rgba(181,117,26,.11),
-
-        0 18px 45px
-        rgba(0,0,0,.58);
+        0 0 2px rgba(255,231,169,.95),
+        0 0 6px rgba(237,184,75,.56),
+        0 0 13px rgba(212,151,43,.28),
+        0 0 28px rgba(181,117,26,.11),
+        0 18px 45px rgba(0,0,0,.58);
 
       animation:
         cardGoldPulse
@@ -1145,14 +1164,6 @@
 
       isolation:isolate;
     }
-
-
-    /* =====================================================
-       RECIPIENTE DA FOTO
-       
-       NECESSÁRIO PARA A FOTO CONTINUAR
-       CORTADA DENTRO DA BORDA.
-    ===================================================== */
 
     .work-card-image{
       position:absolute;
@@ -1167,7 +1178,6 @@
 
       background:#0b0907;
     }
-
 
     .work-card img{
       position:absolute;
@@ -1186,7 +1196,6 @@
         .75s
         cubic-bezier(.2,.75,.25,1);
     }
-
 
     .work-card-image::after{
       content:"";
@@ -1207,13 +1216,6 @@
       z-index:2;
     }
 
-
-    /* =====================================================
-       SEGUNDA LINHA DE LUZ
-       
-       ESSA FICA LOGO PARA DENTRO DA BORDA.
-    ===================================================== */
-
     .work-card::before{
       content:"";
 
@@ -1232,21 +1234,9 @@
         rgba(255,229,162,.28);
 
       box-shadow:
-
-        inset 0 0 7px
-        rgba(255,213,119,.12),
-
-        inset 0 0 14px
-        rgba(201,139,40,.06);
+        inset 0 0 7px rgba(255,213,119,.12),
+        inset 0 0 14px rgba(201,139,40,.06);
     }
-
-
-    /* =====================================================
-       PONTOS DE LUZ NA BORDA
-       
-       CRIA AQUELES PEQUENOS TRECHOS MAIS
-       CLAROS COMO NA REFERÊNCIA.
-    ===================================================== */
 
     .work-card::after{
       content:"";
@@ -1262,28 +1252,24 @@
       border-radius:8px;
 
       background:
-
         radial-gradient(
           circle at 8% 0%,
           rgba(255,245,205,.90) 0,
           rgba(255,213,112,.55) 1px,
           transparent 8px
         ),
-
         radial-gradient(
           circle at 83% 0%,
           rgba(255,244,204,.90) 0,
           rgba(246,196,90,.42) 1px,
           transparent 9px
         ),
-
         radial-gradient(
           circle at 100% 70%,
           rgba(255,235,170,.72) 0,
           rgba(227,167,55,.34) 1px,
           transparent 8px
         ),
-
         radial-gradient(
           circle at 8% 100%,
           rgba(255,242,196,.78) 0,
@@ -1294,62 +1280,8 @@
       opacity:.70;
     }
 
-
     .work-card:active img{
       transform:scale(1.025);
-    }
-
-
-    @keyframes cardGoldPulse{
-
-      0%,
-      100%{
-
-        border-color:
-          rgba(231,181,80,.68);
-
-        box-shadow:
-
-          0 0 2px
-          rgba(255,229,160,.76),
-
-          0 0 6px
-          rgba(232,175,68,.42),
-
-          0 0 13px
-          rgba(201,139,34,.20),
-
-          0 0 27px
-          rgba(165,105,21,.08),
-
-          0 18px 45px
-          rgba(0,0,0,.58);
-      }
-
-
-      50%{
-
-        border-color:
-          rgba(255,212,118,.95);
-
-        box-shadow:
-
-          0 0 3px
-          rgba(255,242,201,.98),
-
-          0 0 8px
-          rgba(250,197,91,.72),
-
-          0 0 17px
-          rgba(218,154,44,.36),
-
-          0 0 34px
-          rgba(181,116,26,.15),
-
-          0 18px 45px
-          rgba(0,0,0,.58);
-      }
-
     }
 
 
@@ -1371,7 +1303,6 @@
         35px;
     }
 
-
     .works-counter{
       display:flex;
 
@@ -1384,13 +1315,10 @@
         serif;
     }
 
-
     .works-current{
       font-size:30px;
-
       color:#e7d8be;
     }
-
 
     .works-total{
       font-size:15px;
@@ -1398,7 +1326,6 @@
       color:
         rgba(255,255,255,.28);
     }
-
 
     .works-footer-line{
       flex:1;
@@ -1417,7 +1344,7 @@
 
 
     /* =====================================================
-       SEÇÕES
+       OUTRAS SEÇÕES
     ===================================================== */
 
     .future-section{
@@ -1439,7 +1366,6 @@
       background:transparent;
     }
 
-
     .future-light{
       position:absolute;
 
@@ -1459,15 +1385,11 @@
       background:
         radial-gradient(
           circle,
-
           rgba(139,91,24,.055) 0%,
-
           rgba(94,57,14,.02) 35%,
-
           transparent 68%
         );
     }
-
 
     .future-content{
       position:relative;
@@ -1478,7 +1400,6 @@
 
       text-align:center;
     }
-
 
     .future-content small{
       color:#b88b42;
@@ -1491,7 +1412,6 @@
 
       text-transform:uppercase;
     }
-
 
     .future-content h2{
       margin-top:14px;
@@ -1511,7 +1431,6 @@
 
       color:#eee9e1;
     }
-
 
     .future-content p{
       margin-top:16px;
@@ -1553,7 +1472,6 @@
       background:transparent;
     }
 
-
     .address-glow{
       position:absolute;
 
@@ -1571,17 +1489,13 @@
       background:
         radial-gradient(
           circle,
-
           rgba(165,112,34,.075),
-
           rgba(91,57,15,.025) 38%,
-
           transparent 70%
         );
 
       pointer-events:none;
     }
-
 
     .address-content{
       position:relative;
@@ -1594,7 +1508,6 @@
       text-align:center;
     }
 
-
     .address-eyebrow{
       color:#b88b42;
 
@@ -1606,7 +1519,6 @@
 
       text-transform:uppercase;
     }
-
 
     .address-title{
       margin-top:14px;
@@ -1627,7 +1539,6 @@
       color:#f1ece4;
     }
 
-
     .address-line{
       width:1px;
       height:52px;
@@ -1645,7 +1556,6 @@
         );
     }
 
-
     .building{
       font-family:
         'Cormorant Garamond',
@@ -1662,7 +1572,6 @@
 
       margin-bottom:17px;
     }
-
 
     .address-text{
       font-family:
@@ -1682,7 +1591,6 @@
         rgba(245,238,227,.72);
     }
 
-
     .address-room{
       display:block;
 
@@ -1700,7 +1608,6 @@
 
       letter-spacing:.04em;
     }
-
 
     .map-button{
       display:inline-flex;
@@ -1729,11 +1636,6 @@
       font-size:9px;
 
       letter-spacing:.28em;
-
-      padding-left:
-        calc(
-          25px + .28em
-        );
 
       text-transform:uppercase;
 
@@ -1784,7 +1686,6 @@
         infinite;
     }
 
-
     .whatsapp-button::before,
     .whatsapp-button::after{
       content:"";
@@ -1795,7 +1696,6 @@
 
       pointer-events:none;
     }
-
 
     .whatsapp-button::before{
       inset:-7px;
@@ -1811,7 +1711,6 @@
         infinite;
     }
 
-
     .whatsapp-button::after{
       inset:-16px;
 
@@ -1825,7 +1724,6 @@
         ease-in-out
         infinite;
     }
-
 
     .whatsapp-button img{
       position:relative;
@@ -1842,7 +1740,6 @@
           0 5px 10px
           rgba(0,0,0,.85)
         )
-
         drop-shadow(
           0 0 7px
           rgba(214,167,73,.18)
@@ -1869,7 +1766,6 @@
 
     }
 
-
     @keyframes worksSparklePulse{
 
       0%,
@@ -1885,7 +1781,6 @@
 
     }
 
-
     @keyframes whatsappPulse{
 
       0%,
@@ -1898,7 +1793,6 @@
       }
 
     }
-
 
     @keyframes whatsappRing{
 
@@ -1915,7 +1809,6 @@
 
     }
 
-
     @keyframes whatsappRingOuter{
 
       0%,
@@ -1930,7 +1823,6 @@
       }
 
     }
-
 
     @keyframes scrollLine{
 
@@ -1947,7 +1839,6 @@
 
     }
 
-
     @keyframes worksArrow{
 
       0%,
@@ -1959,6 +1850,37 @@
       50%{
         transform:translateX(8px);
         opacity:1;
+      }
+
+    }
+
+    @keyframes cardGoldPulse{
+
+      0%,
+      100%{
+
+        border-color:
+          rgba(231,181,80,.68);
+
+        box-shadow:
+          0 0 2px rgba(255,229,160,.76),
+          0 0 6px rgba(232,175,68,.42),
+          0 0 13px rgba(201,139,34,.20),
+          0 0 27px rgba(165,105,21,.08),
+          0 18px 45px rgba(0,0,0,.58);
+      }
+
+      50%{
+
+        border-color:
+          rgba(255,212,118,.95);
+
+        box-shadow:
+          0 0 3px rgba(255,242,201,.98),
+          0 0 8px rgba(250,197,91,.72),
+          0 0 17px rgba(218,154,44,.36),
+          0 0 34px rgba(181,116,26,.15),
+          0 18px 45px rgba(0,0,0,.58);
       }
 
     }
@@ -1975,33 +1897,26 @@
         min-height:650px;
       }
 
-
       .hero-bottom-fade{
-        height:61%;
+        height:64%;
       }
-
 
       .top-logo{
         width:120px;
       }
 
-
       .hero-content{
         width:97%;
       }
-
 
       .name-image{
         width:98vw;
       }
 
-
       .nail-artistic-wrap{
         width:83vw;
-
         margin-top:-17px;
       }
-
 
       .hero-phrase{
         font-size:
@@ -2014,13 +1929,16 @@
         letter-spacing:0;
       }
 
-
       .works-section{
         margin-top:-95px;
-
         padding-top:205px;
       }
 
+      .works-background-photo{
+        top:-150px;
+        height:calc(100% + 300px);
+        object-position:center top;
+      }
 
       .works-header{
         padding:
@@ -2030,18 +1948,14 @@
         margin-bottom:55px;
       }
 
-
       .works-eyebrow{
         gap:18px;
-
         font-size:9px;
       }
-
 
       .works-eyebrow::before{
         width:58px;
       }
-
 
       .works-title{
         font-size:
@@ -2051,7 +1965,6 @@
             82px
           );
       }
-
 
       .works-description{
         margin-top:27px;
@@ -2066,7 +1979,6 @@
         line-height:1.45;
       }
 
-
       .works-drag{
         padding:
           0
@@ -2074,18 +1986,14 @@
           20px;
       }
 
-
       .works-drag-text{
         font-size:8px;
-
         letter-spacing:.36em;
       }
-
 
       .works-drag-line{
         width:45px;
       }
-
 
       .works-slider{
         padding:
@@ -2097,18 +2005,15 @@
           36px;
       }
 
-
       .work-card{
         flex-basis:79vw;
       }
-
 
       .works-footer{
         padding:
           0
           36px;
       }
-
 
       .future-section{
         min-height:90svh;
@@ -2118,7 +2023,6 @@
           25px;
       }
 
-
       .address-section{
         min-height:90svh;
 
@@ -2127,7 +2031,6 @@
           25px
           150px;
       }
-
 
       .whatsapp-button{
         width:76px;
@@ -2143,29 +2046,23 @@
         width:108px;
       }
 
-
       .menu-trigger{
         width:54px;
         height:54px;
       }
 
-
       .hero-content{
         width:98%;
       }
-
 
       .hero-phrase{
         font-size:16px;
       }
 
-
       .works-section{
         margin-top:-90px;
-
         padding-top:195px;
       }
-
 
       .works-header{
         padding:
@@ -2173,12 +2070,10 @@
           26px;
       }
 
-
       .works-drag{
         padding-left:26px;
         padding-right:26px;
       }
-
 
       .works-slider{
         padding-left:26px;
@@ -2187,17 +2082,14 @@
         scroll-padding-left:26px;
       }
 
-
       .work-card{
         flex-basis:80vw;
       }
-
 
       .works-footer{
         padding-left:26px;
         padding-right:26px;
       }
-
 
       .whatsapp-button{
         width:70px;
@@ -2218,7 +2110,6 @@
         margin-right:auto;
       }
 
-
       .works-slider{
         padding-left:
           max(
@@ -2230,7 +2121,6 @@
 
         padding-right:35px;
       }
-
 
       .work-card{
         flex-basis:390px;
@@ -2244,7 +2134,6 @@
       html{
         scroll-behavior:auto;
       }
-
 
       .global-sparkles,
       .hero-sparkles,
@@ -2267,8 +2156,6 @@
 
 <body>
 
-
-  <!-- FUNDO -->
 
   <div
     class="site-background"
@@ -2321,7 +2208,6 @@
       Menu
     </div>
 
-
     <div class="menu-links">
 
       <a href="#trabalhos">
@@ -2356,13 +2242,14 @@
   <main>
 
 
-    <!-- CAPA -->
+    <!-- ===================================================
+         CAPA
+    ==================================================== -->
 
     <section
       class="hero"
       id="inicio"
     >
-
 
       <img
         class="hero-photo"
@@ -2370,14 +2257,12 @@
         alt="Yara Nicácio e Nail Art"
       >
 
-
       <img
         class="hero-sparkles"
         src="24CD378D-F11E-4CB2-B0FC-FCAFBE91B276.png"
         alt=""
         aria-hidden="true"
       >
-
 
       <div
         class="hero-bottom-fade"
@@ -2398,13 +2283,11 @@
         id="heroContent"
       >
 
-
         <img
           class="name-image"
           src="C45E5C96-6A36-4BB4-B559-04CEAA03B6C2.png"
           alt="Yara Nicácio"
         >
-
 
         <div class="nail-artistic-wrap">
 
@@ -2416,17 +2299,14 @@
 
         </div>
 
-
         <p class="hero-phrase">
           O que você escolhe, vira arte em suas unhas
         </p>
-
 
         <div
           class="phrase-detail"
           aria-hidden="true"
         ></div>
-
 
       </div>
 
@@ -2445,13 +2325,41 @@
     </section>
 
 
-    <!-- TRABALHOS -->
+    <!-- ===================================================
+         TRABALHOS
+    ==================================================== -->
 
     <section
       class="works-section"
       id="trabalhos"
     >
 
+
+      <!-- NOVO FUNDO -->
+
+      <img
+        class="works-background-photo"
+        src="1E4CCF80-B082-40CE-B986-13D67C3FBC05.jpeg"
+        alt=""
+        aria-hidden="true"
+      >
+
+
+      <!-- DEGRADÊ PARA A FOTO NASCER E SUMIR SEM RECORTE -->
+
+      <div
+        class="works-background-blend"
+        aria-hidden="true"
+      ></div>
+
+
+      <div
+        class="works-background-depth"
+        aria-hidden="true"
+      ></div>
+
+
+      <!-- BRILHOS -->
 
       <div
         class="works-sparkles-layer"
@@ -2474,6 +2382,8 @@
       ></div>
 
 
+      <!-- TÍTULO -->
+
       <div class="works-header">
 
         <div
@@ -2481,22 +2391,18 @@
           id="worksHeaderFloat"
         >
 
-
           <div class="works-eyebrow">
             Nail Artistic
           </div>
-
 
           <h2 class="works-title">
             Trabalhos
           </h2>
 
-
           <p class="works-description">
             Criações desenvolvidas nos mínimos detalhes,
             transformando cada unha em uma composição única.
           </p>
-
 
         </div>
 
@@ -2508,7 +2414,6 @@
         <span class="works-drag-text">
           Deslize para explorar
         </span>
-
 
         <div
           class="works-drag-arrow"
@@ -2670,7 +2575,9 @@
     </section>
 
 
-    <!-- O ESTÚDIO -->
+    <!-- ===================================================
+         ESTÚDIO
+    ==================================================== -->
 
     <section
       class="future-section"
@@ -2701,7 +2608,9 @@
     </section>
 
 
-    <!-- YARA -->
+    <!-- ===================================================
+         YARA
+    ==================================================== -->
 
     <section
       class="future-section"
@@ -2733,7 +2642,9 @@
     </section>
 
 
-    <!-- PREÇOS -->
+    <!-- ===================================================
+         PREÇOS
+    ==================================================== -->
 
     <section
       class="future-section"
@@ -2765,7 +2676,9 @@
     </section>
 
 
-    <!-- AVALIAÇÕES -->
+    <!-- ===================================================
+         AVALIAÇÕES
+    ==================================================== -->
 
     <section
       class="future-section"
@@ -2797,13 +2710,14 @@
     </section>
 
 
-    <!-- ENDEREÇO -->
+    <!-- ===================================================
+         ENDEREÇO
+    ==================================================== -->
 
     <section
       class="address-section"
       id="endereco"
     >
-
 
       <div
         class="address-glow"
@@ -2813,27 +2727,22 @@
 
       <div class="address-content">
 
-
         <div class="address-eyebrow">
           Localização
         </div>
 
-
         <h2 class="address-title">
           Endereço
         </h2>
-
 
         <div
           class="address-line"
           aria-hidden="true"
         ></div>
 
-
         <div class="building">
           Edifício NBC
         </div>
-
 
         <div class="address-text">
 
@@ -2858,9 +2767,7 @@
           Ver no mapa
         </a>
 
-
       </div>
-
 
     </section>
 
@@ -2868,7 +2775,9 @@
   </main>
 
 
-  <!-- WHATSAPP -->
+  <!-- =====================================================
+       WHATSAPP
+  ====================================================== -->
 
   <a
     class="whatsapp-button"
@@ -2902,18 +2811,15 @@
         "menuTrigger"
       );
 
-
     const sideMenu =
       document.getElementById(
         "sideMenu"
       );
 
-
     const menuOverlay =
       document.getElementById(
         "menuOverlay"
       );
-
 
     const menuLinks =
       document.querySelectorAll(
@@ -3015,30 +2921,25 @@
         "heroContent"
       );
 
-
     const topLogo =
       document.getElementById(
         "topLogo"
       );
-
 
     const globalSparklesLayer =
       document.getElementById(
         "globalSparklesLayer"
       );
 
-
     const worksSection =
       document.getElementById(
         "trabalhos"
       );
 
-
     const worksHeaderFloat =
       document.getElementById(
         "worksHeaderFloat"
       );
-
 
     const worksSparklesLayer =
       document.getElementById(
