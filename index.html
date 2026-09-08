@@ -42,8 +42,11 @@
 
     body{
       margin:0;
+
       background:#050505;
+
       color:#ffffff;
+
       overflow-x:hidden;
 
       font-family:
@@ -60,7 +63,9 @@
       position:relative;
 
       width:100%;
+
       height:100svh;
+
       min-height:680px;
 
       overflow:hidden;
@@ -72,7 +77,7 @@
 
 
     /* ========================================
-       FOTO DE FUNDO
+       NOVA FOTO DE FUNDO
        SEM ALTERAÇÃO DE COR
     ======================================== */
 
@@ -85,15 +90,55 @@
       height:100%;
 
       object-fit:cover;
+
       object-position:center center;
 
       z-index:0;
 
-      transform:none;
-
       filter:none;
 
       opacity:1;
+
+      transform:none;
+    }
+
+
+    /* ========================================
+       DEGRADÊ PARA O PRETO
+       SEM CORTE RETO
+    ======================================== */
+
+    .bottom-fade{
+      position:absolute;
+
+      left:0;
+      right:0;
+      bottom:0;
+
+      height:48%;
+
+      z-index:1;
+
+      pointer-events:none;
+
+      background:
+        linear-gradient(
+          to bottom,
+
+          rgba(5,5,5,0) 0%,
+
+          rgba(5,5,5,.04) 18%,
+
+          rgba(5,5,5,.13) 34%,
+
+          rgba(5,5,5,.30) 52%,
+
+          rgba(5,5,5,.58) 70%,
+
+          rgba(5,5,5,.84) 86%,
+
+          #050505 100%
+        );
     }
 
 
@@ -112,6 +157,7 @@
       z-index:2;
 
       object-fit:cover;
+
       object-position:center;
 
       pointer-events:none;
@@ -137,12 +183,16 @@
       0%,
       100%{
         opacity:.13;
-        transform:scale(1);
+
+        transform:
+          scale(1);
       }
 
       50%{
         opacity:.30;
-        transform:scale(1.016);
+
+        transform:
+          scale(1.016);
       }
 
     }
@@ -164,6 +214,7 @@
       right:19px;
 
       width:125px;
+
       height:auto;
 
       object-fit:contain;
@@ -192,10 +243,11 @@
     .hero-content{
       position:absolute;
 
-      top:49%;
+      top:50%;
+
       left:50%;
 
-      width:min(95%,900px);
+      width:min(96%,920px);
 
       transform:
         translate(-50%,-50%);
@@ -203,8 +255,11 @@
       z-index:4;
 
       display:flex;
+
       flex-direction:column;
+
       align-items:center;
+
       justify-content:center;
 
       text-align:center;
@@ -220,12 +275,15 @@
     .name-image{
       display:block;
 
-      width:min(97vw,900px);
+      width:min(98vw,920px);
+
       max-width:100%;
 
       height:auto;
 
       object-fit:contain;
+
+      margin:0 auto;
 
       filter:
         drop-shadow(
@@ -242,24 +300,33 @@
           0 0 7px
           rgba(255,255,255,.18)
         );
-
-      margin:0 auto;
     }
 
 
     /* ========================================
        NAIL ARTISTIC
-       MAIS JUNTO DO NOME
+       PRATICAMENTE UNIDO AO NOME
     ======================================== */
 
     .nail-artistic-wrap{
-      width:min(80vw,660px);
+      width:min(82vw,680px);
 
-      margin-top:2px;
+      /*
+        VALOR NEGATIVO PARA PUXAR
+        O NAIL ARTISTIC PARA CIMA
+      */
+
+      margin-top:-15px;
 
       display:flex;
+
       align-items:center;
+
       justify-content:center;
+
+      position:relative;
+
+      z-index:2;
     }
 
 
@@ -267,6 +334,7 @@
       display:block;
 
       width:100%;
+
       height:auto;
 
       object-fit:contain;
@@ -280,7 +348,7 @@
 
         drop-shadow(
           0 3px 5px
-          rgba(0,0,0,.9)
+          rgba(0,0,0,.90)
         )
 
         drop-shadow(
@@ -300,7 +368,7 @@
     ======================================== */
 
     .hero-phrase{
-      margin-top:9px;
+      margin-top:2px;
 
       width:100%;
 
@@ -343,15 +411,19 @@
 
     .phrase-detail{
       width:48px;
+
       height:1px;
 
-      margin-top:14px;
+      margin-top:13px;
 
       background:
         linear-gradient(
           90deg,
+
           transparent,
+
           rgba(218,171,76,.85),
+
           transparent
         );
 
@@ -385,7 +457,9 @@
       z-index:5;
 
       display:flex;
+
       flex-direction:column;
+
       align-items:center;
 
       gap:11px;
@@ -410,12 +484,15 @@
 
     .scroll-line{
       width:1px;
+
       height:42px;
 
       background:
         linear-gradient(
           to bottom,
+
           rgba(202,154,67,.65),
+
           transparent
         );
 
@@ -432,13 +509,19 @@
       0%,
       100%{
         opacity:.25;
-        transform:scaleY(.7);
+
+        transform:
+          scaleY(.7);
+
         transform-origin:top;
       }
 
       50%{
         opacity:.85;
-        transform:scaleY(1);
+
+        transform:
+          scaleY(1);
+
         transform-origin:top;
       }
 
@@ -464,12 +547,15 @@
         );
 
       width:76px;
+
       height:76px;
 
       z-index:100;
 
       display:flex;
+
       align-items:center;
+
       justify-content:center;
 
       border-radius:50%;
@@ -533,6 +619,7 @@
       position:relative;
 
       width:100%;
+
       height:100%;
 
       object-fit:contain;
@@ -556,11 +643,13 @@
 
       0%,
       100%{
-        transform:scale(1);
+        transform:
+          scale(1);
       }
 
       50%{
-        transform:scale(1.075);
+        transform:
+          scale(1.075);
       }
 
     }
@@ -571,12 +660,16 @@
       0%,
       100%{
         opacity:.28;
-        transform:scale(.94);
+
+        transform:
+          scale(.94);
       }
 
       50%{
         opacity:.65;
-        transform:scale(1.08);
+
+        transform:
+          scale(1.08);
       }
 
     }
@@ -587,12 +680,16 @@
       0%,
       100%{
         opacity:.10;
-        transform:scale(.92);
+
+        transform:
+          scale(.92);
       }
 
       50%{
         opacity:.35;
-        transform:scale(1.10);
+
+        transform:
+          scale(1.10);
       }
 
     }
@@ -607,13 +704,18 @@
 
       min-height:70vh;
 
+      margin-top:0;
+
       background:
-        radial-gradient(
-          circle at 50% 0%,
-          rgba(111,76,27,.10),
-          transparent 38%
-        ),
-        #050505;
+        linear-gradient(
+          to bottom,
+
+          #050505 0%,
+
+          #070604 45%,
+
+          #090705 100%
+        );
 
       z-index:10;
     }
@@ -635,10 +737,21 @@
       }
 
 
+      /*
+        DEGRADÊ MAIS AMPLO NO CELULAR
+        PARA NÃO APARECER CORTE.
+      */
+
+      .bottom-fade{
+        height:52%;
+      }
+
+
       .gold-sparkles{
         inset:-2%;
 
         width:104%;
+
         height:104%;
 
         opacity:.18;
@@ -658,31 +771,32 @@
       }
 
 
-      /* BLOCO MAIS PARA BAIXO */
-
       .hero-content{
-        top:49.5%;
+        top:50.5%;
 
-        width:96%;
+        width:97%;
       }
 
 
       .name-image{
-        width:97vw;
+        width:98vw;
       }
 
 
-      /* QUASE COLADO AO NOME */
+      /*
+        AQUI FICA AINDA MAIS JUNTO
+        NO CELULAR.
+      */
 
       .nail-artistic-wrap{
-        width:80vw;
+        width:83vw;
 
-        margin-top:1px;
+        margin-top:-17px;
       }
 
 
       .hero-phrase{
-        margin-top:8px;
+        margin-top:1px;
 
         font-size:
           clamp(
@@ -699,6 +813,7 @@
 
       .whatsapp-button{
         width:76px;
+
         height:76px;
 
         right:18px;
@@ -710,22 +825,25 @@
     @media(max-width:390px){
 
       .hero-content{
-        width:97%;
+        width:98%;
       }
 
 
       .name-image{
-        width:97vw;
+        width:98vw;
       }
 
 
       .nail-artistic-wrap{
-        width:82vw;
+        width:84vw;
+
+        margin-top:-15px;
       }
 
 
       .hero-phrase{
         font-size:16px;
+
         letter-spacing:0;
       }
 
@@ -737,6 +855,7 @@
 
       .whatsapp-button{
         width:70px;
+
         height:70px;
       }
 
@@ -772,15 +891,23 @@
     >
 
 
-      <!-- FOTO DE FUNDO -->
+      <!-- NOVA FOTO DE FUNDO -->
 
       <img
         class="hero-background"
 
-        src="521D5ECF-2893-4075-8886-F7688E2AAFE0.jpeg"
+        src="6B987C82-0128-4805-9284-58DB898A5D27.jpeg"
 
-        alt="Yara Nicácio e trabalho de Nail Art"
+        alt="Yara Nicácio e Nail Art"
       >
+
+
+      <!-- DEGRADÊ PARA O PRETO -->
+
+      <div
+        class="bottom-fade"
+        aria-hidden="true"
+      ></div>
 
 
       <!-- BRILHOS -->
@@ -792,6 +919,7 @@
         src="24CD378D-F11E-4CB2-B0FC-FCAFBE91B276.png"
 
         alt=""
+
         aria-hidden="true"
       >
 
@@ -816,7 +944,7 @@
       >
 
 
-        <!-- NOME -->
+        <!-- YARA NICÁCIO -->
 
         <img
           class="name-image"
@@ -874,6 +1002,8 @@
     </section>
 
 
+    <!-- PRÓXIMA SEÇÃO -->
+
     <section class="next-section"></section>
 
 
@@ -903,7 +1033,10 @@
   </a>
 
 
-  <!-- PROFUNDIDADE -->
+  <!-- ========================================
+       PROFUNDIDADE
+       FUNDO PERMANECE FIXO
+  ======================================== -->
 
   <script>
 
@@ -926,7 +1059,16 @@
         window.scrollY;
 
 
-      /* BRILHOS */
+      /*
+        FOTO:
+        NÃO SE MOVE.
+      */
+
+
+      /*
+        BRILHOS:
+        CAMADA INTERMEDIÁRIA.
+      */
 
       goldSparkles.style.transform =
         `translate3d(
@@ -936,7 +1078,10 @@
         )`;
 
 
-      /* NOME + NAIL ARTISTIC + FRASE */
+      /*
+        NOME + NAIL ARTISTIC + FRASE:
+        CAMADA FRONTAL.
+      */
 
       heroContent.style.transform =
         `translate3d(
@@ -949,7 +1094,10 @@
         )`;
 
 
-      /* LOGOTIPO */
+      /*
+        LOGOTIPO:
+        CAMADA FRONTAL.
+      */
 
       topLogo.style.transform =
         `translate3d(
